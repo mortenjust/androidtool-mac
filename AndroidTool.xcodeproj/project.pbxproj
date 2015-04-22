@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C8B514661AE85D610071C86A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B514651AE85D610071C86A /* AppDelegate.swift */; };
+		C8B514681AE85D610071C86A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B514671AE85D610071C86A /* Images.xcassets */; };
+		C8B5146B1AE85D610071C86A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B514691AE85D610071C86A /* MainMenu.xib */; };
+		C8B514771AE85D610071C86A /* AndroidToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B514761AE85D610071C86A /* AndroidToolTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C8B514711AE85D610071C86A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C8B514581AE85D600071C86A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C8B5145F1AE85D610071C86A;
+			remoteInfo = AndroidTool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C8B514601AE85D610071C86A /* AndroidTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndroidTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8B514641AE85D610071C86A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8B514651AE85D610071C86A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C8B514671AE85D610071C86A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C8B5146A1AE85D610071C86A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C8B514701AE85D610071C86A /* AndroidToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AndroidToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8B514751AE85D610071C86A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8B514761AE85D610071C86A /* AndroidToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroidToolTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C8B5145D1AE85D610071C86A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8B5146D1AE85D610071C86A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C8B514571AE85D600071C86A = {
+			isa = PBXGroup;
+			children = (
+				C8B514621AE85D610071C86A /* AndroidTool */,
+				C8B514731AE85D610071C86A /* AndroidToolTests */,
+				C8B514611AE85D610071C86A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C8B514611AE85D610071C86A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C8B514601AE85D610071C86A /* AndroidTool.app */,
+				C8B514701AE85D610071C86A /* AndroidToolTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C8B514621AE85D610071C86A /* AndroidTool */ = {
+			isa = PBXGroup;
+			children = (
+				C8B514651AE85D610071C86A /* AppDelegate.swift */,
+				C8B514671AE85D610071C86A /* Images.xcassets */,
+				C8B514691AE85D610071C86A /* MainMenu.xib */,
+				C8B514631AE85D610071C86A /* Supporting Files */,
+			);
+			path = AndroidTool;
+			sourceTree = "<group>";
+		};
+		C8B514631AE85D610071C86A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C8B514641AE85D610071C86A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C8B514731AE85D610071C86A /* AndroidToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				C8B514761AE85D610071C86A /* AndroidToolTests.swift */,
+				C8B514741AE85D610071C86A /* Supporting Files */,
+			);
+			path = AndroidToolTests;
+			sourceTree = "<group>";
+		};
+		C8B514741AE85D610071C86A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C8B514751AE85D610071C86A /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C8B5145F1AE85D610071C86A /* AndroidTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8B5147A1AE85D610071C86A /* Build configuration list for PBXNativeTarget "AndroidTool" */;
+			buildPhases = (
+				C8B5145C1AE85D610071C86A /* Sources */,
+				C8B5145D1AE85D610071C86A /* Frameworks */,
+				C8B5145E1AE85D610071C86A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AndroidTool;
+			productName = AndroidTool;
+			productReference = C8B514601AE85D610071C86A /* AndroidTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C8B5146F1AE85D610071C86A /* AndroidToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C8B5147D1AE85D610071C86A /* Build configuration list for PBXNativeTarget "AndroidToolTests" */;
+			buildPhases = (
+				C8B5146C1AE85D610071C86A /* Sources */,
+				C8B5146D1AE85D610071C86A /* Frameworks */,
+				C8B5146E1AE85D610071C86A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C8B514721AE85D610071C86A /* PBXTargetDependency */,
+			);
+			name = AndroidToolTests;
+			productName = AndroidToolTests;
+			productReference = C8B514701AE85D610071C86A /* AndroidToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C8B514581AE85D600071C86A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Morten Just Petersen";
+				TargetAttributes = {
+					C8B5145F1AE85D610071C86A = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					C8B5146F1AE85D610071C86A = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = C8B5145F1AE85D610071C86A;
+					};
+				};
+			};
+			buildConfigurationList = C8B5145B1AE85D600071C86A /* Build configuration list for PBXProject "AndroidTool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C8B514571AE85D600071C86A;
+			productRefGroup = C8B514611AE85D610071C86A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C8B5145F1AE85D610071C86A /* AndroidTool */,
+				C8B5146F1AE85D610071C86A /* AndroidToolTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C8B5145E1AE85D610071C86A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8B514681AE85D610071C86A /* Images.xcassets in Resources */,
+				C8B5146B1AE85D610071C86A /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8B5146E1AE85D610071C86A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C8B5145C1AE85D610071C86A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8B514661AE85D610071C86A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C8B5146C1AE85D610071C86A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8B514771AE85D610071C86A /* AndroidToolTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C8B514721AE85D610071C86A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C8B5145F1AE85D610071C86A /* AndroidTool */;
+			targetProxy = C8B514711AE85D610071C86A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C8B514691AE85D610071C86A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C8B5146A1AE85D610071C86A /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C8B514781AE85D610071C86A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C8B514791AE85D610071C86A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C8B5147B1AE85D610071C86A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AndroidTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C8B5147C1AE85D610071C86A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AndroidTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C8B5147E1AE85D610071C86A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AndroidToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AndroidTool.app/Contents/MacOS/AndroidTool";
+			};
+			name = Debug;
+		};
+		C8B5147F1AE85D610071C86A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AndroidToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AndroidTool.app/Contents/MacOS/AndroidTool";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C8B5145B1AE85D600071C86A /* Build configuration list for PBXProject "AndroidTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8B514781AE85D610071C86A /* Debug */,
+				C8B514791AE85D610071C86A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C8B5147A1AE85D610071C86A /* Build configuration list for PBXNativeTarget "AndroidTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8B5147B1AE85D610071C86A /* Debug */,
+				C8B5147C1AE85D610071C86A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C8B5147D1AE85D610071C86A /* Build configuration list for PBXNativeTarget "AndroidToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C8B5147E1AE85D610071C86A /* Debug */,
+				C8B5147F1AE85D610071C86A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C8B514581AE85D600071C86A /* Project object */;
+}
