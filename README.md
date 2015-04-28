@@ -11,7 +11,6 @@
 ## What's this? 
 <img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/plugging%20in.gif" width=300>
 
-
 Android tool lets you do common Android designer and developer tasks in one click:
 * Take screenshots
 * Take screen videos
@@ -22,16 +21,20 @@ Android tool lets you do common Android designer and developer tasks in one clic
 
 ## Recording video
 <img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/phonerecording.gif" width=300>
+
 Android Tool outputs both mp4 and an animated gif. The animated gif can be placed in a Google Docs document or an email. 
 
 ## Installing apps
 <img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/installapk.gif)" width=300>
+
 Double click any APK file on your hard drive and Android Tool pops up asking you onto which device you want to install it. 
 
 ## Plain old screenshots
 <img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/dualscreenshot.gif" width=300>
+
 You can take screenshots of one or all devices connected to your mac - in one click, or by pressing cmd-shift-S
 
 ## Your own scripts
 <img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/scriptsfolder.gif" width=300>
+
 You can add your own perfect bash shell scripts to the scripts folder and execute them on a single device, or all devices connected to your Mac. See the example script in the scripts folder how to target a the user-selected device. 
