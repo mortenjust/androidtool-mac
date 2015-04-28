@@ -7,10 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */; };
+		C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */ = {isa = PBXBuildFile; fileRef = C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */; };
+		C8B131581AE9CE9700BCD4F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B131571AE9CE9700BCD4F3 /* Images.xcassets */; };
+		C8B1315A1AE9D47700BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B131591AE9D34F00BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh */; };
+		C8B131891AEB10FA00BCD4F3 /* startRecordingForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B131881AEB10C800BCD4F3 /* startRecordingForSerial.sh */; };
+		C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B1318A1AEB149100BCD4F3 /* postProcessMovieForSerial.sh */; };
+		C8B131961AEB3B5100BCD4F3 /* DevicePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B131941AEB3B5100BCD4F3 /* DevicePickerViewController.swift */; };
+		C8B131971AEB3B5100BCD4F3 /* DevicePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B131951AEB3B5100BCD4F3 /* DevicePickerViewController.xib */; };
+		C8B131991AEB641800BCD4F3 /* installApkOnDevice.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B131981AEB640900BCD4F3 /* installApkOnDevice.sh */; };
 		C8B514661AE85D610071C86A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B514651AE85D610071C86A /* AppDelegate.swift */; };
-		C8B514681AE85D610071C86A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B514671AE85D610071C86A /* Images.xcassets */; };
 		C8B5146B1AE85D610071C86A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B514691AE85D610071C86A /* MainMenu.xib */; };
 		C8B514771AE85D610071C86A /* AndroidToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B514761AE85D610071C86A /* AndroidToolTests.swift */; };
+		C8B514821AE85D8B0071C86A /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B514801AE85D8B0071C86A /* MasterViewController.swift */; };
+		C8B514831AE85D8B0071C86A /* MasterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B514811AE85D8B0071C86A /* MasterViewController.xib */; };
+		C8B514851AE85D940071C86A /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B514841AE85D940071C86A /* Device.swift */; };
+		C8B514871AE85DAE0071C86A /* DeviceDiscoverer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B514861AE85DAE0071C86A /* DeviceDiscoverer.swift */; };
+		C8B514891AE85E9B0071C86A /* getprop-example.txt in Resources */ = {isa = PBXBuildFile; fileRef = C8B514881AE85E9B0071C86A /* getprop-example.txt */; };
+		C8B5148C1AE860EF0071C86A /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */; };
+		C8B5148D1AE860EF0071C86A /* DeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8B5148B1AE860EF0071C86A /* DeviceViewController.xib */; };
+		C8B5148F1AE8703F0071C86A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B5148E1AE8703F0071C86A /* Util.swift */; };
+		C8B9D47E1AE991D300927B96 /* ShellTasker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B9D47D1AE991D300927B96 /* ShellTasker.swift */; };
+		C8B9D4801AE9B20600927B96 /* getDetailsForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */; };
+		C8B9D4831AE9B34F00927B96 /* adb in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4811AE9B34F00927B96 /* adb */; };
+		C8B9D4841AE9B34F00927B96 /* ffmpeg in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4821AE9B34F00927B96 /* ffmpeg */; };
+		C8B9D4861AE9C3A100927B96 /* getSerials.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4851AE9C3A100927B96 /* getSerials.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,14 +45,36 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scriptsPopoverViewController.swift; sourceTree = "<group>"; };
+		C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Take Bugreport.sh"; sourceTree = "<group>"; };
+		C8B131571AE9CE9700BCD4F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C8B131591AE9D34F00BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = takeScreenshotOfDeviceWithSerial.sh; sourceTree = "<group>"; };
+		C8B131881AEB10C800BCD4F3 /* startRecordingForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = startRecordingForSerial.sh; sourceTree = "<group>"; };
+		C8B1318A1AEB149100BCD4F3 /* postProcessMovieForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = postProcessMovieForSerial.sh; sourceTree = "<group>"; };
+		C8B131941AEB3B5100BCD4F3 /* DevicePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevicePickerViewController.swift; sourceTree = "<group>"; };
+		C8B131951AEB3B5100BCD4F3 /* DevicePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DevicePickerViewController.xib; sourceTree = "<group>"; };
+		C8B131981AEB640900BCD4F3 /* installApkOnDevice.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = installApkOnDevice.sh; sourceTree = "<group>"; };
 		C8B514601AE85D610071C86A /* AndroidTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AndroidTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B514641AE85D610071C86A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8B514651AE85D610071C86A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C8B514671AE85D610071C86A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C8B5146A1AE85D610071C86A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		C8B514701AE85D610071C86A /* AndroidToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AndroidToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8B514751AE85D610071C86A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8B514761AE85D610071C86A /* AndroidToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroidToolTests.swift; sourceTree = "<group>"; };
+		C8B514801AE85D8B0071C86A /* MasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		C8B514811AE85D8B0071C86A /* MasterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MasterViewController.xib; sourceTree = "<group>"; };
+		C8B514841AE85D940071C86A /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
+		C8B514861AE85DAE0071C86A /* DeviceDiscoverer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceDiscoverer.swift; sourceTree = "<group>"; };
+		C8B514881AE85E9B0071C86A /* getprop-example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "getprop-example.txt"; sourceTree = "<group>"; };
+		C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
+		C8B5148B1AE860EF0071C86A /* DeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceViewController.xib; sourceTree = "<group>"; };
+		C8B5148E1AE8703F0071C86A /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = AndroidTool/Util.swift; sourceTree = "<group>"; };
+		C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = getDetailsForSerial.sh; sourceTree = "<group>"; };
+		C8B9D47D1AE991D300927B96 /* ShellTasker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellTasker.swift; sourceTree = "<group>"; };
+		C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		C8B9D4811AE9B34F00927B96 /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
+		C8B9D4821AE9B34F00927B96 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
+		C8B9D4851AE9C3A100927B96 /* getSerials.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getSerials.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +95,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C83D2E0C1AEF02C400CD066D /* UserScriptsInception */ = {
+			isa = PBXGroup;
+			children = (
+				C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */,
+			);
+			name = UserScriptsInception;
+			sourceTree = "<group>";
+		};
 		C8B514571AE85D600071C86A = {
 			isa = PBXGroup;
 			children = (
+				C8B5148E1AE8703F0071C86A /* Util.swift */,
 				C8B514621AE85D610071C86A /* AndroidTool */,
 				C8B514731AE85D610071C86A /* AndroidToolTests */,
 				C8B514611AE85D610071C86A /* Products */,
@@ -73,8 +125,21 @@
 		C8B514621AE85D610071C86A /* AndroidTool */ = {
 			isa = PBXGroup;
 			children = (
+				C83D2E0C1AEF02C400CD066D /* UserScriptsInception */,
+				C8B131571AE9CE9700BCD4F3 /* Images.xcassets */,
+				C8B9D47B1AE9911C00927B96 /* Scripts */,
 				C8B514651AE85D610071C86A /* AppDelegate.swift */,
-				C8B514671AE85D610071C86A /* Images.xcassets */,
+				C8B9D47D1AE991D300927B96 /* ShellTasker.swift */,
+				C8B514801AE85D8B0071C86A /* MasterViewController.swift */,
+				C8B514811AE85D8B0071C86A /* MasterViewController.xib */,
+				C8B131941AEB3B5100BCD4F3 /* DevicePickerViewController.swift */,
+				C8B131951AEB3B5100BCD4F3 /* DevicePickerViewController.xib */,
+				C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */,
+				C8B5148B1AE860EF0071C86A /* DeviceViewController.xib */,
+				C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */,
+				C8B514841AE85D940071C86A /* Device.swift */,
+				C8B514881AE85E9B0071C86A /* getprop-example.txt */,
+				C8B514861AE85DAE0071C86A /* DeviceDiscoverer.swift */,
 				C8B514691AE85D610071C86A /* MainMenu.xib */,
 				C8B514631AE85D610071C86A /* Supporting Files */,
 			);
@@ -104,6 +169,22 @@
 				C8B514751AE85D610071C86A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C8B9D47B1AE9911C00927B96 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				C8B9D4811AE9B34F00927B96 /* adb */,
+				C8B9D4821AE9B34F00927B96 /* ffmpeg */,
+				C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */,
+				C8B9D4851AE9C3A100927B96 /* getSerials.sh */,
+				C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */,
+				C8B131591AE9D34F00BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh */,
+				C8B131881AEB10C800BCD4F3 /* startRecordingForSerial.sh */,
+				C8B1318A1AEB149100BCD4F3 /* postProcessMovieForSerial.sh */,
+				C8B131981AEB640900BCD4F3 /* installApkOnDevice.sh */,
+			);
+			name = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,8 +267,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8B514681AE85D610071C86A /* Images.xcassets in Resources */,
+				C8B131991AEB641800BCD4F3 /* installApkOnDevice.sh in Resources */,
+				C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */,
+				C8B131971AEB3B5100BCD4F3 /* DevicePickerViewController.xib in Resources */,
+				C8B131891AEB10FA00BCD4F3 /* startRecordingForSerial.sh in Resources */,
+				C8B1315A1AE9D47700BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh in Resources */,
+				C8B131581AE9CE9700BCD4F3 /* Images.xcassets in Resources */,
+				C8B9D4801AE9B20600927B96 /* getDetailsForSerial.sh in Resources */,
+				C8B9D4861AE9C3A100927B96 /* getSerials.sh in Resources */,
 				C8B5146B1AE85D610071C86A /* MainMenu.xib in Resources */,
+				C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */,
+				C8B9D4841AE9B34F00927B96 /* ffmpeg in Resources */,
+				C8B5148D1AE860EF0071C86A /* DeviceViewController.xib in Resources */,
+				C8B514831AE85D8B0071C86A /* MasterViewController.xib in Resources */,
+				C8B514891AE85E9B0071C86A /* getprop-example.txt in Resources */,
+				C8B9D4831AE9B34F00927B96 /* adb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,7 +299,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8B131961AEB3B5100BCD4F3 /* DevicePickerViewController.swift in Sources */,
+				C8B514851AE85D940071C86A /* Device.swift in Sources */,
+				C8B5148F1AE8703F0071C86A /* Util.swift in Sources */,
+				C8B514821AE85D8B0071C86A /* MasterViewController.swift in Sources */,
+				C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */,
+				C8B9D47E1AE991D300927B96 /* ShellTasker.swift in Sources */,
+				C8B5148C1AE860EF0071C86A /* DeviceViewController.swift in Sources */,
 				C8B514661AE85D610071C86A /* AppDelegate.swift in Sources */,
+				C8B514871AE85DAE0071C86A /* DeviceDiscoverer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,6 +428,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AndroidTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -337,6 +440,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AndroidTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -396,6 +500,7 @@
 				C8B5147C1AE85D610071C86A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C8B5147D1AE85D610071C86A /* Build configuration list for PBXNativeTarget "AndroidToolTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +509,7 @@
 				C8B5147F1AE85D610071C86A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

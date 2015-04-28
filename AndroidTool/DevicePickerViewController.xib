@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DevicePickerViewController" customModule="AndroidTool" customModuleProvider="target">
+            <connections>
+                <outlet property="deviceTable" destination="Opa-AO-rxm" id="ZdB-qL-RC3"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="-2" width="289" height="167"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAE-LU-0R6">
+                    <rect key="frame" x="0.0" y="49" width="289" height="94"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="IFF-Wy-bSA">
+                        <rect key="frame" x="1" y="17" width="238" height="117"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="36" id="Opa-AO-rxm">
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="38"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <tableViewGridLines key="gridStyleMask" dashed="YES"/>
+                                <color key="gridColor" white="0.8594159031413614" alpha="1" colorSpace="calibratedWhite"/>
+                                <tableColumns>
+                                    <tableColumn width="286" minWidth="40" maxWidth="1000" id="Id4-tk-dx6">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" identifier="deviceCell" title="Text" drawsBackground="YES" usesSingleLineMode="YES" id="C64-o9-FRc">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="calibratedRGB"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="jqT-h3-cEB"/>
+                                    <outlet property="delegate" destination="-2" id="Axu-NY-7d6"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.69598388671875" green="0.21030782163143158" blue="0.23600929975509644" alpha="1" colorSpace="calibratedRGB"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="nQB-Xn-AQi">
+                        <rect key="frame" x="1" y="119" width="223" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="SYc-ND-wrg">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tDm-bn-beq">
+                    <rect key="frame" x="103" y="1" width="83" height="32"/>
+                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BB9-EP-DGa">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                    </buttonCell>
+                    <connections>
+                        <action selector="cancelPressed:" target="-2" id="gsZ-lB-d7f"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8bK-77-zRT">
+                    <rect key="frame" x="92" y="147" width="105" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Install on..." id="ylQ-Lb-V1z">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="tDm-bn-beq" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="109" id="0Xg-N7-E5H"/>
+                <constraint firstAttribute="trailing" secondItem="LAE-LU-0R6" secondAttribute="trailing" id="8Bc-T6-wD5"/>
+                <constraint firstAttribute="trailing" secondItem="tDm-bn-beq" secondAttribute="trailing" constant="109" id="ax1-yf-CP9"/>
+                <constraint firstAttribute="bottom" secondItem="LAE-LU-0R6" secondAttribute="bottom" constant="49" id="iub-jt-oBX"/>
+                <constraint firstItem="tDm-bn-beq" firstAttribute="top" secondItem="LAE-LU-0R6" secondAttribute="bottom" constant="20" id="lhI-hi-inQ"/>
+                <constraint firstItem="LAE-LU-0R6" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="24" id="oCZ-jd-dL5"/>
+                <constraint firstItem="LAE-LU-0R6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="px1-Au-lzA"/>
+            </constraints>
+            <point key="canvasLocation" x="202.5" y="298.5"/>
+        </customView>
+    </objects>
+</document>
