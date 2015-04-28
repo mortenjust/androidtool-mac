@@ -9,7 +9,7 @@
 * Right click AndroidTool and choose Open
 
 ## What's this? 
-![Plugging in ](https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/plugging%20in.gif=20x)
+![Plugging in ](https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/plugging%20in.gif)
 
 Android tool lets you do common Android designer and developer tasks in one click:
 * Take screenshots
