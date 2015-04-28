@@ -24,14 +24,25 @@ class Util {
         view.frame.origin.y -= addHeight
     }
     
+//    func changeWindowHeight(window:NSWindow, view:NSView, newHeight:CGFloat=0) {
+//        var frame = window.frame
+//        frame.size = CGSizeMake(frame.size.width, newHeight)
+////        frame.origin.y -= newHeight
+//        window.setFrame(frame, display: true, animate: true)
+//        view.frame.size.height += newHeight
+//        view.frame.origin.y -= newHeight
+//    }
+    
+    
     func changeWindowHeight(window:NSWindow, view:NSView, newHeight:CGFloat=0) {
         var frame = window.frame
+        frame.origin.y += frame.size.height; // origin.y is top Y coordinate now
+        frame.origin.y -= newHeight // new Y coordinate for the origin
+        frame.size.height = newHeight
         frame.size = CGSizeMake(frame.size.width, newHeight)
-//        frame.origin.y -= newHeight
         window.setFrame(frame, display: true, animate: true)
-        view.frame.size.height += newHeight
-        view.frame.origin.y -= newHeight
     }
+
     
     func showNotification(title:String, moreInfo:String, sound:Bool=true) -> Void {
         var unc = NSUserNotificationCenter.defaultUserNotificationCenter()

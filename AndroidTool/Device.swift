@@ -40,15 +40,13 @@ class Device: NSObject {
         
 //        firstBoot = NSString(string: properties["ro.runtime.firstboot"]!).doubleValue
         
-        let characteristics = properties["ro.build.characteristics"]
-        
-
-        
-        if (characteristics! as NSString).containsString("watch") {
-            type = DeviceType.Watch
-        } else {
-            type = DeviceType.Phone
-        }
+        if let characteristics = properties["ro.build.characteristics"] {
+            if (characteristics as NSString).containsString("watch") {
+                type = DeviceType.Watch
+            } else {
+                type = DeviceType.Phone
+            }
+            }
     }
 
 
