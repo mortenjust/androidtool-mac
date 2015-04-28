@@ -25,7 +25,7 @@ Android tool lets you do common Android designer and developer tasks in one clic
 Android Tool outputs both mp4 and an animated gif. The animated gif can be placed in a Google Docs document or an email. 
 
 ## Installing apps
-<img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/installapk.gif)" width=300>
+<img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/installapk.gif" width=300>
 
 Double click any APK file on your hard drive and Android Tool pops up asking you onto which device you want to install it. 
 
