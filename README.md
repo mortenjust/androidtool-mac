@@ -30,9 +30,9 @@ Double click any APK file on your hard drive and Android Tool pops up asking you
 ## Plain old screenshots
 <img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/dualscreenshot.gif" width=300>
 
-You can take screenshots of one or all devices connected to your mac - in one click, or by pressing cmd-shift-S
+Take screenshots of one or all devices connected to your mac - in one click, or by pressing cmd-shift-S
 
 ## Your own scripts
 <img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/scriptsfolder.gif" width=300>
 
-You can add your own perfect bash shell scripts to the scripts folder and execute them on a single device, or all devices connected to your Mac. See the example script in the scripts folder how to target a the user-selected device. 
+Add your own perfect bash shell scripts to the scripts folder and execute them on a single device, or all devices connected to your Mac. See the example script in the scripts folder how to target a the user-selected device. 
