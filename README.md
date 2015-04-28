@@ -11,6 +11,9 @@
 ## What's this? 
 ![Plugging in ](https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/plugging%20in.gif)
 
+<img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/plugging%20in.gif" width=200>
+
+
 Android tool lets you do common Android designer and developer tasks in one click:
 * Take screenshots
 * Take screen videos
