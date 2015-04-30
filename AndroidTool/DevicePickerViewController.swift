@@ -32,19 +32,15 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
     func installApkOnDevice(device:Device){
         let serial = device.serial!
         
-        for subview in view.subviews {
-            var s = subview as! NSView
-            s.removeFromSuperview()
-        }
-        
         var spinner = NSProgressIndicator(frame: view.bounds)
         spinner.style = NSProgressIndicatorStyle.SpinningStyle
-        spinner.frame.origin.x = view.bounds.maxX/2 - spinner.bounds.size.width/2
+        view.addSubview(spinner)
+        spinner.startAnimation(self)
         
         ShellTasker(scriptFile: "installApkOnDevice").run(arguments: "\(serial) install -r \(apkPath)") { (output) -> Void in
 
             Util().showNotification("App installed on \(device.model)", moreInfo: "\(output)", sound: true)
-            spinner.removeFromSuperview()
+            spinner.stopAnimation(self)
             self.dismissController(nil)
         }
     }
