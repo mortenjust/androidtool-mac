@@ -27,21 +27,28 @@ class Device: NSObject {
     var properties: [String:String]?
     var firstBoot : NSTimeInterval?
     var firstBootString : NSString?
+    var adbIdentifier : String?
+    var isEmulator : Bool = false
     
-    init(properties:[String:String]) {
+    
+    init(properties:[String:String], adbIdentifier:String) {
+        self.adbIdentifier = adbIdentifier.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        
         model = properties["ro.product.model"]
         name = properties["ro.product.name"]
         manufacturer = properties["ro.product.manufacturer"]
         brand = properties["ro.product.brand"]
-        serial = properties["ro.serialno"]
         firstBootString = properties["ro.runtime.firstboot"]
         firstBoot = firstBootString?.doubleValue
 
-        
-//        firstBoot = NSString(string: properties["ro.runtime.firstboot"]!).doubleValue
+        if let deviceSerial = properties["ro.serialno"]{
+            serial = deviceSerial
+        } else {
+            isEmulator = true
+            serial = adbIdentifier
+        }
         
         if let characteristics = properties["ro.build.characteristics"] {
-            
             if characteristics.rangeOfString("watch") != nil {
                 type = DeviceType.Watch
             } else {

@@ -52,7 +52,7 @@ class DeviceDiscoverer:NSObject {
             if gotResults {
                 for serial in serials! {
                     self.getDetailsForSerial(serial, complete: { (details) -> Void in
-                        let device = Device(properties: details)
+                        let device = Device(properties: details, adbIdentifier:serial)
                         newDevices.append(device)
                         if serials!.count == newDevices.count {
                             self.delegate.devicesUpdated(newDevices)

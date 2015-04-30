@@ -130,6 +130,14 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         deviceNameField.stringValue = device.model!
         let brandName = device.brand!.lowercaseString
         deviceImage.image = NSImage(named: "logo\(brandName)")
+        
+        if device.isEmulator {
+            cameraButton.enabled = false
+            videoButton.enabled = false
+            
+            deviceNameField.stringValue = "Emulator"
+        }
+
     }
 
     override func viewDidLoad() {
