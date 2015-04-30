@@ -43,7 +43,7 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
         
         ShellTasker(scriptFile: "installApkOnDevice").run(arguments: "\(serial) install -r \(apkPath)") { (output) -> Void in
 
-            Util().showNotification("App installed on \(device.model)", moreInfo: "\(output)", sound: true)
+            Util().showNotification("App installed on \(device.readableIdentifier())", moreInfo: "\(output)", sound: true)
             spinner.removeFromSuperview()
             self.dismissController(nil)
         }
