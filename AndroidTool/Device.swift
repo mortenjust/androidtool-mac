@@ -48,6 +48,20 @@ class Device: NSObject {
             }
             }
     }
+    
+    func readableIdentifier() -> String {
+        if let modelString = model {
+            return modelString
+        } else if let nameString = name {
+            return nameString
+        } else if let manufacturerString = manufacturer {
+            return manufacturerString
+        } else if let serialString = serial {
+            return serialString
+        } else {
+            return "Android device"
+        }
+    }
 
 
 }
