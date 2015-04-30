@@ -21,7 +21,7 @@ TakeBugReport(){
 	$adb -s $serial bugreport > $finalFilename".txt"
 	}
 
-mkdir -p ~/Desktop/bugreport
+mkdir -p ~/Desktop/AndroidTool
 cd ~/Desktop/AndroidTool
 TakeBugReport
 open . #opens the Android Tool folder in Finder after executing. Could be annoying
