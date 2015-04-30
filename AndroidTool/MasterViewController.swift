@@ -72,7 +72,9 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     func deviceListSignature(deviceList:[Device]) -> Double {
         var total:Double = 0
         for device in deviceList {
-            total += device.firstBoot!
+            if let firstboot = device.firstBoot {
+                total += device.firstBoot!
+                }
         }
         let signa = total/Double(deviceList.count)
         return signa

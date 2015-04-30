@@ -94,6 +94,10 @@ class Util {
         return files
     }
     
+    func isMavericks() -> Bool {
+        return NSProcessInfo.processInfo().operatingSystemVersion.minorVersion != 10 ? true : false
+    }
+    
     
     func restartRefreshingDeviceList(){
         NSNotificationCenter.defaultCenter().postNotificationName("unSuspendAdb", object: self, userInfo:nil)

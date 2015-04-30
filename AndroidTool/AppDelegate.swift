@@ -19,10 +19,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         checkForUpdate()
         updateScriptFilesInMenu()
-        window.movableByWindowBackground = true
-        window.titleVisibility = NSWindowTitleVisibility.Hidden
-        window.titlebarAppearsTransparent = true;
-        window.styleMask |= NSFullSizeContentViewWindowMask;
+    
+        if !Util().isMavericks() {        
+            window.movableByWindowBackground = true
+            window.titleVisibility = NSWindowTitleVisibility.Hidden
+            window.titlebarAppearsTransparent = true;
+            window.styleMask |= NSFullSizeContentViewWindowMask;
+            }
         
         masterViewController = MasterViewController(nibName: "MasterViewController", bundle: nil)
         masterViewController.window = window

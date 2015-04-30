@@ -86,7 +86,7 @@ class DeviceDiscoverer:NSObject {
         
         mainTimer = NSTimer.scheduledTimerWithTimeInterval(updateInterval, target: self, selector: "pollDevices", userInfo: nil, repeats: false)
         
-        NSRunLoop.currentRunLoop().addTimer(mainTimer, forMode: NSDefaultRunLoopMode)
+//        NSRunLoop.currentRunLoop().addTimer(mainTimer, forMode: NSDefaultRunLoopMode)
         mainTimer.fire()
     }
 
