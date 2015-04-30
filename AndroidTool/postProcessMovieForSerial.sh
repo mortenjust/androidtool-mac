@@ -32,7 +32,14 @@ $adb -s $serial shell rm /sdcard/screencapture.raw
 
 echo 'Converting...'
 
-$thisdir/ffmpeg -f rawvideo -vcodec rawvideo -s 320x320 -pix_fmt rgb24 -r 10 -i screencapture.raw  -an -c:v libx264 -pix_fmt yuv420p $finalFileName.mp4
+if [ "${deviceName//[$'\t\r\n ']}" == "platina" ]
+then
+    resolution="280x280"
+else
+    resolution="320x320"
+fi
+
+$thisdir/ffmpeg -f rawvideo -vcodec rawvideo -s $resolution -pix_fmt rgb24 -r 10 -i screencapture.raw  -an -c:v libx264 -pix_fmt yuv420p $finalFileName.mp4
 
 #    $thisdir/ffmpeg -f rawvideo -vcodec rawvideo -pix_fmt rgb24 -r 10 -i screencapture.raw  -an -c:v libx264 -pix_fmt yuv420p $finalFileName.mp4
 

@@ -121,9 +121,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func checkForUpdate(){
+        
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             let url = NSURL(string: "http://mortenjust.com/androidtool/latestversion")
-            let version = NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: nil)!
+            if let version = NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: nil) {
             
             var nsu = NSUserDefaults.standardUserDefaults()
             let knowsAboutNewVersion = nsu.boolForKey("UserKnowsAboutNewVersion")
@@ -136,19 +138,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     alert.runModal()
                     nsu.setObject(true, forKey: "UserKnowsAboutNewVersion")
                     }
+                }
             }
         }
     }
     
     
     func applicationWillResignActive(notification: NSNotification) {
-        Util().stopRefreshingDeviceList()
+        masterViewController.discoverer.updateInterval = 120
+        //Util().stopRefreshingDeviceList()
+    }
+    
+    @IBAction func refreshDeviceListClicked(sender: NSMenuItem) {
+        masterViewController.discoverer.pollDevices()
     }
 
+    @IBAction func showLogFileClicked(sender: NSMenuItem) {
+        
+    }
+    
     
     func applicationDidBecomeActive(notification: NSNotification) {
-        Util().restartRefreshingDeviceList()
+//        Util().restartRefreshingDeviceList()
+        masterViewController.discoverer.updateInterval = 3
         updateScriptFilesInMenu()
+        masterViewController.discoverer.pollDevices()
+        
     }
     
     func applicationWillTerminate(aNotification: NSNotification) {

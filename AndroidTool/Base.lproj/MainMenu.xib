@@ -69,6 +69,18 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Run On All" id="W48-6f-4Dl"/>
                 </menuItem>
+                <menuItem title="Tools" id="sqn-eA-fyj" userLabel="Tools">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Tools" systemMenu="window" id="ggz-VM-Ur3">
+                        <items>
+                            <menuItem title="Refresh device list" keyEquivalent="r" id="fCF-T3-H2W">
+                                <connections>
+                                    <action selector="refreshDeviceListClicked:" target="Voe-Tx-rLC" id="XNy-ci-Wkz"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
@@ -88,6 +100,12 @@
                             <menuItem title="AndroidTool Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show log file" id="jMe-4g-r7v">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showLogFileClicked:" target="Voe-Tx-rLC" id="c6z-4U-0Kp"/>
                                 </connections>
                             </menuItem>
                         </items>

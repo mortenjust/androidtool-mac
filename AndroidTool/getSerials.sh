@@ -30,6 +30,7 @@ GetSerials(){
         fi
     done < <($adb devices)
 echo $serials
+echo $serials > deviceslog.txt
 }
 
 GetSerials
