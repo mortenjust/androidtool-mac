@@ -34,9 +34,9 @@ echo 'Converting...'
 
 if [ "${deviceName//[$'\t\r\n ']}" == "platina" ]
 then
-    resolution="280x280"
+resolution="280x280"
 else
-    resolution="320x320"
+resolution="320x320"
 fi
 
 $thisdir/ffmpeg -f rawvideo -vcodec rawvideo -s $resolution -pix_fmt rgb24 -r 10 -i screencapture.raw  -an -c:v libx264 -pix_fmt yuv420p $finalFileName.mp4
@@ -48,15 +48,22 @@ $thisdir/ffmpeg -i $finalFileName.mp4 $finalFileName.gif
 
 echo 'Cleaning up...'
 rm screencapture.raw
+echo 'Opening file...'
+open $finalFileName.mp4
+
 else # -- Phone ---
 echo 'copying from phone...'
 $adb -s $serial pull /sdcard/capture.mp4
-mv capture.mp4 $finalFileName.mp4
-$thisdir/ffmpeg -i $finalFileName.mp4 $finalFileName.gif
+    if [ ! -f capture.mp4 ]
+    then
+        echo 'File not found'
+    else
+        mv capture.mp4 $finalFileName.mp4
+        $thisdir/ffmpeg -i $finalFileName.mp4 $finalFileName.gif
 
-echo 'cleaning up'
-$adb -s $serial shell rm /sdcard/capture.mp4
+        echo 'cleaning up'
+        $adb -s $serial shell rm /sdcard/capture.mp4
+        echo 'Opening file...'
+        open $finalFileName.mp4
+    fi
 fi
-
-echo 'Opening file...'
-open $finalFileName.mp4

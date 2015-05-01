@@ -71,6 +71,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         moreButton.enabled = false
         let restingButton = videoButton.image
         videoButton.image = NSImage(named: "stopButton")
+        videoButton.enabled = false
+        enableVideoButton()
         shellTasker = ShellTasker(scriptFile: "startRecordingForSerial")
         shellTasker.run(arguments: device.serial!) { (output) -> Void in
             self.startProgressIndication()
@@ -79,9 +81,18 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             self.videoButton.image = restingButton
             var postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
             postProcessTask.run(arguments: self.device.serial!, complete: { (output) -> Void in
-                Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
+                let message = output.containsString("File not found") ? "Cannot record a video!" : "Your recording is ready"
+                Util().showNotification(message, moreInfo: "", sound: true)
                 self.stopProgressIndication()
             })
+        }
+    }
+    
+    func enableVideoButton() {
+        let delayInSeconds = 1.0
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)))
+        dispatch_after(time, dispatch_get_main_queue()) {
+            self.videoButton.enabled = true
         }
     }
     
