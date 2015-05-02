@@ -108,6 +108,8 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         
         // make sure we don't refresh the tableview when it's not necessary
         if newSig != previousSig {
+            
+            println("new sig")
         
             var et = devices
             var to = deviceList
@@ -118,7 +120,7 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
 
             var newHeight=Util().deviceHeight
 
-            // adjust nswindow height. If zero, make it the size of one item, so we can show a helpful message
+            // adjust window height accordingly
             if devices.count != 0 {
                 newHeight = CGFloat(devices.count) * (Util().deviceHeight)
             } else {

@@ -68,7 +68,7 @@ class Device: NSObject {
             }
 
         }
-        
+
     }
     
     func readableIdentifier() -> String {
@@ -90,8 +90,9 @@ class Device: NSObject {
         let matches = re.matchesInString(string, options: nil, range: NSRange(location: 0, length: count(string.utf16)))
         let result = matches[0] as! NSTextCheckingResult
         let width:NSString = (string as NSString).substringWithRange(result.rangeAtIndex(1))
-        let height:NSString = (string as NSString).substringWithRange(result.rangeAtIndex(2))
-        return (width:width.doubleValue, height:height.doubleValue)
+        let height:NSString = (string as NSString).substringWithRange(result.rangeAtIndex(2))        
+        let res = (width:width.doubleValue, height:height.doubleValue)
+        return res
     }
 
 

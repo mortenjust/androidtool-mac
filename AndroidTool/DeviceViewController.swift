@@ -79,10 +79,12 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         
         // get phone's resolution, multiply with user preference for screencap size (either 1 or lower)
         var res = device.resolution!
-        res = (device.resolution!.width*scalePref, device.resolution!.height*scalePref)
-        let widthHeight = "\(Int(res.width))x\(Int(res.height))"
+
+        if device.type == DeviceType.Phone {
+            res = (device.resolution!.width*scalePref, device.resolution!.height*scalePref)
+            }
         
-        let args:[String] = [device.serial!, widthHeight, "\(bitratePref)"]
+        let args:[String] = [device.serial!, "\(Int(res.width))", "\(Int(res.height))", "\(bitratePref)"]
         
         shellTasker.run(arguments: args) { (output) -> Void in
             
@@ -95,7 +97,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             self.moreButton.enabled = true
             self.videoButton.image = restingButton
             var postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
-            postProcessTask.run(arguments: [self.device.serial!], complete: { (output) -> Void in
+            let postArgs = ["\(self.device.serial!)", "\(Int(res.width))", "\(Int(res.height))"]
+            postProcessTask.run(arguments: args, complete: { (output) -> Void in
                 Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
                 self.stopProgressIndication()
             })
@@ -132,6 +135,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
 
     func setup(){
 //        println("setting up view for \(device.name!)")
+        
+        
     }
     
     func startProgressIndication(){
@@ -154,7 +159,20 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             
             deviceNameField.stringValue = "Emulator"
         }
-
+        
+        // only enable video recording if we have resolution, which is a bit slow because it comes from a big call
+        videoButton.enabled = false
+        enableVideoButtonWhenReady()
+    }
+    
+    func enableVideoButtonWhenReady(){
+        if device.resolution != nil {
+            println("not nil")
+            videoButton.enabled = true
+        } else {
+            println("is nil")
+            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "enableVideoButtonWhenReady", userInfo: nil, repeats: false)
+        }
     }
 
     override func viewDidLoad() {
