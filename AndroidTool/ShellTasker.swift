@@ -29,7 +29,7 @@ class ShellTasker: NSObject {
         task.terminate()
     }
     
-    func run(arguments args:String="", isUserScript:Bool = false, complete:(output:NSString)-> Void) {
+    func run(arguments args:[String]=[], isUserScript:Bool = false, complete:(output:NSString)-> Void) {
         
         var output = NSString()
         var data = NSData()
@@ -58,9 +58,21 @@ class ShellTasker: NSObject {
         let pipe = NSPipe()
 
         task.launchPath = bash
-        task.arguments = [scriptPath, resourcesPath!, args]
-        task.standardOutput = pipe
         
+        var allArguments = [String]()
+        
+        allArguments.append("\(scriptPath)")
+        allArguments.append(resourcesPath!)
+        
+        for arg in args {
+           allArguments.append(arg)
+        }
+        
+        task.arguments = allArguments
+        
+//  was      task.arguments = [scriptPath, resourcesPath!, args]
+
+        task.standardOutput = pipe
         
         self.task.launch()
         pipe.fileHandleForReading.waitForDataInBackgroundAndNotify()

@@ -20,7 +20,7 @@ class DeviceDiscoverer:NSObject {
     var updateInterval:NSTimeInterval = 3
     
     func getSerials(thenDoThis:(serials:[String]?, gotResults:Bool)->Void, finished:()->Void){
-        ShellTasker(scriptFile: "getSerials").run(arguments: "") { (output) -> Void in
+        ShellTasker(scriptFile: "getSerials").run() { (output) -> Void in
             let str = String(output)
             
             if count(str.utf16) < 2 {
@@ -36,7 +36,7 @@ class DeviceDiscoverer:NSObject {
     }
 
     func getDetailsForSerial(serial:String, complete:(details:[String:String])->Void){
-        ShellTasker(scriptFile: "getDetailsForSerial").run(arguments: serial) { (output) -> Void in
+        ShellTasker(scriptFile: "getDetailsForSerial").run(arguments: ["\(serial)"], isUserScript: false) { (output) -> Void in
             var detailsDict = self.getPropsFromString(output as String)
             complete(details:detailsDict)
         }

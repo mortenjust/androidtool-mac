@@ -8,6 +8,10 @@
 
 thisdir=$1 # $1 is the bundle resources path directly from the calling script file
 serial=$2
+width=$3
+height=$4
+bitrate=$5
+
 adb=$thisdir/adb
 
 chara=$($adb -s $serial shell getprop ro.build.characteristics)
@@ -20,9 +24,8 @@ else
     orientation=$(`$adb shell dumpsys input | grep 'SurfaceOrientation' | awk '{ print $2 }'`)
     if [ "$orientation" = "0" ] || [ "$orientation" = "2" ]
     then
-        $adb -s $serial shell screenrecord --bit-rate 2000000 --verbose --size 540x960 /sdcard/capture.mp4 > $1/reclog.txt
+        $adb -s $serial shell screenrecord --bit-rate $bitrate --verbose --size $height"x"$width /sdcard/capture.mp4 # > $1/reclog.txt
     else
-        $adb -s $serial shell screenrecord --bit-rate 2000000 --verbose --size 960x540 /sdcard/capture.mp4 > $1/reclog.txt
-#$adb -s $serial shell screenrecord /sdcard/capture.mp4 > $1/reclog.txt
+        $adb -s $serial shell screenrecord --bit-rate $bitrate --verbose --size $width"x"$height /sdcard/capture.mp4 # > $1/reclog.txt
     fi
 fi

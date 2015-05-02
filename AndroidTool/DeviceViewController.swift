@@ -27,7 +27,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     func takeScreenshot(){
         self.startProgressIndication()
-        ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: device.serial!) { (output) -> Void in
+        ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [device.serial!]) { (output) -> Void in
             self.stopProgressIndication()
             Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
         }
@@ -71,18 +71,31 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         moreButton.enabled = false
         let restingButton = videoButton.image
         videoButton.image = NSImage(named: "stopButton")
-        videoButton.enabled = false
-        enableVideoButton()
         shellTasker = ShellTasker(scriptFile: "startRecordingForSerial")
-        shellTasker.run(arguments: device.serial!) { (output) -> Void in
+        
+        var scalePref = NSUserDefaults.standardUserDefaults().doubleForKey("scalePref")
+        var bitratePref = Int(NSUserDefaults.standardUserDefaults().doubleForKey("bitratePref"))
+        
+        // get phone's resolution, multiply with user preference for screencap size (either 1 or lower)
+        var res = device.resolution!
+        res = (device.resolution!.width*scalePref, device.resolution!.height*scalePref)
+        //let widthHeight = "\(Int(res.width))x\(Int(res.height))"
+        
+        let args:[String] = [device.serial!, "\(Int(res.width))", "\(Int(res.height))", "\(bitratePref)"]
+        
+        shellTasker.run(arguments: args) { (output) -> Void in
+            
+            println("-----")
+            println(output)
+            println("-----")
+            
             self.startProgressIndication()
             self.cameraButton.enabled = true
             self.moreButton.enabled = true
             self.videoButton.image = restingButton
             var postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
-            postProcessTask.run(arguments: self.device.serial!, complete: { (output) -> Void in
-                let message = output.containsString("File not found") ? "Cannot record a video!" : "Your recording is ready"
-                Util().showNotification(message, moreInfo: "", sound: true)
+            postProcessTask.run(arguments: [self.device.serial!], complete: { (output) -> Void in
+                Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
                 self.stopProgressIndication()
             })
         }

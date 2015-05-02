@@ -69,7 +69,7 @@ class scriptsPopoverViewController: NSViewController {
         
         println("ready to run on \(serial)")
         
-        ShellTasker(scriptFile: scriptPath).run(arguments: serial, isUserScript: true) { (output) -> Void in
+        ShellTasker(scriptFile: scriptPath).run(arguments: ["\(serial)"], isUserScript: true) { (output) -> Void in
             self.delegate.userScriptEnded()
         }
     }
