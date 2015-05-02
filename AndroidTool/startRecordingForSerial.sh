@@ -8,6 +8,9 @@
 
 thisdir=$1 # $1 is the bundle resources path directly from the calling script file
 serial=$2
+widthHeight=$3
+bitrate=$4
+
 adb=$thisdir/adb
 
 chara=$($adb -s $serial shell getprop ro.build.characteristics)
@@ -18,6 +21,6 @@ $adb -s $serial shell screenrecord --o raw-frames /sdcard/screencapture.raw
 else
 echo "Recording from phone..."
 #open .
-$adb -s $serial shell screenrecord --bit-rate 2000000 --verbose --size 540x960 /sdcard/capture.mp4 > $1/reclog.txt
+$adb -s $serial shell screenrecord --bit-rate $bitrate --verbose --size $widthHeight /sdcard/capture.mp4 # > $1/reclog.txt
 #$adb -s $serial shell screenrecord /sdcard/capture.mp4 > $1/reclog.txt
 fi

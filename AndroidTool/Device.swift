@@ -29,9 +29,11 @@ class Device: NSObject {
     var firstBootString : NSString?
     var adbIdentifier : String?
     var isEmulator : Bool = false
+    var displayHeight : Int?
+    var resolution : (width:Double, height:Double)?
     
-    
-    init(properties:[String:String], adbIdentifier:String) {
+    convenience init(properties:[String:String], adbIdentifier:String) {
+        self.init()
         self.adbIdentifier = adbIdentifier.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         model = properties["ro.product.model"]
@@ -55,6 +57,18 @@ class Device: NSObject {
                 type = DeviceType.Phone
             }
             }
+        
+        ShellTasker(scriptFile: "getResolutionForSerial").run(arguments: ["\(self.serial!)"], isUserScript: false) { (output) -> Void in
+            let res = output as! String
+            
+            if res.rangeOfString("Physical size:") != nil {
+                self.resolution = self.getResolutionFromString(output as! String)
+            } else {
+                println("Awkward. No size found. What I did find was \(res)")
+            }
+
+        }
+        
     }
     
     func readableIdentifier() -> String {
@@ -69,6 +83,15 @@ class Device: NSObject {
         } else {
             return "Android device"
         }
+    }
+    
+    func getResolutionFromString(string:String) -> (width:Double, height:Double) {
+        let re = NSRegularExpression(pattern: "Physical size: (.*)x(.*)", options: nil, error: nil)!
+        let matches = re.matchesInString(string, options: nil, range: NSRange(location: 0, length: count(string.utf16)))
+        let result = matches[0] as! NSTextCheckingResult
+        let width:NSString = (string as NSString).substringWithRange(result.rangeAtIndex(1))
+        let height:NSString = (string as NSString).substringWithRange(result.rangeAtIndex(2))
+        return (width:width.doubleValue, height:height.doubleValue)
     }
 
 

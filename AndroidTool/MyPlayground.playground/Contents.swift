@@ -3,15 +3,12 @@
 import Cocoa
 import Foundation
 
+var res = (height:10, width:10)
 
-939393
+var mul = 2
+res = (res.height*mul, res.width*mul)
+
+println(res)
 
 
-"sdcard wtch".rangeOfString("watch")
-
-if "sdcard wtch".rangeOfString("watch") == nil {
-    println("not a watch")
-} else {
-    println("is a watch")
-}
-
+floor(32.0)

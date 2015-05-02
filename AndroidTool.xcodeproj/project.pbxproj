@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */; };
 		C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */ = {isa = PBXBuildFile; fileRef = C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */; };
+		C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */; };
+		C8A8A7B11AF4506800E4B5D0 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */; };
+		C8A8A7B31AF4A0E200E4B5D0 /* getResolutionForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */; };
 		C8B131581AE9CE9700BCD4F3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B131571AE9CE9700BCD4F3 /* Images.xcassets */; };
 		C8B1315A1AE9D47700BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B131591AE9D34F00BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh */; };
 		C8B131891AEB10FA00BCD4F3 /* startRecordingForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B131881AEB10C800BCD4F3 /* startRecordingForSerial.sh */; };
@@ -47,6 +50,9 @@
 /* Begin PBXFileReference section */
 		C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scriptsPopoverViewController.swift; sourceTree = "<group>"; };
 		C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Take Bugreport.sh"; sourceTree = "<group>"; };
+		C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesWindowController.swift; path = ../PreferencesWindowController.swift; sourceTree = "<group>"; };
+		C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = ../PreferencesWindowController.xib; sourceTree = "<group>"; };
+		C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = getResolutionForSerial.sh; sourceTree = "<group>"; };
 		C8B131571AE9CE9700BCD4F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C8B131591AE9D34F00BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = takeScreenshotOfDeviceWithSerial.sh; sourceTree = "<group>"; };
 		C8B131881AEB10C800BCD4F3 /* startRecordingForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = startRecordingForSerial.sh; sourceTree = "<group>"; };
@@ -130,6 +136,8 @@
 				C8B9D47B1AE9911C00927B96 /* Scripts */,
 				C8B514651AE85D610071C86A /* AppDelegate.swift */,
 				C8B9D47D1AE991D300927B96 /* ShellTasker.swift */,
+				C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */,
+				C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */,
 				C8B514801AE85D8B0071C86A /* MasterViewController.swift */,
 				C8B514811AE85D8B0071C86A /* MasterViewController.xib */,
 				C8B131941AEB3B5100BCD4F3 /* DevicePickerViewController.swift */,
@@ -177,6 +185,7 @@
 				C8B9D4811AE9B34F00927B96 /* adb */,
 				C8B9D4821AE9B34F00927B96 /* ffmpeg */,
 				C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */,
+				C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */,
 				C8B9D4851AE9C3A100927B96 /* getSerials.sh */,
 				C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */,
 				C8B131591AE9D34F00BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh */,
@@ -267,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8A8A7B31AF4A0E200E4B5D0 /* getResolutionForSerial.sh in Resources */,
 				C8B131991AEB641800BCD4F3 /* installApkOnDevice.sh in Resources */,
 				C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */,
 				C8B131971AEB3B5100BCD4F3 /* DevicePickerViewController.xib in Resources */,
@@ -281,6 +291,7 @@
 				C8B5148D1AE860EF0071C86A /* DeviceViewController.xib in Resources */,
 				C8B514831AE85D8B0071C86A /* MasterViewController.xib in Resources */,
 				C8B514891AE85E9B0071C86A /* getprop-example.txt in Resources */,
+				C8A8A7B11AF4506800E4B5D0 /* PreferencesWindowController.xib in Resources */,
 				C8B9D4831AE9B34F00927B96 /* adb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,6 +312,7 @@
 			files = (
 				C8B131961AEB3B5100BCD4F3 /* DevicePickerViewController.swift in Sources */,
 				C8B514851AE85D940071C86A /* Device.swift in Sources */,
+				C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */,
 				C8B5148F1AE8703F0071C86A /* Util.swift in Sources */,
 				C8B514821AE85D8B0071C86A /* MasterViewController.swift in Sources */,
 				C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */,

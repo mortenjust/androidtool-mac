@@ -13,13 +13,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var scriptsMenu: NSMenu!
+    var preferencesWindowController: PreferencesWindowController!
     
     var masterViewController: MasterViewController!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         checkForUpdate()
         updateScriptFilesInMenu()
-    
+        checkForPreferences()
+        
         if !Util().isMavericks() {        
             window.movableByWindowBackground = true
             window.titleVisibility = NSWindowTitleVisibility.Hidden
@@ -51,6 +53,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             views: viewDict)
         containerView.addConstraints(viewConstraintH)
         containerView.addConstraints(viewConstraintV)
+        
+        
     }
 
     func application(sender: NSApplication, openFile filename: String) -> Bool {
@@ -61,8 +65,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func revealFolderClicked(sender: NSMenuItem) {
         Util().revealScriptsFolder()
+    
     }
 
+    
+    func checkForPreferences(){
+        var ud = NSUserDefaults.standardUserDefaults()
+        
+        let bitratePref = ud.doubleForKey("bitratePref")
+        let scalePref = ud.doubleForKey("scalePref")
+
+        println("bit: \(bitratePref)")
+        
+        
+        if bitratePref == 0.0 {
+            ud.setDouble(Double(3025000), forKey: "bitratePref")
+        }
+        
+        if scalePref == 0.0 {
+            ud.setDouble(0.7, forKey: "scalePref")
+        }
+    
+    }
+    
+    
     // populate nsmenu with all scripts
     // run this script on all devices
     
@@ -106,7 +132,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for deviceVC in deviceVCs {
             let serial = deviceVC.device.serial!
             deviceVC.startProgressIndication()
-            ShellTasker(scriptFile: scriptPath).run(arguments: serial, isUserScript: true) { (output) -> Void in
+            ShellTasker(scriptFile: scriptPath).run(arguments: ["\(serial)"], isUserScript: true) { (output) -> Void in
                     deviceVC.stopProgressIndication()
             }
         }
@@ -149,7 +175,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillResignActive(notification: NSNotification) {
         masterViewController.discoverer.updateInterval = 120
-        //Util().stopRefreshingDeviceList()
     }
     
     @IBAction func refreshDeviceListClicked(sender: NSMenuItem) {
@@ -159,6 +184,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func showLogFileClicked(sender: NSMenuItem) {
         
     }
+    
+    @IBAction func preferencesClicked(sender: NSMenuItem) {
+        println("pref")
+        preferencesWindowController = PreferencesWindowController(windowNibName: "PreferencesWindowController")
+        preferencesWindowController.showWindow(sender)
+
+    }
+
     
     
     func applicationDidBecomeActive(notification: NSNotification) {
