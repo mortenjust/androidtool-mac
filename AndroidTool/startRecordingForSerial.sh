@@ -21,11 +21,21 @@ then
     $adb -s $serial shell screenrecord --o raw-frames /sdcard/screencapture.raw
 else
     echo "Recording from phone..."
-    orientation=$(`$adb shell dumpsys input | grep 'SurfaceOrientation' | awk '{ print $2 }'`)
-    if [ "$orientation" = "0" ] || [ "$orientation" = "2" ]
+    orientation=`$adb shell dumpsys input -s $serial | grep 'SurfaceOrientation' | awk '{ print $2 }' | tr -d '\r'`
+    if [ $orientation == 0 ] || [ $orientation == 2 ]
     then
-        $adb -s $serial shell screenrecord --bit-rate $bitrate --verbose --size $width"x"$height /sdcard/capture.mp4 # > $1/reclog.txt
+        if [ $width -gt $height ]
+        then
+            $adb -s $serial shell screenrecord --bit-rate $bitrate --verbose --size $height"x"$width /sdcard/capture.mp4 # > $1/reclog.txt
+        else
+            $adb -s $serial shell screenrecord --bit-rate $bitrate --verbose --size $width"x"$height /sdcard/capture.mp4 # > $1/reclog.txt
+        fi
     else
-        $adb -s $serial shell screenrecord --bit-rate $bitrate --verbose --size $height"x"$width /sdcard/capture.mp4 # > $1/reclog.txt
+        if [ $height -gt $width ]
+        then
+            $adb -s $serial shell screenrecord --bit-rate $bitrate --verbose --size $height"x"$width /sdcard/capture.mp4 # > $1/reclog.txt
+        else
+            $adb -s $serial shell screenrecord --bit-rate $bitrate --verbose --size $width"x"$height /sdcard/capture.mp4 # > $1/reclog.txt
+        fi
     fi
 fi
