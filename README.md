@@ -6,6 +6,8 @@
 * Copy AndroidTool.app to your Applications folder
 * Right click AndroidTool and choose Open
 
+To install using [homebrew-cask](http://caskroom.io/), run `brew cask install androidtool` in the terminal.
+
 ## What's this? 
 <img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/plugging%20in.gif" width=300>
 
