@@ -35,6 +35,7 @@
 		C8B9D4831AE9B34F00927B96 /* adb in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4811AE9B34F00927B96 /* adb */; };
 		C8B9D4841AE9B34F00927B96 /* ffmpeg in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4821AE9B34F00927B96 /* ffmpeg */; };
 		C8B9D4861AE9C3A100927B96 /* getSerials.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4851AE9C3A100927B96 /* getSerials.sh */; };
+		C8BF506B1AFB393C005C725D /* IOSDeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		C8B9D4811AE9B34F00927B96 /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
 		C8B9D4821AE9B34F00927B96 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
 		C8B9D4851AE9C3A100927B96 /* getSerials.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getSerials.sh; sourceTree = "<group>"; };
+		C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSDeviceHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */,
 				C8B514801AE85D8B0071C86A /* MasterViewController.swift */,
 				C8B514811AE85D8B0071C86A /* MasterViewController.xib */,
+				C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */,
 				C8B131941AEB3B5100BCD4F3 /* DevicePickerViewController.swift */,
 				C8B131951AEB3B5100BCD4F3 /* DevicePickerViewController.xib */,
 				C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */,
@@ -315,6 +318,7 @@
 				C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */,
 				C8B5148F1AE8703F0071C86A /* Util.swift in Sources */,
 				C8B514821AE85D8B0071C86A /* MasterViewController.swift in Sources */,
+				C8BF506B1AFB393C005C725D /* IOSDeviceHelper.swift in Sources */,
 				C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */,
 				C8B9D47E1AE991D300927B96 /* ShellTasker.swift in Sources */,
 				C8B5148C1AE860EF0071C86A /* DeviceViewController.swift in Sources */,

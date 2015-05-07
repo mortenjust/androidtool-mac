@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 protocol DeviceDelegate{
     //
@@ -14,6 +15,10 @@ protocol DeviceDelegate{
 
 enum DeviceType:String {
     case Phone="Phone", Watch="Watch", Tv="Tv", Auto="Auto"
+}
+
+enum DeviceOS {
+    case Ios, Android
 }
 
 class Device: NSObject {
@@ -31,9 +36,23 @@ class Device: NSObject {
     var isEmulator : Bool = false
     var displayHeight : Int?
     var resolution : (width:Double, height:Double)?
+    var deviceOS : DeviceOS!
+    var uuid : String!
+    
+    convenience init(avDevice:AVCaptureDevice) {
+        self.init()
+        deviceOS = DeviceOS.Ios
+        firstBoot = hashFromString(avDevice.uniqueID)
+        brand = "Apple"
+        name = avDevice.localizedName
+        uuid = avDevice.uniqueID
+        model = name
+    }
     
     convenience init(properties:[String:String], adbIdentifier:String) {
         self.init()
+        
+        deviceOS = .Android
         self.adbIdentifier = adbIdentifier.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
         
         model = properties["ro.product.model"]
@@ -71,6 +90,10 @@ class Device: NSObject {
 
     }
     
+    func hashFromString(s:String) -> Double {
+        return Double(abs((s as NSString).hash))
+    }
+    
     func readableIdentifier() -> String {
         if let modelString = model {
             return modelString
@@ -81,7 +104,7 @@ class Device: NSObject {
         } else if let serialString = serial {
             return serialString
         } else {
-            return "Android device"
+            return "Mobile device"
         }
     }
     

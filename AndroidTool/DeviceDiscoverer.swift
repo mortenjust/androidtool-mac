@@ -7,17 +7,40 @@
 //
 
 import Cocoa
+import AVFoundation
 
 protocol DeviceDiscovererDelegate {
     func devicesUpdated(deviceList:[Device])
 }
 
-class DeviceDiscoverer:NSObject {
+class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     var delegate : DeviceDiscovererDelegate!
     var previousDevices = [Device]()
     var updatingSuspended = false
     var mainTimer : NSTimer!
     var updateInterval:NSTimeInterval = 3
+    var iosDeviceHelper : IOSDeviceHelper!
+    var iosDevices = [Device]()
+    var androidDevices = [Device]()
+    
+    func start(){
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "suspend", name: "suspendAdb", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "unSuspend", name: "unSuspendAdb", object: nil)
+        
+        mainTimer = NSTimer.scheduledTimerWithTimeInterval(updateInterval, target: self, selector: "pollDevices", userInfo: nil, repeats: false)
+        
+        mainTimer.fire()
+        
+        /// start IOSDeviceHelper by instantiating
+        iosDeviceHelper = IOSDeviceHelper(delegate: self)
+        
+    }
+    
+    func stop(){}
+
+    
+    
+    
     
     func getSerials(thenDoThis:(serials:[String]?, gotResults:Bool)->Void, finished:()->Void){
         ShellTasker(scriptFile: "getSerials").run() { (output) -> Void in
@@ -55,12 +78,12 @@ class DeviceDiscoverer:NSObject {
                         let device = Device(properties: details, adbIdentifier:serial)
                         newDevices.append(device)
                         if serials!.count == newDevices.count {
-                            self.delegate.devicesUpdated(newDevices)
+                            self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.Android)
                         }
                     })
                 }
             } else {
-                self.delegate.devicesUpdated(newDevices)
+                self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.Android)
             }
         }, finished: { () -> Void in
             // not really doing anything here afterall
@@ -68,7 +91,8 @@ class DeviceDiscoverer:NSObject {
     
         mainTimer = NSTimer.scheduledTimerWithTimeInterval(updateInterval, target: self, selector: "pollDevices", userInfo: nil, repeats: false)
     }
-    
+
+
 
     func suspend(){
         // some activites will break an open connection, an example is screen recording.
@@ -79,18 +103,6 @@ class DeviceDiscoverer:NSObject {
         updatingSuspended = false
     }
     
-    func start(){
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "suspend", name: "suspendAdb", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "unSuspend", name: "unSuspendAdb", object: nil)
-        
-        mainTimer = NSTimer.scheduledTimerWithTimeInterval(updateInterval, target: self, selector: "pollDevices", userInfo: nil, repeats: false)
-        
-//        NSRunLoop.currentRunLoop().addTimer(mainTimer, forMode: NSDefaultRunLoopMode)
-        mainTimer.fire()
-    }
-
-    func stop(){}
     
     func getPropsFromString(string:String) -> [String:String] {
         let re = NSRegularExpression(pattern: "\\[(.+?)\\]: \\[(.+?)\\]", options: nil, error: nil)!
@@ -105,6 +117,56 @@ class DeviceDiscoverer:NSObject {
         }
         return propDict
     }
+    
+    func iosDeviceAttached(device:AVCaptureDevice){
+        // instantiate new Device, check if we know it, add to iosDevices[], tell deviceCollector about it
+        
+        println("Found device \(device.localizedName)")
+        let newDevice = Device(avDevice: device)
+        var known = false
+        for d in iosDevices {
+            if d.uuid == newDevice.uuid {
+                println("wtf, already exists")
+                known = true
+            }
+        }
 
+        if !known {
+            iosDevices.append(newDevice)
+            newDeviceCollector(updateWithList: iosDevices, forDeviceOS: .Ios)
+            // tell deviceCollector to merge with Android device and fire an update
+        }
+    }
+    
+    func newDeviceCollector(updateWithList deviceList: [Device], forDeviceOS:DeviceOS){
+        var allDevices = [Device]()
+        
+        // merge lists
+        if forDeviceOS == .Android {
+            androidDevices = deviceList
+        }
+        if forDeviceOS == .Ios {
+            iosDevices = deviceList
+        }
+        
+        allDevices = androidDevices + iosDevices
+        delegate.devicesUpdated(allDevices)
+    }
+    
+    func iosDeviceDetached(device:AVCaptureDevice){
+        // find the lost device in iosDevices[], remove it, and tell newDeviceCollector about it
+        for index in 0...(iosDevices.count-1) {
+            if iosDevices[index].uuid == device.uniqueID {
+                println("removing \(device.localizedName)")
+                iosDevices.removeAtIndex(index)
+                newDeviceCollector(updateWithList: iosDevices, forDeviceOS: .Ios)
+            }
+        }
+    }
+
+    func iosDeviceDidStartPreparing(device:AVCaptureDevice){
+        // this happens when
+    }
+    func iosDeviceDidEndPreparing(){}
 
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
@@ -61,14 +61,14 @@
                     </connections>
                 </button>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="yMf-aI-rf0" userLabel="logo and model">
-                    <rect key="frame" x="0.0" y="33" width="198" height="60"/>
+                    <rect key="frame" x="0.0" y="11" width="198" height="82"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-80-wMe" userLabel="deviceImage">
-                            <rect key="frame" x="14" y="28" width="116" height="32"/>
+                            <rect key="frame" x="14" y="50" width="116" height="32"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logogoogle" id="k5s-A8-Hjn"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-Zv-KU6">
-                            <rect key="frame" x="12" y="6" width="150" height="19"/>
+                            <rect key="frame" x="12" y="-1" width="150" height="48"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Nexus 1" id="6Ie-fc-dYB">
                                 <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" red="1" green="0.9960784912109375" blue="0.9960784912109375" alpha="0.75" colorSpace="deviceRGB"/>
@@ -78,7 +78,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="width" constant="198" id="Ryk-w6-pMG"/>
-                        <constraint firstAttribute="height" constant="60" id="mra-UG-eQW"/>
+                        <constraint firstAttribute="height" constant="82" id="mra-UG-eQW"/>
                     </constraints>
                 </customView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2xC-CH-hsN" userLabel="shadow">
@@ -94,7 +94,7 @@
                 <constraint firstAttribute="centerX" secondItem="v4Z-CU-6yJ" secondAttribute="centerX" constant="-85.5" id="KXr-Sh-yGV"/>
                 <constraint firstItem="PMI-Ok-nnQ" firstAttribute="leading" secondItem="uj9-du-tFf" secondAttribute="trailing" constant="-10" id="W0n-vi-Jmm"/>
                 <constraint firstAttribute="centerY" secondItem="uj9-du-tFf" secondAttribute="centerY" constant="-3.5" id="XmN-U5-Qpi"/>
-                <constraint firstAttribute="centerY" secondItem="yMf-aI-rf0" secondAttribute="centerY" constant="-0.5" id="fkK-Xd-Beq"/>
+                <constraint firstAttribute="centerY" secondItem="yMf-aI-rf0" secondAttribute="centerY" constant="-11.5" id="fkK-Xd-Beq"/>
                 <constraint firstAttribute="centerX" secondItem="j3W-9F-lp5" secondAttribute="centerX" constant="-139" id="rDE-Xh-BGc"/>
                 <constraint firstAttribute="centerX" secondItem="uj9-du-tFf" secondAttribute="centerX" constant="1.5" id="y9o-Rp-GJC"/>
             </constraints>
