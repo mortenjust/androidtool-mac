@@ -105,8 +105,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
             self.movieOutput.startRecordingToOutputFileURL(file, recordingDelegate: self)
         }
         else
-        {
-            
+        {            
             dispatch_after(3, dispatch_get_main_queue(), { () -> Void in
                 println("stopRecording")
                 self.movieOutput.stopRecording()
