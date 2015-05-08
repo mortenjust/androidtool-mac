@@ -19,6 +19,7 @@
 		C8A0F8BC1AFC319A00B3A90C /* libosxfuse_i64.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B31AFC319A00B3A90C /* libosxfuse_i64.2.dylib */; };
 		C8A0F8BD1AFC319A00B3A90C /* libosxfuse_i32.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B41AFC319A00B3A90C /* libosxfuse_i32.2.dylib */; };
 		C8A0F8BE1AFC319A00B3A90C /* libimobiledevice.4.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B51AFC319A00B3A90C /* libimobiledevice.4.dylib */; };
+		C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8BF1AFC4BDF00B3A90C /* convertMovieFiletoGif.sh */; };
 		C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */; };
 		C8A8A7B11AF4506800E4B5D0 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */; };
 		C8A8A7B31AF4A0E200E4B5D0 /* getResolutionForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */; };
@@ -83,6 +84,7 @@
 		C8A0F8B31AFC319A00B3A90C /* libosxfuse_i64.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosxfuse_i64.2.dylib; path = ../libosxfuse_i64.2.dylib; sourceTree = "<group>"; };
 		C8A0F8B41AFC319A00B3A90C /* libosxfuse_i32.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosxfuse_i32.2.dylib; path = ../libosxfuse_i32.2.dylib; sourceTree = "<group>"; };
 		C8A0F8B51AFC319A00B3A90C /* libimobiledevice.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libimobiledevice.4.dylib; path = ../libimobiledevice.4.dylib; sourceTree = "<group>"; };
+		C8A0F8BF1AFC4BDF00B3A90C /* convertMovieFiletoGif.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = convertMovieFiletoGif.sh; sourceTree = "<group>"; };
 		C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesWindowController.swift; path = ../PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = ../PreferencesWindowController.xib; sourceTree = "<group>"; };
 		C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = getResolutionForSerial.sh; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */,
 				C8B131881AEB10C800BCD4F3 /* startRecordingForSerial.sh */,
 				C8B1318A1AEB149100BCD4F3 /* postProcessMovieForSerial.sh */,
+				C8A0F8BF1AFC4BDF00B3A90C /* convertMovieFiletoGif.sh */,
 				C8B131981AEB640900BCD4F3 /* installApkOnDevice.sh */,
 			);
 			name = Scripts;
@@ -334,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */,
 				C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */,
 				C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */,
 				C8A0F8B81AFC319A00B3A90C /* libusbmuxd.2.dylib in Resources */,

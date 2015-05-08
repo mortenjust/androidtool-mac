@@ -33,7 +33,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         
         /// start IOSDeviceHelper by instantiating
         iosDeviceHelper = IOSDeviceHelper(delegate: self)
-        
+        iosDeviceHelper.startObservingIOSDevices()        
     }
     
     func stop(){}

@@ -10,11 +10,16 @@ import Cocoa
 import AVFoundation
 import CoreMediaIO
 
+protocol IOSRecorderDelegate {
+    func iosRecorderDidStartPreparing(device:AVCaptureDevice)
+    func iosRecorderDidEndPreparing()
+    func iosRecorderDidFinish(outputFileURL: NSURL!)
+}
+
 protocol IOSDeviceDelegate {
     func iosDeviceAttached(device:AVCaptureDevice)
     func iosDeviceDetached(device:AVCaptureDevice)
-    func iosDeviceDidStartPreparing(device:AVCaptureDevice)
-    func iosDeviceDidEndPreparing()
+
 }
 
 class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
@@ -22,23 +27,36 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     var movieOutput : AVCaptureMovieFileOutput!
     var stillImageOutput : AVCaptureStillImageOutput!
     var delegate : IOSDeviceDelegate!
+    var recorderDelegate : IOSRecorderDelegate!
     var input : AVCaptureDeviceInput!
     var saveFilesInPath : String!
+    var file : NSURL!
+    
+    init(recorderDelegate:IOSRecorderDelegate){
+        super.init()
+        self.recorderDelegate = recorderDelegate
+        setup()
+    }
     
     init(delegate: IOSDeviceDelegate){
         super.init()
         self.delegate = delegate
+        setup()
+    }
+    
+    func setup() {
         session = AVCaptureSession()
         movieOutput = AVCaptureMovieFileOutput()
-        
-        registerNotifications()
-        
         // TODO: A preference for this directory, which will then be default
         saveFilesInPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DesktopDirectory, .UserDomainMask, true)[0] as! String
         saveFilesInPath = saveFilesInPath.stringByAppendingPathComponent("AndroidTool")
-        
         println("looking")
-        makeDevicesVisible() // has to be right before calling these
+        makeDevicesVisible() // has to be here to be able to see iOS devices
+    }
+    
+    func startObservingIOSDevices(){
+        
+        // grab the ones already plugged in
         for foundDevice in AVCaptureDevice.devices() {
             println(foundDevice)
             if foundDevice.modelID! == "iOS Device" {
@@ -49,9 +67,8 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
                 deviceFound(foundDevice)
             }
         }
-    }
-    
-    func registerNotifications(){
+        
+        // then the ones that come and leave
         NSNotificationCenter.defaultCenter().addObserverForName(AVCaptureDeviceWasDisconnectedNotification, object: nil, queue: nil) { (notif) -> Void in
             self.deviceLost(notif.object!)
         }
@@ -72,9 +89,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     }
     
     func toggleRecording(device : AVCaptureDevice){
-        
         if !movieOutput.recording {
-            
             println("$$$ start recording of device \(device.localizedName)")
             var err : NSError? = nil
             input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &err) as! AVCaptureDeviceInput
@@ -84,22 +99,23 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
             session.startRunning()
             
             let filePath = generateFilePath("iOS-recording-", type: "mov")
-            let file = NSURL(fileURLWithPath: filePath)!
+            file = NSURL(fileURLWithPath: filePath)!
             
-            delegate.iosDeviceDidStartPreparing(device)
+            recorderDelegate.iosRecorderDidStartPreparing(device)
             self.movieOutput.startRecordingToOutputFileURL(file, recordingDelegate: self)
-            
         }
         else
         {
-            println("stopRecording")
-            self.movieOutput.stopRecording()
             
-            dispatch_after(1, dispatch_get_main_queue(), { () -> Void in
-                
+            dispatch_after(3, dispatch_get_main_queue(), { () -> Void in
+                println("stopRecording")
+                self.movieOutput.stopRecording()
+
                 self.session.removeInput(self.input)
                 self.session.stopRunning()
                 self.session.removeOutput(self.movieOutput)
+                self.recorderDelegate.iosRecorderDidFinish(self.file!)
+                self.file = nil
             })
         }
     }
@@ -139,22 +155,18 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     
     
     func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
-        //
-        
-        delegate.iosDeviceDidEndPreparing()
+
+        recorderDelegate.iosRecorderDidEndPreparing()
         println("recording did start")
     }
     
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
         println("------------------------- recording did end")
+
         
         if error != nil {
             println(error)
         }
-        
-        
-        
-        //
     }
     
 }

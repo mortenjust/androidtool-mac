@@ -7,8 +7,9 @@
 //
 
 import Cocoa
+import AVFoundation
 
-class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate {
+class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate, IOSRecorderDelegate {
     var device : Device!
     @IBOutlet weak var deviceNameField: NSTextField!
     @IBOutlet  var cameraButton: NSButton!
@@ -17,9 +18,12 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     @IBOutlet weak var videoButton: NSButton!
     @IBOutlet weak var moreButton: NSButton!
     
+    var restingButton : NSImage!
+    
+    
     @IBOutlet var scriptsPopover: NSPopover!
     
-    
+    var iosHelper : IOSDeviceHelper!
     var shellTasker : ShellTasker!
     var isRecording = false
     var moreOpen = false
@@ -79,14 +83,35 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             }
     }
     
+    func iosRecorderDidEndPreparing() {
+        println("recorder did end preparing")
+    }
+    
+    func iosRecorderDidStartPreparing(device: AVCaptureDevice) {
+        println("recorder did start preparing")
+    }
+    
     func startRecording(){
         Util().stopRefreshingDeviceList()
         isRecording = true
         cameraButton.enabled = false
         moreButton.enabled = false
-        let restingButton = videoButton.image
+        restingButton = videoButton.image
         videoButton.image = NSImage(named: "stopButton")
-        
+
+        switch device.deviceOS! {
+        case .Android:
+            startRecordingOnAndroidDevice(restingButton!)
+        case .Ios:
+            startRecordingOnIOSDevice(restingButton!)
+        }
+    }
+    
+    func startRecordingOnIOSDevice(restingButton:NSImage){
+        iosHelper.toggleRecording(device.avDevice)
+    }
+    
+    func startRecordingOnAndroidDevice(restingButton:NSImage){
         shellTasker = ShellTasker(scriptFile: "startRecordingForSerial")
         
         var scalePref = NSUserDefaults.standardUserDefaults().doubleForKey("scalePref")
@@ -94,10 +119,10 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         
         // get phone's resolution, multiply with user preference for screencap size (either 1 or lower)
         var res = device.resolution!
-
+        
         if device.type == DeviceType.Phone {
             res = (device.resolution!.width*scalePref, device.resolution!.height*scalePref)
-            }
+        }
         
         let args:[String] = [device.serial!, "\(Int(res.width))", "\(Int(res.height))", "\(bitratePref)"]
         
@@ -118,12 +143,41 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
                 self.stopProgressIndication()
             })
         }
+    
+    }
+    
+    func iosRecorderDidFinish(outputFileURL: NSURL!) {
+        NSWorkspace.sharedWorkspace().openFile(outputFileURL.path!)
+        self.videoButton.image = restingButton
+        
+        Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
+        cameraButton.enabled = true
+        
+        let movPath = outputFileURL.path!
+        let gifPath = "\(outputFileURL.path!.stringByDeletingPathExtension).gif"
+        let ffmpegPath = NSBundle.mainBundle().pathForResource("ffmpeg", ofType: "")!
+        
+        ShellTasker(scriptFile: "convertMovieFiletoGif").run(arguments: [ffmpegPath, movPath, gifPath], isUserScript: false, isIOS: false) { (output) -> Void in
+            println("done converting to gif")
+            self.stopProgressIndication()
+        }
+        
+        // convert to gif shell args
+        // $ffmpeg = $1
+        // $inputFile = $2
+        // $outputFile = $3
     }
     
     func stopRecording(){
         Util().restartRefreshingDeviceList()
         isRecording = false
-        shellTasker.stop() // terminates script and fires the closure in startRecordingForSerial
+
+        switch device.deviceOS! {
+        case .Android:
+            shellTasker.stop() // terminates script and fires the closure in startRecordingForSerial
+        case .Ios:
+            iosHelper.toggleRecording(device.avDevice) // stops recording and fires delegate:
+        }
     }
     
     @IBAction func videoClicked(sender: NSButton) {
@@ -178,6 +232,11 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         // only enable video recording if we have resolution, which is a bit slow because it comes from a big call
         videoButton.enabled = false
         enableVideoButtonWhenReady()
+        
+        if device.deviceOS == DeviceOS.Ios {
+            iosHelper = IOSDeviceHelper(recorderDelegate: self)
+        }
+        
     }
     
     func startWaitingForAndroidVideoReady(){
@@ -195,7 +254,9 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         case .Android:
             startWaitingForAndroidVideoReady()
         case .Ios:
-            videoButton.hidden = true
+            // videoButton.hidden = false
+            println("showing video button for iOS")
+            videoButton.enabled = true
         }
     }
 

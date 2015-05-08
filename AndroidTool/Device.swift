@@ -38,6 +38,7 @@ class Device: NSObject {
     var resolution : (width:Double, height:Double)?
     var deviceOS : DeviceOS!
     var uuid : String!
+    var avDevice : AVCaptureDevice! // for iOS only
     
     convenience init(avDevice:AVCaptureDevice) {
         self.init()
@@ -47,6 +48,7 @@ class Device: NSObject {
         name = avDevice.localizedName
         uuid = avDevice.uniqueID
         model = name
+        self.avDevice = avDevice
     }
     
     convenience init(properties:[String:String], adbIdentifier:String) {
