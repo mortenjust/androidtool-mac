@@ -41,7 +41,6 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
         spinner.style = NSProgressIndicatorStyle.SpinningStyle
         spinner.frame.origin.x = view.bounds.maxX/2 - spinner.bounds.size.width/2
         
-                                                                            //todo:two seperate items in arg[]
         ShellTasker(scriptFile: "installApkOnDevice").run(arguments: ["\(serial) install -r \"\(apkPath)\""]) { (output) -> Void in
 
             Util().showNotification("App installed on \(device.readableIdentifier())", moreInfo: "\(output)", sound: true)

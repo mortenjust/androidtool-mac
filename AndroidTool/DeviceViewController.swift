@@ -225,7 +225,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         if device.isEmulator {
             cameraButton.enabled = false
             videoButton.enabled = false
-            
             deviceNameField.stringValue = "Emulator"
         }
         
@@ -235,6 +234,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         
         if device.deviceOS == DeviceOS.Ios {
             iosHelper = IOSDeviceHelper(recorderDelegate: self)
+            moreButton.hidden = true            
         }
         
     }

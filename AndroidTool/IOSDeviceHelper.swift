@@ -93,11 +93,9 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
             println("$$$ start recording of device \(device.localizedName)")
             var err : NSError? = nil
             input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &err) as! AVCaptureDeviceInput
-            
             session.addOutput(movieOutput)
             session.addInput(input)
             session.startRunning()
-            
             let filePath = generateFilePath("iOS-recording-", type: "mov")
             file = NSURL(fileURLWithPath: filePath)!
             
