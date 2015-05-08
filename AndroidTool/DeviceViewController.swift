@@ -27,9 +27,24 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     func takeScreenshot(){
         self.startProgressIndication()
-        ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [device.serial!]) { (output) -> Void in
-            self.stopProgressIndication()
-            Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
+        
+        if device.deviceOS == DeviceOS.Android {
+        
+            ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [device.serial!]) { (output) -> Void in
+                self.stopProgressIndication()
+                Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
+            }
+        }
+            
+        if device.deviceOS == DeviceOS.Ios {
+            println("IOS screenshot")
+            
+            
+            ShellTasker(scriptFile: "takeScreenshotOfDeviceWithUUID").run(arguments: [device.uuid!], isUserScript: false, isIOS: true, complete: { (output) -> Void in
+                self.stopProgressIndication()
+                Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
+            })
+            
         }
     }
     
@@ -165,13 +180,22 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         enableVideoButtonWhenReady()
     }
     
-    func enableVideoButtonWhenReady(){
+    func startWaitingForAndroidVideoReady(){
         if device.resolution != nil {
             println("not nil")
             videoButton.enabled = true
         } else {
             println("is nil")
             NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "enableVideoButtonWhenReady", userInfo: nil, repeats: false)
+        }
+    }
+        
+    func enableVideoButtonWhenReady(){
+        switch device.deviceOS! {
+        case .Android:
+            startWaitingForAndroidVideoReady()
+        case .Ios:
+            videoButton.hidden = true
         }
     }
 
