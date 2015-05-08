@@ -66,7 +66,7 @@
                     </textField>
                     <slider identifier="scalePref" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Lu-4c-luS">
                         <rect key="frame" x="83" y="49" width="255" height="25"/>
-                        <sliderCell key="cell" alignment="left" minValue="0.29999999999999999" maxValue="1" doubleValue="0.45555555555555555" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="DE7-Fj-hqK"/>
+                        <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="DE7-Fj-hqK"/>
                         <connections>
                             <binding destination="gL2-7b-O6c" name="value" keyPath="values.scalePref" id="YaF-za-zUb">
                                 <dictionary key="options">

@@ -3,12 +3,9 @@
 import Cocoa
 import Foundation
 
-var res = (height:10, width:10)
+var string = "Morten Just's iPhone"
 
-var mul = 2
-res = (res.height*mul, res.width*mul)
+var total = 0
 
-println(res)
+abs((string as NSString).hash)
 
-
-floor(32.0)
