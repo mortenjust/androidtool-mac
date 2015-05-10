@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */; };
 		C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */ = {isa = PBXBuildFile; fileRef = C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */; };
+		C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */; };
 		C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */; };
 		C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */; };
 		C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scriptsPopoverViewController.swift; sourceTree = "<group>"; };
 		C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Take Bugreport.sh"; sourceTree = "<group>"; };
+		C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = previewPopoverViewController.swift; sourceTree = "<group>"; };
 		C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
 		C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzip.2.dylib; path = ../libzip.2.dylib; sourceTree = "<group>"; };
 		C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../libxml2.2.dylib; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */,
 				C8B5148B1AE860EF0071C86A /* DeviceViewController.xib */,
 				C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */,
+				C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */,
 				C8B514841AE85D940071C86A /* Device.swift */,
 				C8B514881AE85E9B0071C86A /* getprop-example.txt */,
 				C8B514861AE85DAE0071C86A /* DeviceDiscoverer.swift */,
@@ -383,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8B131961AEB3B5100BCD4F3 /* DevicePickerViewController.swift in Sources */,
+				C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */,
 				C8B514851AE85D940071C86A /* Device.swift in Sources */,
 				C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */,
 				C8B5148F1AE8703F0071C86A /* Util.swift in Sources */,

@@ -83,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         if scalePref == 0.0 {
-            ud.setDouble(0.7, forKey: "scalePref")
+            ud.setDouble(1, forKey: "scalePref")
         }
     
     }
@@ -126,14 +126,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func runScript(sender:NSMenuItem){
         Util().stopRefreshingDeviceList()
         let scriptPath = "\(Util().getSupportFolderScriptPath())/\(sender.title).sh"
-        println("ready to run \(scriptPath) on all devices")
+        println("ready to run \(scriptPath) on all Android devices")
         
         let deviceVCs = masterViewController.deviceVCs
         for deviceVC in deviceVCs {
-            let serial = deviceVC.device.serial!
-            deviceVC.startProgressIndication()
-            ShellTasker(scriptFile: scriptPath).run(arguments: ["\(serial)"], isUserScript: true) { (output) -> Void in
-                    deviceVC.stopProgressIndication()
+            if deviceVC.device.deviceOS == DeviceOS.Android {
+                let serial = deviceVC.device.serial!
+                deviceVC.startProgressIndication()
+                ShellTasker(scriptFile: scriptPath).run(arguments: ["\(serial)"], isUserScript: true) { (output) -> Void in
+                        deviceVC.stopProgressIndication()
+                }
             }
         }
         
@@ -150,8 +152,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func checkForUpdate(){
-        
-        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             let url = NSURL(string: "http://mortenjust.com/androidtool/latestversion")
             if let version = NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: nil) {

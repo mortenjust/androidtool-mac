@@ -11,6 +11,8 @@
                 <outlet property="deviceImage" destination="JHB-80-wMe" id="8dE-kk-q7v"/>
                 <outlet property="deviceNameField" destination="yZB-Zv-KU6" id="Pe4-vX-CKF"/>
                 <outlet property="moreButton" destination="j3W-9F-lp5" id="8fM-2m-873"/>
+                <outlet property="previewPopover" destination="Hwm-yK-gRB" id="Dmo-os-iT7"/>
+                <outlet property="previewView" destination="aXY-ZJ-zm6" id="8Ci-D3-bj4"/>
                 <outlet property="progressBar" destination="PMI-Ok-nnQ" id="CIA-er-OC3"/>
                 <outlet property="scriptsPopover" destination="ehy-LG-M3d" id="9va-Ew-7K5"/>
                 <outlet property="videoButton" destination="v4Z-CU-6yJ" id="yrr-cA-amX"/>
@@ -68,7 +70,7 @@
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logogoogle" id="k5s-A8-Hjn"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-Zv-KU6">
-                            <rect key="frame" x="12" y="-1" width="150" height="48"/>
+                            <rect key="frame" x="12" y="-1" width="140" height="48"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Nexus 1" id="6Ie-fc-dYB">
                                 <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" red="1" green="0.9960784912109375" blue="0.9960784912109375" alpha="0.75" colorSpace="deviceRGB"/>
@@ -105,19 +107,44 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <point key="canvasLocation" x="424.5" y="477.5"/>
         </customView>
-        <viewController id="ITz-6c-Xr2" userLabel="Popover View Controller" customClass="scriptsPopoverViewController" customModule="AndroidTool" customModuleProvider="target">
+        <viewController id="ITz-6c-Xr2" customClass="scriptsPopoverViewController" customModule="AndroidTool" customModuleProvider="target">
             <connections>
                 <outlet property="delegate" destination="-2" id="77N-aA-Rbl"/>
                 <outlet property="sourceItemView" destination="YzF-fB-bRp" id="wPr-aa-SMk"/>
                 <outlet property="view" destination="YzF-fB-bRp" id="bg1-B4-Ttz"/>
             </connections>
         </viewController>
-        <popover behavior="t" id="ehy-LG-M3d">
+        <popover behavior="t" id="ehy-LG-M3d" userLabel="Scripts Popover">
             <connections>
                 <outlet property="contentViewController" destination="ITz-6c-Xr2" id="gAN-Vm-FX2"/>
                 <outlet property="delegate" destination="-2" id="UZG-Ke-cEC"/>
             </connections>
         </popover>
+        <viewController id="x79-ee-7ga" userLabel="Preview Popover View Controller" customClass="previewPopoverViewController" customModule="AndroidTool" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="aXY-ZJ-zm6" id="FEt-Z1-WIc"/>
+            </connections>
+        </viewController>
+        <popover id="Hwm-yK-gRB" userLabel="Preview Popover">
+            <connections>
+                <outlet property="contentViewController" destination="x79-ee-7ga" id="Wz7-CG-LHh"/>
+            </connections>
+        </popover>
+        <customView id="aXY-ZJ-zm6" userLabel="Preview View">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="262"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXR-cF-mLs">
+                    <rect key="frame" x="62" y="123" width="38" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="5Zh-LH-ICM">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="652.5" y="252"/>
+        </customView>
     </objects>
     <resources>
         <image name="cameraRoundGreen" width="91" height="94"/>

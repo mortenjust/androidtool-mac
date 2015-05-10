@@ -23,6 +23,11 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     @IBOutlet var scriptsPopover: NSPopover!
     
+    @IBOutlet var previewPopover: NSPopover!
+    
+    @IBOutlet var previewView: NSView!
+    
+    
     var iosHelper : IOSDeviceHelper!
     var shellTasker : ShellTasker!
     var isRecording = false
@@ -83,8 +88,30 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             }
     }
     
+    func openPreviewPopover(){
+//        previewPopover.showRelativeToRect(videoButton.bounds, ofView: videoButton, preferredEdge: 2)
+    }
+    
+    func closePreviewPopover(){
+        previewPopover.close()
+    }
+    
+    
+    func iosRecorderFailed(title: String, message: String?) {
+        var alert = NSAlert()
+        alert.messageText = title
+        alert.runModal()
+     
+        cameraButton.enabled = true
+        videoButton.enabled = true
+        isRecording = false
+        self.videoButton.image = NSImage(named: "recordButtonWhite")
+    }
+    
     func iosRecorderDidEndPreparing() {
         println("recorder did end preparing")
+        self.videoButton.image = NSImage(named: "stopButton")
+        self.videoButton.enabled = true
     }
     
     func iosRecorderDidStartPreparing(device: AVCaptureDevice) {
@@ -94,20 +121,23 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func startRecording(){
         Util().stopRefreshingDeviceList()
         isRecording = true
+        self.restingButton = self.videoButton.image
         cameraButton.enabled = false
         moreButton.enabled = false
-        restingButton = videoButton.image
-        videoButton.image = NSImage(named: "stopButton")
+
 
         switch device.deviceOS! {
         case .Android:
             startRecordingOnAndroidDevice(restingButton!)
         case .Ios:
-            startRecordingOnIOSDevice(restingButton!)
+            // iOS starts recording 1 second delayed, so delaying the STOP button to signal this to the user
+            openPreviewPopover()
+            videoButton.enabled = false
+            startRecordingOnIOSDevice()
         }
     }
     
-    func startRecordingOnIOSDevice(restingButton:NSImage){
+    func startRecordingOnIOSDevice(){
         iosHelper.toggleRecording(device.avDevice)
     }
     
@@ -203,9 +233,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
 
     func setup(){
-//        println("setting up view for \(device.name!)")
-        
-        
+//        println("setting up view for \(device.name!)")        
     }
     
     func startProgressIndication(){
@@ -233,8 +261,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         enableVideoButtonWhenReady()
         
         if device.deviceOS == DeviceOS.Ios {
-            iosHelper = IOSDeviceHelper(recorderDelegate: self)
-            moreButton.hidden = true            
+            iosHelper = IOSDeviceHelper(recorderDelegate: self, forDevice:device.avDevice)
+            moreButton.hidden = true
         }
         
     }

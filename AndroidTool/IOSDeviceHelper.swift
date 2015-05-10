@@ -14,6 +14,7 @@ protocol IOSRecorderDelegate {
     func iosRecorderDidStartPreparing(device:AVCaptureDevice)
     func iosRecorderDidEndPreparing()
     func iosRecorderDidFinish(outputFileURL: NSURL!)
+    func iosRecorderFailed(title:String, message:String?)
 }
 
 protocol IOSDeviceDelegate {
@@ -32,10 +33,18 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     var saveFilesInPath : String!
     var file : NSURL!
     
-    init(recorderDelegate:IOSRecorderDelegate){
+    // this class has two modes. One is a per-device instantiated recorder. The other is a discoverer of all iOS devices that are plugged in and out. The class should probably be split into two at one point.
+    
+    init(recorderDelegate:IOSRecorderDelegate, forDevice device: AVCaptureDevice){
         super.init()
         self.recorderDelegate = recorderDelegate
         setup()
+
+        var err : NSError? = nil
+        input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &err) as! AVCaptureDeviceInput
+        session.addOutput(movieOutput)
+        session.addInput(input)
+        session.startRunning()
     }
     
     init(delegate: IOSDeviceDelegate){
@@ -51,11 +60,38 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         saveFilesInPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DesktopDirectory, .UserDomainMask, true)[0] as! String
         saveFilesInPath = saveFilesInPath.stringByAppendingPathComponent("AndroidTool")
         println("looking")
-        makeDevicesVisible() // has to be here to be able to see iOS devices
+        makeDevicesVisible() // has to be here to be able to discover iOS devices
+    }
+    
+    
+    func toggleRecording(device : AVCaptureDevice, previewView:NSView?=nil){
+        if !movieOutput.recording {
+
+            if previewView != nil {
+                let layer = AVCaptureVideoPreviewLayer.layerWithSession(session) as! AVCaptureVideoPreviewLayer
+                layer.frame = previewView!.bounds
+                previewView!.layer?.addSublayer(layer)
+                }
+            
+            println("$$$ start recording of device \(device.localizedName)")
+            let filePath = generateFilePath("iOS-recording-", type: "mov")
+            file = NSURL(fileURLWithPath: filePath)!
+            
+            recorderDelegate.iosRecorderDidStartPreparing(device)
+            self.movieOutput.startRecordingToOutputFileURL(file, recordingDelegate: self)
+        }
+        else
+        {
+            dispatch_after(3, dispatch_get_main_queue(), { () -> Void in
+                println("stopRecording")
+                self.movieOutput.stopRecording()
+                self.recorderDelegate.iosRecorderDidFinish(self.file!)
+                self.file = nil
+            })
+        }
     }
     
     func startObservingIOSDevices(){
-        
         // grab the ones already plugged in
         for foundDevice in AVCaptureDevice.devices() {
             println(foundDevice)
@@ -88,34 +124,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         return filePath
     }
     
-    func toggleRecording(device : AVCaptureDevice){
-        if !movieOutput.recording {
-            println("$$$ start recording of device \(device.localizedName)")
-            var err : NSError? = nil
-            input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &err) as! AVCaptureDeviceInput
-            session.addOutput(movieOutput)
-            session.addInput(input)
-            session.startRunning()
-            let filePath = generateFilePath("iOS-recording-", type: "mov")
-            file = NSURL(fileURLWithPath: filePath)!
-            
-            recorderDelegate.iosRecorderDidStartPreparing(device)
-            self.movieOutput.startRecordingToOutputFileURL(file, recordingDelegate: self)
-        }
-        else
-        {            
-            dispatch_after(3, dispatch_get_main_queue(), { () -> Void in
-                println("stopRecording")
-                self.movieOutput.stopRecording()
-
-                self.session.removeInput(self.input)
-                self.session.stopRunning()
-                self.session.removeOutput(self.movieOutput)
-                self.recorderDelegate.iosRecorderDidFinish(self.file!)
-                self.file = nil
-            })
-        }
-    }
+  
     
     func addStillImageOutput() {
         stillImageOutput = AVCaptureStillImageOutput()
@@ -158,11 +167,15 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     }
     
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
-        println("------------------------- recording did end")
-
+        
+        if error == nil {
+            println("------------------------- recording did end")
+            }
         
         if error != nil {
+            println("Recording ended in error")
             println(error)
+            recorderDelegate.iosRecorderFailed(error.description, message: nil)
         }
     }
     
