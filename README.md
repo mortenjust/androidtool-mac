@@ -1,6 +1,6 @@
-# Android tool for mac
-
 [![Join the chat at https://gitter.im/mortenjust/androidtool-mac](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mortenjust/androidtool-mac?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+# Android tool for mac
 
 ## Download
 [Download the latest version here](https://github.com/mortenjust/androidtool-mac/releases/)
