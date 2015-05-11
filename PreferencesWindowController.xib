@@ -23,7 +23,7 @@
                 <subviews>
                     <slider identifier="bitratePref" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xhf-MR-yab">
                         <rect key="frame" x="83" y="115" width="255" height="25"/>
-                        <sliderCell key="cell" alignment="left" minValue="100000" maxValue="10000000" doubleValue="100000" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Jdn-8O-CdO"/>
+                        <sliderCell key="cell" alignment="left" minValue="100000" maxValue="10000000" doubleValue="7800000" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Jdn-8O-CdO"/>
                         <connections>
                             <binding destination="gL2-7b-O6c" name="value" keyPath="values.bitratePref" id="QK3-mV-pUL">
                                 <dictionary key="options">

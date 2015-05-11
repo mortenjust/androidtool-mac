@@ -9,10 +9,10 @@
 thisdir=$1
 inputFile=$3
 outputFile=$4
-
+scale=$5
 
 TakeScreenshot(){
-    $thisdir/ffmpeg -i $inputFile -vf scale=320:-1 $outputFile
+    $thisdir/ffmpeg -i $inputFile -vf scale=iw*$scale:ih*$scale $outputFile
 }
 
 mkdir -p ~/Desktop/AndroidTool

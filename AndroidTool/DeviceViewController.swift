@@ -109,6 +109,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func iosRecorderDidEndPreparing() {
+        videoButton.alphaValue = 1
         println("recorder did end preparing")
         self.videoButton.image = NSImage(named: "stopButton")
         self.videoButton.enabled = true
@@ -132,7 +133,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         case .Ios:
             // iOS starts recording 1 second delayed, so delaying the STOP button to signal this to the user
             openPreviewPopover()
-            videoButton.enabled = false
+            videoButton.alphaValue = 0.5
             startRecordingOnIOSDevice()
         }
     }
@@ -186,8 +187,9 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         let movPath = outputFileURL.path!
         let gifPath = "\(outputFileURL.path!.stringByDeletingPathExtension).gif"
         let ffmpegPath = NSBundle.mainBundle().pathForResource("ffmpeg", ofType: "")!
+        let scalePref = NSUserDefaults.standardUserDefaults().doubleForKey("scalePref")
         
-        ShellTasker(scriptFile: "convertMovieFiletoGif").run(arguments: [ffmpegPath, movPath, gifPath], isUserScript: false, isIOS: false) { (output) -> Void in
+        ShellTasker(scriptFile: "convertMovieFiletoGif").run(arguments: [ffmpegPath, movPath, gifPath, "\(scalePref)"], isUserScript: false, isIOS: false) { (output) -> Void in
             println("done converting to gif")
             self.stopProgressIndication()
         }
@@ -201,6 +203,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func stopRecording(){
         Util().restartRefreshingDeviceList()
         isRecording = false
+        videoButton.alphaValue = 1
 
         switch device.deviceOS! {
         case .Android:

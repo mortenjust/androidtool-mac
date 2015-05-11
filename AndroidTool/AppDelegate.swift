@@ -162,9 +162,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             dispatch_async(dispatch_get_main_queue()) {
                 let currentVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
                 if (currentVersion != version) && !knowsAboutNewVersion {
-                    var alert = NSAlert()
-                    alert.messageText = "An update is available! Go to mortenjust.com/androidtool to download"
-                    alert.runModal()
+//                    var alert = NSAlert()
+//                    alert.messageText = "An update is available! Go to mortenjust.com/androidtool to download"
+//                    alert.runModal()
                     nsu.setObject(true, forKey: "UserKnowsAboutNewVersion")
                     }
                 }
