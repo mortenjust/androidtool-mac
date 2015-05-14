@@ -24,6 +24,13 @@ Android tool lets you do common Android designer and developer tasks in one clic
 ## Recording video
 <img src="https://raw.githubusercontent.com/mortenjust/androidtool-mac/master/Demos/phonerecording.gif" width=300>
 
+# Requirements
+* MacOS 10.9 Mavericks for Android features
+* MacOS 10.10 Yosemite for iOS features
+* Android 4.4 or newer for screen recording
+* Android 4.3 or newer for screenshots (could work on older devices, please report)
+* No Android or iOS SDK required (whaat)
+
 Android Tool outputs both mp4 and an animated gif. The animated gif can be placed in a Google Docs document or an email. 
 
 ## Installing apps
