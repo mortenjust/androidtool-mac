@@ -50,4 +50,4 @@ Add your own perfect bash shell scripts to the scripts folder and execute them o
 
 ## Questions?
 * Check <a href="https://github.com/mortenjust/androidtool-mac/wiki/FAQ">the FAQ</a> or open an issue 
-* <a href="http://twitter.com/mortenjust">Follow me on Twitter</a> for updates
+* <a href="http://twitter.com/mortenjust">Follow me on Twitter</a> or check <a href="http://mortenjust.com">my blog</a> for updates
