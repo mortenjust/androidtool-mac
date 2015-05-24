@@ -3,7 +3,7 @@
 # Android tool for mac
 
 ## Download
-*[Download the latest version here](https://github.com/mortenjust/androidtool-mac/releases/)*
+**[Download the latest version here](https://github.com/mortenjust/androidtool-mac/releases/)**
 
 * Copy AndroidTool.app to your Applications folder
 * Right click AndroidTool and choose Open
