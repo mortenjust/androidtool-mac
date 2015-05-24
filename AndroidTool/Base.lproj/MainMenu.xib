@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment version="1090" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="AndroidTool" customModuleProvider="target">
+            <connections>
+                <outlet property="scriptsMenu" destination="W48-6f-4Dl" id="dJP-kk-IMm"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+            <items>
+                <menuItem title="AndroidTool" id="1Xt-HY-uBw">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="AndroidTool" systemMenu="apple" id="uQy-DD-JDr">
+                        <items>
+                            <menuItem title="About AndroidTool" id="5kV-Vb-QxS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                            <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                <connections>
+                                    <action selector="preferencesClicked:" target="Voe-Tx-rLC" id="mf5-NE-w4v"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
+                            <menuItem title="Services" id="NMo-om-nkz">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
+                            <menuItem title="Hide AndroidTool" keyEquivalent="h" id="Olw-nP-bQN">
+                                <connections>
+                                    <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-1" id="VT4-aY-XCT"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="Kd2-mp-pUS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-1" id="Dhg-Le-xox"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                            <menuItem title="Quit AndroidTool" keyEquivalent="q" id="4sb-4s-VLi">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Run On All" id="5QF-Oa-p0T">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Run On All" id="W48-6f-4Dl"/>
+                </menuItem>
+                <menuItem title="Tools" id="sqn-eA-fyj" userLabel="Tools">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Tools" systemMenu="window" id="ggz-VM-Ur3">
+                        <items>
+                            <menuItem title="Refresh device list" keyEquivalent="r" id="fCF-T3-H2W">
+                                <connections>
+                                    <action selector="refreshDeviceListClicked:" target="Voe-Tx-rLC" id="XNy-ci-Wkz"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Window" id="aUF-d1-5bR">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
+                        <items>
+                            <menuItem title="Minimize" keyEquivalent="m" id="OY7-WF-poV">
+                                <connections>
+                                    <action selector="performMiniaturize:" target="-1" id="VwT-WD-YPe"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Help" id="wpr-3q-Mcd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
+                        <items>
+                            <menuItem title="AndroidTool Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                <connections>
+                                    <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show log file" id="jMe-4g-r7v">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showLogFileClicked:" target="Voe-Tx-rLC" id="c6z-4U-0Kp"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+        </menu>
+        <window title="AndroidTool" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="335" y="390" width="373" height="127"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <value key="minSize" type="size" width="373" height="127"/>
+            <value key="maxSize" type="size" width="373" height="2000"/>
+            <view key="contentView" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="373" height="127"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                    <color key="value" red="0.30192023515701294" green="0.28555530309677124" blue="0.33228921890258789" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="244.5" y="238"/>
+        </window>
+    </objects>
+</document>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DeviceViewController" customModule="AndroidTool" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraButton" destination="uj9-du-tFf" id="xHC-ZH-5Wf"/>
+                <outlet property="deviceImage" destination="JHB-80-wMe" id="8dE-kk-q7v"/>
+                <outlet property="deviceNameField" destination="yZB-Zv-KU6" id="Pe4-vX-CKF"/>
+                <outlet property="moreButton" destination="j3W-9F-lp5" id="8fM-2m-873"/>
+                <outlet property="previewPopover" destination="Hwm-yK-gRB" id="Dmo-os-iT7"/>
+                <outlet property="previewView" destination="aXY-ZJ-zm6" id="8Ci-D3-bj4"/>
+                <outlet property="progressBar" destination="PMI-Ok-nnQ" id="CIA-er-OC3"/>
+                <outlet property="scriptsPopover" destination="ehy-LG-M3d" id="9va-Ew-7K5"/>
+                <outlet property="videoButton" destination="v4Z-CU-6yJ" id="yrr-cA-amX"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView wantsLayer="YES" id="Hz6-mo-xeY" userLabel="DeviceView">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="127"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="uj9-du-tFf" userLabel="Camera button">
+                    <rect key="frame" x="142" y="17" width="86" height="86"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="86" id="KSA-0p-eds"/>
+                        <constraint firstAttribute="height" constant="86" id="ai9-tl-PUU"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="cameraRoundGreen" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="9vb-52-Xec">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="cameraClicked:" target="-2" id="5H3-km-Lpk"/>
+                    </connections>
+                </button>
+                <progressIndicator maxValue="1000" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="PMI-Ok-nnQ">
+                    <rect key="frame" x="218" y="11" width="32" height="32"/>
+                </progressIndicator>
+                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-9F-lp5">
+                    <rect key="frame" x="314" y="52" width="23" height="23"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="moreButtonPlus" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="kW8-ju-SPq">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="moreClicked:" target="-2" id="vr7-c1-cv3"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="v4Z-CU-6yJ">
+                    <rect key="frame" x="251" y="48" width="43" height="32"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="recordButtonWhite" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="D4P-As-aix">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="videoClicked:" target="-2" id="c04-Ms-T7D"/>
+                    </connections>
+                </button>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="yMf-aI-rf0" userLabel="logo and model">
+                    <rect key="frame" x="0.0" y="11" width="198" height="82"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-80-wMe" userLabel="deviceImage">
+                            <rect key="frame" x="14" y="50" width="116" height="32"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logogoogle" id="k5s-A8-Hjn"/>
+                        </imageView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-Zv-KU6">
+                            <rect key="frame" x="12" y="-1" width="140" height="48"/>
+                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Nexus 1" id="6Ie-fc-dYB">
+                                <font key="font" metaFont="system" size="15"/>
+                                <color key="textColor" red="1" green="0.9960784912109375" blue="0.9960784912109375" alpha="0.75" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="198" id="Ryk-w6-pMG"/>
+                        <constraint firstAttribute="height" constant="82" id="mra-UG-eQW"/>
+                    </constraints>
+                </customView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2xC-CH-hsN" userLabel="shadow">
+                    <rect key="frame" x="-1" y="-8" width="373" height="15"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="deviceShadow" id="qou-1o-qf0"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="v4Z-CU-6yJ" secondAttribute="centerY" constant="0.5" id="7hm-SJ-ZNJ"/>
+                <constraint firstAttribute="centerY" secondItem="j3W-9F-lp5" secondAttribute="centerY" id="CDp-5N-bfc"/>
+                <constraint firstAttribute="bottom" secondItem="PMI-Ok-nnQ" secondAttribute="bottom" constant="11" id="EAV-m7-5XO"/>
+                <constraint firstAttribute="centerX" secondItem="yMf-aI-rf0" secondAttribute="centerX" constant="87.5" id="EfW-Qr-LvB"/>
+                <constraint firstAttribute="centerX" secondItem="v4Z-CU-6yJ" secondAttribute="centerX" constant="-85.5" id="KXr-Sh-yGV"/>
+                <constraint firstItem="PMI-Ok-nnQ" firstAttribute="leading" secondItem="uj9-du-tFf" secondAttribute="trailing" constant="-10" id="W0n-vi-Jmm"/>
+                <constraint firstAttribute="centerY" secondItem="uj9-du-tFf" secondAttribute="centerY" constant="-3.5" id="XmN-U5-Qpi"/>
+                <constraint firstAttribute="centerY" secondItem="yMf-aI-rf0" secondAttribute="centerY" constant="-11.5" id="fkK-Xd-Beq"/>
+                <constraint firstAttribute="centerX" secondItem="j3W-9F-lp5" secondAttribute="centerX" constant="-139" id="rDE-Xh-BGc"/>
+                <constraint firstAttribute="centerX" secondItem="uj9-du-tFf" secondAttribute="centerX" constant="1.5" id="y9o-Rp-GJC"/>
+            </constraints>
+            <point key="canvasLocation" x="314.5" y="251.5"/>
+        </customView>
+        <customView id="YzF-fB-bRp" userLabel="MoreView">
+            <rect key="frame" x="0.0" y="0.0" width="173" height="33"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <point key="canvasLocation" x="424.5" y="477.5"/>
+        </customView>
+        <viewController id="ITz-6c-Xr2" customClass="scriptsPopoverViewController" customModule="AndroidTool" customModuleProvider="target">
+            <connections>
+                <outlet property="delegate" destination="-2" id="77N-aA-Rbl"/>
+                <outlet property="sourceItemView" destination="YzF-fB-bRp" id="wPr-aa-SMk"/>
+                <outlet property="view" destination="YzF-fB-bRp" id="bg1-B4-Ttz"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="ehy-LG-M3d" userLabel="Scripts Popover">
+            <connections>
+                <outlet property="contentViewController" destination="ITz-6c-Xr2" id="gAN-Vm-FX2"/>
+                <outlet property="delegate" destination="-2" id="UZG-Ke-cEC"/>
+            </connections>
+        </popover>
+        <viewController id="x79-ee-7ga" userLabel="Preview Popover View Controller" customClass="previewPopoverViewController" customModule="AndroidTool" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="aXY-ZJ-zm6" id="FEt-Z1-WIc"/>
+            </connections>
+        </viewController>
+        <popover id="Hwm-yK-gRB" userLabel="Preview Popover">
+            <connections>
+                <outlet property="contentViewController" destination="x79-ee-7ga" id="Wz7-CG-LHh"/>
+            </connections>
+        </popover>
+        <customView id="aXY-ZJ-zm6" userLabel="Preview View">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="262"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXR-cF-mLs">
+                    <rect key="frame" x="62" y="123" width="38" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="5Zh-LH-ICM">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="652.5" y="252"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="cameraRoundGreen" width="91" height="94"/>
+        <image name="deviceShadow" width="378" height="10"/>
+        <image name="logogoogle" width="116" height="32"/>
+        <image name="moreButtonPlus" width="23" height="23"/>
+        <image name="recordButtonWhite" width="43" height="32"/>
+    </resources>
+</document>
