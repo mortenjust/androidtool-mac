@@ -131,9 +131,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let deviceVCs = masterViewController.deviceVCs
         for deviceVC in deviceVCs {
             if deviceVC.device.deviceOS == DeviceOS.Android {
-                let serial = deviceVC.device.serial!
+                let adbIdentifier = deviceVC.device.adbIdentifier!
                 deviceVC.startProgressIndication()
-                ShellTasker(scriptFile: scriptPath).run(arguments: ["\(serial)"], isUserScript: true) { (output) -> Void in
+                ShellTasker(scriptFile: scriptPath).run(arguments: ["\(adbIdentifier)"], isUserScript: true) { (output) -> Void in
                         deviceVC.stopProgressIndication()
                 }
             }

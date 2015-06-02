@@ -39,7 +39,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         
         if device.deviceOS == DeviceOS.Android {
         
-            ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [device.serial!]) { (output) -> Void in
+            ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [device.adbIdentifier!]) { (output) -> Void in
                 self.stopProgressIndication()
                 Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
             }
@@ -72,7 +72,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func userScriptWantsSerial() -> String {
-        return device.serial!
+        return device.adbIdentifier!
     }
     
     func popoverDidClose(notification: NSNotification) {
@@ -155,7 +155,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             res = (device.resolution!.width*scalePref, device.resolution!.height*scalePref)
         }
         
-        let args:[String] = [device.serial!, "\(Int(res.width))", "\(Int(res.height))", "\(bitratePref)"]
+        let args:[String] = [device.adbIdentifier!, "\(Int(res.width))", "\(Int(res.height))", "\(bitratePref)"]
         
         shellTasker.run(arguments: args) { (output) -> Void in
             

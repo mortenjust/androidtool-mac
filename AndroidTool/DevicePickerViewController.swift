@@ -30,7 +30,7 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
     }
 
     func installApkOnDevice(device:Device){
-        let serial = device.serial!
+        let adbIdentifier = device.adbIdentifier!
         
         for subview in view.subviews {
             var s = subview as! NSView
@@ -41,7 +41,7 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
         spinner.style = NSProgressIndicatorStyle.SpinningStyle
         spinner.frame.origin.x = view.bounds.maxX/2 - spinner.bounds.size.width/2
         
-        let args = ["\(serial)",
+        let args = ["\(adbIdentifier)",
                     "\(apkPath)"]
         
         //["\(serial) install -r \"\(apkPath)\""]
