@@ -168,7 +168,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             self.moreButton.enabled = true
             self.videoButton.image = restingButton
             var postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
-            let postArgs = ["\(self.device.serial!)", "\(Int(res.width))", "\(Int(res.height))"]
+            let postArgs = ["\(self.device.adbIdentifier!)", "\(Int(res.width))", "\(Int(res.height))"]
             postProcessTask.run(arguments: args, complete: { (output) -> Void in
                 Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
                 self.stopProgressIndication()
