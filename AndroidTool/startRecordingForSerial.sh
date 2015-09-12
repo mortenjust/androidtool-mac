@@ -21,17 +21,17 @@ then
     # Get resolution if no custom res was specified
     if [[ ! $width ]]
     then
-      width=`$adb -s $serial shell dumpsys display | grep mDisplayWidth | awk -F '=' '{ print $2 }' | tr -d '\r\n'`
+        width=`$adb -s $serial shell dumpsys display | grep mDisplayWidth | awk -F '=' '{ print $2 }' | tr -d '\r\n'`
     fi
     if [[ ! $height ]]
     then
-      height=`$adb -s $serial shell dumpsys display | grep mDisplayHeight | awk -F '=' '{ print $2 }' | tr -d '\r\n'`
+        height=`$adb -s $serial shell dumpsys display | grep mDisplayHeight | awk -F '=' '{ print $2 }' | tr -d '\r\n'`
     fi
     sizeopt=""
     # Put a --size option only if both params are available
     if [[ $width && $height ]]
     then
-      sizeopt=${width}x${height}
+        sizeopt=${width}x${height}
     fi
 
     $adb -s $serial shell screenrecord $sizeopt --o raw-frames /sdcard/screencapture.raw
