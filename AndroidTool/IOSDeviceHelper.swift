@@ -41,7 +41,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         setup()
 
         var err : NSError? = nil
-        input = AVCaptureDeviceInput.deviceInputWithDevice(device, error: &err) as! AVCaptureDeviceInput
+        input = (try! AVCaptureDeviceInput(device: device))
         session.addOutput(movieOutput)
         session.addInput(input)
         session.startRunning()
@@ -57,9 +57,12 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         session = AVCaptureSession()
         movieOutput = AVCaptureMovieFileOutput()
         // TODO: A preference for this directory, which will then be default
-        saveFilesInPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DesktopDirectory, .UserDomainMask, true)[0] as! String
-        saveFilesInPath = saveFilesInPath.stringByAppendingPathComponent("AndroidTool")
-        println("looking")
+        saveFilesInPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DesktopDirectory, .UserDomainMask, true)[0]
+        var saveFileUrl = NSURL(fileURLWithPath: saveFilesInPath)
+        saveFileUrl = saveFileUrl.URLByAppendingPathComponent("AndroidTool")
+        saveFilesInPath = saveFileUrl.path
+        //saveFilesInPath = saveFilesInPath.stringByAppendingPathComponent("AndroidTool")
+        print("looking")
         makeDevicesVisible() // has to be here to be able to discover iOS devices
     }
     
@@ -68,14 +71,14 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         if !movieOutput.recording {
 
             if previewView != nil {
-                let layer = AVCaptureVideoPreviewLayer.layerWithSession(session) as! AVCaptureVideoPreviewLayer
+                let layer = AVCaptureVideoPreviewLayer(session: session) as AVCaptureVideoPreviewLayer
                 layer.frame = previewView!.bounds
                 previewView!.layer?.addSublayer(layer)
                 }
             
-            println("$$$ start recording of device \(device.localizedName)")
+            print("$$$ start recording of device \(device.localizedName)")
             let filePath = generateFilePath("iOS-recording-", type: "mov")
-            file = NSURL(fileURLWithPath: filePath)!
+            file = NSURL(fileURLWithPath: filePath)
             
             recorderDelegate.iosRecorderDidStartPreparing(device)
             self.movieOutput.startRecordingToOutputFileURL(file, recordingDelegate: self)
@@ -83,7 +86,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         else
         {
             dispatch_after(3, dispatch_get_main_queue(), { () -> Void in
-                println("stopRecording")
+                print("stopRecording")
                 self.movieOutput.stopRecording()
                 self.recorderDelegate.iosRecorderDidFinish(self.file!)
                 self.file = nil
@@ -94,12 +97,12 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     func startObservingIOSDevices(){
         // grab the ones already plugged in
         for foundDevice in AVCaptureDevice.devices() {
-            println(foundDevice)
+            print(foundDevice)
             if foundDevice.modelID! == "iOS Device" {
                 let device = foundDevice as! AVCaptureDevice
                 let deviceName = device.localizedName
                 let uuid = device.uniqueID
-                println("hello \(deviceName) aka \(uuid)")
+                print("hello \(deviceName) aka \(uuid)")
                 deviceFound(foundDevice)
             }
         }
@@ -119,9 +122,11 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         formatter.dateFormat = "MMdd-HHmmSS"
         let datestamp = formatter.stringFromDate(NSDate())
         let filename = "\(prefix)\(datestamp).\(type)"
-        let filePath = saveFilesInPath.stringByAppendingPathComponent(filename)
-        println("### Filepath: \(filePath)")
-        return filePath
+        let fileUrl = NSURL(fileURLWithPath: saveFilesInPath).URLByAppendingPathComponent(filename)
+        let filePath = fileUrl.path
+        //let filePath = saveFilesInPath.stringByAppendingPathComponent(filename)
+        print("### Filepath: \(filePath)")
+        return filePath!
     }
     
   
@@ -137,25 +142,25 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     func endSession(){}
     
     func deviceFound(device:AnyObject){
-        println("devicefound, add to UI")
+        print("devicefound, add to UI")
         delegate.iosDeviceAttached(device as! AVCaptureDevice)
     }
     
     func deviceLost(device:AnyObject){
-        println("lostdevice")
+        print("lostdevice")
         delegate.iosDeviceDetached(device as! AVCaptureDevice)
         endSession()
     }
     
     func makeDevicesVisible(){
-        println("making visible")
+        print("making visible")
         var prop = CMIOObjectPropertyAddress(
             mSelector: CMIOObjectPropertySelector(kCMIOHardwarePropertyAllowScreenCaptureDevices),
             mScope: CMIOObjectPropertyScope(kCMIOObjectPropertyScopeGlobal),
             mElement: CMIOObjectPropertyElement(kCMIOObjectPropertyElementMaster))
         var allow : UInt32 = 1
-        var dataSize : UInt32 = 4
-        var zero : UInt32 = 0
+        let dataSize : UInt32 = 4
+        let zero : UInt32 = 0
         CMIOObjectSetPropertyData(CMIOObjectID(kCMIOObjectSystemObject), &prop, zero, nil, dataSize, &allow)
     }
     
@@ -163,18 +168,18 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
 
         recorderDelegate.iosRecorderDidEndPreparing()
-        println("recording did start")
+        print("recording did start")
     }
     
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
         
         if error == nil {
-            println("------------------------- recording did end")
+            print("------------------------- recording did end")
             }
         
         if error != nil {
-            println("Recording ended in error")
-            println(error)
+            print("Recording ended in error")
+            print(error)
             recorderDelegate.iosRecorderFailed(error.description, message: nil)
         }
     }

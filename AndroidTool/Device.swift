@@ -80,12 +80,12 @@ class Device: NSObject {
             }
         
         ShellTasker(scriptFile: "getResolutionForSerial").run(arguments: ["\(self.adbIdentifier!)"], isUserScript: false) { (output) -> Void in
-            let res = output as! String
+            let res = output as String
             
             if res.rangeOfString("Physical size:") != nil {
-                self.resolution = self.getResolutionFromString(output as! String)
+                self.resolution = self.getResolutionFromString(output as String)
             } else {
-                println("Awkward. No size found. What I did find was \(res)")
+                print("Awkward. No size found. What I did find was \(res)")
             }
 
         }
@@ -111,9 +111,9 @@ class Device: NSObject {
     }
     
     func getResolutionFromString(string:String) -> (width:Double, height:Double) {
-        let re = NSRegularExpression(pattern: "Physical size: (.*)x(.*)", options: nil, error: nil)!
-        let matches = re.matchesInString(string, options: nil, range: NSRange(location: 0, length: count(string.utf16)))
-        let result = matches[0] as! NSTextCheckingResult
+        let re = try! NSRegularExpression(pattern: "Physical size: (.*)x(.*)", options: [])
+        let matches = re.matchesInString(string, options: [], range: NSRange(location: 0, length: string.utf16.count))
+        let result = matches[0] 
         let width:NSString = (string as NSString).substringWithRange(result.rangeAtIndex(1))
         let height:NSString = (string as NSString).substringWithRange(result.rangeAtIndex(2))        
         let res = (width:width.doubleValue, height:height.doubleValue)

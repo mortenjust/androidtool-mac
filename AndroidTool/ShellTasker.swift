@@ -50,9 +50,13 @@ class ShellTasker: NSObject {
 
         let sp = scriptPath as! String        
         
-        var resourcesPath = NSBundle.mainBundle().pathForResource("adb", ofType: "")?.stringByDeletingLastPathComponent
+        let resourcesUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("adb", ofType: "")!).URLByDeletingLastPathComponent
         
-        var bash = "/bin/bash"
+        let resourcesPath = resourcesUrl?.path
+        
+        //let resourcesPath = NSBundle.mainBundle().pathForResource("adb", ofType: "")?.stringByDeletingLastPathComponent
+        
+        let bash = "/bin/bash"
         
         task = NSTask()
         let pipe = NSPipe()
@@ -66,7 +70,9 @@ class ShellTasker: NSObject {
             allArguments.append(resourcesPath!) // $1
             } else
             {
-            let imobilePath = NSBundle.mainBundle().pathForResource("idevicescreenshot", ofType: "")?.stringByDeletingLastPathComponent
+                let imobileUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("idevicescreenshot", ofType: "")!).URLByDeletingLastPathComponent
+                let imobilePath = imobileUrl?.path
+            //let imobilePath = NSBundle.mainBundle().pathForResource("idevicescreenshot", ofType: "")?.stringByDeletingLastPathComponent
             allArguments.append(imobilePath!) // $1
             }
         

@@ -53,7 +53,11 @@ class scriptsPopoverViewController: NSViewController {
 
             let friendlyScriptName = script.stringByReplacingOccurrencesOfString(".sh", withString: "")
             scriptButton.title = friendlyScriptName
-            scriptButton.setButtonType(NSButtonType.AcceleratorButton)
+            if #available(OSX 10.10.3, *) {
+                scriptButton.setButtonType(NSButtonType.AcceleratorButton)
+            } else {
+                // Fallback on earlier versions
+            }
             scriptButton.bezelStyle = NSBezelStyle.RoundedBezelStyle
             scriptButton.action = "runScriptClicked:"
             scriptButton.target = self
@@ -67,7 +71,7 @@ class scriptsPopoverViewController: NSViewController {
         delegate.userScriptStarted()
         let serial:String = delegate.userScriptWantsSerial()
         
-        println("ready to run on \(serial)")
+        print("ready to run on \(serial)")
         
         ShellTasker(scriptFile: scriptPath).run(arguments: ["\(serial)"], isUserScript: true) { (output) -> Void in
             self.delegate.userScriptEnded()
@@ -77,7 +81,7 @@ class scriptsPopoverViewController: NSViewController {
     func runScriptClicked(sender:NSButton){
         let scriptName = "\(sender.title).sh"
         let scriptPath = "\(Util().getSupportFolderScriptPath())/\(scriptName)"
-        println("ready to run \(scriptPath)")
+        print("ready to run \(scriptPath)")
         runScript(scriptPath)
     }
     
@@ -89,7 +93,11 @@ class scriptsPopoverViewController: NSViewController {
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        if #available(OSX 10.10, *) {
+            super.viewDidLoad()
+        } else {
+            // Fallback on earlier versions
+        }
         // Do view setup here.
     }
     

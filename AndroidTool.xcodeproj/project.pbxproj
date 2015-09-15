@@ -304,6 +304,7 @@
 		C8B514581AE85D600071C86A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Morten Just Petersen";
 				TargetAttributes = {

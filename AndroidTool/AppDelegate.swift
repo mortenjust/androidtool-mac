@@ -24,31 +24,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if !Util().isMavericks() {        
             window.movableByWindowBackground = true
-            window.titleVisibility = NSWindowTitleVisibility.Hidden
-            window.titlebarAppearsTransparent = true;
-            window.styleMask |= NSFullSizeContentViewWindowMask;
+            if #available(OSX 10.10, *) {
+                window.titleVisibility = NSWindowTitleVisibility.Hidden
+                
+                window.titlebarAppearsTransparent = true;
+                window.styleMask |= NSFullSizeContentViewWindowMask;
+            } else {
+                // Fallback on earlier versions
+            }
             }
         
         masterViewController = MasterViewController(nibName: "MasterViewController", bundle: nil)
         masterViewController.window = window
         
-        window.contentView.addSubview(masterViewController.view)
+        window.contentView!.addSubview(masterViewController.view)
         //masterViewController.view.frame = window.contentView.bounds
         
         var insertedView = masterViewController.view
-        var containerView = window.contentView as! NSView
+        var containerView = window.contentView as NSView!
         
         insertedView.translatesAutoresizingMaskIntoConstraints = false
 
         let viewDict = ["inserted":insertedView, "container":containerView]
         let viewConstraintH = NSLayoutConstraint.constraintsWithVisualFormat(
                 "H:|[inserted]|",
-                options: NSLayoutFormatOptions(0),
+                options: NSLayoutFormatOptions(rawValue: 0),
                 metrics: nil,
                 views: viewDict)
         let viewConstraintV = NSLayoutConstraint.constraintsWithVisualFormat(
             "V:|[inserted]|",
-            options: NSLayoutFormatOptions(0),
+            options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: viewDict)
         containerView.addConstraints(viewConstraintH)
@@ -58,7 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func application(sender: NSApplication, openFile filename: String) -> Bool {
-        println("opening \(filename). If it's an APK we'll show a list of devices")
+        print("opening \(filename). If it's an APK we'll show a list of devices")
         masterViewController.installApk(filename)
         return true
     }
@@ -70,12 +75,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     
     func checkForPreferences(){
-        var ud = NSUserDefaults.standardUserDefaults()
+        let ud = NSUserDefaults.standardUserDefaults()
         
         let bitratePref = ud.doubleForKey("bitratePref")
         let scalePref = ud.doubleForKey("scalePref")
 
-        println("bit: \(bitratePref)")
+        print("bit: \(bitratePref)")
         
         
         if bitratePref == 0.0 {
@@ -103,8 +108,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         scriptsMenu.addItem(screenshotItem)
         scriptsMenu.addItem(sepItem)
         
-        var supportDir = Util().getSupportFolderScriptPath()
-        var scriptFiles = Util().getFilesInScriptFolder(supportDir)!
+        let supportDir = Util().getSupportFolderScriptPath()
+        let scriptFiles = Util().getFilesInScriptFolder(supportDir)!
 
         var i = 0
         for scriptFile in scriptFiles {
@@ -126,7 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func runScript(sender:NSMenuItem){
         Util().stopRefreshingDeviceList()
         let scriptPath = "\(Util().getSupportFolderScriptPath())/\(sender.title).sh"
-        println("ready to run \(scriptPath) on all Android devices")
+        print("ready to run \(scriptPath) on all Android devices")
         
         let deviceVCs = masterViewController.deviceVCs
         for deviceVC in deviceVCs {
@@ -154,9 +159,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func checkForUpdate(){
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             let url = NSURL(string: "http://mortenjust.com/androidtool/latestversion")
-            if let version = NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding, error: nil) {
+            if let version = try? NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding) {
             
-            var nsu = NSUserDefaults.standardUserDefaults()
+            let nsu = NSUserDefaults.standardUserDefaults()
             let knowsAboutNewVersion = nsu.boolForKey("UserKnowsAboutNewVersion")
             
             dispatch_async(dispatch_get_main_queue()) {
@@ -186,7 +191,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func preferencesClicked(sender: NSMenuItem) {
-        println("pref")
+        print("pref")
         preferencesWindowController = PreferencesWindowController(windowNibName: "PreferencesWindowController")
         preferencesWindowController.showWindow(sender)
 

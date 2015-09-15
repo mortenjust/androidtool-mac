@@ -46,7 +46,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         }
             
         if device.deviceOS == DeviceOS.Ios {
-            println("IOS screenshot")
+            print("IOS screenshot")
             
             
             ShellTasker(scriptFile: "takeScreenshotOfDeviceWithUUID").run(arguments: [device.uuid!], isUserScript: false, isIOS: true, complete: { (output) -> Void in
@@ -84,7 +84,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         Util().stopRefreshingDeviceList()
         if !moreOpen{
             moreOpen = true
-            scriptsPopover.showRelativeToRect(sender.bounds, ofView: sender, preferredEdge: 2)
+            scriptsPopover.showRelativeToRect(sender.bounds, ofView: sender, preferredEdge: NSRectEdge(rawValue: 2)!)
             }
     }
     
@@ -98,7 +98,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     
     func iosRecorderFailed(title: String, message: String?) {
-        var alert = NSAlert()
+        let alert = NSAlert()
         alert.messageText = title
         alert.runModal()
      
@@ -110,13 +110,13 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     func iosRecorderDidEndPreparing() {
         videoButton.alphaValue = 1
-        println("recorder did end preparing")
+        print("recorder did end preparing")
         self.videoButton.image = NSImage(named: "stopButton")
         self.videoButton.enabled = true
     }
     
     func iosRecorderDidStartPreparing(device: AVCaptureDevice) {
-        println("recorder did start preparing")
+        print("recorder did start preparing")
     }
     
     func startRecording(){
@@ -145,8 +145,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func startRecordingOnAndroidDevice(restingButton:NSImage){
         shellTasker = ShellTasker(scriptFile: "startRecordingForSerial")
         
-        var scalePref = NSUserDefaults.standardUserDefaults().doubleForKey("scalePref")
-        var bitratePref = Int(NSUserDefaults.standardUserDefaults().doubleForKey("bitratePref"))
+        let scalePref = NSUserDefaults.standardUserDefaults().doubleForKey("scalePref")
+        let bitratePref = Int(NSUserDefaults.standardUserDefaults().doubleForKey("bitratePref"))
         
         // get phone's resolution, multiply with user preference for screencap size (either 1 or lower)
         var res = device.resolution!
@@ -159,15 +159,15 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         
         shellTasker.run(arguments: args) { (output) -> Void in
             
-            println("-----")
-            println(output)
-            println("-----")
+            print("-----")
+            print(output)
+            print("-----")
             
             self.startProgressIndication()
             self.cameraButton.enabled = true
             self.moreButton.enabled = true
             self.videoButton.image = restingButton
-            var postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
+            let postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
             let postArgs = ["\(self.device.adbIdentifier!)", "\(Int(res.width))", "\(Int(res.height))"]
             postProcessTask.run(arguments: args, complete: { (output) -> Void in
                 Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
@@ -185,12 +185,13 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         cameraButton.enabled = true
         
         let movPath = outputFileURL.path!
-        let gifPath = "\(outputFileURL.path!.stringByDeletingPathExtension).gif"
+        let gifUrl = outputFileURL.URLByDeletingPathExtension
+        let gifPath = "\(gifUrl?.path!).gif"
         let ffmpegPath = NSBundle.mainBundle().pathForResource("ffmpeg", ofType: "")!
         let scalePref = NSUserDefaults.standardUserDefaults().doubleForKey("scalePref")
         
         ShellTasker(scriptFile: "convertMovieFiletoGif").run(arguments: [ffmpegPath, movPath, gifPath, "\(scalePref)"], isUserScript: false, isIOS: false) { (output) -> Void in
-            println("done converting to gif")
+            print("done converting to gif")
             self.stopProgressIndication()
         }
         
@@ -272,10 +273,10 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     func startWaitingForAndroidVideoReady(){
         if device.resolution != nil {
-            println("not nil")
+            print("not nil")
             videoButton.enabled = true
         } else {
-            println("is nil")
+            print("is nil")
             NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "enableVideoButtonWhenReady", userInfo: nil, repeats: false)
         }
     }
@@ -286,13 +287,17 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             startWaitingForAndroidVideoReady()
         case .Ios:
             // videoButton.hidden = false
-            println("showing video button for iOS")
+            print("showing video button for iOS")
             videoButton.enabled = true
         }
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        if #available(OSX 10.10, *) {
+            super.viewDidLoad()
+        } else {
+            // Fallback on earlier versions
+        }
         // Do view setup here.
     }
 }
