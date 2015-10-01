@@ -34,7 +34,7 @@ then
         sizeopt=${width}x${height}
     fi
 
-    $adb -s $serial shell screenrecord $sizeopt --o raw-frames /sdcard/screencapture.raw
+    $adb -s $serial shell screenrecord --size $sizeopt --o raw-frames /sdcard/screencapture.raw
 else
     echo "Recording from phone..."
     orientation=$($adb -s $serial shell dumpsys input | grep 'SurfaceOrientation' | awk '{ print $2 }')
