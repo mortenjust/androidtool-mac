@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MasterViewController" customModule="AndroidTool" customModuleProvider="target">
@@ -14,19 +14,20 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
+        <customView id="Hz6-mo-xeY" customClass="WindowMoverView" customModule="AndroidTool" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="373" height="127"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="129" horizontalPageScroll="10" verticalLineScroll="129" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="b4b-KY-Tnw">
-                    <rect key="frame" x="0.0" y="0.0" width="373" height="127"/>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="129" horizontalPageScroll="10" verticalLineScroll="129" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="b4b-KY-Tnw" customClass="WindowMoverScrollview" customModule="AndroidTool" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="373" height="107"/>
                     <clipView key="contentView" copiesOnScroll="NO" id="lNM-Ud-eMs">
-                        <rect key="frame" x="1" y="1" width="352" height="130"/>
+                        <rect key="frame" x="0.0" y="0.0" width="373" height="107"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="127" viewBased="YES" id="bQc-QI-Dfq">
-                                <rect key="frame" x="0.0" y="0.0" width="373" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="373" height="107"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <animations/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.9960784912109375" green="1" blue="1" alpha="0.0" colorSpace="deviceRGB"/>
                                 <color key="gridColor" red="1" green="0.9960784912109375" blue="0.9960784912109375" alpha="0.17999999999999999" colorSpace="deviceRGB"/>
@@ -44,12 +45,13 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView identifier="weirdCellViewParent" id="s0N-e7-QaZ">
-                                                <rect key="frame" x="1" y="1" width="370" height="127"/>
+                                            <tableCellView identifier="weirdCellViewParent" id="s0N-e7-QaZ" customClass="WindowMoverTableCellView" customModule="AndroidTool" customModuleProvider="target">
+                                                <rect key="frame" x="1" y="1" width="370" height="33"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textField identifier="weirdContainerCell" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OJV-Ex-zin">
-                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="127"/>
+                                                        <rect key="frame" x="0.0" y="-94" width="373" height="127"/>
+                                                        <animations/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" identifier="l" title="Table View Cell" id="ap3-Mv-av4">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -57,6 +59,7 @@
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
+                                                <animations/>
                                                 <connections>
                                                     <outlet property="textField" destination="OJV-Ex-zin" id="3mo-8N-Hzb"/>
                                                 </connections>
@@ -70,15 +73,19 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.30192023515701294" green="0.28555530309677124" blue="0.33228921890258789" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </clipView>
+                    <animations/>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="dS6-bK-cBs">
                         <rect key="frame" x="1" y="119" width="223" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" arrowsPosition="none" controlSize="mini" horizontal="NO" id="k62-bM-4Oc">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </scroller>
                 </scrollView>
             </subviews>
@@ -86,18 +93,31 @@
                 <constraint firstAttribute="trailing" secondItem="b4b-KY-Tnw" secondAttribute="trailing" id="EQZ-T0-1ri"/>
                 <constraint firstAttribute="bottom" secondItem="b4b-KY-Tnw" secondAttribute="bottom" id="F0F-4j-yQg"/>
                 <constraint firstItem="b4b-KY-Tnw" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="jvo-NW-swP"/>
-                <constraint firstItem="b4b-KY-Tnw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="pqn-sx-ui9"/>
+                <constraint firstItem="b4b-KY-Tnw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="pqn-sx-ui9"/>
             </constraints>
+            <animations/>
             <point key="canvasLocation" x="195.5" y="540.5"/>
         </customView>
         <collectionViewItem id="mRy-mQ-REZ"/>
         <collectionViewItem id="84Q-hj-q5u"/>
-        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="IE4-cY-x7C" userLabel="emptystate">
-            <rect key="frame" x="0.0" y="-1" width="274" height="132"/>
+        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" id="IE4-cY-x7C" userLabel="emptystate" customClass="WindowMoverImageView" customModule="AndroidTool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="274" height="132"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <animations/>
             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" image="emptyState" id="G7h-xX-6vb"/>
             <point key="canvasLocation" x="146" y="359"/>
         </imageView>
+        <customView id="z4i-da-bFE" customClass="WindowMoverView" customModule="AndroidTool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <animations/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                    <color key="value" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="105.5" y="745"/>
+        </customView>
     </objects>
     <resources>
         <image name="emptyState" width="256" height="104"/>

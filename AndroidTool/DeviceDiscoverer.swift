@@ -37,10 +37,6 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     }
     
     func stop(){}
-
-    
-    
-    
     
     func getSerials(thenDoThis:(serials:[String]?, gotResults:Bool)->Void, finished:()->Void){
         ShellTasker(scriptFile: "getSerials").run() { (output) -> Void in

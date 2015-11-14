@@ -127,7 +127,7 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
 
             // adjust window height accordingly
             if devices.count != 0 {
-                newHeight = CGFloat(devices.count) * (Util().deviceHeight)
+                newHeight = CGFloat(devices.count) * (Util().deviceHeight) + 20
             } else {
                 newHeight = 171 // emptystate height
             }

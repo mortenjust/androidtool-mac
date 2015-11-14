@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="AndroidTool" customModuleProvider="target">
@@ -16,13 +16,14 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="356" height="182"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="-1" width="356" height="182"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <slider identifier="bitratePref" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xhf-MR-yab">
                         <rect key="frame" x="83" y="115" width="255" height="25"/>
+                        <animations/>
                         <sliderCell key="cell" alignment="left" minValue="100000" maxValue="10000000" doubleValue="7800000" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Jdn-8O-CdO"/>
                         <connections>
                             <binding destination="gL2-7b-O6c" name="value" keyPath="values.bitratePref" id="QK3-mV-pUL">
@@ -34,6 +35,7 @@
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eN8-QP-eB2">
                         <rect key="frame" x="260" y="89" width="78" height="26"/>
+                        <animations/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Sharp and large file" id="NM3-M7-yzC">
                             <font key="font" metaFont="system" size="10"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
@@ -42,6 +44,7 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cia-TW-F2s">
                         <rect key="frame" x="18" y="148" width="238" height="20"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Video recording on phones" id="wdM-rq-Tpa">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -50,6 +53,7 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TUX-fy-qFQ">
                         <rect key="frame" x="18" y="114" width="61" height="20"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Bit rate:" id="ugF-U3-J7S">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -58,6 +62,7 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juH-Q2-5Mc">
                         <rect key="frame" x="83" y="89" width="82" height="26"/>
+                        <animations/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Grainy and small file" id="P7A-KZ-6EA">
                             <font key="font" metaFont="system" size="10"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
@@ -66,6 +71,7 @@
                     </textField>
                     <slider identifier="scalePref" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Lu-4c-luS">
                         <rect key="frame" x="83" y="49" width="255" height="25"/>
+                        <animations/>
                         <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="DE7-Fj-hqK"/>
                         <connections>
                             <binding destination="gL2-7b-O6c" name="value" keyPath="values.scalePref" id="YaF-za-zUb">
@@ -77,6 +83,7 @@
                     </slider>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xCh-7D-XQV">
                         <rect key="frame" x="230" y="9" width="108" height="39"/>
+                        <animations/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Good  for local presentations" id="sZ6-2z-2oR">
                             <font key="font" metaFont="system" size="10"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
@@ -85,6 +92,7 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E3F-Lj-1BC">
                         <rect key="frame" x="18" y="48" width="61" height="20"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Scale:" id="fyk-GQ-isK">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -93,6 +101,7 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Oq-lD-Hqc">
                         <rect key="frame" x="83" y="9" width="62" height="39"/>
+                        <animations/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Good for gifs" id="xn8-Tn-xUR">
                             <font key="font" metaFont="system" size="10"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
@@ -101,6 +110,7 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="amJ-FO-X84">
                         <rect key="frame" x="6" y="98" width="73" height="17"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Mbps" id="v7s-My-nI4">
                             <font key="font" metaFont="miniSystem"/>
                             <color key="textColor" red="0.39378955696202533" green="0.39378955696202533" blue="0.39378955696202533" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
@@ -116,6 +126,7 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hu9-dO-13A">
                         <rect key="frame" x="36" y="31" width="43" height="17"/>
+                        <animations/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="1x" id="OF1-Nz-Vpx">
                             <font key="font" metaFont="miniSystem"/>
                             <color key="textColor" red="0.39378955700000001" green="0.39378955700000001" blue="0.39378955700000001" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
@@ -130,6 +141,7 @@
                         </connections>
                     </textField>
                 </subviews>
+                <animations/>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>

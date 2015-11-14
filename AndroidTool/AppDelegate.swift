@@ -18,21 +18,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var masterViewController: MasterViewController!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        checkForUpdate()
         updateScriptFilesInMenu()
         checkForPreferences()
-        
-        if !Util().isMavericks() {        
-            window.movableByWindowBackground = true
-            if #available(OSX 10.10, *) {
-                window.titleVisibility = NSWindowTitleVisibility.Hidden
-                
-                window.titlebarAppearsTransparent = true;
-                window.styleMask |= NSFullSizeContentViewWindowMask;
-            } else {
-                // Fallback on earlier versions
-            }
-            }
+
+    
+        if #available(OSX 10.10, *) {
+            window.titlebarAppearsTransparent = true
+            window.styleMask = window.styleMask | NSFullSizeContentViewWindowMask;
+        } else {
+            // Fallback on earlier versions
+        }
+        window.movableByWindowBackground = true
+        window.title = ""
         
         masterViewController = MasterViewController(nibName: "MasterViewController", bundle: nil)
         masterViewController.window = window
@@ -40,8 +37,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentView!.addSubview(masterViewController.view)
         //masterViewController.view.frame = window.contentView.bounds
         
-        var insertedView = masterViewController.view
-        var containerView = window.contentView as NSView!
+        let insertedView = masterViewController.view
+        let containerView = window.contentView as NSView!
         
         insertedView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -155,28 +152,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         Util().restartRefreshingDeviceList()
     }
-    
-    func checkForUpdate(){
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
-            let url = NSURL(string: "http://mortenjust.com/androidtool/latestversion")
-            if let version = try? NSString(contentsOfURL: url!, encoding: NSUTF8StringEncoding) {
-            
-            let nsu = NSUserDefaults.standardUserDefaults()
-            let knowsAboutNewVersion = nsu.boolForKey("UserKnowsAboutNewVersion")
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                let currentVersion = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
-                if (currentVersion != version) && !knowsAboutNewVersion {
-//                    var alert = NSAlert()
-//                    alert.messageText = "An update is available! Go to mortenjust.com/androidtool to download"
-//                    alert.runModal()
-                    nsu.setObject(true, forKey: "UserKnowsAboutNewVersion")
-                    }
-                }
-            }
-        }
-    }
-    
     
     func applicationWillResignActive(notification: NSNotification) {
         masterViewController.discoverer.updateInterval = 120

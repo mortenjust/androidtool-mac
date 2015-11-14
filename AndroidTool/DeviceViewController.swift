@@ -35,6 +35,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     var moreShouldClose = false
     
     func takeScreenshot(){
+
         self.startProgressIndication()
         
         if device.deviceOS == DeviceOS.Android {
@@ -241,11 +242,13 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func startProgressIndication(){
+        Util().stopRefreshingDeviceList()
         progressBar.usesThreadedAnimation = true
         progressBar.startAnimation(nil)
     }
     
     func stopProgressIndication(){
+        Util().restartRefreshingDeviceList()
         progressBar.stopAnimation(nil)
     }
     
