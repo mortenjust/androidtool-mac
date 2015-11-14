@@ -32,10 +32,15 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
 
     
     func showDevicePicker(apkPath:String){
-        var devicePickerVC = DevicePickerViewController(nibName: "DevicePickerViewController", bundle: nil)
+        let devicePickerVC = DevicePickerViewController(nibName: "DevicePickerViewController", bundle: nil)
         devicePickerVC?.devices = devices
         devicePickerVC?.apkPath = apkPath
-        self.presentViewControllerAsSheet(devicePickerVC!)
+        if #available(OSX 10.10, *) {
+            self.presentViewControllerAsSheet(devicePickerVC!)
+        } else {
+            // Fallback on earlier versions
+        }
+        
     }
 
 
@@ -109,20 +114,20 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         // make sure we don't refresh the tableview when it's not necessary
         if newSig != previousSig {
             
-            println("new sig")
+            print("new sig")
         
             var et = devices
             var to = deviceList
 
             devices = deviceList
-            devices.sort({$0.model < $1.model})
+            devices.sortInPlace({$0.model < $1.model})
             devicesTable.reloadData()
 
             var newHeight=Util().deviceHeight
 
             // adjust window height accordingly
             if devices.count != 0 {
-                newHeight = CGFloat(devices.count) * (Util().deviceHeight)
+                newHeight = CGFloat(devices.count) * (Util().deviceHeight) + 20
             } else {
                 newHeight = 171 // emptystate height
             }
@@ -133,7 +138,11 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        if #available(OSX 10.10, *) {
+            super.viewDidLoad()
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
 }

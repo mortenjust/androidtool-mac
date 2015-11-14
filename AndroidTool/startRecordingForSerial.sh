@@ -18,7 +18,23 @@ chara=$($adb -s $serial shell getprop ro.build.characteristics)
 if [[ $chara == *"watch"* ]]
 then
     echo "Recording from watch..."
-    $adb -s $serial shell screenrecord --o raw-frames /sdcard/screencapture.raw
+    # Get resolution if no custom res was specified
+    if [[ ! $width ]]
+    then
+        width=`$adb -s $serial shell dumpsys display | grep mDisplayWidth | awk -F '=' '{ print $2 }' | tr -d '\r\n'`
+    fi
+    if [[ ! $height ]]
+    then
+        height=`$adb -s $serial shell dumpsys display | grep mDisplayHeight | awk -F '=' '{ print $2 }' | tr -d '\r\n'`
+    fi
+    sizeopt=""
+    # Put a --size option only if both params are available
+    if [[ $width && $height ]]
+    then
+        sizeopt=${width}x${height}
+    fi
+
+    $adb -s $serial shell screenrecord --size $sizeopt --o raw-frames /sdcard/screencapture.raw
 else
     echo "Recording from phone..."
     orientation=$($adb -s $serial shell dumpsys input | grep 'SurfaceOrientation' | awk '{ print $2 }')

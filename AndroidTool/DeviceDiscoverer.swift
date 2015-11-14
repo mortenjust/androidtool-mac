@@ -37,22 +37,18 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     }
     
     func stop(){}
-
-    
-    
-    
     
     func getSerials(thenDoThis:(serials:[String]?, gotResults:Bool)->Void, finished:()->Void){
         ShellTasker(scriptFile: "getSerials").run() { (output) -> Void in
             let str = String(output)
             
-            if count(str.utf16) < 2 {
+            if str.utf16.count < 2 {
                 thenDoThis(serials: nil, gotResults: false)
                 finished()
                 return
             }
 
-            let serials = split(str) { $0 == ";" }
+            let serials = str.characters.split { $0 == ";" }.map { String($0) }
             thenDoThis(serials: serials, gotResults:true)
             finished()
         }
@@ -60,7 +56,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
 
     func getDetailsForSerial(serial:String, complete:(details:[String:String])->Void){
         ShellTasker(scriptFile: "getDetailsForSerial").run(arguments: ["\(serial)"], isUserScript: false) { (output) -> Void in
-            var detailsDict = self.getPropsFromString(output as String)
+            let detailsDict = self.getPropsFromString(output as String)
             complete(details:detailsDict)
         }
     }
@@ -69,7 +65,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         var newDevices = [Device]()
         
         if updatingSuspended { return }
-        print("+")
+        print("+", terminator: "")
         
         getSerials({ (serials, gotResults) -> Void in
             if gotResults {
@@ -105,12 +101,12 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     
     
     func getPropsFromString(string:String) -> [String:String] {
-        let re = NSRegularExpression(pattern: "\\[(.+?)\\]: \\[(.+?)\\]", options: nil, error: nil)!
-        let matches = re.matchesInString(string, options: nil, range: NSRange(location: 0, length: count(string.utf16)))
+        let re = try! NSRegularExpression(pattern: "\\[(.+?)\\]: \\[(.+?)\\]", options: [])
+        let matches = re.matchesInString(string, options: [], range: NSRange(location: 0, length: string.utf16.count))
         
         var propDict = [String:String]()
         
-        for match in matches as! [NSTextCheckingResult] {
+        for match in matches {
             let key = (string as NSString).substringWithRange(match.rangeAtIndex(1))
             let value = (string as NSString).substringWithRange(match.rangeAtIndex(2))
             propDict[key] = value
@@ -121,12 +117,12 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     func iosDeviceAttached(device:AVCaptureDevice){
         // instantiate new Device, check if we know it, add to iosDevices[], tell deviceCollector about it
         
-        println("Found device \(device.localizedName)")
+        print("Found device \(device.localizedName)")
         let newDevice = Device(avDevice: device)
         var known = false
         for d in iosDevices {
             if d.uuid == newDevice.uuid {
-                println("wtf, already exists")
+                print("wtf, already exists")
                 known = true
             }
         }
@@ -157,7 +153,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         // find the lost device in iosDevices[], remove it, and tell newDeviceCollector about it
         for index in 0...(iosDevices.count-1) {
             if iosDevices[index].uuid == device.uniqueID {
-                println("removing \(device.localizedName)")
+                print("removing \(device.localizedName)")
                 iosDevices.removeAtIndex(index)
                 newDeviceCollector(updateWithList: iosDevices, forDeviceOS: .Ios)
             }

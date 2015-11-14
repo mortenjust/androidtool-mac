@@ -45,9 +45,9 @@ class Util {
 
     
     func showNotification(title:String, moreInfo:String, sound:Bool=true) -> Void {
-        var unc = NSUserNotificationCenter.defaultUserNotificationCenter()
+        let unc = NSUserNotificationCenter.defaultUserNotificationCenter()
         
-        var notification = NSUserNotification()
+        let notification = NSUserNotification()
         notification.title = title
         notification.informativeText = moreInfo
         if sound == true {
@@ -61,18 +61,27 @@ class Util {
         
         let fileM = NSFileManager.defaultManager()
         
-        let supportFolder:String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as! String
+        let supportFolder:String = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] 
         
         let folder = "\(supportFolder)/AndroidTool"
         let scriptFolder = "\(folder)/UserScripts"
         
         if !fileM.fileExistsAtPath(folder) {
-            fileM.createDirectoryAtPath(folder, withIntermediateDirectories: false, attributes: nil, error: nil)
-            fileM.createDirectoryAtPath(scriptFolder, withIntermediateDirectories: false, attributes: nil, error: nil)
+            do {
+                try fileM.createDirectoryAtPath(folder, withIntermediateDirectories: false, attributes: nil)
+            } catch _ {
+            }
+            do {
+                try fileM.createDirectoryAtPath(scriptFolder, withIntermediateDirectories: false, attributes: nil)
+            } catch _ {
+            }
             
             // copy files from UserScriptsInception to this new folder - TODO: Take all, not just bugreport
             let inceptionScript = NSBundle.mainBundle().pathForResource("Take Bugreport", ofType: "sh")
-            fileM.copyItemAtPath(inceptionScript!, toPath: "\(scriptFolder)/Take Bugreport.sh", error: nil)
+            do {
+                try fileM.copyItemAtPath(inceptionScript!, toPath: "\(scriptFolder)/Take Bugreport.sh")
+            } catch _ {
+            }
         }
         return scriptFolder
     }
@@ -83,7 +92,7 @@ class Util {
         }
     
     func getFilesInScriptFolder(folder:String) -> [String]? {
-        var fileM = NSFileManager.defaultManager()
+        let fileM = NSFileManager.defaultManager()
         var files = [String]()
         let someFiles = fileM.enumeratorAtPath(folder)
         while let file = someFiles?.nextObject() as? String  {
@@ -95,7 +104,12 @@ class Util {
     }
     
     func isMavericks() -> Bool {
-        return NSProcessInfo.processInfo().operatingSystemVersion.minorVersion != 10 ? true : false
+        if #available(OSX 10.10, *) {
+            return NSProcessInfo.processInfo().operatingSystemVersion.minorVersion != 10 ? true : false
+        } else {
+            // Fallback on earlier versions
+            return false
+        }
     }
     
     

@@ -17,15 +17,16 @@ protocol ShellTaskDelegate {
 class ShellTasker: NSObject {
     var scriptFile:String!
     var task:NSTask!
-
+    
     
     init(scriptFile:String){
-//        println("initiate with \(scriptFile)")
+        //        println("initiate with \(scriptFile)")
         self.scriptFile = scriptFile
+        print("T:\(scriptFile)")
     }
     
     func stop(){
-//        println("shelltask stop")
+        //        println("shelltask stop")
         task.terminate()
     }
     
@@ -38,49 +39,56 @@ class ShellTasker: NSObject {
             return
         }
         
-//        println("running \(scriptFile)")
+        //        println("running \(scriptFile)")
         
         var scriptPath:AnyObject!
         
         if isUserScript {
             scriptPath = scriptFile as AnyObject
-            } else {
+        } else {
             scriptPath = NSBundle.mainBundle().pathForResource(scriptFile, ofType: "sh") as! AnyObject
-            }
-
-        let sp = scriptPath as! String        
+        }
         
-        var resourcesPath = NSBundle.mainBundle().pathForResource("adb", ofType: "")?.stringByDeletingLastPathComponent
+        let sp = scriptPath as! String
         
-        var bash = "/bin/bash"
+        let resourcesUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("adb", ofType: "")!).URLByDeletingLastPathComponent
+        
+        let resourcesPath = resourcesUrl?.path
+        
+        //let resourcesPath = NSBundle.mainBundle().pathForResource("adb", ofType: "")?.stringByDeletingLastPathComponent
+        
+        let bash = "/bin/bash"
         
         task = NSTask()
         let pipe = NSPipe()
-
+        
         task.launchPath = bash
         
         var allArguments = [String]()
         allArguments.append("\(scriptPath)") // $1
-
+        
         if !isIOS {
             allArguments.append(resourcesPath!) // $1
-            } else
-            {
-            let imobilePath = NSBundle.mainBundle().pathForResource("idevicescreenshot", ofType: "")?.stringByDeletingLastPathComponent
+        } else
+        {
+            let imobileUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("idevicescreenshot", ofType: "")!).URLByDeletingLastPathComponent
+            let imobilePath = imobileUrl?.path
+            //let imobilePath = NSBundle.mainBundle().pathForResource("idevicescreenshot", ofType: "")?.stringByDeletingLastPathComponent
             allArguments.append(imobilePath!) // $1
-            }
+        }
         
         for arg in args {
-           allArguments.append(arg)
+            allArguments.append(arg)
         }
         
         task.arguments = allArguments
         
-//  was      task.arguments = [scriptPath, resourcesPath!, args]
-
-        task.standardOutput = pipe
+        //  was task.arguments = [scriptPath, resourcesPath!, args]
         
-
+        task.standardOutput = pipe
+        task.standardError = pipe
+        
+        
         self.task.launch()
         pipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
         
@@ -92,9 +100,9 @@ class ShellTasker: NSObject {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     complete(output: output)
                 })
-             })
+            })
         }
-
- 
+        
+        
     }
 }
