@@ -255,7 +255,11 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     override func awakeFromNib() {
         deviceNameField.stringValue = device.model!
         let brandName = device.brand!.lowercaseString
-        deviceImage.image = NSImage(named: "logo\(brandName)")
+        let imageName = "logo\(brandName)"
+        print("imageName: \(imageName)")
+        deviceImage.image = NSImage(named: imageName)
+        
+        
         
         if device.isEmulator {
             cameraButton.enabled = false

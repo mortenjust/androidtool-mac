@@ -70,9 +70,9 @@
                     <rect key="frame" x="0.0" y="11" width="198" height="82"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-80-wMe" userLabel="deviceImage">
-                            <rect key="frame" x="14" y="50" width="116" height="32"/>
+                            <rect key="frame" x="14" y="55" width="81" height="27"/>
                             <animations/>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logogoogle" id="k5s-A8-Hjn"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyDown" image="logotagheuer" id="k5s-A8-Hjn"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="mouseDownCanMoveWindow" value="YES"/>
                             </userDefinedRuntimeAttributes>
@@ -164,7 +164,7 @@
     <resources>
         <image name="cameraRoundGreen" width="91" height="94"/>
         <image name="deviceShadow" width="378" height="10"/>
-        <image name="logogoogle" width="116" height="32"/>
+        <image name="logotagheuer" width="81" height="27"/>
         <image name="moreButtonPlus" width="23" height="23"/>
         <image name="recordButtonWhite" width="43" height="32"/>
     </resources>
