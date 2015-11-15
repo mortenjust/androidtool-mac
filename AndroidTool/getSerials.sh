@@ -28,9 +28,8 @@ GetSerials(){
 
             serials=$serials$serial
         fi
-    done < <($adb devices)
+    done < <("$adb" devices)
 echo $serials
-echo $serials > deviceslog.txt
 }
 
 GetSerials

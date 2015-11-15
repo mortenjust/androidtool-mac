@@ -66,6 +66,11 @@
                         <action selector="videoClicked:" target="-2" id="c04-Ms-T7D"/>
                     </connections>
                 </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2xC-CH-hsN" userLabel="shadow">
+                    <rect key="frame" x="-1" y="-8" width="373" height="15"/>
+                    <animations/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="deviceShadow" id="qou-1o-qf0"/>
+                </imageView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="yMf-aI-rf0" userLabel="logo and model">
                     <rect key="frame" x="0.0" y="11" width="198" height="82"/>
                     <subviews>
@@ -73,9 +78,6 @@
                             <rect key="frame" x="14" y="55" width="81" height="27"/>
                             <animations/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyDown" image="logotagheuer" id="k5s-A8-Hjn"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="mouseDownCanMoveWindow" value="YES"/>
-                            </userDefinedRuntimeAttributes>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-Zv-KU6">
                             <rect key="frame" x="12" y="-1" width="140" height="48"/>
@@ -93,11 +95,6 @@
                     </constraints>
                     <animations/>
                 </customView>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2xC-CH-hsN" userLabel="shadow">
-                    <rect key="frame" x="-1" y="-8" width="373" height="15"/>
-                    <animations/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="deviceShadow" id="qou-1o-qf0"/>
-                </imageView>
             </subviews>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="v4Z-CU-6yJ" secondAttribute="centerY" constant="0.5" id="7hm-SJ-ZNJ"/>

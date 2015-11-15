@@ -15,8 +15,8 @@ width=$3
 height=$4
 adb=$thisdir/adb
 
-deviceName=$($adb -s $serial shell getprop ro.product.name)
-buildId=$($adb -s $serial shell getprop ro.build.id)
+deviceName=$("$adb" -s $serial shell getprop ro.product.name)
+buildId=$("$adb" -s $serial shell getprop ro.build.id)
 ldap=$(whoami)
 now=$(date +'%m%d%Y%H%M%S')
 finalFileName=$deviceName$buildId$ldap$now
@@ -25,13 +25,13 @@ finalFileName="${finalFileName//[$'\t\r\n ']}"
 mkdir -p ~/Desktop/AndroidTool
 cd ~/Desktop/AndroidTool
 
-chara=$($adb -s $serial shell getprop ro.build.characteristics)
+chara=$("$adb" -s $serial shell getprop ro.build.characteristics)
 if [[ $chara == *"watch"* ]]
 
 then # -- Watch ---
     echo 'Copying from watch...'
-    $adb -s $serial pull /sdcard/screencapture.raw
-    $adb -s $serial shell rm /sdcard/screencapture.raw
+    "$adb" -s $serial pull /sdcard/screencapture.raw
+    "$adb" -s $serial shell rm /sdcard/screencapture.raw
 
     echo '#Converting...'
 
@@ -47,12 +47,12 @@ then # -- Watch ---
 
 else # -- Phone ---
     echo 'copying from phone...'
-    $adb -s $serial pull /sdcard/capture.mp4
+    "$adb" -s $serial pull /sdcard/capture.mp4
     mv capture.mp4 $finalFileName.mp4
     $thisdir/ffmpeg -i $finalFileName.mp4 $finalFileName.gif
 
     echo 'cleaning up'
-    $adb -s $serial shell rm /sdcard/capture.mp4
+    "$adb" -s $serial shell rm /sdcard/capture.mp4
 fi
 
 echo 'Opening file...'

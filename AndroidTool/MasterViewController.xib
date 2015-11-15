@@ -20,12 +20,12 @@
             <subviews>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="129" horizontalPageScroll="10" verticalLineScroll="129" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" scrollerKnobStyle="dark" findBarPosition="belowContent" translatesAutoresizingMaskIntoConstraints="NO" id="b4b-KY-Tnw" customClass="WindowMoverScrollview" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="373" height="107"/>
-                    <clipView key="contentView" copiesOnScroll="NO" id="lNM-Ud-eMs">
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="lNM-Ud-eMs">
                         <rect key="frame" x="0.0" y="0.0" width="373" height="107"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="127" viewBased="YES" id="bQc-QI-Dfq">
-                                <rect key="frame" x="0.0" y="0.0" width="373" height="107"/>
+                                <rect key="frame" x="0.0" y="0.0" width="373" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
                                 <size key="intercellSpacing" width="3" height="2"/>

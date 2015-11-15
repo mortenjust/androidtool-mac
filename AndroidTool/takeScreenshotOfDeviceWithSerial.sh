@@ -15,17 +15,17 @@ serial=$2
 adb=$thisdir/adb
 
 TakeScreenshot(){
-    deviceName=$($adb -s $serial shell getprop ro.product.name)
-    buildId=$($adb -s $serial shell getprop ro.build.id)
+    deviceName=$("$adb" -s $serial shell getprop ro.product.name)
+    buildId=$("$adb" -s $serial shell getprop ro.build.id)
     ldap=$(whoami)
     now=$(date +'%m%d%Y%H%M%S')
     finalFileName=$deviceName$buildId$ldap$now.png
     finalFileName="${finalFileName//[$'\t\r\n ']}"
     echo "Taking screenshot of $serial"
 
-    $adb -s $serial shell screencap -p /sdcard/$finalFileName
-    $adb -s $serial pull /sdcard/$finalFileName
-    $adb -s $serial shell rm /sdcard/$finalFileName
+    "$adb" -s $serial shell screencap -p /sdcard/$finalFileName
+    "$adb" -s $serial pull /sdcard/$finalFileName
+    "$adb" -s $serial shell rm /sdcard/$finalFileName
 
     open $finalFileName
 }

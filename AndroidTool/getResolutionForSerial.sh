@@ -8,7 +8,11 @@ adb=$thisdir/adb #Xcode
 declare -a arr
 
 GetResolution(){
-$adb -s $serial shell wm size
+echo "doing this:-------"
+echo "$adb" -s $serial shell wm size
+echo "-----------"
+
+"$adb" -s $serial shell wm size
 }
 
 GetResolution

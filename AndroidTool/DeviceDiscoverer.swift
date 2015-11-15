@@ -55,6 +55,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     }
 
     func getDetailsForSerial(serial:String, complete:(details:[String:String])->Void){
+        print("getDetailsForSerial: \(serial)")
         ShellTasker(scriptFile: "getDetailsForSerial").run(arguments: ["\(serial)"], isUserScript: false) { (output) -> Void in
             let detailsDict = self.getPropsFromString(output as String)
             complete(details:detailsDict)
@@ -65,6 +66,8 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         var newDevices = [Device]()
         
         if updatingSuspended { return }
+        
+
         print("+", terminator: "")
         
         getSerials({ (serials, gotResults) -> Void in

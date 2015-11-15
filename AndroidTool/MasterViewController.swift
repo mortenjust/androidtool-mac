@@ -78,7 +78,7 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         var total:Double = 0
         for device in deviceList {
             if let firstboot = device.firstBoot {
-                total += device.firstBoot!
+                total += firstboot
                 }
         }
         let signa = total/Double(deviceList.count)
@@ -88,20 +88,27 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     func showEmptyState(){
         // resize window 
         
+
+        
         if !emptyStateView.isDescendantOf(view) {
             emptyStateView.frame.origin.y = -15
             emptyStateView.frame.origin.x = 45
             view.addSubview(emptyStateView)
+            
             }
     }
     
     func removeEmptyState(){
+
         emptyStateView.removeFromSuperview()
     }
     
     func devicesUpdated(deviceList: [Device]) {
-      
+
+        
         let newSig = deviceListSignature(deviceList)
+        
+        
         
         if deviceList.count == 0 {
             previousSig=0
@@ -113,9 +120,7 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         
         // make sure we don't refresh the tableview when it's not necessary
         if newSig != previousSig {
-            
-            print("new sig")
-        
+
             var et = devices
             var to = deviceList
 

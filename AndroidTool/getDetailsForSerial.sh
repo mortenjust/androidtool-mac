@@ -8,7 +8,7 @@ adb=$thisdir/adb #Xcode
 declare -a arr
 
 GetDetails(){
-    $adb -s $serial shell getprop
+    "$adb" -s $serial shell getprop
 }
 
 GetDetails

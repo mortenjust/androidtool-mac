@@ -48,11 +48,11 @@
 		C8B5148F1AE8703F0071C86A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B5148E1AE8703F0071C86A /* Util.swift */; };
 		C8B9D47E1AE991D300927B96 /* ShellTasker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B9D47D1AE991D300927B96 /* ShellTasker.swift */; };
 		C8B9D4801AE9B20600927B96 /* getDetailsForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */; };
-		C8B9D4831AE9B34F00927B96 /* adb in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4811AE9B34F00927B96 /* adb */; };
 		C8B9D4841AE9B34F00927B96 /* ffmpeg in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4821AE9B34F00927B96 /* ffmpeg */; };
 		C8B9D4861AE9C3A100927B96 /* getSerials.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4851AE9C3A100927B96 /* getSerials.sh */; };
 		C8BF506B1AFB393C005C725D /* IOSDeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */; };
 		C8BF506D1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */; };
+		C8D4F7A01BF84BF5001F8C6E /* adb in Resources */ = {isa = PBXBuildFile; fileRef = C8D4F79F1BF84BF5001F8C6E /* adb */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,12 +125,12 @@
 		C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = getDetailsForSerial.sh; sourceTree = "<group>"; };
 		C8B9D47D1AE991D300927B96 /* ShellTasker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellTasker.swift; sourceTree = "<group>"; };
 		C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		C8B9D4811AE9B34F00927B96 /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
 		C8B9D4821AE9B34F00927B96 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
 		C8B9D4851AE9C3A100927B96 /* getSerials.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getSerials.sh; sourceTree = "<group>"; };
 		C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSDeviceHelper.swift; sourceTree = "<group>"; };
 		C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = takeScreenshotOfDeviceWithUUID.sh; sourceTree = "<group>"; };
 		C8BF506E1AFBE21A005C725D /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
+		C8D4F79F1BF84BF5001F8C6E /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,8 +240,8 @@
 		C8B9D47B1AE9911C00927B96 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				C8D4F79F1BF84BF5001F8C6E /* adb */,
 				C8BF506E1AFBE21A005C725D /* idevicescreenshot */,
-				C8B9D4811AE9B34F00927B96 /* adb */,
 				C8B9D4821AE9B34F00927B96 /* ffmpeg */,
 				C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */,
 				C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */,
@@ -321,11 +321,12 @@
 			attributes = {
 				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Morten Just Petersen";
 				TargetAttributes = {
 					C8B5145F1AE85D610071C86A = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = UDGLB23X37;
 					};
 					C8B5146F1AE85D610071C86A = {
 						CreatedOnToolsVersion = 6.3;
@@ -363,6 +364,7 @@
 				C8A0F8B81AFC319A00B3A90C /* libusbmuxd.2.dylib in Resources */,
 				C8A0F8B91AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib in Resources */,
 				C8A0F8BA1AFC319A00B3A90C /* libplist.2.dylib in Resources */,
+				C8D4F7A01BF84BF5001F8C6E /* adb in Resources */,
 				C8A0F8BB1AFC319A00B3A90C /* libplist.1.1.10.dylib in Resources */,
 				C8A0F8BC1AFC319A00B3A90C /* libosxfuse_i64.2.dylib in Resources */,
 				C8A0F8BD1AFC319A00B3A90C /* libosxfuse_i32.2.dylib in Resources */,
@@ -384,7 +386,6 @@
 				C8B5148D1AE860EF0071C86A /* DeviceViewController.xib in Resources */,
 				C8B514831AE85D8B0071C86A /* MasterViewController.xib in Resources */,
 				C8A8A7B11AF4506800E4B5D0 /* PreferencesWindowController.xib in Resources */,
-				C8B9D4831AE9B34F00927B96 /* adb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +474,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -536,6 +538,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AndroidTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -544,7 +547,9 @@
 					"$(PROJECT_DIR)/AndroidTool",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -552,6 +557,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = AndroidTool/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -560,7 +566,9 @@
 					"$(PROJECT_DIR)/AndroidTool",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -579,6 +587,7 @@
 				);
 				INFOPLIST_FILE = AndroidToolTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AndroidTool.app/Contents/MacOS/AndroidTool";
 			};
@@ -595,6 +604,7 @@
 				);
 				INFOPLIST_FILE = AndroidToolTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AndroidTool.app/Contents/MacOS/AndroidTool";
 			};
