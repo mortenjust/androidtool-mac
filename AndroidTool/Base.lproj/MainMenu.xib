@@ -82,6 +82,12 @@
                                     <action selector="refreshDeviceListClicked:" target="Voe-Tx-rLC" id="XNy-ci-Wkz"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Terminal output" id="kyM-1r-6aa">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="rawWindowClicked:" target="Voe-Tx-rLC" id="SEy-2p-8z2"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

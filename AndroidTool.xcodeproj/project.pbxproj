@@ -20,6 +20,10 @@
 		C8595D221BF6A55700805042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D211BF6A55700805042 /* Constants.swift */; };
 		C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */; };
 		C87E3AE71BFF7DBB00275AA2 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */; };
+		C87E3AF11C01128500275AA2 /* RawOutputWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */; };
+		C87E3AF21C01128500275AA2 /* RawOutputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87E3AF01C01128500275AA2 /* RawOutputWindowController.xib */; };
+		C87E3AF51C0113B100275AA2 /* TerminalOutputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AF41C0113B100275AA2 /* TerminalOutputTextView.swift */; };
+		C87E3AF71C0113DA00275AA2 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AF61C0113DA00275AA2 /* Styles.swift */; };
 		C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */; };
 		C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */; };
 		C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */; };
@@ -96,6 +100,10 @@
 		C8595D211BF6A55700805042 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = previewPopoverViewController.swift; sourceTree = "<group>"; };
 		C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawOutputWindowController.swift; sourceTree = "<group>"; };
+		C87E3AF01C01128500275AA2 /* RawOutputWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawOutputWindowController.xib; sourceTree = "<group>"; };
+		C87E3AF41C0113B100275AA2 /* TerminalOutputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalOutputTextView.swift; sourceTree = "<group>"; };
+		C87E3AF61C0113DA00275AA2 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
 		C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzip.2.dylib; path = ../libzip.2.dylib; sourceTree = "<group>"; };
 		C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../libxml2.2.dylib; sourceTree = "<group>"; };
@@ -182,6 +190,16 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		C87E3AEE1C01120900275AA2 /* RawOutput */ = {
+			isa = PBXGroup;
+			children = (
+				C87E3AF41C0113B100275AA2 /* TerminalOutputTextView.swift */,
+				C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */,
+				C87E3AF01C01128500275AA2 /* RawOutputWindowController.xib */,
+			);
+			name = RawOutput;
+			sourceTree = "<group>";
+		};
 		C8B514571AE85D600071C86A = {
 			isa = PBXGroup;
 			children = (
@@ -208,8 +226,10 @@
 				C8B131571AE9CE9700BCD4F3 /* Images.xcassets */,
 				C8B9D47B1AE9911C00927B96 /* Scripts */,
 				C8B514651AE85D610071C86A /* AppDelegate.swift */,
+				C87E3AF61C0113DA00275AA2 /* Styles.swift */,
 				C8B9D47D1AE991D300927B96 /* ShellTasker.swift */,
 				C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */,
+				C87E3AEE1C01120900275AA2 /* RawOutput */,
 				C87E3AE51BFF779100275AA2 /* UI */,
 				C8B514801AE85D8B0071C86A /* MasterViewController.swift */,
 				C8595D1B1BF5C8B000805042 /* WindowMoverScrollview.swift */,
@@ -399,6 +419,7 @@
 				C8B131991AEB641800BCD4F3 /* installApkOnDevice.sh in Resources */,
 				C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */,
 				C8B131971AEB3B5100BCD4F3 /* DevicePickerViewController.xib in Resources */,
+				C87E3AF21C01128500275AA2 /* RawOutputWindowController.xib in Resources */,
 				C8B131891AEB10FA00BCD4F3 /* startRecordingForSerial.sh in Resources */,
 				C8B1315A1AE9D47700BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh in Resources */,
 				C8B131581AE9CE9700BCD4F3 /* Images.xcassets in Resources */,
@@ -430,11 +451,13 @@
 			files = (
 				C8B131961AEB3B5100BCD4F3 /* DevicePickerViewController.swift in Sources */,
 				C8595D221BF6A55700805042 /* Constants.swift in Sources */,
+				C87E3AF51C0113B100275AA2 /* TerminalOutputTextView.swift in Sources */,
 				C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */,
 				C8B514851AE85D940071C86A /* Device.swift in Sources */,
 				C856FFDE1BFB91110098B1E2 /* C.swift in Sources */,
 				C8595D1E1BF5C95500805042 /* WindowMoverTableCellView.swift in Sources */,
 				C8595D201BF660E100805042 /* WIndowMoverImageView.swift in Sources */,
+				C87E3AF71C0113DA00275AA2 /* Styles.swift in Sources */,
 				C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */,
 				C856FFD91BFB05CD0098B1E2 /* UITweaker.swift in Sources */,
 				C8B5148F1AE8703F0071C86A /* Util.swift in Sources */,
@@ -448,6 +471,7 @@
 				C87E3AE71BFF7DBB00275AA2 /* LoaderView.swift in Sources */,
 				C8595D1A1BF5C1EE00805042 /* WindowMoverView.swift in Sources */,
 				C8B514871AE85DAE0071C86A /* DeviceDiscoverer.swift in Sources */,
+				C87E3AF11C01128500275AA2 /* RawOutputWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

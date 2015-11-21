@@ -7,18 +7,10 @@ var string = "Morten Just's iPhone"
 
 var total = 0
 
-abs((string as NSString).hash)
 
 
+var alle = ["en", "to", "tre"]
 
-var d = [String:String]()
 
-
-let hidewifi = false
-var wifi:Bool
-
-hidewifi ? (wifi = false) : (wifi = true)
-
-wifi
-
+alle.joinWithSeparator("-")
 

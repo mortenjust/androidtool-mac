@@ -39,7 +39,9 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     func stop(){}
     
     func getSerials(thenDoThis:(serials:[String]?, gotResults:Bool)->Void, finished:()->Void){
-        ShellTasker(scriptFile: "getSerials").run() { (output) -> Void in
+        let task = ShellTasker(scriptFile: "getSerials")
+        task.outputIsVerbose = true
+        task.run() { (output) -> Void in
             let str = String(output)
             
             if str.utf16.count < 2 {
@@ -56,7 +58,9 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
 
     func getDetailsForSerial(serial:String, complete:(details:[String:String])->Void){
         print("getDetailsForSerial: \(serial)")
-        ShellTasker(scriptFile: "getDetailsForSerial").run(arguments: ["\(serial)"], isUserScript: false) { (output) -> Void in
+        let task = ShellTasker(scriptFile: "getDetailsForSerial")
+        task.outputIsVerbose = true
+        task.run(arguments: ["\(serial)"], isUserScript: false) { (output) -> Void in
             let detailsDict = self.getPropsFromString(output as String)
             complete(details:detailsDict)
         }

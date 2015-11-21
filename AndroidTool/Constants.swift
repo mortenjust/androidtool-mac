@@ -10,8 +10,11 @@ import Cocoa
 
 class Constants {
     static let NOTIF_NEWDATA = "mj.newData"
+    static let NOTIF_NEWDATAVERBOSE = "mj.newDataVerbose"
     static let NOTIF_NEWSESSION = "mj.newSession"
     static let NOTIF_ALLOUTPUT = "mj.newAllOutput"
+    static let NOTIF_COMMAND = "mj.command"
+    static let NOTIF_COMMANDVERBOSE = "mj.commandVerbose"
     static let DROP_INVITE = "Drop a ZIP or APK prototype"
 
     
@@ -20,6 +23,7 @@ class Constants {
         ,"dataType":"No data type"
         ,"batteryLevel": "100%"
         ,"mobileLevel" : "4 bars"
+        ,"verboseOutput" : false
     ]
     
     
@@ -36,4 +40,5 @@ class Constants {
     static let DATATYPE = "datatype"
     static let BATTERYLEVEL = "batteryLevel"
     static let CHARGING = "charging"
+    static let VERBOSEOUTPUT = "verboseOutput"
 }

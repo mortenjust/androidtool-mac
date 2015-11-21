@@ -79,7 +79,9 @@ class Device: NSObject {
             }
             }
         
-        ShellTasker(scriptFile: "getResolutionForSerial").run(arguments: ["\(self.adbIdentifier!)"], isUserScript: false) { (output) -> Void in
+        let task = ShellTasker(scriptFile: "getResolutionForSerial")
+        task.outputIsVerbose = true
+        task.run(arguments: ["\(self.adbIdentifier!)"], isUserScript: false) { (output) -> Void in
             let res = output as String
             
             if res.rangeOfString("Physical size:") != nil {

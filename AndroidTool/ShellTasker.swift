@@ -17,6 +17,7 @@ protocol ShellTaskDelegate {
 class ShellTasker: NSObject {
     var scriptFile:String!
     var task:NSTask!
+    var outputIsVerbose = false;
     
     
     init(scriptFile:String){
@@ -28,6 +29,10 @@ class ShellTasker: NSObject {
     func stop(){
         //        println("shelltask stop")
         task.terminate()
+    }
+    
+    func postNotification(message:NSString, channel:String){
+        NSNotificationCenter.defaultCenter().postNotificationName(channel, object: message)
     }
     
     func run(arguments args:[String]=[], isUserScript:Bool = false, isIOS:Bool = false, complete:(output:NSString)-> Void) {
@@ -88,16 +93,31 @@ class ShellTasker: NSObject {
         task.standardOutput = pipe
         task.standardError = pipe
         
+        // post a notification with the command, for the rawoutput debugging window
+        let taskString = sp
+        
+        if self.outputIsVerbose {
+            postNotification(taskString, channel: C.NOTIF_COMMANDVERBOSE)
+        } else {
+            postNotification(taskString, channel: C.NOTIF_COMMAND)
+        }
         
         self.task.launch()
+        
         pipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
         
         NSNotificationCenter.defaultCenter().addObserverForName(NSFileHandleDataAvailableNotification, object: pipe.fileHandleForReading, queue: nil) { (notification) -> Void in
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
                 data = pipe.fileHandleForReading.readDataToEndOfFile() // use .availabledata instead to stream from the console, pretty cool
                 output = NSString(data: data, encoding: NSUTF8StringEncoding)!
-                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    var channel = ""
+                    if self.outputIsVerbose {
+                        channel = C.NOTIF_NEWDATAVERBOSE
+                        } else {
+                        channel = C.NOTIF_NEWDATA
+                        }
+                    self.postNotification(output, channel: channel)
                     complete(output: output)
                 })
             })

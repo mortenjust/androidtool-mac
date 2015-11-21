@@ -14,6 +14,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var scriptsMenu: NSMenu!
     var preferencesWindowController: PreferencesWindowController!
+    var rawOutputWindowController: RawOutputWindowController!
+    
+    
     
     var masterViewController: MasterViewController!
 
@@ -168,6 +171,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillResignActive(notification: NSNotification) {
         masterViewController.discoverer.updateInterval = 120
     }
+    
+    @IBAction func rawWindowClicked(sender: AnyObject) {
+        rawOutputWindowController = RawOutputWindowController(windowNibName: "RawOutputWindowController")
+        rawOutputWindowController.showWindow(sender)
+    }  
     
     @IBAction func refreshDeviceListClicked(sender: NSMenuItem) {
         masterViewController.discoverer.pollDevices()
