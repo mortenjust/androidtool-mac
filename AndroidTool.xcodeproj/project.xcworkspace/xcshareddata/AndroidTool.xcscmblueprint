@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7783EA2305F9E9D4E488649A369F3078AE55A4FA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7783EA2305F9E9D4E488649A369F3078AE55A4FA" : 0,
+    "0F88317C16E7E6E52DF926450A3E43CF8F5A0F9C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "739E40B5-70DA-4E32-B5EE-D0F8524F2599",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7783EA2305F9E9D4E488649A369F3078AE55A4FA" : "androidtool-mac\/",
+    "0F88317C16E7E6E52DF926450A3E43CF8F5A0F9C" : "AndroidTool"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AndroidTool",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AndroidTool.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mortenjust\/androidtool-mac.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0F88317C16E7E6E52DF926450A3E43CF8F5A0F9C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/mortenjust\/androidtool-mac.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7783EA2305F9E9D4E488649A369F3078AE55A4FA"
+    }
+  ]
+}

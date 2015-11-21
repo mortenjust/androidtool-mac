@@ -73,12 +73,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func checkForPreferences(){
         let ud = NSUserDefaults.standardUserDefaults()
+        ud.registerDefaults(Constants.defaultPrefValues)
+        
         
         let bitratePref = ud.doubleForKey("bitratePref")
         let scalePref = ud.doubleForKey("scalePref")
+        let timeValuePref = ud.stringForKey("timeValue")
+        let dataTypePref = ud.stringForKey("dataType")
 
+        
         print("bit: \(bitratePref)")
         
+        if timeValuePref == "" {
+            ud.setObject(Constants.defaultPrefValues["timeValue"], forKey: "timeValue")
+        }
+        
+        if dataTypePref == "" {
+            ud.setObject(Constants.defaultPrefValues["dataType"], forKey: "dataType")
+        }
         
         if bitratePref == 0.0 {
             ud.setDouble(Double(3025000), forKey: "bitratePref")

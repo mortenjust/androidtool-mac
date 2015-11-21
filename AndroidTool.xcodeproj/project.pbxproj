@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */; };
 		C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */ = {isa = PBXBuildFile; fileRef = C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */; };
+		C856FFD91BFB05CD0098B1E2 /* UITweaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */; };
+		C856FFDE1BFB91110098B1E2 /* C.swift in Sources */ = {isa = PBXBuildFile; fileRef = C856FFDD1BFB91110098B1E2 /* C.swift */; };
+		C856FFDF1BFDA61A0098B1E2 /* exitDemoMode.sh in Resources */ = {isa = PBXBuildFile; fileRef = C856FFDB1BFB095E0098B1E2 /* exitDemoMode.sh */; };
+		C856FFE01BFDA61A0098B1E2 /* setDemoModeOptions.sh in Resources */ = {isa = PBXBuildFile; fileRef = C856FFDC1BFB0A520098B1E2 /* setDemoModeOptions.sh */; };
 		C8595D1A1BF5C1EE00805042 /* WindowMoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D191BF5C1EE00805042 /* WindowMoverView.swift */; };
 		C8595D1C1BF5C8B000805042 /* WindowMoverScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D1B1BF5C8B000805042 /* WindowMoverScrollview.swift */; };
 		C8595D1E1BF5C95500805042 /* WindowMoverTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */; };
 		C8595D201BF660E100805042 /* WIndowMoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */; };
 		C8595D221BF6A55700805042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D211BF6A55700805042 /* Constants.swift */; };
 		C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */; };
+		C87E3AE71BFF7DBB00275AA2 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */; };
 		C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */; };
 		C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */; };
 		C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */; };
@@ -80,12 +85,17 @@
 /* Begin PBXFileReference section */
 		C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scriptsPopoverViewController.swift; sourceTree = "<group>"; };
 		C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Take Bugreport.sh"; sourceTree = "<group>"; };
+		C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITweaker.swift; sourceTree = "<group>"; };
+		C856FFDB1BFB095E0098B1E2 /* exitDemoMode.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = exitDemoMode.sh; sourceTree = "<group>"; };
+		C856FFDC1BFB0A520098B1E2 /* setDemoModeOptions.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setDemoModeOptions.sh; sourceTree = "<group>"; };
+		C856FFDD1BFB91110098B1E2 /* C.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C.swift; sourceTree = "<group>"; };
 		C8595D191BF5C1EE00805042 /* WindowMoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowMoverView.swift; sourceTree = "<group>"; };
 		C8595D1B1BF5C8B000805042 /* WindowMoverScrollview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowMoverScrollview.swift; sourceTree = "<group>"; };
 		C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowMoverTableCellView.swift; sourceTree = "<group>"; };
 		C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WIndowMoverImageView.swift; path = ../WIndowMoverImageView.swift; sourceTree = "<group>"; };
 		C8595D211BF6A55700805042 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = previewPopoverViewController.swift; sourceTree = "<group>"; };
+		C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
 		C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzip.2.dylib; path = ../libzip.2.dylib; sourceTree = "<group>"; };
 		C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../libxml2.2.dylib; sourceTree = "<group>"; };
@@ -121,7 +131,7 @@
 		C8B514881AE85E9B0071C86A /* getprop-example.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "getprop-example.txt"; sourceTree = "<group>"; };
 		C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
 		C8B5148B1AE860EF0071C86A /* DeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeviceViewController.xib; sourceTree = "<group>"; };
-		C8B5148E1AE8703F0071C86A /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = AndroidTool/Util.swift; sourceTree = "<group>"; };
+		C8B5148E1AE8703F0071C86A /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = getDetailsForSerial.sh; sourceTree = "<group>"; };
 		C8B9D47D1AE991D300927B96 /* ShellTasker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellTasker.swift; sourceTree = "<group>"; };
 		C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
@@ -159,10 +169,22 @@
 			name = UserScriptsInception;
 			sourceTree = "<group>";
 		};
+		C87E3AE51BFF779100275AA2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */,
+				C8B5148B1AE860EF0071C86A /* DeviceViewController.xib */,
+				C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */,
+				C8B514811AE85D8B0071C86A /* MasterViewController.xib */,
+				C8B131951AEB3B5100BCD4F3 /* DevicePickerViewController.xib */,
+				C8B514691AE85D610071C86A /* MainMenu.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		C8B514571AE85D600071C86A = {
 			isa = PBXGroup;
 			children = (
-				C8B5148E1AE8703F0071C86A /* Util.swift */,
 				C8B514621AE85D610071C86A /* AndroidTool */,
 				C8B514731AE85D610071C86A /* AndroidToolTests */,
 				C8B514611AE85D610071C86A /* Products */,
@@ -188,25 +210,24 @@
 				C8B514651AE85D610071C86A /* AppDelegate.swift */,
 				C8B9D47D1AE991D300927B96 /* ShellTasker.swift */,
 				C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */,
-				C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */,
+				C87E3AE51BFF779100275AA2 /* UI */,
 				C8B514801AE85D8B0071C86A /* MasterViewController.swift */,
-				C8595D211BF6A55700805042 /* Constants.swift */,
 				C8595D1B1BF5C8B000805042 /* WindowMoverScrollview.swift */,
 				C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */,
+				C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */,
+				C8B5148E1AE8703F0071C86A /* Util.swift */,
 				C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */,
-				C8B514811AE85D8B0071C86A /* MasterViewController.xib */,
 				C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */,
 				C8B131941AEB3B5100BCD4F3 /* DevicePickerViewController.swift */,
-				C8B131951AEB3B5100BCD4F3 /* DevicePickerViewController.xib */,
 				C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */,
 				C8595D191BF5C1EE00805042 /* WindowMoverView.swift */,
-				C8B5148B1AE860EF0071C86A /* DeviceViewController.xib */,
 				C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */,
 				C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */,
 				C8B514841AE85D940071C86A /* Device.swift */,
 				C8B514881AE85E9B0071C86A /* getprop-example.txt */,
 				C8B514861AE85DAE0071C86A /* DeviceDiscoverer.swift */,
-				C8B514691AE85D610071C86A /* MainMenu.xib */,
+				C8595D211BF6A55700805042 /* Constants.swift */,
+				C856FFDD1BFB91110098B1E2 /* C.swift */,
 				C8B514631AE85D610071C86A /* Supporting Files */,
 			);
 			path = AndroidTool;
@@ -253,6 +274,8 @@
 				C8B1318A1AEB149100BCD4F3 /* postProcessMovieForSerial.sh */,
 				C8A0F8BF1AFC4BDF00B3A90C /* convertMovieFiletoGif.sh */,
 				C8B131981AEB640900BCD4F3 /* installApkOnDevice.sh */,
+				C856FFDB1BFB095E0098B1E2 /* exitDemoMode.sh */,
+				C856FFDC1BFB0A520098B1E2 /* setDemoModeOptions.sh */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -358,6 +381,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */,
+				C856FFDF1BFDA61A0098B1E2 /* exitDemoMode.sh in Resources */,
+				C856FFE01BFDA61A0098B1E2 /* setDemoModeOptions.sh in Resources */,
 				C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */,
 				C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */,
 				C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */,
@@ -369,7 +395,6 @@
 				C8A0F8BC1AFC319A00B3A90C /* libosxfuse_i64.2.dylib in Resources */,
 				C8A0F8BD1AFC319A00B3A90C /* libosxfuse_i32.2.dylib in Resources */,
 				C8A0F8BE1AFC319A00B3A90C /* libimobiledevice.4.dylib in Resources */,
-				C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */,
 				C8A8A7B31AF4A0E200E4B5D0 /* getResolutionForSerial.sh in Resources */,
 				C8B131991AEB641800BCD4F3 /* installApkOnDevice.sh in Resources */,
 				C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */,
@@ -407,9 +432,11 @@
 				C8595D221BF6A55700805042 /* Constants.swift in Sources */,
 				C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */,
 				C8B514851AE85D940071C86A /* Device.swift in Sources */,
+				C856FFDE1BFB91110098B1E2 /* C.swift in Sources */,
 				C8595D1E1BF5C95500805042 /* WindowMoverTableCellView.swift in Sources */,
 				C8595D201BF660E100805042 /* WIndowMoverImageView.swift in Sources */,
 				C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */,
+				C856FFD91BFB05CD0098B1E2 /* UITweaker.swift in Sources */,
 				C8B5148F1AE8703F0071C86A /* Util.swift in Sources */,
 				C8595D1C1BF5C8B000805042 /* WindowMoverScrollview.swift in Sources */,
 				C8B514821AE85D8B0071C86A /* MasterViewController.swift in Sources */,
@@ -418,6 +445,7 @@
 				C8B9D47E1AE991D300927B96 /* ShellTasker.swift in Sources */,
 				C8B5148C1AE860EF0071C86A /* DeviceViewController.swift in Sources */,
 				C8B514661AE85D610071C86A /* AppDelegate.swift in Sources */,
+				C87E3AE71BFF7DBB00275AA2 /* LoaderView.swift in Sources */,
 				C8595D1A1BF5C1EE00805042 /* WindowMoverView.swift in Sources */,
 				C8B514871AE85DAE0071C86A /* DeviceDiscoverer.swift in Sources */,
 			);

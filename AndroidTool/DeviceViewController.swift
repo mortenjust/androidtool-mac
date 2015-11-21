@@ -17,6 +17,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     @IBOutlet weak var progressBar: NSProgressIndicator!
     @IBOutlet weak var videoButton: NSButton!
     @IBOutlet weak var moreButton: NSButton!
+    @IBOutlet weak var loaderButton: LoaderView!
+    
     
     var restingButton : NSImage!
     
@@ -33,30 +35,62 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     var isRecording = false
     var moreOpen = false
     var moreShouldClose = false
+    var uiTweaker : UITweaker!
+    
+    func shouldChangeStatusBar() -> Bool {
+        if device.type == .Watch {
+            return false
+        }
+        
+        return NSUserDefaults.standardUserDefaults().boolForKey("changeAndroidStatusBar")
+    }
     
     func takeScreenshot(){
 
         self.startProgressIndication()
+
         
         if device.deviceOS == DeviceOS.Android {
-        
-            ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [device.adbIdentifier!]) { (output) -> Void in
-                self.stopProgressIndication()
-                Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
+            if shouldChangeStatusBar(){
+                uiTweaker.start({ () -> Void in
+                    self.takeAndroidScreenshot()
+                })
+            } else {
+                self.takeAndroidScreenshot()
             }
         }
             
         if device.deviceOS == DeviceOS.Ios {
             print("IOS screenshot")
             
-            
             ShellTasker(scriptFile: "takeScreenshotOfDeviceWithUUID").run(arguments: [device.uuid!], isUserScript: false, isIOS: true, complete: { (output) -> Void in
                 self.stopProgressIndication()
                 Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
+                
             })
             
         }
     }
+    
+    func takeAndroidScreenshot(){
+        ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [self.device.adbIdentifier!]) { (output) -> Void in
+            self.stopProgressIndication()
+            Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
+            if self.shouldChangeStatusBar() {
+                ShellTasker(scriptFile: "exitDemoMode").run(arguments: [self.device.adbIdentifier!], isUserScript: false, isIOS: false, complete: { (output) -> Void in
+                    // done, back to normal
+                })
+            }
+        }
+    }
+    
+    
+    func EnterDemoMode(){
+        uiTweaker = UITweaker(adbIdentifier: device.serial!)
+//        uiTweaker.start()
+    }
+    
+    func ExitDemoMode(){}
     
     @IBAction func cameraClicked(sender: NSButton) {
         takeScreenshot()
@@ -238,33 +272,49 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
 
     func setup(){
-//        println("setting up view for \(device.name!)")        
+//        println("setting up view for \(device.name!)")    
+        uiTweaker = UITweaker(adbIdentifier: device.adbIdentifier!)
+//    startProgressIndication()
+
     }
     
     func startProgressIndication(){
         Util().stopRefreshingDeviceList()
-        progressBar.usesThreadedAnimation = true
-        progressBar.startAnimation(nil)
+//        progressBar.usesThreadedAnimation = true
+//        progressBar.startAnimation(nil)
+        
+        dispatch_after(1, dispatch_get_main_queue()) { () -> Void in
+            self.loaderButton.startRotating()
+        }
+        
+        
     }
     
     func stopProgressIndication(){
         Util().restartRefreshingDeviceList()
-        progressBar.stopAnimation(nil)
+//        progressBar.stopAnimation(nil)
+        loaderButton.stopRotatingAndReset()
     }
     
     override func awakeFromNib() {
-        deviceNameField.stringValue = device.model!
+        if let model = device.model {
+            deviceNameField.stringValue = model
+            }
         let brandName = device.brand!.lowercaseString
         let imageName = "logo\(brandName)"
         print("imageName: \(imageName)")
-        deviceImage.image = NSImage(named: imageName)
+        var image = NSImage(named: imageName)
         
-        
+        if image == nil {
+            image = NSImage(named: "androidlogo")
+        }
+        deviceImage.image = image
         
         if device.isEmulator {
-            cameraButton.enabled = false
+//            cameraButton.enabled = false
             videoButton.enabled = false
             deviceNameField.stringValue = "Emulator"
+            
         }
         
         // only enable video recording if we have resolution, which is a bit slow because it comes from a big call

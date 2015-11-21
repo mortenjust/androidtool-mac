@@ -10,10 +10,10 @@
                 <outlet property="cameraButton" destination="uj9-du-tFf" id="xHC-ZH-5Wf"/>
                 <outlet property="deviceImage" destination="JHB-80-wMe" id="8dE-kk-q7v"/>
                 <outlet property="deviceNameField" destination="yZB-Zv-KU6" id="Pe4-vX-CKF"/>
+                <outlet property="loaderButton" destination="nPB-sF-sUh" id="X0y-r6-jAt"/>
                 <outlet property="moreButton" destination="j3W-9F-lp5" id="8fM-2m-873"/>
                 <outlet property="previewPopover" destination="Hwm-yK-gRB" id="Dmo-os-iT7"/>
                 <outlet property="previewView" destination="aXY-ZJ-zm6" id="8Ci-D3-bj4"/>
-                <outlet property="progressBar" destination="PMI-Ok-nnQ" id="CIA-er-OC3"/>
                 <outlet property="scriptsPopover" destination="ehy-LG-M3d" id="9va-Ew-7K5"/>
                 <outlet property="videoButton" destination="v4Z-CU-6yJ" id="yrr-cA-amX"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -25,6 +25,11 @@
             <rect key="frame" x="0.0" y="0.0" width="373" height="127"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
+                <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nPB-sF-sUh" customClass="LoaderView" customModule="AndroidTool" customModuleProvider="target">
+                    <rect key="frame" x="142" y="19" width="86" height="86"/>
+                    <animations/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loaderButton" id="oBM-3v-w8D"/>
+                </imageView>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="uj9-du-tFf" userLabel="Camera button">
                     <rect key="frame" x="142" y="17" width="86" height="86"/>
                     <constraints>
@@ -40,10 +45,6 @@
                         <action selector="cameraClicked:" target="-2" id="5H3-km-Lpk"/>
                     </connections>
                 </button>
-                <progressIndicator maxValue="1000" displayedWhenStopped="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="PMI-Ok-nnQ">
-                    <rect key="frame" x="218" y="11" width="32" height="32"/>
-                    <animations/>
-                </progressIndicator>
                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-9F-lp5">
                     <rect key="frame" x="314" y="52" width="23" height="23"/>
                     <animations/>
@@ -99,10 +100,8 @@
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="v4Z-CU-6yJ" secondAttribute="centerY" constant="0.5" id="7hm-SJ-ZNJ"/>
                 <constraint firstAttribute="centerY" secondItem="j3W-9F-lp5" secondAttribute="centerY" id="CDp-5N-bfc"/>
-                <constraint firstAttribute="bottom" secondItem="PMI-Ok-nnQ" secondAttribute="bottom" constant="11" id="EAV-m7-5XO"/>
                 <constraint firstAttribute="centerX" secondItem="yMf-aI-rf0" secondAttribute="centerX" constant="87.5" id="EfW-Qr-LvB"/>
                 <constraint firstAttribute="centerX" secondItem="v4Z-CU-6yJ" secondAttribute="centerX" constant="-85.5" id="KXr-Sh-yGV"/>
-                <constraint firstItem="PMI-Ok-nnQ" firstAttribute="leading" secondItem="uj9-du-tFf" secondAttribute="trailing" constant="-10" id="W0n-vi-Jmm"/>
                 <constraint firstAttribute="centerY" secondItem="uj9-du-tFf" secondAttribute="centerY" constant="-3.5" id="XmN-U5-Qpi"/>
                 <constraint firstAttribute="centerY" secondItem="yMf-aI-rf0" secondAttribute="centerY" constant="-11.5" id="fkK-Xd-Beq"/>
                 <constraint firstAttribute="centerX" secondItem="j3W-9F-lp5" secondAttribute="centerX" constant="-139" id="rDE-Xh-BGc"/>
@@ -157,10 +156,12 @@
             <animations/>
             <point key="canvasLocation" x="652.5" y="252"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="qZE-Q8-MVN"/>
     </objects>
     <resources>
         <image name="cameraRoundGreen" width="91" height="94"/>
         <image name="deviceShadow" width="378" height="10"/>
+        <image name="loaderButton" width="88" height="88"/>
         <image name="logotagheuer" width="81" height="27"/>
         <image name="moreButtonPlus" width="23" height="23"/>
         <image name="recordButtonWhite" width="43" height="32"/>
