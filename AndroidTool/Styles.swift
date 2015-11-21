@@ -27,7 +27,4 @@ class Styles: NSObject {
         atts[NSFontAttributeName] = NSFont(name: "Monaco", size: 8.0);
         return atts
     }
-
-    
-    
 }

@@ -30,11 +30,11 @@
                         <tabViewItems>
                             <tabViewItem label="Status bar" identifier="2" id="9mv-QB-WWz">
                                 <view key="view" ambiguous="YES" id="tGu-yj-ZMh">
-                                    <rect key="frame" x="10" y="33" width="440" height="241"/>
+                                    <rect key="frame" x="10" y="33" width="134" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mn6-qI-JrT">
-                                            <rect key="frame" x="28" y="204" width="312" height="18"/>
+                                            <rect key="frame" x="28" y="-37" width="312" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Change Android 6.0+ status bar on screenshots" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jHG-UT-2cY">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -45,7 +45,7 @@
                                             </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PH-30-i1Z">
-                                            <rect key="frame" x="140" y="166" width="43" height="22"/>
+                                            <rect key="frame" x="140" y="-75" width="43" height="22"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="10:09" drawsBackground="YES" id="gGL-hi-ScB">
                                                 <font key="font" metaFont="system"/>
@@ -62,7 +62,7 @@
                                             </connections>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2IL-6c-c9S">
-                                            <rect key="frame" x="48" y="142" width="81" height="18"/>
+                                            <rect key="frame" x="48" y="-99" width="81" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Bluetooth" bezelStyle="regularSquare" imagePosition="left" inset="2" id="lAA-2A-x8V">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -74,7 +74,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jij-ly-mct">
-                                            <rect key="frame" x="48" y="122" width="74" height="18"/>
+                                            <rect key="frame" x="48" y="-119" width="74" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Location" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jJo-Ug-g9v">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -86,7 +86,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4w-GI-i6x">
-                                            <rect key="frame" x="138" y="122" width="67" height="18"/>
+                                            <rect key="frame" x="138" y="-119" width="67" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Volume" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jhn-Md-P8G">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -98,7 +98,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2t-j1-jJ3">
-                                            <rect key="frame" x="214" y="142" width="52" height="18"/>
+                                            <rect key="frame" x="214" y="-99" width="52" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Sync" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3kI-cq-1On">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -110,7 +110,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-JO-e5G">
-                                            <rect key="frame" x="214" y="122" width="53" height="18"/>
+                                            <rect key="frame" x="214" y="-119" width="53" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Mute" bezelStyle="regularSquare" imagePosition="left" inset="2" id="xCn-3n-oEm">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -122,7 +122,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="neF-JL-bUo">
-                                            <rect key="frame" x="138" y="142" width="58" height="18"/>
+                                            <rect key="frame" x="138" y="-99" width="58" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Alarm" bezelStyle="regularSquare" imagePosition="left" inset="2" id="iLl-yg-iRl">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -134,7 +134,7 @@
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptD-HQ-nVo">
-                                            <rect key="frame" x="48" y="57" width="172" height="26"/>
+                                            <rect key="frame" x="48" y="-184" width="172" height="26"/>
                                             <animations/>
                                             <popUpButtonCell key="cell" type="push" title="No data type" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="RKG-73-SVA" id="bXV-Ry-tnm">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -159,7 +159,7 @@
                                             </connections>
                                         </popUpButton>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89r-ZR-kmi">
-                                            <rect key="frame" x="281" y="142" width="46" height="18"/>
+                                            <rect key="frame" x="281" y="-99" width="46" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Wifi" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="j54-zU-Isf">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -171,7 +171,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2mR-TI-aaC">
-                                            <rect key="frame" x="281" y="120" width="99" height="18"/>
+                                            <rect key="frame" x="281" y="-121" width="99" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Notifications" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Gw9-aO-1mX">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -183,7 +183,7 @@
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oNQ-Oz-u1O">
-                                            <rect key="frame" x="48" y="168" width="92" height="18"/>
+                                            <rect key="frame" x="48" y="-73" width="92" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Set time to " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SBG-80-lRA">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -195,7 +195,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3he-Ox-Uq7">
-                                            <rect key="frame" x="241" y="89" width="48" height="17"/>
+                                            <rect key="frame" x="241" y="-152" width="48" height="17"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Battery" id="vV0-xt-qqc">
                                                 <font key="font" metaFont="system"/>
@@ -204,7 +204,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-vH-HCp">
-                                            <rect key="frame" x="241" y="57" width="172" height="26"/>
+                                            <rect key="frame" x="241" y="-184" width="172" height="26"/>
                                             <animations/>
                                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Oxv-2d-uBX">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -231,7 +231,7 @@
                                             </connections>
                                         </popUpButton>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MK0-KY-m8K">
-                                            <rect key="frame" x="241" y="31" width="77" height="18"/>
+                                            <rect key="frame" x="241" y="-210" width="77" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Charging" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="I8P-0x-2UG">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -243,7 +243,7 @@
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbe-o4-vLa">
-                                            <rect key="frame" x="48" y="23" width="172" height="26"/>
+                                            <rect key="frame" x="48" y="-218" width="172" height="26"/>
                                             <animations/>
                                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="YcA-Mt-PTH">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -264,7 +264,7 @@
                                             </connections>
                                         </popUpButton>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YL0-v9-JuV">
-                                            <rect key="frame" x="48" y="88" width="80" height="18"/>
+                                            <rect key="frame" x="48" y="-153" width="80" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Cell radio" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hOC-FC-5kv">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>

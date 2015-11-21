@@ -190,14 +190,14 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
-		C87E3AEE1C01120900275AA2 /* RawOutput */ = {
+		C87E3AEE1C01120900275AA2 /* Terminal output window */ = {
 			isa = PBXGroup;
 			children = (
 				C87E3AF41C0113B100275AA2 /* TerminalOutputTextView.swift */,
 				C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */,
 				C87E3AF01C01128500275AA2 /* RawOutputWindowController.xib */,
 			);
-			name = RawOutput;
+			name = "Terminal output window";
 			sourceTree = "<group>";
 		};
 		C8B514571AE85D600071C86A = {
@@ -229,7 +229,7 @@
 				C87E3AF61C0113DA00275AA2 /* Styles.swift */,
 				C8B9D47D1AE991D300927B96 /* ShellTasker.swift */,
 				C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */,
-				C87E3AEE1C01120900275AA2 /* RawOutput */,
+				C87E3AEE1C01120900275AA2 /* Terminal output window */,
 				C87E3AE51BFF779100275AA2 /* UI */,
 				C8B514801AE85D8B0071C86A /* MasterViewController.swift */,
 				C8595D1B1BF5C8B000805042 /* WindowMoverScrollview.swift */,
