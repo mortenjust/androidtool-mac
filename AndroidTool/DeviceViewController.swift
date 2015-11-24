@@ -63,9 +63,10 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             print("IOS screenshot")
             
             ShellTasker(scriptFile: "takeScreenshotOfDeviceWithUUID").run(arguments: [device.uuid!], isUserScript: false, isIOS: true, complete: { (output) -> Void in
+                self.setStatus("Screenshot ready")
                 self.stopProgressIndication()
                 Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
-                self.setStatus("Screenshot ready")
+
             })
             
         }
@@ -73,19 +74,23 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     func takeAndroidScreenshot(){
         ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [self.device.adbIdentifier!]) { (output) -> Void in
-            self.stopProgressIndication()
             self.setStatus("Screenshot ready")
             Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
-            if self.shouldChangeStatusBar() {
-                self.setStatus("Changing status bar back to normal")
-                ShellTasker(scriptFile: "exitDemoMode").run(arguments: [self.device.adbIdentifier!], isUserScript: false, isIOS: false, complete: { (output) -> Void in
-                    // done, back to normal
-                    self.setStatus("")
-                })
-            }
+            self.exitDemoModeIfNeeded()
+            self.stopProgressIndication()
         }
     }
     
+    
+    func exitDemoModeIfNeeded(){
+        if self.shouldChangeStatusBar() {
+            self.setStatus("Changing status bar back to normal")
+            ShellTasker(scriptFile: "exitDemoMode").run(arguments: [self.device.adbIdentifier!], isUserScript: false, isIOS: false, complete: { (output) -> Void in
+                // done, back to normal
+                self.setStatus("")
+            })
+        }
+    }
     
     @IBAction func cameraClicked(sender: NSButton) {
         takeScreenshot()
@@ -155,16 +160,28 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         setStatus("Starting screen recording")
         Util().stopRefreshingDeviceList()
         isRecording = true
-        self.restingButton = self.videoButton.image
+        self.restingButton = self.videoButton.image // restingbutton is "recordButtonWhite"
+        videoButton.image = NSImage(named: "stopButton")
+        videoButton.enabled = false
         cameraButton.enabled = false
         moreButton.enabled = false
 
 
         switch device.deviceOS! {
         case .Android:
-            startRecordingOnAndroidDevice(restingButton!)
+            if shouldChangeStatusBar() {
+                setStatus("Changing status bar")
+                uiTweaker.start({ () -> Void in
+                    self.videoButton.enabled = true
+                    self.startRecordingOnAndroidDevice(self.restingButton!)
+                })
+            } else {
+                self.videoButton.enabled = true
+                startRecordingOnAndroidDevice(restingButton!)
+            }
         case .Ios:
             // iOS starts recording 1 second delayed, so delaying the STOP button to signal this to the user
+            videoButton.enabled = true
             openPreviewPopover()
             videoButton.alphaValue = 0.5
             startRecordingOnIOSDevice()
@@ -205,7 +222,9 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             let postArgs = ["\(self.device.adbIdentifier!)", "\(Int(res.width))", "\(Int(res.height))"]
             postProcessTask.run(arguments: args, complete: { (output) -> Void in
                 Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
+                self.exitDemoModeIfNeeded()
                 self.stopProgressIndication()
+
             })
         }
     

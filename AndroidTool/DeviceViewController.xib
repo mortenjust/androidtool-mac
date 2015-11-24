@@ -27,7 +27,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView translatesAutoresizingMaskIntoConstraints="NO" id="nPB-sF-sUh" customClass="LoaderView" customModule="AndroidTool" customModuleProvider="target">
-                    <rect key="frame" x="142" y="34" width="86" height="86"/>
+                    <rect key="frame" x="142" y="28" width="86" height="86"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="86" id="i1X-vf-0zt"/>
                     </constraints>
@@ -35,7 +35,7 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loaderButton" id="oBM-3v-w8D"/>
                 </imageView>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="uj9-du-tFf" userLabel="Camera button">
-                    <rect key="frame" x="142" y="32" width="86" height="86"/>
+                    <rect key="frame" x="142" y="26" width="86" height="86"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="86" id="KSA-0p-eds"/>
                         <constraint firstAttribute="height" constant="86" id="ai9-tl-PUU"/>
@@ -50,7 +50,7 @@
                     </connections>
                 </button>
                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-9F-lp5">
-                    <rect key="frame" x="314" y="67" width="23" height="23"/>
+                    <rect key="frame" x="314" y="58" width="23" height="23"/>
                     <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="moreButtonPlus" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="kW8-ju-SPq">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -61,7 +61,7 @@
                     </connections>
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="v4Z-CU-6yJ">
-                    <rect key="frame" x="251" y="63" width="43" height="32"/>
+                    <rect key="frame" x="251" y="53" width="43" height="32"/>
                     <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="recordButtonWhite" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="D4P-As-aix">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -72,7 +72,7 @@
                     </connections>
                 </button>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="yMf-aI-rf0" userLabel="logo and model">
-                    <rect key="frame" x="0.0" y="26" width="198" height="82"/>
+                    <rect key="frame" x="0.0" y="20" width="198" height="82"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-80-wMe" userLabel="deviceImage">
                             <rect key="frame" x="14" y="55" width="81" height="27"/>
@@ -112,19 +112,19 @@
             </subviews>
             <constraints>
                 <constraint firstItem="nPB-sF-sUh" firstAttribute="leading" secondItem="uj9-du-tFf" secondAttribute="leading" id="6bt-8G-0zB"/>
-                <constraint firstAttribute="centerY" secondItem="v4Z-CU-6yJ" secondAttribute="centerY" constant="15.5" id="7hm-SJ-ZNJ"/>
-                <constraint firstAttribute="centerY" secondItem="j3W-9F-lp5" secondAttribute="centerY" constant="15" id="CDp-5N-bfc"/>
+                <constraint firstAttribute="centerY" secondItem="v4Z-CU-6yJ" secondAttribute="centerY" constant="5.5" id="7hm-SJ-ZNJ"/>
+                <constraint firstAttribute="centerY" secondItem="j3W-9F-lp5" secondAttribute="centerY" constant="6" id="CDp-5N-bfc"/>
                 <constraint firstItem="h6A-EG-vNe" firstAttribute="centerX" secondItem="2xC-CH-hsN" secondAttribute="centerX" id="EbF-ig-iYf"/>
                 <constraint firstAttribute="centerX" secondItem="yMf-aI-rf0" secondAttribute="centerX" constant="87.5" id="EfW-Qr-LvB"/>
                 <constraint firstItem="h6A-EG-vNe" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="I3v-nc-8U2"/>
                 <constraint firstAttribute="centerX" secondItem="v4Z-CU-6yJ" secondAttribute="centerX" constant="-85.5" id="KXr-Sh-yGV"/>
-                <constraint firstItem="h6A-EG-vNe" firstAttribute="top" secondItem="nPB-sF-sUh" secondAttribute="bottom" constant="4" id="P2F-5a-xuj"/>
-                <constraint firstAttribute="centerY" secondItem="uj9-du-tFf" secondAttribute="centerY" constant="11.5" id="XmN-U5-Qpi"/>
+                <constraint firstItem="h6A-EG-vNe" firstAttribute="top" secondItem="nPB-sF-sUh" secondAttribute="bottom" constant="-2" id="P2F-5a-xuj"/>
+                <constraint firstAttribute="centerY" secondItem="uj9-du-tFf" secondAttribute="centerY" constant="5.5" id="XmN-U5-Qpi"/>
                 <constraint firstItem="2xC-CH-hsN" firstAttribute="top" secondItem="h6A-EG-vNe" secondAttribute="bottom" constant="6" id="Ymv-I4-sUX"/>
-                <constraint firstAttribute="centerY" secondItem="yMf-aI-rf0" secondAttribute="centerY" constant="3.5" id="fkK-Xd-Beq"/>
+                <constraint firstAttribute="centerY" secondItem="yMf-aI-rf0" secondAttribute="centerY" constant="-2.5" id="fkK-Xd-Beq"/>
                 <constraint firstItem="nPB-sF-sUh" firstAttribute="trailing" secondItem="uj9-du-tFf" secondAttribute="trailing" id="pzt-pR-JFC"/>
                 <constraint firstAttribute="centerX" secondItem="j3W-9F-lp5" secondAttribute="centerX" constant="-139" id="rDE-Xh-BGc"/>
-                <constraint firstItem="h6A-EG-vNe" firstAttribute="top" secondItem="yMf-aI-rf0" secondAttribute="bottom" constant="-4" id="uVn-9q-Uis"/>
+                <constraint firstItem="h6A-EG-vNe" firstAttribute="top" secondItem="yMf-aI-rf0" secondAttribute="bottom" constant="-10" id="uVn-9q-Uis"/>
                 <constraint firstAttribute="centerX" secondItem="uj9-du-tFf" secondAttribute="centerX" constant="1.5" id="y9o-Rp-GJC"/>
             </constraints>
             <animations/>

@@ -34,7 +34,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mn6-qI-JrT">
-                                            <rect key="frame" x="28" y="239" width="312" height="18"/>
+                                            <rect key="frame" x="28" y="237" width="312" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Change Android 6.0+ status bar on screenshots" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jHG-UT-2cY">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -203,6 +203,45 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-vH-HCp">
+                                            <rect key="frame" x="241" y="87" width="172" height="26"/>
+                                            <animations/>
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Oxv-2d-uBX">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="OFl-dg-7fn">
+                                                    <items>
+                                                        <menuItem title="0%" id="LWs-MQ-rco"/>
+                                                        <menuItem title="10%" id="Vqe-Y8-Y7B"/>
+                                                        <menuItem title="20%" id="obo-9R-WZU"/>
+                                                        <menuItem title="30%" id="9Ra-s8-v9L"/>
+                                                        <menuItem title="40%" id="1Mj-qg-yEp"/>
+                                                        <menuItem title="50%" id="482-YX-s8R"/>
+                                                        <menuItem title="60%" id="oHH-0r-Qd3"/>
+                                                        <menuItem title="70%" id="L6M-wi-QZx"/>
+                                                        <menuItem title="80%" id="7MW-pm-wGL"/>
+                                                        <menuItem title="90%" id="PhA-c1-mi6"/>
+                                                        <menuItem title="100%" id="39A-fW-fmf"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.batteryLevel" id="6lK-n4-zWE"/>
+                                                <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="fXA-v4-MIV"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MK0-KY-m8K">
+                                            <rect key="frame" x="241" y="61" width="77" height="18"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="check" title="Charging" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="I8P-0x-2UG">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.batteryCharging" id="0Aq-q4-Gfo"/>
+                                                <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="vyU-gh-YPm"/>
+                                            </connections>
+                                        </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbe-o4-vLa">
                                             <rect key="frame" x="48" y="26" width="172" height="26"/>
                                             <animations/>
@@ -245,45 +284,6 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-vH-HCp">
-                                            <rect key="frame" x="241" y="87" width="172" height="26"/>
-                                            <animations/>
-                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Oxv-2d-uBX">
-                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
-                                                <menu key="menu" id="OFl-dg-7fn">
-                                                    <items>
-                                                        <menuItem title="0%" id="LWs-MQ-rco"/>
-                                                        <menuItem title="10%" id="Vqe-Y8-Y7B"/>
-                                                        <menuItem title="20%" id="obo-9R-WZU"/>
-                                                        <menuItem title="30%" id="9Ra-s8-v9L"/>
-                                                        <menuItem title="40%" id="1Mj-qg-yEp"/>
-                                                        <menuItem title="50%" id="482-YX-s8R"/>
-                                                        <menuItem title="60%" id="oHH-0r-Qd3"/>
-                                                        <menuItem title="70%" id="L6M-wi-QZx"/>
-                                                        <menuItem title="80%" id="7MW-pm-wGL"/>
-                                                        <menuItem title="90%" id="PhA-c1-mi6"/>
-                                                        <menuItem title="100%" id="39A-fW-fmf"/>
-                                                    </items>
-                                                </menu>
-                                            </popUpButtonCell>
-                                            <connections>
-                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.batteryLevel" id="6lK-n4-zWE"/>
-                                                <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="fXA-v4-MIV"/>
-                                            </connections>
-                                        </popUpButton>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MK0-KY-m8K">
-                                            <rect key="frame" x="241" y="61" width="77" height="18"/>
-                                            <animations/>
-                                            <buttonCell key="cell" type="check" title="Charging" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="I8P-0x-2UG">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.batteryCharging" id="0Aq-q4-Gfo"/>
-                                                <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="vyU-gh-YPm"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <animations/>
                                 </view>
