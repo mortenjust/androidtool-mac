@@ -20,12 +20,13 @@ class Constants {
     
     static let defaultPrefValues = [
         "timeValue":"10:09"
-        ,"dataType":"No data type"
+        ,"mobileDatatype":"No data type"
         ,"batteryLevel": "100%"
         ,"mobileLevel" : "4 bars"
         ,"verboseOutput" : false
     ]
     
+    static let tweakProperties = ["bluetooth", "clock", "alarm", "sync", "wifi", "location", "volume", "mute", "notifications", "mobile", "mobileDatatype", "mobileLevel", "batteryLevel", "batteryCharging", "airplane", "nosim", "speakerphone"]
     
     static let WIFI = "wifi"
     static let NOTIFICATIONS = "notifications"

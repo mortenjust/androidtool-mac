@@ -15,26 +15,26 @@
         <window title="General" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="832" y="148" width="444" height="281"/>
+            <rect key="contentRect" x="832" y="148" width="444" height="316"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <value key="minSize" type="size" width="444" height="261"/>
             <value key="maxSize" type="size" width="444" height="261"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="444" height="281"/>
+                <rect key="frame" x="0.0" y="0.0" width="444" height="316"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GVO-VD-SzE">
-                        <rect key="frame" x="-8" y="-10" width="460" height="287"/>
+                        <rect key="frame" x="-8" y="-10" width="460" height="322"/>
                         <animations/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Status bar" identifier="2" id="9mv-QB-WWz">
                                 <view key="view" ambiguous="YES" id="tGu-yj-ZMh">
-                                    <rect key="frame" x="10" y="33" width="134" height="0.0"/>
+                                    <rect key="frame" x="10" y="33" width="440" height="276"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mn6-qI-JrT">
-                                            <rect key="frame" x="28" y="-37" width="312" height="18"/>
+                                            <rect key="frame" x="28" y="239" width="312" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Change Android 6.0+ status bar on screenshots" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="jHG-UT-2cY">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -45,7 +45,7 @@
                                             </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PH-30-i1Z">
-                                            <rect key="frame" x="140" y="-75" width="43" height="22"/>
+                                            <rect key="frame" x="140" y="201" width="43" height="22"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="10:09" drawsBackground="YES" id="gGL-hi-ScB">
                                                 <font key="font" metaFont="system"/>
@@ -62,79 +62,79 @@
                                             </connections>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2IL-6c-c9S">
-                                            <rect key="frame" x="48" y="-99" width="81" height="18"/>
+                                            <rect key="frame" x="48" y="177" width="81" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Bluetooth" bezelStyle="regularSquare" imagePosition="left" inset="2" id="lAA-2A-x8V">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.bluetooth" id="jTu-vx-S0I"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="TAQ-Uz-Ova"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showBluetooth" id="egh-KB-cvy"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jij-ly-mct">
-                                            <rect key="frame" x="48" y="-119" width="74" height="18"/>
+                                            <rect key="frame" x="48" y="157" width="74" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Location" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jJo-Ug-g9v">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.location" id="Jcm-jN-1nR"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="08r-KX-xKG"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showLocation" id="y5x-zi-T1R"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4w-GI-i6x">
-                                            <rect key="frame" x="138" y="-119" width="67" height="18"/>
+                                            <rect key="frame" x="138" y="157" width="67" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Volume" bezelStyle="regularSquare" imagePosition="left" inset="2" id="jhn-Md-P8G">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.volume" id="hDP-fm-wq2"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="plf-c4-ABb"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showVolume" id="2vZ-qR-R3l"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2t-j1-jJ3">
-                                            <rect key="frame" x="214" y="-99" width="52" height="18"/>
+                                            <rect key="frame" x="214" y="177" width="52" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Sync" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3kI-cq-1On">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.sync" id="bru-iV-DzX"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="IvB-HG-u9L"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showSync" id="rdU-JD-TCl"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-JO-e5G">
-                                            <rect key="frame" x="214" y="-119" width="53" height="18"/>
+                                            <rect key="frame" x="214" y="157" width="53" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Mute" bezelStyle="regularSquare" imagePosition="left" inset="2" id="xCn-3n-oEm">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.mute" id="l65-n0-Cpj"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="1P6-sa-eeI"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showMute" id="Q0V-WO-Boy"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="neF-JL-bUo">
-                                            <rect key="frame" x="138" y="-99" width="58" height="18"/>
+                                            <rect key="frame" x="138" y="177" width="58" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Alarm" bezelStyle="regularSquare" imagePosition="left" inset="2" id="iLl-yg-iRl">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.alarm" id="cye-As-OIy"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="Wzh-zH-Xm3"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showAlarm" id="dFd-rn-YSa"/>
                                             </connections>
                                         </button>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptD-HQ-nVo">
-                                            <rect key="frame" x="48" y="-184" width="172" height="26"/>
+                                            <rect key="frame" x="48" y="60" width="172" height="26"/>
                                             <animations/>
                                             <popUpButtonCell key="cell" type="push" title="No data type" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="RKG-73-SVA" id="bXV-Ry-tnm">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -154,48 +154,48 @@
                                                 </menu>
                                             </popUpButtonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.mobileDatatype" id="aDF-a2-5ye"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="k53-sB-Bbq"/>
-                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.dataType" id="IfV-GC-WQb"/>
                                             </connections>
                                         </popUpButton>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89r-ZR-kmi">
-                                            <rect key="frame" x="281" y="-99" width="46" height="18"/>
+                                            <rect key="frame" x="281" y="177" width="46" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Wifi" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="j54-zU-Isf">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.wifi" id="VWy-VN-MO5"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="LTw-uT-fb7"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showWifi" id="Lny-nK-WSq"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2mR-TI-aaC">
-                                            <rect key="frame" x="281" y="-121" width="99" height="18"/>
+                                            <rect key="frame" x="281" y="155" width="99" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Notifications" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Gw9-aO-1mX">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.notifications" id="eyH-TD-pYl"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="xxF-Ov-sLB"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showNotifications" id="HJU-mE-q5b"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oNQ-Oz-u1O">
-                                            <rect key="frame" x="48" y="-73" width="92" height="18"/>
+                                            <rect key="frame" x="48" y="203" width="92" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Set time to " bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SBG-80-lRA">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.clock" id="wWG-id-BpD"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="RJn-86-irM"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.changeTime" id="isD-be-ezE"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3he-Ox-Uq7">
-                                            <rect key="frame" x="241" y="-152" width="48" height="17"/>
+                                            <rect key="frame" x="241" y="124" width="48" height="17"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Battery" id="vV0-xt-qqc">
                                                 <font key="font" metaFont="system"/>
@@ -203,8 +203,50 @@
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbe-o4-vLa">
+                                            <rect key="frame" x="48" y="26" width="172" height="26"/>
+                                            <animations/>
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="YcA-Mt-PTH">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="uzh-Tb-yoZ">
+                                                    <items>
+                                                        <menuItem title="4 bars" id="q72-a3-bhI"/>
+                                                        <menuItem title="3 bars" id="79c-TN-bAz"/>
+                                                        <menuItem title="2 bars" id="jBT-vC-LjB"/>
+                                                        <menuItem title="1 bar" id="XaV-hu-1f7"/>
+                                                        <menuItem title="0 bars" id="5hb-o6-5Ch"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="buL-eT-LFi"/>
+                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.mobileLevel" id="enM-9O-ctJ"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YL0-v9-JuV">
+                                            <rect key="frame" x="48" y="123" width="80" height="18"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="check" title="Cell radio" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hOC-FC-5kv">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.mobile" id="wZA-CG-Lzt"/>
+                                                <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="20L-sm-uBU"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2mP-l9-wKb">
+                                            <rect key="frame" x="48" y="80" width="171" height="38"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Requies a SIM card and that you turn off wifi on your phone" id="aVr-Pg-XfU">
+                                                <font key="font" metaFont="system" size="10"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozX-vH-HCp">
-                                            <rect key="frame" x="241" y="-184" width="172" height="26"/>
+                                            <rect key="frame" x="241" y="87" width="172" height="26"/>
                                             <animations/>
                                             <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Oxv-2d-uBX">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -226,53 +268,20 @@
                                                 </menu>
                                             </popUpButtonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.batteryLevel" id="o4N-DK-qeN"/>
+                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.batteryLevel" id="6lK-n4-zWE"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="fXA-v4-MIV"/>
                                             </connections>
                                         </popUpButton>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MK0-KY-m8K">
-                                            <rect key="frame" x="241" y="-210" width="77" height="18"/>
+                                            <rect key="frame" x="241" y="61" width="77" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Charging" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="I8P-0x-2UG">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.batteryCharging" id="0Aq-q4-Gfo"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="vyU-gh-YPm"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showCharging" id="1dU-fU-l6X"/>
-                                            </connections>
-                                        </button>
-                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xbe-o4-vLa">
-                                            <rect key="frame" x="48" y="-218" width="172" height="26"/>
-                                            <animations/>
-                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="YcA-Mt-PTH">
-                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
-                                                <menu key="menu" id="uzh-Tb-yoZ">
-                                                    <items>
-                                                        <menuItem title="4 bars" id="q72-a3-bhI"/>
-                                                        <menuItem title="3 bars" id="79c-TN-bAz"/>
-                                                        <menuItem title="2 bars" id="jBT-vC-LjB"/>
-                                                        <menuItem title="1 bar" id="XaV-hu-1f7"/>
-                                                        <menuItem title="0 bars" id="5hb-o6-5Ch"/>
-                                                    </items>
-                                                </menu>
-                                            </popUpButtonCell>
-                                            <connections>
-                                                <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="buL-eT-LFi"/>
-                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.mobileLevel" id="enM-9O-ctJ"/>
-                                            </connections>
-                                        </popUpButton>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YL0-v9-JuV">
-                                            <rect key="frame" x="48" y="-153" width="80" height="18"/>
-                                            <animations/>
-                                            <buttonCell key="cell" type="check" title="Cell radio" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="hOC-FC-5kv">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="20L-sm-uBU"/>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.showMobile" id="AdT-1c-Tyg"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -281,11 +290,11 @@
                             </tabViewItem>
                             <tabViewItem label="Quality" identifier="1" id="igV-cy-Fj2">
                                 <view key="view" id="n0Z-jW-zXe">
-                                    <rect key="frame" x="10" y="33" width="440" height="241"/>
+                                    <rect key="frame" x="10" y="33" width="440" height="276"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iUH-5a-EeC">
-                                            <rect key="frame" x="29" y="-8" width="383" height="237"/>
+                                            <rect key="frame" x="29" y="27" width="383" height="237"/>
                                             <subviews>
                                                 <slider identifier="scalePref" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Lu-4c-luS">
                                                     <rect key="frame" x="75" y="110" width="255" height="25"/>
@@ -421,7 +430,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="218" y="278.5"/>
+            <point key="canvasLocation" x="218" y="296"/>
         </window>
         <userDefaultsController id="dyT-0X-JOf"/>
         <userDefaultsController representsSharedInstance="YES" id="gL2-7b-O6c"/>

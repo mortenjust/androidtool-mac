@@ -9,8 +9,14 @@ var total = 0
 
 
 
-var alle = ["en", "to", "tre"]
+var alle = ["en", "to", "tre", "fire"]
 
-
-alle.joinWithSeparator("-")
-
+for al in alle {
+    switch al {
+        case "en", "to":
+            print("en eller to: \(al)")
+            break
+    default:
+            print("alle andre")
+    }
+}
