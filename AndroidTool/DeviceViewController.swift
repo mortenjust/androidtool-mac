@@ -187,8 +187,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             startRecordingOnIOSDevice()
         }
     }
-
-
     
     func startRecordingOnIOSDevice(){
         iosHelper.toggleRecording(device.avDevice)
@@ -225,6 +223,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             postProcessTask.run(arguments: args, complete: { (output) -> Void in
                 Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
                 self.exitDemoModeIfNeeded()
+                self.setStatus("Recording finished")
                 self.stopProgressIndication()
 
             })

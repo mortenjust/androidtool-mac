@@ -81,8 +81,8 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.location" id="Jcm-jN-1nR"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="08r-KX-xKG"/>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.location" id="Jcm-jN-1nR"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4w-GI-i6x">
@@ -93,8 +93,8 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.volume" id="hDP-fm-wq2"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="plf-c4-ABb"/>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.volume" id="hDP-fm-wq2"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s2t-j1-jJ3">
@@ -105,8 +105,8 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.sync" id="bru-iV-DzX"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="IvB-HG-u9L"/>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.sync" id="bru-iV-DzX"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cz0-JO-e5G">
@@ -117,8 +117,8 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.mute" id="l65-n0-Cpj"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="1P6-sa-eeI"/>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.mute" id="l65-n0-Cpj"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="neF-JL-bUo">
@@ -154,8 +154,8 @@
                                                 </menu>
                                             </popUpButtonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.mobileDatatype" id="aDF-a2-5ye"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="k53-sB-Bbq"/>
+                                                <binding destination="gL2-7b-O6c" name="selectedValue" keyPath="values.mobileDatatype" id="aDF-a2-5ye"/>
                                             </connections>
                                         </popUpButton>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89r-ZR-kmi">
@@ -166,8 +166,8 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.wifi" id="VWy-VN-MO5"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="LTw-uT-fb7"/>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.wifi" id="VWy-VN-MO5"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2mR-TI-aaC">
@@ -178,8 +178,8 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.notifications" id="eyH-TD-pYl"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="xxF-Ov-sLB"/>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.notifications" id="eyH-TD-pYl"/>
                                             </connections>
                                         </button>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oNQ-Oz-u1O">
@@ -190,8 +190,8 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.clock" id="wWG-id-BpD"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="RJn-86-irM"/>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.clock" id="wWG-id-BpD"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3he-Ox-Uq7">
@@ -271,14 +271,14 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.mobile" id="wZA-CG-Lzt"/>
                                                 <binding destination="gL2-7b-O6c" name="enabled" keyPath="values.changeAndroidStatusBar" id="20L-sm-uBU"/>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.mobile" id="wZA-CG-Lzt"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2mP-l9-wKb">
                                             <rect key="frame" x="48" y="80" width="171" height="38"/>
                                             <animations/>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Requies a SIM card and that you turn off wifi on your phone" id="aVr-Pg-XfU">
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Requires a SIM card and that you turn off wifi on your phone" id="aVr-Pg-XfU">
                                                 <font key="font" metaFont="system" size="10"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

@@ -24,15 +24,6 @@ class Util {
         view.frame.origin.y -= addHeight
     }
     
-//    func changeWindowHeight(window:NSWindow, view:NSView, newHeight:CGFloat=0) {
-//        var frame = window.frame
-//        frame.size = CGSizeMake(frame.size.width, newHeight)
-////        frame.origin.y -= newHeight
-//        window.setFrame(frame, display: true, animate: true)
-//        view.frame.size.height += newHeight
-//        view.frame.origin.y -= newHeight
-//    }
-    
     
     func changeWindowHeight(window:NSWindow, view:NSView, newHeight:CGFloat=0) {
         var frame = window.frame
