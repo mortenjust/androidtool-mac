@@ -9,7 +9,7 @@
 import Cocoa
 import AVFoundation
 
-class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate, IOSRecorderDelegate {
+class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate, IOSRecorderDelegate, DropDelegate {
     var device : Device!
     @IBOutlet weak var deviceNameField: NSTextField!
     @IBOutlet  var cameraButton: NSButton!
@@ -18,12 +18,11 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     @IBOutlet weak var videoButton: NSButton!
     @IBOutlet weak var moreButton: NSButton!
     @IBOutlet weak var loaderButton: LoaderView!
-    @IBOutlet weak var statusLabel: NSTextField!
+    @IBOutlet weak var statusLabel: StatusTextField!
     var restingButton : NSImage!
     @IBOutlet var scriptsPopover: NSPopover!
     @IBOutlet var previewPopover: NSPopover!
     @IBOutlet var previewView: NSView!
-    
     
     var iosHelper : IOSDeviceHelper!
     var shellTasker : ShellTasker!
@@ -31,6 +30,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     var moreOpen = false
     var moreShouldClose = false
     var uiTweaker : UITweaker!
+    var dropView : DropReceiverView!
     
     func shouldChangeStatusBar() -> Bool {
         if device.type == .Watch {
@@ -41,8 +41,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func setStatus(text:String){
-        // TODO: Animate the hell out of it
-        statusLabel.stringValue = text
+        statusLabel.setText(text)
     }
     
     func takeScreenshot(){
@@ -66,7 +65,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
                 self.setStatus("Screenshot ready")
                 self.stopProgressIndication()
                 Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
-
+                self.setStatus("Screenshot ready")
             })
             
         }
@@ -74,10 +73,11 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     func takeAndroidScreenshot(){
         ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [self.device.adbIdentifier!]) { (output) -> Void in
-            self.setStatus("Screenshot ready")
+
             Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
             self.exitDemoModeIfNeeded()
             self.stopProgressIndication()
+            self.setStatus("Screenshot ready")
         }
     }
     
@@ -87,7 +87,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             self.setStatus("Changing status bar back to normal")
             ShellTasker(scriptFile: "exitDemoMode").run(arguments: [self.device.adbIdentifier!], isUserScript: false, isIOS: false, complete: { (output) -> Void in
                 // done, back to normal
-                self.setStatus("")
+
             })
         }
     }
@@ -97,7 +97,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
 
     func userScriptEnded() {
-        setStatus("")
+        setStatus("Script finished")
         stopProgressIndication()
         Util().restartRefreshingDeviceList()
     }
@@ -187,6 +187,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             startRecordingOnIOSDevice()
         }
     }
+
+
     
     func startRecordingOnIOSDevice(){
         iosHelper.toggleRecording(device.avDevice)
@@ -280,6 +282,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         super.init(nibName: "DeviceViewController", bundle: nil)
         setup()
         
+        
     }
     
     override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -293,7 +296,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func setup(){
 //        println("setting up view for \(device.name!)")    
         uiTweaker = UITweaker(adbIdentifier: device.adbIdentifier!)
-//    startProgressIndication()
+      dropView = self.view as! DropReceiverView
+      dropView.delegate = self
 
     }
     
@@ -313,7 +317,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         Util().restartRefreshingDeviceList()
 //        progressBar.stopAnimation(nil)
         loaderButton.stopRotatingAndReset()
-        setStatus("")
     }
     
     override func awakeFromNib() {
@@ -378,5 +381,41 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         // Do view setup here.
         
         setStatus("")
+    }
+    
+    
+    func dropDragEntered(filePath: String) {
+        print("vc:dropDragEntered")
+        startProgressIndication()
+        setStatus("Drop to install")
+    }
+    
+    
+    func dropDragExited() {
+        print("vc:dropDragExited")
+        stopProgressIndication()
+    }
+    
+    func dropDragPerformed(filePath: String) {
+        print("vc:dropDragPerformed")
+        installApk(filePath)
+    }
+    
+    func dropUpdated(mouseAt: NSPoint) {
+        // print("vc:dropUpdated")
+    }
+    
+    func installApk(apkPath:String){
+        let args = ["\(device.adbIdentifier!)",
+            "\(apkPath)"]
+        let apkName = NSURL(fileURLWithPath: apkPath).lastPathComponent!
+        setStatus("Installing \(apkName)")
+        print("installing on identifier \(args[0])")
+        startProgressIndication()
+        ShellTasker(scriptFile: "installApkOnDevice").run(arguments: args) { (output) -> Void in
+        Util().showNotification("App installed on \(self.device.readableIdentifier())", moreInfo: "\(output)", sound: true)
+            self.setStatus("\(apkName) installed")
+            self.stopProgressIndication()
+        }
     }
 }

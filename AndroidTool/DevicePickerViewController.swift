@@ -15,6 +15,8 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
 
     var devices : [Device]!
     var apkPath: String!
+    
+    @IBOutlet weak var spinner: NSProgressIndicator!
 
     override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -36,24 +38,15 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
     func installApkOnDevice(device:Device){
         let adbIdentifier = device.adbIdentifier!
         
-        for subview in view.subviews {
-            let s = subview 
-            s.removeFromSuperview()
-        }
-        
-        let spinner = NSProgressIndicator(frame: view.bounds)
-        spinner.style = NSProgressIndicatorStyle.SpinningStyle
-        spinner.frame.origin.x = view.bounds.maxX/2 - spinner.bounds.size.width/2
+        spinner.hidden = false
+        spinner.startAnimation(nil)
         
         let args = ["\(adbIdentifier)",
                     "\(apkPath)"]
         
-        //["\(serial) install -r \"\(apkPath)\""]
-        
         ShellTasker(scriptFile: "installApkOnDevice").run(arguments: args) { (output) -> Void in
 
             Util().showNotification("App installed on \(device.readableIdentifier())", moreInfo: "\(output)", sound: true)
-            spinner.removeFromSuperview()
             if #available(OSX 10.10, *) {
                 self.dismissController(nil)
             } else {

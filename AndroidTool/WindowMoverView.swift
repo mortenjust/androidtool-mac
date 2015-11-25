@@ -10,6 +10,19 @@ import Cocoa
 
 class WindowMoverView: NSView {
     
+    override func registerForDraggedTypes(newTypes: [String]) {
+        Swift.print("$$ registering")
+        let fileTypes = [
+            ".apk"
+        ]
+        registerForDraggedTypes(fileTypes);
+    }
+    
+    override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
+        Swift.print("dragging entered")
+        return NSDragOperation.Copy
+    }
+    
     override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
         return true
     }

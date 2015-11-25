@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="DevicePickerViewController" customModule="AndroidTool" customModuleProvider="target">
             <connections>
                 <outlet property="deviceTable" destination="Opa-AO-rxm" id="ZdB-qL-RC3"/>
+                <outlet property="spinner" destination="0Cx-tA-BUz" id="oLJ-i0-AwR"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -17,13 +18,13 @@
             <rect key="frame" x="0.0" y="0.0" width="289" height="167"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="38" horizontalPageScroll="10" verticalLineScroll="38" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAE-LU-0R6">
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAE-LU-0R6">
                     <rect key="frame" x="0.0" y="49" width="289" height="94"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="IFF-Wy-bSA">
                         <rect key="frame" x="1" y="17" width="238" height="117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="36" id="Opa-AO-rxm">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="Opa-AO-rxm">
                                 <rect key="frame" x="0.0" y="0.0" width="289" height="38"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
@@ -90,10 +91,16 @@ Gw
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="0Cx-tA-BUz">
+                    <rect key="frame" x="129" y="68" width="32" height="32"/>
+                    <animations/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstItem="tDm-bn-beq" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="109" id="0Xg-N7-E5H"/>
                 <constraint firstAttribute="trailing" secondItem="LAE-LU-0R6" secondAttribute="trailing" id="8Bc-T6-wD5"/>
+                <constraint firstItem="0Cx-tA-BUz" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="GHn-LD-QPr"/>
+                <constraint firstItem="0Cx-tA-BUz" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="GbZ-V5-fbh"/>
                 <constraint firstAttribute="trailing" secondItem="tDm-bn-beq" secondAttribute="trailing" constant="109" id="ax1-yf-CP9"/>
                 <constraint firstAttribute="bottom" secondItem="LAE-LU-0R6" secondAttribute="bottom" constant="49" id="iub-jt-oBX"/>
                 <constraint firstItem="tDm-bn-beq" firstAttribute="top" secondItem="LAE-LU-0R6" secondAttribute="bottom" constant="20" id="lhI-hi-inQ"/>

@@ -22,7 +22,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView wantsLayer="YES" id="Hz6-mo-xeY" userLabel="DeviceView" customClass="WindowMoverView" customModule="AndroidTool" customModuleProvider="target">
+        <customView wantsLayer="YES" id="Hz6-mo-xeY" userLabel="DeviceView" customClass="DropReceiverView" customModule="AndroidTool" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="373" height="127"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -100,7 +100,7 @@
                     <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="deviceShadow" id="qou-1o-qf0"/>
                 </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h6A-EG-vNe">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h6A-EG-vNe" customClass="StatusTextField" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="114" y="13" width="144" height="17"/>
                     <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Starting demo mode..." id="gke-nu-kun">

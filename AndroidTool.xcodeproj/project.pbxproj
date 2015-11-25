@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */; };
 		C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */ = {isa = PBXBuildFile; fileRef = C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */; };
+		C84079D31C054BCF002EC6D4 /* DropReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84079D21C054BCF002EC6D4 /* DropReceiverView.swift */; };
+		C84079D51C0559B7002EC6D4 /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84079D41C0559B7002EC6D4 /* StatusTextField.swift */; };
 		C856FFD91BFB05CD0098B1E2 /* UITweaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */; };
 		C856FFDE1BFB91110098B1E2 /* C.swift in Sources */ = {isa = PBXBuildFile; fileRef = C856FFDD1BFB91110098B1E2 /* C.swift */; };
 		C856FFDF1BFDA61A0098B1E2 /* exitDemoMode.sh in Resources */ = {isa = PBXBuildFile; fileRef = C856FFDB1BFB095E0098B1E2 /* exitDemoMode.sh */; };
@@ -89,6 +91,8 @@
 /* Begin PBXFileReference section */
 		C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scriptsPopoverViewController.swift; sourceTree = "<group>"; };
 		C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Take Bugreport.sh"; sourceTree = "<group>"; };
+		C84079D21C054BCF002EC6D4 /* DropReceiverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropReceiverView.swift; sourceTree = "<group>"; };
+		C84079D41C0559B7002EC6D4 /* StatusTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusTextField.swift; path = ../StatusTextField.swift; sourceTree = "<group>"; };
 		C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITweaker.swift; sourceTree = "<group>"; };
 		C856FFDB1BFB095E0098B1E2 /* exitDemoMode.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = exitDemoMode.sh; sourceTree = "<group>"; };
 		C856FFDC1BFB0A520098B1E2 /* setDemoModeOptions.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setDemoModeOptions.sh; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 			children = (
 				C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */,
 				C8B5148B1AE860EF0071C86A /* DeviceViewController.xib */,
+				C84079D21C054BCF002EC6D4 /* DropReceiverView.swift */,
 				C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */,
 				C8B514811AE85D8B0071C86A /* MasterViewController.xib */,
 				C8B131951AEB3B5100BCD4F3 /* DevicePickerViewController.xib */,
@@ -237,6 +242,7 @@
 				C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */,
 				C8B5148E1AE8703F0071C86A /* Util.swift */,
 				C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */,
+				C84079D41C0559B7002EC6D4 /* StatusTextField.swift */,
 				C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */,
 				C8B131941AEB3B5100BCD4F3 /* DevicePickerViewController.swift */,
 				C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */,
@@ -454,6 +460,7 @@
 				C87E3AF51C0113B100275AA2 /* TerminalOutputTextView.swift in Sources */,
 				C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */,
 				C8B514851AE85D940071C86A /* Device.swift in Sources */,
+				C84079D51C0559B7002EC6D4 /* StatusTextField.swift in Sources */,
 				C856FFDE1BFB91110098B1E2 /* C.swift in Sources */,
 				C8595D1E1BF5C95500805042 /* WindowMoverTableCellView.swift in Sources */,
 				C8595D201BF660E100805042 /* WIndowMoverImageView.swift in Sources */,
@@ -471,6 +478,7 @@
 				C87E3AE71BFF7DBB00275AA2 /* LoaderView.swift in Sources */,
 				C8595D1A1BF5C1EE00805042 /* WindowMoverView.swift in Sources */,
 				C8B514871AE85DAE0071C86A /* DeviceDiscoverer.swift in Sources */,
+				C84079D31C054BCF002EC6D4 /* DropReceiverView.swift in Sources */,
 				C87E3AF11C01128500275AA2 /* RawOutputWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
