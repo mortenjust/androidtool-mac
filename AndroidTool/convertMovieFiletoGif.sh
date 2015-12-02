@@ -10,11 +10,14 @@ thisdir=$1
 inputFile=$3
 outputFile=$4
 scale=$5
+screenRecordingsFolder=$6
 
-TakeScreenshot(){
+ConvertFile(){
     $thisdir/ffmpeg -i $inputFile -vf scale=iw*$scale:ih*$scale $outputFile
 }
 
-mkdir -p ~/Desktop/AndroidTool
-cd ~/Desktop/AndroidTool
-TakeScreenshot
+echo "###### $screenRecFolder"
+mkdir -p '$screenRecFolder"
+cd "$screenRecFolder"
+
+ConvertFile

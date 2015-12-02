@@ -13,6 +13,8 @@ thisdir=$1 # $1 is the bundle resources path directly from the calling script fi
 serial=$2
 width=$3
 height=$4
+bitrate=$5 #not sure if ever in use
+screenRecFolder=$6
 adb=$thisdir/adb
 
 deviceName=$("$adb" -s $serial shell getprop ro.product.name)
@@ -22,8 +24,10 @@ now=$(date +'%m%d%Y%H%M%S')
 finalFileName=$deviceName$buildId$ldap$now
 finalFileName="${finalFileName//[$'\t\r\n ']}"
 
-mkdir -p ~/Desktop/AndroidTool
-cd ~/Desktop/AndroidTool
+echo "###### $screenRecFolder"
+mkdir -p '$screenRecFolder"
+cd "$screenRecFolder"
+
 
 chara=$("$adb" -s $serial shell getprop ro.build.characteristics)
 if [[ $chara == *"watch"* ]]

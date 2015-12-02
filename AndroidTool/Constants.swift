@@ -16,6 +16,9 @@ class Constants {
     static let NOTIF_COMMAND = "mj.command"
     static let NOTIF_COMMANDVERBOSE = "mj.commandVerbose"
     static let DROP_INVITE = "Drop a ZIP or APK prototype"
+    static let PREF_SCREENSHOTFOLDER = "screenshotsFolder"
+    static let PREF_SRCEENRECORDINGSFOLDER = "screenRecordingsFolder"
+    
 
     
     static let defaultPrefValues = [
@@ -24,6 +27,9 @@ class Constants {
         ,"batteryLevel": "100%"
         ,"mobileLevel" : "4 bars"
         ,"verboseOutput" : false
+        ,"screenRecordingsFolder": "~/Desktop/AndroidTool"
+        ,"screenshotsFolder": "~/Desktop/AndroidTool"
+        ,"createGIF": true
     ]
     
     static let tweakProperties = ["bluetooth", "clock", "alarm", "sync", "wifi", "location", "volume", "mute", "notifications", "mobile", "mobileDatatype", "mobileLevel", "batteryLevel", "batteryCharging", "airplane", "nosim", "speakerphone"]

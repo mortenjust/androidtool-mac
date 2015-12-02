@@ -7,6 +7,7 @@
 #  Copyright (c) 2015 Morten Just Petersen. All rights reserved.
 imobile=$1
 uuid=$2
+screenshotFolder=$3
 
 now=$(date +'%m%d%Y%H%M%S')
 ldap=$(whoami)
@@ -21,6 +22,7 @@ TakeScreenshot(){
     open $finalFilename
 }
 
-mkdir -p ~/Desktop/AndroidTool
-cd ~/Desktop/AndroidTool
+echo "###### $screenshotFolder"
+mkdir -p '$screenshotFolder"
+cd "$screenshotFolder"
 TakeScreenshot

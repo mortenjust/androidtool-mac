@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="AndroidTool" customModuleProvider="target">
             <connections>
+                <outlet property="screenRecordingClicked" destination="NY0-DN-3iT" id="2o8-ZP-kFB"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -28,8 +29,81 @@
                         <animations/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
+                            <tabViewItem label="Folders" identifier="" id="JlR-dp-CSI">
+                                <view key="view" ambiguous="YES" id="vFe-Zq-Iin">
+                                    <rect key="frame" x="10" y="33" width="440" height="276"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wwd-Ah-azE">
+                                            <rect key="frame" x="4" y="126" width="142" height="20"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Screen recordings:" id="ebw-mg-LxG">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2n-4W-O3f">
+                                            <rect key="frame" x="4" y="183" width="142" height="20"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Screenshots:" id="Oop-61-0VG">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zPE-KE-WO7">
+                                            <rect key="frame" x="146" y="176" width="90" height="32"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="push" title="Select..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fr2-hi-qus">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="screenshotFolderClicked:" target="-2" id="Z4b-0b-CrY"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PFu-rq-rnM">
+                                            <rect key="frame" x="151" y="163" width="285" height="17"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/Users/mortenjust/Desktop/AndroidTool/kasse" id="f6t-VL-PRL">
+                                                <font key="font" metaFont="miniSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.screenshotsFolder" id="ImR-tn-jr6"/>
+                                            </connections>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NY0-DN-3iT">
+                                            <rect key="frame" x="147" y="119" width="90" height="32"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="push" title="Select..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wSK-Ze-K6i">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="screenRecordingFolderClicked:" target="-2" id="FnY-au-xcq"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yiG-AH-Phl">
+                                            <rect key="frame" x="152" y="106" width="285" height="17"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/Users/mortenjust/Desktop/AndroidTool/kasse" id="ahs-qP-Guo">
+                                                <font key="font" metaFont="miniSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.screenRecordingsFolder" id="yGd-tu-VLU"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <animations/>
+                                </view>
+                            </tabViewItem>
                             <tabViewItem label="Status bar" identifier="2" id="9mv-QB-WWz">
-                                <view key="view" ambiguous="YES" id="tGu-yj-ZMh">
+                                <view key="view" id="tGu-yj-ZMh">
                                     <rect key="frame" x="10" y="33" width="440" height="276"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
@@ -136,12 +210,12 @@
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ptD-HQ-nVo">
                                             <rect key="frame" x="48" y="60" width="172" height="26"/>
                                             <animations/>
-                                            <popUpButtonCell key="cell" type="push" title="No data type" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="RKG-73-SVA" id="bXV-Ry-tnm">
+                                            <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bXV-Ry-tnm">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="Yxg-qA-YTg">
                                                     <items>
-                                                        <menuItem title="No data type" state="on" id="RKG-73-SVA"/>
+                                                        <menuItem title="No data type" id="RKG-73-SVA"/>
                                                         <menuItem title="1x" id="D0x-0i-7Lo"/>
                                                         <menuItem title="3g" id="ATN-pc-3tw"/>
                                                         <menuItem title="4g" id="SgG-DW-7Nb"/>

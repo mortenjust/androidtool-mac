@@ -12,6 +12,7 @@ declare -a arr
 
 thisdir=$1 # $1 is the bundle resources path directly from the calling script file
 serial=$2
+screenshotFolder=$3
 adb=$thisdir/adb
 
 TakeScreenshot(){
@@ -30,6 +31,11 @@ TakeScreenshot(){
     open $finalFileName
 }
 
-mkdir -p ~/Desktop/AndroidTool
-cd ~/Desktop/AndroidTool
+echo "###### $screenshotFolder"
+mkdir -p '$screenshotFolder"
+cd "$screenshotFolder"
+
+
+#mkdir -p ~/Desktop/AndroidTool
+#cd ~/Desktop/AndroidTool
 TakeScreenshot

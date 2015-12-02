@@ -17,7 +17,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var rawOutputWindowController: RawOutputWindowController!
     
     
-    
     var masterViewController: MasterViewController!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
@@ -77,6 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func checkForPreferences(){
         let ud = NSUserDefaults.standardUserDefaults()
         ud.registerDefaults(Constants.defaultPrefValues)
+        
         
         
         let bitratePref = ud.doubleForKey("bitratePref")

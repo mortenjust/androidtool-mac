@@ -10,12 +10,41 @@ import Cocoa
 
 class PreferencesWindowController: NSWindowController {
 
-    // all bindings are belong to IB
+    
+    @IBAction func screenshotFolderClicked(sender: AnyObject) {
+        selectFolder("Screenshots", message: "Save screenshots in this folder", defaultsPath: "screenshotsFolder")
+    }
 
+    @IBAction func screenRecordingFolderClicked(sender: AnyObject) {
+        
+        selectFolder("Screen recordings", message: "Save recordings in this folder", defaultsPath: "screenRecordingsFolder")
+    }
+    
+    
     override func windowDidLoad() {
         super.windowDidLoad()
-
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+        // all bindings are belong to IB
+    }
+    
+    
+    
+    func selectFolder(title:String, message:String, defaultsPath:String){
+        let openPanel = NSOpenPanel();
+        openPanel.title = title
+        openPanel.message = message
+        openPanel.showsResizeIndicator=true;
+        openPanel.canChooseDirectories = true;
+        openPanel.canChooseFiles = false;
+        openPanel.allowsMultipleSelection = false;
+        openPanel.canCreateDirectories = true;
+        openPanel.beginWithCompletionHandler { (result) -> Void in
+            if(result == NSFileHandlingPanelOKButton){
+                let path = openPanel.URL!.path!
+                print("selected folder is \(path), saving to \(defaultsPath)");
+                let ud = NSUserDefaults.standardUserDefaults()
+                ud.setValue(path, forKey: defaultsPath)
+            }
+        }
     }
     
 }

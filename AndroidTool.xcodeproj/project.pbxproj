@@ -64,6 +64,7 @@
 		C8BF506B1AFB393C005C725D /* IOSDeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */; };
 		C8BF506D1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */; };
 		C8D4F7A01BF84BF5001F8C6E /* adb in Resources */ = {isa = PBXBuildFile; fileRef = C8D4F79F1BF84BF5001F8C6E /* adb */; };
+		C8E521B31C0ED06800777117 /* getCurrentActivityForIdentifier.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +154,7 @@
 		C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = takeScreenshotOfDeviceWithUUID.sh; sourceTree = "<group>"; };
 		C8BF506E1AFBE21A005C725D /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
 		C8D4F79F1BF84BF5001F8C6E /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
+		C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getCurrentActivityForIdentifier.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +304,7 @@
 				C8B131981AEB640900BCD4F3 /* installApkOnDevice.sh */,
 				C856FFDB1BFB095E0098B1E2 /* exitDemoMode.sh */,
 				C856FFDC1BFB0A520098B1E2 /* setDemoModeOptions.sh */,
+				C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -432,6 +435,7 @@
 				C8B9D4801AE9B20600927B96 /* getDetailsForSerial.sh in Resources */,
 				C8B9D4861AE9C3A100927B96 /* getSerials.sh in Resources */,
 				C8B5146B1AE85D610071C86A /* MainMenu.xib in Resources */,
+				C8E521B31C0ED06800777117 /* getCurrentActivityForIdentifier.sh in Resources */,
 				C8BF506D1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh in Resources */,
 				C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */,
 				C8B9D4841AE9B34F00927B96 /* ffmpeg in Resources */,

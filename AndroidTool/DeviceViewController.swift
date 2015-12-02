@@ -60,8 +60,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             
         if device.deviceOS == DeviceOS.Ios {
             print("IOS screenshot")
-            
-            ShellTasker(scriptFile: "takeScreenshotOfDeviceWithUUID").run(arguments: [device.uuid!], isUserScript: false, isIOS: true, complete: { (output) -> Void in
+            let args = [device.uuid!, getFolderForScreenshots()]
+            ShellTasker(scriptFile: "takeScreenshotOfDeviceWithUUID").run(arguments: args, isUserScript: false, isIOS: true, complete: { (output) -> Void in
                 self.setStatus("Screenshot ready")
                 self.stopProgressIndication()
                 Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
@@ -71,8 +71,21 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         }
     }
     
+    func getFolderForScreenshots() -> String {
+        return NSUserDefaults.standardUserDefaults().stringForKey(C.PREF_SCREENSHOTFOLDER)!
+    }
+    
+    func getFolderForScreenRecordings() -> String {
+        return NSUserDefaults.standardUserDefaults().stringForKey(C.PREF_SRCEENRECORDINGSFOLDER)!
+    }
+    
     func takeAndroidScreenshot(){
-        ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: [self.device.adbIdentifier!]) { (output) -> Void in
+        
+        let args = [self.device.adbIdentifier!,
+            getFolderForScreenshots()
+        ]
+        
+        ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: args) { (output) -> Void in
 
             Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
             self.exitDemoModeIfNeeded()
@@ -87,7 +100,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             self.setStatus("Changing status bar back to normal")
             ShellTasker(scriptFile: "exitDemoMode").run(arguments: [self.device.adbIdentifier!], isUserScript: false, isIOS: false, complete: { (output) -> Void in
                 // done, back to normal
-
             })
         }
     }
@@ -205,7 +217,11 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             res = (device.resolution!.width*scalePref, device.resolution!.height*scalePref)
         }
         
-        let args:[String] = [device.adbIdentifier!, "\(Int(res.width))", "\(Int(res.height))", "\(bitratePref)"]
+        let args:[String] = [device.adbIdentifier!,
+                            "\(Int(res.width))",
+                            "\(Int(res.height))",
+                            "\(bitratePref)",
+                            getFolderForScreenRecordings()]
         
         setStatus("Recording screen")
         shellTasker.run(arguments: args) { (output) -> Void in
@@ -219,7 +235,9 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             self.moreButton.enabled = true
             self.videoButton.image = restingButton
             let postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
-            let postArgs = ["\(self.device.adbIdentifier!)", "\(Int(res.width))", "\(Int(res.height))"]
+//            let postArgs = ["\(self.device.adbIdentifier!)",
+//                            "\(Int(res.width))",
+//                            "\(Int(res.height))"]
             postProcessTask.run(arguments: args, complete: { (output) -> Void in
                 Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
                 self.exitDemoModeIfNeeded()
@@ -243,8 +261,11 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         let gifPath = "\(gifUrl?.path!).gif"
         let ffmpegPath = NSBundle.mainBundle().pathForResource("ffmpeg", ofType: "")!
         let scalePref = NSUserDefaults.standardUserDefaults().doubleForKey("scalePref")
+        let args = [ffmpegPath, movPath, gifPath, "\(scalePref)", getFolderForScreenRecordings()]
         
-        ShellTasker(scriptFile: "convertMovieFiletoGif").run(arguments: [ffmpegPath, movPath, gifPath, "\(scalePref)"], isUserScript: false, isIOS: false) { (output) -> Void in
+        
+        
+        ShellTasker(scriptFile: "convertMovieFiletoGif").run(arguments: args, isUserScript: false, isIOS: false) { (output) -> Void in
             print("done converting to gif")
             self.stopProgressIndication()
         }
