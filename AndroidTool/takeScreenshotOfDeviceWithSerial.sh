@@ -13,6 +13,7 @@ declare -a arr
 thisdir=$1 # $1 is the bundle resources path directly from the calling script file
 serial=$2
 screenshotFolder=$3
+activityName=$4
 adb=$thisdir/adb
 
 TakeScreenshot(){
@@ -20,7 +21,11 @@ TakeScreenshot(){
     buildId=$("$adb" -s $serial shell getprop ro.build.id)
     ldap=$(whoami)
     now=$(date +'%m%d%Y%H%M%S')
-    finalFileName=$deviceName$buildId$ldap$now.png
+    if [ -n "$activityName" ]; then
+        finalFileName=$activityName-$now.png
+    else
+        finalFileName=$deviceName$buildId$ldap$now.png
+    fi
     finalFileName="${finalFileName//[$'\t\r\n ']}"
     echo "Taking screenshot of $serial"
 
@@ -32,10 +37,6 @@ TakeScreenshot(){
 }
 
 echo "###### $screenshotFolder"
-mkdir -p '$screenshotFolder"
+mkdir -p "$screenshotFolder"
 cd "$screenshotFolder"
-
-
-#mkdir -p ~/Desktop/AndroidTool
-#cd ~/Desktop/AndroidTool
 TakeScreenshot

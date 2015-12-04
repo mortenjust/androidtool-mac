@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="Opa-AO-rxm">
-                                <rect key="frame" x="0.0" y="0.0" width="289" height="38"/>
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <animations/>
                                 <size key="intercellSpacing" width="3" height="2"/>

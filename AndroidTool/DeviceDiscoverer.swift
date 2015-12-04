@@ -70,7 +70,6 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         var newDevices = [Device]()
         
         if updatingSuspended { return }
-        
 
         print("+", terminator: "")
         

@@ -4,17 +4,33 @@ import Cocoa
 import Foundation
 
 var string = "Morten Just's iPhone"
-
 var total = 0
 
-extension NSDate
-{
-    convenience
-    init(dateString:String) {
-        let dateStringFormatter = NSDateFormatter()
-        dateStringFormatter.dateFormat = "yyyy-MM-dd"
-        dateStringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-        let d = dateStringFormatter.dateFromString(dateString)!
-        self.init(timeInterval:0, sinceDate:d)
-    }
+let shouldDoOne = true
+let shouldDoTwo = true
+
+func maybeDoOne(actuallyDo:Bool, complete:()->Void) {
+    if actuallyDo {
+        print("Did one")
+        }
+    complete()
+}
+
+
+func maybeDoTwo(actuallyDo:Bool, complete:()->Void) {
+    if actuallyDo {
+        print("Did two")
+        }
+    complete()
+}
+
+func doFinalAction(){
+    print("Did final action")
+}
+
+
+maybeDoOne(shouldDoOne) { () -> Void in
+    maybeDoTwo(shouldDoTwo, complete: { () -> Void in
+        doFinalAction()
+    })
 }

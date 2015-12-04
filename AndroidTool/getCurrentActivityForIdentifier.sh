@@ -10,3 +10,4 @@ thisdir=$1 # $1 is the bundle resources path directly from the calling script fi
 identifier=$2
 adb=$thisdir/adb
 
+$adb -s $identifier shell dumpsys activity recents | sed -n '1,/realActivity/s/realActivity=//p'

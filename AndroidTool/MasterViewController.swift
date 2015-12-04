@@ -88,8 +88,6 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     func showEmptyState(){
         // resize window 
         
-
-        
         if !emptyStateView.isDescendantOf(view) {
             emptyStateView.frame.origin.y = -15
             emptyStateView.frame.origin.x = 45
@@ -104,11 +102,7 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     }
     
     func devicesUpdated(deviceList: [Device]) {
-
-        
         let newSig = deviceListSignature(deviceList)
-        
-        
         
         if deviceList.count == 0 {
             previousSig=0
@@ -118,14 +112,23 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
             removeEmptyState()
         }
         
+        
+        devices = deviceList
+        devices.sortInPlace({$0.model < $1.model})
+        // refresh each device with updated data like current activity
+        
+//        for deviceVC in deviceVCs {
+//            for device in devices {
+//                if deviceVC.device.adbIdentifier == device.adbIdentifier {
+//                    deviceVC.device = device
+//                    deviceVC.setStatusToCurrentActivity()
+//                }
+//            }
+//        }
+        
         // make sure we don't refresh the tableview when it's not necessary
-        if newSig != previousSig {
+        if newSig != previousSig  {
 
-            var et = devices
-            var to = deviceList
-
-            devices = deviceList
-            devices.sortInPlace({$0.model < $1.model})
             devicesTable.reloadData()
 
             var newHeight=Util().deviceHeight

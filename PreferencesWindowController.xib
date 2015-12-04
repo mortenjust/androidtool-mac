@@ -34,17 +34,8 @@
                                     <rect key="frame" x="10" y="33" width="440" height="276"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wwd-Ah-azE">
-                                            <rect key="frame" x="4" y="126" width="142" height="20"/>
-                                            <animations/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Screen recordings:" id="ebw-mg-LxG">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2n-4W-O3f">
-                                            <rect key="frame" x="4" y="183" width="142" height="20"/>
+                                            <rect key="frame" x="4" y="206" width="142" height="20"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Screenshots:" id="Oop-61-0VG">
                                                 <font key="font" metaFont="system"/>
@@ -53,7 +44,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zPE-KE-WO7">
-                                            <rect key="frame" x="146" y="176" width="90" height="32"/>
+                                            <rect key="frame" x="146" y="199" width="90" height="32"/>
                                             <animations/>
                                             <buttonCell key="cell" type="push" title="Select..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fr2-hi-qus">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -64,7 +55,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PFu-rq-rnM">
-                                            <rect key="frame" x="151" y="163" width="285" height="17"/>
+                                            <rect key="frame" x="151" y="186" width="285" height="17"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/Users/mortenjust/Desktop/AndroidTool/kasse" id="f6t-VL-PRL">
                                                 <font key="font" metaFont="miniSystem"/>
@@ -75,8 +66,28 @@
                                                 <binding destination="gL2-7b-O6c" name="value" keyPath="values.screenshotsFolder" id="ImR-tn-jr6"/>
                                             </connections>
                                         </textField>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u5i-jo-Tkm">
+                                            <rect key="frame" x="152" y="170" width="262" height="18"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="check" title="Use current Android activity in filename" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YSr-EY-vQ3">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.useActivityInFilename" id="di0-8T-IE4"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wwd-Ah-azE">
+                                            <rect key="frame" x="4" y="120" width="142" height="20"/>
+                                            <animations/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Screen recordings:" id="ebw-mg-LxG">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NY0-DN-3iT">
-                                            <rect key="frame" x="147" y="119" width="90" height="32"/>
+                                            <rect key="frame" x="147" y="113" width="90" height="32"/>
                                             <animations/>
                                             <buttonCell key="cell" type="push" title="Select..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wSK-Ze-K6i">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -87,7 +98,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yiG-AH-Phl">
-                                            <rect key="frame" x="152" y="106" width="285" height="17"/>
+                                            <rect key="frame" x="152" y="100" width="285" height="17"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/Users/mortenjust/Desktop/AndroidTool/kasse" id="ahs-qP-Guo">
                                                 <font key="font" metaFont="miniSystem"/>

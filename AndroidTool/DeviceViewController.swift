@@ -44,20 +44,41 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         statusLabel.setText(text)
     }
     
+    
+    func maybeChangeStatusBar(should:Bool, completion:()->Void){
+        if should {
+            setStatus("Changing status bar")
+            uiTweaker.start({ () -> Void in
+                completion()
+            })
+        } else {
+            completion()
+        }
+    }
+    
+    func maybeUseActivityFilename(should:Bool, completion:()->Void){
+        if should{
+            setStatus("Using activity as filename")
+            device.getCurrentActivity({ (activityName) -> Void in
+                completion()
+            })
+        } else {
+            completion()
+        }
+        
+    }
+    
+    
     func takeScreenshot(){
-        setStatus("Taking screenshot")
+        setStatus("Starting screenshot engines")
         self.startProgressIndication()
         if device.deviceOS == DeviceOS.Android {
-            if shouldChangeStatusBar(){
-                setStatus("Changing status bar")
-                uiTweaker.start({ () -> Void in
+            maybeChangeStatusBar(self.shouldChangeStatusBar(), completion: { () -> Void in
+                self.maybeUseActivityFilename(self.shouldUseActivityInFilename(), completion: { () -> Void in
                     self.takeAndroidScreenshot()
                 })
-            } else {
-                self.takeAndroidScreenshot()
-            }
+            })
         }
-            
         if device.deviceOS == DeviceOS.Ios {
             print("IOS screenshot")
             let args = [device.uuid!, getFolderForScreenshots()]
@@ -79,14 +100,40 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         return NSUserDefaults.standardUserDefaults().stringForKey(C.PREF_SRCEENRECORDINGSFOLDER)!
     }
     
+    func cleanActivityName(a:String) -> String {
+//        let trimmed = a.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).stringByTrimmingCharactersInSet(NSCharacterSet.URLPathAllowedCharacterSet())
+        
+        var trimmed = a.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        trimmed = trimmed.stringByReplacingOccurrencesOfString("/", withString: "")
+        
+        
+        let components = trimmed.componentsSeparatedByString(".")
+        
+        var cleanName=""
+        if components.count > 1 {
+            cleanName = "\(components[components.count-2])-\(components[components.count-1])"
+            }
+        return cleanName
+    }
+    
+    func shouldUseActivityInFilename() -> Bool {
+        let should = NSUserDefaults.standardUserDefaults().boolForKey(C.PREF_USEACTIVITYINFILENAME)
+        if !should {
+            device.currentActivity = ""
+        }
+        return should
+    }
+    
     func takeAndroidScreenshot(){
+        setStatus("Taking screenshot")
+        let activity = self.cleanActivityName(device.currentActivity)
         
         let args = [self.device.adbIdentifier!,
-            getFolderForScreenshots()
+                    getFolderForScreenshots(),
+                    activity
         ]
         
         ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: args) { (output) -> Void in
-
             Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
             self.exitDemoModeIfNeeded()
             self.stopProgressIndication()

@@ -25,7 +25,7 @@ finalFileName=$deviceName$buildId$ldap$now
 finalFileName="${finalFileName//[$'\t\r\n ']}"
 
 echo "###### $screenRecFolder"
-mkdir -p '$screenRecFolder"
+mkdir -p "$screenRecFolder"
 cd "$screenRecFolder"
 
 

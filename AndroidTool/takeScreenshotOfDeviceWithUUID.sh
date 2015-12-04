@@ -23,6 +23,6 @@ TakeScreenshot(){
 }
 
 echo "###### $screenshotFolder"
-mkdir -p '$screenshotFolder"
+mkdir -p "$screenshotFolder"
 cd "$screenshotFolder"
 TakeScreenshot

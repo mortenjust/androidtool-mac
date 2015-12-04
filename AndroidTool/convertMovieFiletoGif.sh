@@ -17,7 +17,7 @@ ConvertFile(){
 }
 
 echo "###### $screenRecFolder"
-mkdir -p '$screenRecFolder"
+mkdir -p "$screenRecFolder"
 cd "$screenRecFolder"
 
 ConvertFile

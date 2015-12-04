@@ -18,8 +18,8 @@ class Constants {
     static let DROP_INVITE = "Drop a ZIP or APK prototype"
     static let PREF_SCREENSHOTFOLDER = "screenshotsFolder"
     static let PREF_SRCEENRECORDINGSFOLDER = "screenRecordingsFolder"
+    static let PREF_USEACTIVITYINFILENAME = "useActivityInFilename"
     
-
     
     static let defaultPrefValues = [
         "timeValue":"10:09"
@@ -30,6 +30,7 @@ class Constants {
         ,"screenRecordingsFolder": "~/Desktop/AndroidTool"
         ,"screenshotsFolder": "~/Desktop/AndroidTool"
         ,"createGIF": true
+        ,"useActivityInFilename":true
     ]
     
     static let tweakProperties = ["bluetooth", "clock", "alarm", "sync", "wifi", "location", "volume", "mute", "notifications", "mobile", "mobileDatatype", "mobileLevel", "batteryLevel", "batteryCharging", "airplane", "nosim", "speakerphone"]

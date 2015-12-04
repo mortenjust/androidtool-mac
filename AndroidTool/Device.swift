@@ -39,6 +39,7 @@ class Device: NSObject {
     var deviceOS : DeviceOS!
     var uuid : String!
     var avDevice : AVCaptureDevice! // for iOS only
+    var currentActivity : String = ""
     
     convenience init(avDevice:AVCaptureDevice) {
         self.init()
@@ -79,17 +80,26 @@ class Device: NSObject {
             }
             }
         
-        let task = ShellTasker(scriptFile: "getResolutionForSerial")
+        var task = ShellTasker(scriptFile: "getResolutionForSerial")
         task.outputIsVerbose = true
         task.run(arguments: ["\(self.adbIdentifier!)"], isUserScript: false) { (output) -> Void in
             let res = output as String
-            
             if res.rangeOfString("Physical size:") != nil {
                 self.resolution = self.getResolutionFromString(output as String)
             } else {
                 print("Awkward. No size found. What I did find was \(res)")
             }
-
+        }
+    }
+    
+    
+    func getCurrentActivity(completion:(activityName:String)->Void){
+        let task = ShellTasker(scriptFile: "getCurrentActivityForIdentifier")
+        task.outputIsVerbose = true
+        task.run(arguments: ["\(self.adbIdentifier!)"], isUserScript: false, isIOS: false) { (output) -> Void in
+            let res = output as String
+            self.currentActivity = res
+            completion(activityName: res)
         }
 
     }
