@@ -20,6 +20,13 @@
 		C8595D1E1BF5C95500805042 /* WindowMoverTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */; };
 		C8595D201BF660E100805042 /* WIndowMoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */; };
 		C8595D221BF6A55700805042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D211BF6A55700805042 /* Constants.swift */; };
+		C86C15F71C13958100E22CEC /* aapt in Resources */ = {isa = PBXBuildFile; fileRef = C86C15F61C13958100E22CEC /* aapt */; };
+		C86C15F91C1395DC00E22CEC /* getApkInfo.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C15F81C1395DC00E22CEC /* getApkInfo.sh */; };
+		C86C15FB1C1395F700E22CEC /* installZip.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C15FA1C1395F700E22CEC /* installZip.sh */; };
+		C86C15FD1C13961200E22CEC /* fastboot in Resources */ = {isa = PBXBuildFile; fileRef = C86C15FC1C13961200E22CEC /* fastboot */; };
+		C86C15FF1C13993400E22CEC /* ApkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C15FE1C13993400E22CEC /* ApkHandler.swift */; };
+		C86C16011C13997100E22CEC /* Apk.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C16001C13997100E22CEC /* Apk.swift */; };
+		C86C16031C139B8F00E22CEC /* launchActivity.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C16021C139B8F00E22CEC /* launchActivity.sh */; };
 		C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */; };
 		C87E3AE71BFF7DBB00275AA2 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */; };
 		C87E3AF11C01128500275AA2 /* RawOutputWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */; };
@@ -103,6 +110,13 @@
 		C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowMoverTableCellView.swift; sourceTree = "<group>"; };
 		C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WIndowMoverImageView.swift; path = ../WIndowMoverImageView.swift; sourceTree = "<group>"; };
 		C8595D211BF6A55700805042 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C86C15F61C13958100E22CEC /* aapt */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aapt; sourceTree = "<group>"; };
+		C86C15F81C1395DC00E22CEC /* getApkInfo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getApkInfo.sh; sourceTree = "<group>"; };
+		C86C15FA1C1395F700E22CEC /* installZip.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = installZip.sh; sourceTree = "<group>"; };
+		C86C15FC1C13961200E22CEC /* fastboot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = fastboot; sourceTree = "<group>"; };
+		C86C15FE1C13993400E22CEC /* ApkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApkHandler.swift; sourceTree = "<group>"; };
+		C86C16001C13997100E22CEC /* Apk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apk.swift; sourceTree = "<group>"; };
+		C86C16021C139B8F00E22CEC /* launchActivity.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = launchActivity.sh; sourceTree = "<group>"; };
 		C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = previewPopoverViewController.swift; sourceTree = "<group>"; };
 		C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawOutputWindowController.swift; sourceTree = "<group>"; };
@@ -248,6 +262,7 @@
 				C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */,
 				C8B131941AEB3B5100BCD4F3 /* DevicePickerViewController.swift */,
 				C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */,
+				C86C15FE1C13993400E22CEC /* ApkHandler.swift */,
 				C8595D191BF5C1EE00805042 /* WindowMoverView.swift */,
 				C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */,
 				C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */,
@@ -257,6 +272,7 @@
 				C8595D211BF6A55700805042 /* Constants.swift */,
 				C856FFDD1BFB91110098B1E2 /* C.swift */,
 				C8B514631AE85D610071C86A /* Supporting Files */,
+				C86C16001C13997100E22CEC /* Apk.swift */,
 			);
 			path = AndroidTool;
 			sourceTree = "<group>";
@@ -290,8 +306,13 @@
 			isa = PBXGroup;
 			children = (
 				C8D4F79F1BF84BF5001F8C6E /* adb */,
+				C86C15F61C13958100E22CEC /* aapt */,
 				C8BF506E1AFBE21A005C725D /* idevicescreenshot */,
 				C8B9D4821AE9B34F00927B96 /* ffmpeg */,
+				C86C15FC1C13961200E22CEC /* fastboot */,
+				C86C16021C139B8F00E22CEC /* launchActivity.sh */,
+				C86C15FA1C1395F700E22CEC /* installZip.sh */,
+				C86C15F81C1395DC00E22CEC /* getApkInfo.sh */,
 				C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */,
 				C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */,
 				C8B9D4851AE9C3A100927B96 /* getSerials.sh */,
@@ -412,15 +433,19 @@
 			files = (
 				C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */,
 				C856FFDF1BFDA61A0098B1E2 /* exitDemoMode.sh in Resources */,
+				C86C16031C139B8F00E22CEC /* launchActivity.sh in Resources */,
+				C86C15F71C13958100E22CEC /* aapt in Resources */,
 				C856FFE01BFDA61A0098B1E2 /* setDemoModeOptions.sh in Resources */,
 				C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */,
 				C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */,
 				C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */,
 				C8A0F8B81AFC319A00B3A90C /* libusbmuxd.2.dylib in Resources */,
+				C86C15FB1C1395F700E22CEC /* installZip.sh in Resources */,
 				C8A0F8B91AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib in Resources */,
 				C8A0F8BA1AFC319A00B3A90C /* libplist.2.dylib in Resources */,
 				C8D4F7A01BF84BF5001F8C6E /* adb in Resources */,
 				C8A0F8BB1AFC319A00B3A90C /* libplist.1.1.10.dylib in Resources */,
+				C86C15F91C1395DC00E22CEC /* getApkInfo.sh in Resources */,
 				C8A0F8BC1AFC319A00B3A90C /* libosxfuse_i64.2.dylib in Resources */,
 				C8A0F8BD1AFC319A00B3A90C /* libosxfuse_i32.2.dylib in Resources */,
 				C8A0F8BE1AFC319A00B3A90C /* libimobiledevice.4.dylib in Resources */,
@@ -429,6 +454,7 @@
 				C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */,
 				C8B131971AEB3B5100BCD4F3 /* DevicePickerViewController.xib in Resources */,
 				C87E3AF21C01128500275AA2 /* RawOutputWindowController.xib in Resources */,
+				C86C15FD1C13961200E22CEC /* fastboot in Resources */,
 				C8B131891AEB10FA00BCD4F3 /* startRecordingForSerial.sh in Resources */,
 				C8B1315A1AE9D47700BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh in Resources */,
 				C8B131581AE9CE9700BCD4F3 /* Images.xcassets in Resources */,
@@ -464,9 +490,11 @@
 				C87E3AF51C0113B100275AA2 /* TerminalOutputTextView.swift in Sources */,
 				C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */,
 				C8B514851AE85D940071C86A /* Device.swift in Sources */,
+				C86C15FF1C13993400E22CEC /* ApkHandler.swift in Sources */,
 				C84079D51C0559B7002EC6D4 /* StatusTextField.swift in Sources */,
 				C856FFDE1BFB91110098B1E2 /* C.swift in Sources */,
 				C8595D1E1BF5C95500805042 /* WindowMoverTableCellView.swift in Sources */,
+				C86C16011C13997100E22CEC /* Apk.swift in Sources */,
 				C8595D201BF660E100805042 /* WIndowMoverImageView.swift in Sources */,
 				C87E3AF71C0113DA00275AA2 /* Styles.swift in Sources */,
 				C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */,

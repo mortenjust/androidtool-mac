@@ -111,6 +111,35 @@ class Util {
     func stopRefreshingDeviceList(){
         NSNotificationCenter.defaultCenter().postNotificationName("suspendAdb", object: self, userInfo:nil)
     }
+    
+    func findMatchesInString(rawdata:String, regex:String) -> [String]? {
+        do {
+            let re = try NSRegularExpression(pattern: regex,
+                options: NSRegularExpressionOptions.CaseInsensitive)
+            
+            let matches = re.matchesInString(rawdata,
+                options: NSMatchingOptions.ReportProgress,
+                range:
+                NSRange(location: 0, length: rawdata.utf16.count))
+            
+            if matches.count != 0 {
+                var results = [String]()
+                for match in matches {
+                    let result = (rawdata as NSString).substringWithRange(match.rangeAtIndex(1))
+                    results.append(result)
+                }
+                return results
+            }
+            else {
+                return nil
+            }
+            
+        } catch {
+            print("Problem!")
+            return nil
+        }
+    }
+
 
 }
 

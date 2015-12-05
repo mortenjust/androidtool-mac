@@ -19,6 +19,7 @@ class Constants {
     static let PREF_SCREENSHOTFOLDER = "screenshotsFolder"
     static let PREF_SRCEENRECORDINGSFOLDER = "screenRecordingsFolder"
     static let PREF_USEACTIVITYINFILENAME = "useActivityInFilename"
+    static let PREF_LAUNCHINSTALLEDAPP = "launchInstalledApp"
     
     
     static let defaultPrefValues = [
@@ -31,6 +32,7 @@ class Constants {
         ,"screenshotsFolder": "~/Desktop/AndroidTool"
         ,"createGIF": true
         ,"useActivityInFilename":true
+        ,"launchInstalledApp":true
     ]
     
     static let tweakProperties = ["bluetooth", "clock", "alarm", "sync", "wifi", "location", "volume", "mute", "notifications", "mobile", "mobileDatatype", "mobileLevel", "batteryLevel", "batteryCharging", "airplane", "nosim", "speakerphone"]

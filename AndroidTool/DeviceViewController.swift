@@ -9,7 +9,7 @@
 import Cocoa
 import AVFoundation
 
-class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate, IOSRecorderDelegate, DropDelegate {
+class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate, IOSRecorderDelegate, DropDelegate, ApkHandlerDelegate {
     var device : Device!
     @IBOutlet weak var deviceNameField: NSTextField!
     @IBOutlet  var cameraButton: NSButton!
@@ -31,6 +31,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     var moreShouldClose = false
     var uiTweaker : UITweaker!
     var dropView : DropReceiverView!
+
     
     func shouldChangeStatusBar() -> Bool {
         if device.type == .Watch {
@@ -70,7 +71,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     
     func takeScreenshot(){
-        setStatus("Starting screenshot engines")
+        setStatus("Taking screenshot...")
         self.startProgressIndication()
         if device.deviceOS == DeviceOS.Android {
             maybeChangeStatusBar(self.shouldChangeStatusBar(), completion: { () -> Void in
@@ -362,10 +363,12 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
 
     func setup(){
 //        println("setting up view for \(device.name!)")    
-        uiTweaker = UITweaker(adbIdentifier: device.adbIdentifier!)
+        
+        if device.deviceOS == .Android {
+            uiTweaker = UITweaker(adbIdentifier: device.adbIdentifier!)
+            }
       dropView = self.view as! DropReceiverView
       dropView.delegate = self
-
     }
     
     func startProgressIndication(){
@@ -454,7 +457,11 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func dropDragEntered(filePath: String) {
         print("vc:dropDragEntered")
         startProgressIndication()
-        setStatus("Drop to install")
+        
+        let a = ApkHandler(filepath: filePath, device: self.device)
+        a.getInfoFromApk { (apk) -> Void in
+            self.setStatus("Drop to install \(apk.appName)")
+        }
     }
     
     
@@ -472,17 +479,57 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         // print("vc:dropUpdated")
     }
     
+//    func installApk(apkPath:String){
+//        let args = ["\(device.adbIdentifier!)",
+//            "\(apkPath)"]
+//        let apkName = NSURL(fileURLWithPath: apkPath).lastPathComponent!
+//        setStatus("Installing \(apkName)")
+//        print("installing on identifier \(args[0])")
+//        startProgressIndication()
+//        ShellTasker(scriptFile: "installApkOnDevice").run(arguments: args) { (output) -> Void in
+//        Util().showNotification("App installed on \(self.device.readableIdentifier())", moreInfo: "\(output)", sound: true)
+//            self.setStatus("\(apkName) installed")
+//            self.stopProgressIndication()
+//        }
+//    }
+
     func installApk(apkPath:String){
-        let args = ["\(device.adbIdentifier!)",
-            "\(apkPath)"]
-        let apkName = NSURL(fileURLWithPath: apkPath).lastPathComponent!
-        setStatus("Installing \(apkName)")
-        print("installing on identifier \(args[0])")
-        startProgressIndication()
-        ShellTasker(scriptFile: "installApkOnDevice").run(arguments: args) { (output) -> Void in
-        Util().showNotification("App installed on \(self.device.readableIdentifier())", moreInfo: "\(output)", sound: true)
-            self.setStatus("\(apkName) installed")
-            self.stopProgressIndication()
+        let apkHandler = ApkHandler(filepath: apkPath, device: self.device)
+        apkHandler.delegate = self
+        
+        self.startProgressIndication()
+        
+        if NSUserDefaults.standardUserDefaults().boolForKey(C.PREF_LAUNCHINSTALLEDAPP) {
+            apkHandler.installAndLaunch({ () -> Void in
+               print("installed and launched")
+               self.stopProgressIndication()
+            })
+        } else {
+            apkHandler.install({ () -> Void in
+                print("installed but not launched")
+                self.stopProgressIndication()
+            })
         }
     }
+    
+    func apkHandlerDidFinish() {
+        print("apkHandlerDidFinish")
+    }
+    
+    func apkHandlerDidGetInfo(apk: Apk) {
+        print("apkHandlerDidGetInfo")
+    }
+    
+    func apkHandlerDidStart() {
+        print("apkHandlerDidStart")
+    }
+    
+    func apkHandlerDidUpdate(update: String) {
+        setStatus(update)
+        print("apkHandlerDidUpdate: \(update)")
+    }
+    
+    
+    
+    
 }
