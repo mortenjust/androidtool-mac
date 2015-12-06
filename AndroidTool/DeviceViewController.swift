@@ -24,6 +24,9 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     @IBOutlet var previewPopover: NSPopover!
     @IBOutlet var previewView: NSView!
     
+    @IBOutlet weak var uninstallButton: NSButton!
+    
+    
     var iosHelper : IOSDeviceHelper!
     var shellTasker : ShellTasker!
     var isRecording = false
@@ -31,7 +34,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     var moreShouldClose = false
     var uiTweaker : UITweaker!
     var dropView : DropReceiverView!
-
+    var apkToUninstall : Apk!
     
     func shouldChangeStatusBar() -> Bool {
         if device.type == .Watch {
@@ -478,24 +481,15 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func dropUpdated(mouseAt: NSPoint) {
         // print("vc:dropUpdated")
     }
-    
-//    func installApk(apkPath:String){
-//        let args = ["\(device.adbIdentifier!)",
-//            "\(apkPath)"]
-//        let apkName = NSURL(fileURLWithPath: apkPath).lastPathComponent!
-//        setStatus("Installing \(apkName)")
-//        print("installing on identifier \(args[0])")
-//        startProgressIndication()
-//        ShellTasker(scriptFile: "installApkOnDevice").run(arguments: args) { (output) -> Void in
-//        Util().showNotification("App installed on \(self.device.readableIdentifier())", moreInfo: "\(output)", sound: true)
-//            self.setStatus("\(apkName) installed")
-//            self.stopProgressIndication()
-//        }
-//    }
 
     func installApk(apkPath:String){
         let apkHandler = ApkHandler(filepath: apkPath, device: self.device)
         apkHandler.delegate = self
+        
+        var apk:Apk!
+        apkHandler.getInfoFromApk { (apkInfo) -> Void in
+            apk = apkInfo
+        }
         
         self.startProgressIndication()
         
@@ -503,14 +497,34 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             apkHandler.installAndLaunch({ () -> Void in
                print("installed and launched")
                self.stopProgressIndication()
+               self.showUninstallButton(apk)
             })
         } else {
             apkHandler.install({ () -> Void in
                 print("installed but not launched")
                 self.stopProgressIndication()
+                self.showUninstallButton(apk)
             })
         }
     }
+    
+    func showUninstallButton(apk:Apk){
+        uninstallButton.title = "Uninstall \(apk.appName)"
+        apkToUninstall = apk
+        uninstallButton.hidden = false
+    }
+    
+    @IBAction func uninstallPackageClicked(sender: AnyObject) {
+        startProgressIndication()
+        setStatus("Removing \(apkToUninstall.appName)...")
+        let handler = ApkHandler(device: self.device)
+        handler.uninstallPackageWithName(apkToUninstall.packageName!) { () -> Void in
+            self.uninstallButton.hidden = true
+            self.stopProgressIndication()
+            self.setStatus("\(self.apkToUninstall.appName) removed")
+        }
+    }
+    
     
     func apkHandlerDidFinish() {
         print("apkHandlerDidFinish")

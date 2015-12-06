@@ -27,6 +27,12 @@ class ApkHandler: NSObject {
         self.device = device
     }
     
+    init(device:Device){
+        print(">>apk init apkhandler with no apk")
+        super.init()
+        self.device = device
+    }
+    
     func installAndLaunch(complete:()->Void){
         delegate?.apkHandlerDidStart()
         print(">>apkhandle")
@@ -50,6 +56,18 @@ class ApkHandler: NSObject {
         s.run(arguments: [device.adbIdentifier!, filepath]) { (output) -> Void in
             completion()
         }
+    }
+    
+    func uninstallPackageWithName(packageName:String, completion:()->Void){
+        print(">>Uninstall")
+        delegate?.apkHandlerDidUpdate("Uninstalling app")
+        let s = ShellTasker(scriptFile: "uninstallPackageOnDevice")
+        let args = [device.adbIdentifier!, packageName]
+        
+        s.run(arguments: args, isUserScript: false, isIOS: false) { (output) -> Void in
+            completion()
+        }
+        
     }
     
     func getInfoFromApk(complete:(Apk) -> Void){

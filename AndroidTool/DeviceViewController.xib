@@ -16,6 +16,7 @@
                 <outlet property="previewView" destination="aXY-ZJ-zm6" id="8Ci-D3-bj4"/>
                 <outlet property="scriptsPopover" destination="ehy-LG-M3d" id="9va-Ew-7K5"/>
                 <outlet property="statusLabel" destination="h6A-EG-vNe" id="5BU-3B-zam"/>
+                <outlet property="uninstallButton" destination="bfh-q2-aND" id="iUI-kP-EDE"/>
                 <outlet property="videoButton" destination="v4Z-CU-6yJ" id="yrr-cA-amX"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -109,6 +110,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-q2-aND">
+                    <rect key="frame" x="265" y="4" width="106" height="32"/>
+                    <animations/>
+                    <buttonCell key="cell" type="push" title="Uninstall Flickr" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MHl-RW-Gb1">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system" size="9"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="uninstallPackageClicked:" target="-2" id="mVk-F7-lNR"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="nPB-sF-sUh" firstAttribute="leading" secondItem="uj9-du-tFf" secondAttribute="leading" id="6bt-8G-0zB"/>

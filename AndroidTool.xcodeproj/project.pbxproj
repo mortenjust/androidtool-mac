@@ -27,6 +27,7 @@
 		C86C15FF1C13993400E22CEC /* ApkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C15FE1C13993400E22CEC /* ApkHandler.swift */; };
 		C86C16011C13997100E22CEC /* Apk.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C16001C13997100E22CEC /* Apk.swift */; };
 		C86C16031C139B8F00E22CEC /* launchActivity.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C16021C139B8F00E22CEC /* launchActivity.sh */; };
+		C86C16051C13B4B900E22CEC /* uninstallPackageOnDevice.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C16041C13B4B900E22CEC /* uninstallPackageOnDevice.sh */; };
 		C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */; };
 		C87E3AE71BFF7DBB00275AA2 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */; };
 		C87E3AF11C01128500275AA2 /* RawOutputWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */; };
@@ -117,6 +118,7 @@
 		C86C15FE1C13993400E22CEC /* ApkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApkHandler.swift; sourceTree = "<group>"; };
 		C86C16001C13997100E22CEC /* Apk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apk.swift; sourceTree = "<group>"; };
 		C86C16021C139B8F00E22CEC /* launchActivity.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = launchActivity.sh; sourceTree = "<group>"; };
+		C86C16041C13B4B900E22CEC /* uninstallPackageOnDevice.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstallPackageOnDevice.sh; sourceTree = "<group>"; };
 		C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = previewPopoverViewController.swift; sourceTree = "<group>"; };
 		C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawOutputWindowController.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				C856FFDB1BFB095E0098B1E2 /* exitDemoMode.sh */,
 				C856FFDC1BFB0A520098B1E2 /* setDemoModeOptions.sh */,
 				C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */,
+				C86C16041C13B4B900E22CEC /* uninstallPackageOnDevice.sh */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				C8A0F8B81AFC319A00B3A90C /* libusbmuxd.2.dylib in Resources */,
 				C86C15FB1C1395F700E22CEC /* installZip.sh in Resources */,
 				C8A0F8B91AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib in Resources */,
+				C86C16051C13B4B900E22CEC /* uninstallPackageOnDevice.sh in Resources */,
 				C8A0F8BA1AFC319A00B3A90C /* libplist.2.dylib in Resources */,
 				C8D4F7A01BF84BF5001F8C6E /* adb in Resources */,
 				C8A0F8BB1AFC319A00B3A90C /* libplist.1.1.10.dylib in Resources */,
