@@ -20,6 +20,7 @@ class Constants {
     static let PREF_SRCEENRECORDINGSFOLDER = "screenRecordingsFolder"
     static let PREF_USEACTIVITYINFILENAME = "useActivityInFilename"
     static let PREF_LAUNCHINSTALLEDAPP = "launchInstalledApp"
+    static let PREF_FLASHIMAGESINZIPFILES = "flashImagesInZipFiles"
     
     
     static let defaultPrefValues = [
@@ -33,6 +34,7 @@ class Constants {
         ,"createGIF": true
         ,"useActivityInFilename":true
         ,"launchInstalledApp":true
+        ,"flashImagesInZipFiles":true
     ]
     
     static let tweakProperties = ["bluetooth", "clock", "alarm", "sync", "wifi", "location", "volume", "mute", "notifications", "mobile", "mobileDatatype", "mobileLevel", "batteryLevel", "batteryCharging", "airplane", "nosim", "speakerphone"]

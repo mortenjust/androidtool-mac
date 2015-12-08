@@ -9,22 +9,30 @@
 import Cocoa
 import AVFoundation
 
-class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate, IOSRecorderDelegate, DropDelegate, ApkHandlerDelegate {
+class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate, IOSRecorderDelegate, DropDelegate, ApkHandlerDelegate, ZipHandlerDelegate {
     var device : Device!
     @IBOutlet weak var deviceNameField: NSTextField!
     @IBOutlet  var cameraButton: NSButton!
     @IBOutlet weak var deviceImage: NSImageView!
     @IBOutlet weak var progressBar: NSProgressIndicator!
-    @IBOutlet weak var videoButton: NSButton!
-    @IBOutlet weak var moreButton: NSButton!
+    @IBOutlet weak var videoButton: MovableButton!
+    @IBOutlet weak var moreButton: MovableButton!
     @IBOutlet weak var loaderButton: LoaderView!
     @IBOutlet weak var statusLabel: StatusTextField!
     var restingButton : NSImage!
     @IBOutlet var scriptsPopover: NSPopover!
     @IBOutlet var previewPopover: NSPopover!
     @IBOutlet var previewView: NSView!
+    @IBOutlet weak var uninstallButton: MovableButton!
     
-    @IBOutlet weak var uninstallButton: NSButton!
+    
+    // install invite
+    
+    @IBOutlet var installInviteView: NSView!
+    @IBOutlet weak var inviteAppName: NSTextField!
+    @IBOutlet weak var inviteVersions: NSTextField!
+    @IBOutlet weak var invitePackageName: NSTextField!
+    @IBOutlet weak var inviteIcon: NSImageView!
     
     
     var iosHelper : IOSDeviceHelper!
@@ -352,8 +360,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         device = _device
         super.init(nibName: "DeviceViewController", bundle: nil)
         setup()
-        
-        
     }
     
     override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -365,25 +371,23 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
 
     func setup(){
-//        println("setting up view for \(device.name!)")    
-        
         if device.deviceOS == .Android {
             uiTweaker = UITweaker(adbIdentifier: device.adbIdentifier!)
             }
       dropView = self.view as! DropReceiverView
       dropView.delegate = self
+        
+    
+//        let apk = Apk(rawAaptBadgingData: "hej")
+//        showUninstallButton(apk)
+        
     }
     
     func startProgressIndication(){
         Util().stopRefreshingDeviceList()
-//        progressBar.usesThreadedAnimation = true
-//        progressBar.startAnimation(nil)
-        
         dispatch_after(1, dispatch_get_main_queue()) { () -> Void in
             self.loaderButton.startRotating()
         }
-        
-        
     }
     
     func stopProgressIndication(){
@@ -451,37 +455,177 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         } else {
             // Fallback on earlier versions
         }
-        // Do view setup here.
-        
         setStatus("")
     }
     
     
-    func dropDragEntered(filePath: String) {
-        print("vc:dropDragEntered")
-        startProgressIndication()
-        
-        let a = ApkHandler(filepath: filePath, device: self.device)
-        a.getInfoFromApk { (apk) -> Void in
-            self.setStatus("Drop to install \(apk.appName)")
-        }
+    func hideButtons(){
+        Util().fadeViewsOutStaggered([moreButton, cameraButton, videoButton])
+        uninstallButton.alphaValue = 0
     }
     
+    
+    func showButtons(){
+        Util().fadeViewsInStaggered([moreButton, cameraButton, videoButton])
+        uninstallButton.alphaValue = 1
+    }
+    
+    
+    func transitionInstallInvite(moveIn:Bool=true, completion:()->Void){
+        let move = CABasicAnimation(keyPath: "position.y")
+        move.duration = 0.3
+        
+        if moveIn {
+            move.toValue = 30
+            move.fromValue = 20
+        } else {
+            move.toValue = 20
+            move.fromValue = 30
+        }
+            
+        move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        installInviteView.wantsLayer = true
+        let fade = CABasicAnimation(keyPath: "opacity")
+        fade.duration = 0.3
+        
+        if moveIn {
+            fade.toValue = 1
+            fade.fromValue = 0
+        } else {
+            fade.toValue = 0
+            fade.fromValue = 1
+        }
+        
+        fade.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { () -> Void in
+            completion()
+        }
+        installInviteView.layer?.addAnimation(fade, forKey: "fader")
+        installInviteView.layer?.addAnimation(move, forKey: "mover")
+        CATransaction.commit()
+    }
+    
+    
+    func showInstallInvite(forApk apk:Apk){
+        installInviteView.frame.origin = NSMakePoint(120, 30)
+        view.addSubview(installInviteView)
+        
+        transitionInstallInvite(true) { () -> Void in }
+        
+        inviteAppName.stringValue = apk.appName
+        if let versionName = apk.versionName {
+            inviteVersions.stringValue = versionName
+        }
+
+        if let versionCode = apk.versionCode {
+            inviteVersions.stringValue = "\(inviteVersions.stringValue) (\(versionCode))"
+        }
+        
+        if let packageName = apk.packageName {
+            invitePackageName.stringValue = packageName
+        }
+        
+        if let localIcon = apk.localIconPath {
+            print("icon is: \(localIcon)")
+            let i = NSImage(byReferencingFile: localIcon)
+            inviteIcon.image = i
+        }
+        
+    }
+    
+    func hideInstallInviteView(){
+        transitionInstallInvite(false) { () -> Void in
+            self.installInviteView.removeFromSuperview()
+        }
+
+    }
+    
+    func dropDragEntered(filePath: String) {
+        print("vc:dropDragEntered")
+
+        if let fileExt = NSURL(fileURLWithPath: filePath).pathExtension {
+            switch fileExt {
+                case "apk":
+                    hideButtons()
+                    let a = ApkHandler(filepath: filePath, device: self.device)
+                    a.getInfoFromApk { (apk) -> Void in
+                        self.setStatus("Drop to install")
+                        self.showInstallInvite(forApk: apk)
+                }
+                case "zip":
+                    if NSUserDefaults.standardUserDefaults().boolForKey(C.PREF_FLASHIMAGESINZIPFILES){
+                        setStatus("Drop to flash image with Fastboot")
+                    } else {
+                        setStatus("Enable flashing in Prefs first")
+                }
+            default:
+                setStatus("Whaaaaat, what is this file?")
+            }
+            }
+
+        
+    }
     
     func dropDragExited() {
         print("vc:dropDragExited")
         stopProgressIndication()
+        hideInstallInviteView()
+        showButtons()
+        setStatus(" ")
     }
     
     func dropDragPerformed(filePath: String) {
+        if device.deviceOS != .Android {return}
+        startProgressIndication()
+
         print("vc:dropDragPerformed")
-        installApk(filePath)
+        
+        if let fileExt = NSURL(fileURLWithPath: filePath).pathExtension {
+            switch fileExt {
+                case "apk":
+                    installApk(filePath)
+                    hideInstallInviteView()
+                    showButtons()
+                case "zip":
+                    if NSUserDefaults.standardUserDefaults().boolForKey(C.PREF_FLASHIMAGESINZIPFILES){
+                        flashZip(filePath)
+                    } else {
+                        stopProgressIndication()
+                        self.setStatus("Enable flashing in Prefs")
+                }
+                default:
+                stopProgressIndication()
+                setStatus("Wait, what?")
+            }
+        }
     }
+    
     
     func dropUpdated(mouseAt: NSPoint) {
         // print("vc:dropUpdated")
     }
-
+    
+    
+    func flashZip(filePath:String){
+        print("flashZip")
+        startProgressIndication()
+        let handler = ZipHandler(filepath: filePath, device: self.device)
+        handler.delegate = self
+        handler.flash()
+    }
+    
+    func zipHandlerDidFinish() {
+        setStatus("Finished flashing image")
+        stopProgressIndication()
+    }
+    
+    func zipHandlerDidStart() {
+        setStatus("Flashing image")
+        startProgressIndication()
+    }
+    
     func installApk(apkPath:String){
         let apkHandler = ApkHandler(filepath: apkPath, device: self.device)
         apkHandler.delegate = self
@@ -509,20 +653,38 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func showUninstallButton(apk:Apk){
+        
         uninstallButton.title = "Uninstall \(apk.appName)"
         apkToUninstall = apk
         uninstallButton.hidden = false
+        uninstallButton.fadeIn()
+        uninstallButton.moveUpForUninstallButton(0.5)
+        moreButton.moveUpForUninstallButton(0.6)
+        videoButton.moveUpForUninstallButton(0.6)
+    }
+    
+    func hideUninstallButton(){
+        uninstallButton.fadeOut({ () -> Void in })
+        uninstallButton.moveDownForUninstallButton(0.5)
+        moreButton.moveDownForUninstallButton(0.6)
+        videoButton.moveDownForUninstallButton(0.6)
     }
     
     @IBAction func uninstallPackageClicked(sender: AnyObject) {
         startProgressIndication()
         setStatus("Removing \(apkToUninstall.appName)...")
         let handler = ApkHandler(device: self.device)
-        handler.uninstallPackageWithName(apkToUninstall.packageName!) { () -> Void in
-            self.uninstallButton.hidden = true
-            self.stopProgressIndication()
-            self.setStatus("\(self.apkToUninstall.appName) removed")
-        }
+        
+        self.moreButton.moveDownForUninstallButton()
+        self.videoButton.moveDownForUninstallButton()
+        self.hideUninstallButton()
+        
+        if let packageName = apkToUninstall.packageName {
+            handler.uninstallPackageWithName(packageName) { () -> Void in
+                self.stopProgressIndication()
+                self.setStatus("\(self.apkToUninstall.appName) removed")
+            }
+            }
     }
     
     

@@ -139,7 +139,69 @@ class Util {
             return nil
         }
     }
+    
+    
+    
+    func fadeViewTo(alphaValue:Float, view:NSView, delay:CFTimeInterval=0){
+        view.wantsLayer = true
 
+        let fade = CABasicAnimation(keyPath: "opacity")
+        fade.duration = 0.3
+        fade.beginTime = CACurrentMediaTime() + delay
+        fade.toValue = alphaValue
+        fade.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+
+        
+        let move = CABasicAnimation(keyPath: "position.y")
+        if alphaValue == 0 {
+            move.toValue = view.frame.origin.y-10
+        } else {
+            move.toValue = view.frame.origin.y
+        }
+        move.duration = fade.duration
+        move.beginTime = fade.beginTime
+        move.timingFunction = fade.timingFunction
+        
+        
+        CATransaction.begin()
+        view.layer?.addAnimation(fade, forKey: "fader")
+        view.layer?.addAnimation(move, forKey: "mover")
+        CATransaction.commit()
+        
+        view.layer?.position.y = move.toValue as! CGFloat
+        view.layer?.opacity = alphaValue
+        
+        
+    }
+    
+    
+    func fadeViewOut(view:NSView){
+        fadeViewTo(0, view: view)
+    }
+    
+    func fadeViewIn(view:NSView){
+        fadeViewTo(1, view: view)
+    }
+    
+    
+    func getStaggerDelay()->CFTimeInterval{ return 2}
+    
+    func fadeViewsInStaggered(views:[NSView]){
+        var delay:CFTimeInterval = 0
+        for view in views {
+            fadeViewTo(1, view: view, delay: delay)
+            delay += getStaggerDelay()
+        }
+    }
+    
+    func fadeViewsOutStaggered(views:[NSView]){
+        var delay:CFTimeInterval = 0
+        for view in views {
+            fadeViewTo(0, view: view, delay: delay)
+            delay += getStaggerDelay()
+        }
+    }
+    
 
 }
 

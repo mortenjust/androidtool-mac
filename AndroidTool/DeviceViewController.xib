@@ -10,6 +10,11 @@
                 <outlet property="cameraButton" destination="uj9-du-tFf" id="xHC-ZH-5Wf"/>
                 <outlet property="deviceImage" destination="JHB-80-wMe" id="8dE-kk-q7v"/>
                 <outlet property="deviceNameField" destination="yZB-Zv-KU6" id="Pe4-vX-CKF"/>
+                <outlet property="installInviteView" destination="Xkd-rL-g5V" id="9pX-0d-fkO"/>
+                <outlet property="inviteAppName" destination="usm-tH-qis" id="C0W-XO-Qqs"/>
+                <outlet property="inviteIcon" destination="bq5-OK-XMk" id="77U-CY-9Pi"/>
+                <outlet property="invitePackageName" destination="iJ8-8h-Zeb" id="EAI-ZJ-4zK"/>
+                <outlet property="inviteVersions" destination="rzj-TG-ghH" id="Yi7-3w-YtJ"/>
                 <outlet property="loaderButton" destination="nPB-sF-sUh" id="X0y-r6-jAt"/>
                 <outlet property="moreButton" destination="j3W-9F-lp5" id="8fM-2m-873"/>
                 <outlet property="previewPopover" destination="Hwm-yK-gRB" id="Dmo-os-iT7"/>
@@ -35,14 +40,14 @@
                     <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loaderButton" id="oBM-3v-w8D"/>
                 </imageView>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="uj9-du-tFf" userLabel="Camera button">
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="uj9-du-tFf" userLabel="Camera button" customClass="CameraButton" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="142" y="26" width="86" height="86"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="86" id="KSA-0p-eds"/>
                         <constraint firstAttribute="height" constant="86" id="ai9-tl-PUU"/>
                     </constraints>
                     <animations/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="cameraRoundGreen" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="9vb-52-Xec">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="cameraRoundGreen" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="9vb-52-Xec">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -50,7 +55,7 @@
                         <action selector="cameraClicked:" target="-2" id="5H3-km-Lpk"/>
                     </connections>
                 </button>
-                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-9F-lp5">
+                <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-9F-lp5" customClass="MovableButton" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="314" y="58" width="23" height="23"/>
                     <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="moreButtonPlus" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="kW8-ju-SPq">
@@ -61,7 +66,7 @@
                         <action selector="moreClicked:" target="-2" id="vr7-c1-cv3"/>
                     </connections>
                 </button>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="v4Z-CU-6yJ">
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="v4Z-CU-6yJ" customClass="MovableButton" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="251" y="53" width="43" height="32"/>
                     <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="recordButtonWhite" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="D4P-As-aix">
@@ -73,9 +78,9 @@
                     </connections>
                 </button>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="yMf-aI-rf0" userLabel="logo and model">
-                    <rect key="frame" x="0.0" y="20" width="198" height="82"/>
+                    <rect key="frame" x="0.0" y="20" width="142" height="82"/>
                     <subviews>
-                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-80-wMe" userLabel="deviceImage">
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-80-wMe" userLabel="deviceImage" customClass="DropPassThroughImageView" customModule="AndroidTool" customModuleProvider="target">
                             <rect key="frame" x="14" y="55" width="81" height="27"/>
                             <animations/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyDown" image="logotagheuer" id="k5s-A8-Hjn"/>
@@ -91,7 +96,7 @@
                         </textField>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="width" constant="198" id="Ryk-w6-pMG"/>
+                        <constraint firstAttribute="width" constant="142" id="Ryk-w6-pMG"/>
                         <constraint firstAttribute="height" constant="82" id="mra-UG-eQW"/>
                     </constraints>
                     <animations/>
@@ -110,10 +115,10 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-q2-aND">
-                    <rect key="frame" x="265" y="4" width="106" height="32"/>
+                <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-q2-aND" customClass="MovableButton" customModule="AndroidTool" customModuleProvider="target">
+                    <rect key="frame" x="230" y="21" width="129" height="32"/>
                     <animations/>
-                    <buttonCell key="cell" type="push" title="Uninstall Flickr" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MHl-RW-Gb1">
+                    <buttonCell key="cell" type="push" title="Uninstall" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MHl-RW-Gb1">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system" size="9"/>
                     </buttonCell>
@@ -127,7 +132,7 @@
                 <constraint firstAttribute="centerY" secondItem="v4Z-CU-6yJ" secondAttribute="centerY" constant="5.5" id="7hm-SJ-ZNJ"/>
                 <constraint firstAttribute="centerY" secondItem="j3W-9F-lp5" secondAttribute="centerY" constant="6" id="CDp-5N-bfc"/>
                 <constraint firstItem="h6A-EG-vNe" firstAttribute="centerX" secondItem="2xC-CH-hsN" secondAttribute="centerX" id="EbF-ig-iYf"/>
-                <constraint firstAttribute="centerX" secondItem="yMf-aI-rf0" secondAttribute="centerX" constant="87.5" id="EfW-Qr-LvB"/>
+                <constraint firstAttribute="centerX" secondItem="yMf-aI-rf0" secondAttribute="centerX" constant="115.5" id="EfW-Qr-LvB"/>
                 <constraint firstItem="h6A-EG-vNe" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="I3v-nc-8U2"/>
                 <constraint firstAttribute="centerX" secondItem="v4Z-CU-6yJ" secondAttribute="centerX" constant="-85.5" id="KXr-Sh-yGV"/>
                 <constraint firstItem="h6A-EG-vNe" firstAttribute="top" secondItem="nPB-sF-sUh" secondAttribute="bottom" constant="-2" id="P2F-5a-xuj"/>
@@ -146,7 +151,7 @@
             <rect key="frame" x="0.0" y="0.0" width="173" height="33"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <animations/>
-            <point key="canvasLocation" x="424.5" y="477.5"/>
+            <point key="canvasLocation" x="214.5" y="541.5"/>
         </customView>
         <viewController id="ITz-6c-Xr2" customClass="scriptsPopoverViewController" customModule="AndroidTool" customModuleProvider="target">
             <connections>
@@ -189,10 +194,57 @@
             <point key="canvasLocation" x="652.5" y="252"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="qZE-Q8-MVN"/>
+        <customView id="Xkd-rL-g5V" userLabel="Install invite">
+            <rect key="frame" x="0.0" y="0.0" width="242" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aq-6f-8XQ" customClass="DropPassThroughImageView" customModule="AndroidTool" customModuleProvider="target">
+                    <rect key="frame" x="15" y="10" width="78" height="78"/>
+                    <animations/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="dragInvite" id="dRP-LF-d1f"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bq5-OK-XMk" customClass="DropPassThroughImageView" customModule="AndroidTool" customModuleProvider="target">
+                    <rect key="frame" x="30" y="25" width="48" height="48"/>
+                    <animations/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="epd-V5-cMe"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usm-tH-qis">
+                    <rect key="frame" x="101" y="65" width="143" height="17"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Testagram" id="fEw-fa-8tC">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" white="0.80000000000000004" alpha="0.55859375" colorSpace="deviceWhite"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rzj-TG-ghH">
+                    <rect key="frame" x="101" y="48" width="143" height="13"/>
+                    <animations/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1.0 (1)" id="pPJ-LT-KYb">
+                        <font key="font" metaFont="system" size="10"/>
+                        <color key="textColor" white="0.80000000000000004" alpha="0.55859375" colorSpace="deviceWhite"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJ8-8h-Zeb">
+                    <rect key="frame" x="101" y="10" width="137" height="33"/>
+                    <animations/>
+                    <textFieldCell key="cell" lineBreakMode="charWrapping" sendsActionOnEndEditing="YES" title="com.mortenjust.testagramsuperduperviewer" id="opa-Dw-tv2">
+                        <font key="font" metaFont="system" size="10"/>
+                        <color key="textColor" white="0.80000000000000004" alpha="0.55859375" colorSpace="deviceWhite"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <animations/>
+            <point key="canvasLocation" x="249" y="422"/>
+        </customView>
     </objects>
     <resources>
+        <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="cameraRoundGreen" width="91" height="94"/>
         <image name="deviceShadow" width="378" height="10"/>
+        <image name="dragInvite" width="78" height="78"/>
         <image name="loaderButton" width="88" height="88"/>
         <image name="logotagheuer" width="81" height="27"/>
         <image name="moreButtonPlus" width="23" height="23"/>

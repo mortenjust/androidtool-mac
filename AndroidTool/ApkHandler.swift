@@ -76,33 +76,24 @@ class ApkHandler: NSObject {
         
         let shell = ShellTasker(scriptFile: "getApkInfo")
         shell.run(arguments: [self.filepath]) { (output) -> Void in
-            let apk = self.parseApkInfo(output as String)
+            let apk = Apk(rawAaptBadgingData: output as String)
             self.delegate?.apkHandlerDidGetInfo(apk)
-            complete(apk)
+            
+            // try getting the icon out
+            
+            let iconShell = ShellTasker(scriptFile: "extractIconFromApk")
+            iconShell.run(arguments: [self.filepath]) { (output) -> Void in
+                print("Ready to add nsurl path to apk object: \(output)")
+                
+                apk.localIconPath = (output as String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+ 
+                
+                complete(apk)
+            }
+            
         }
     }
     
-    func parseApkInfo(rawdata:String) -> Apk {
-        print(">>apkparskeapkinfo")
-
-        
-        let u = Util()
-        let apk = Apk()
-        
-        if let l = u.findMatchesInString(rawdata, regex: "launchable-activity: name='(.*?)'") {
-            apk.launcherActivity = l[0]
-        }
-        
-        if let n = u.findMatchesInString(rawdata, regex: "application-label:'(.*?)'") {
-            apk.appName = n[0]
-        }
-        
-        if let p = u.findMatchesInString(rawdata, regex: "package: name='(.*?)'") {
-            apk.packageName = p[0]
-        }
-        
-        return apk
-    }
     
     func launch(apk:Apk){
         print(">>apklaunch")

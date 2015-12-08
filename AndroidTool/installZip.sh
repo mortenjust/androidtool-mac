@@ -7,13 +7,16 @@
 #  Copyright © 2015 Morten Just Petersen. All rights reserved.
 
 thisdir=$1
-filename=$2
+serial=$2
+filename=$3
 
 fastboot=$1/fastboot
 adb=$1/adb
 
-echo "$adb" reboot-bootloader
-"$adb" reboot-bootloader
+echo "Flashing with fastboot"
 
-echo "$fastboot" update "$filename"
-"$fastboot" update "$filename"
+echo "$adb" -s $serial reboot-bootloader
+"$adb" -s $serial reboot-bootloader
+
+echo "$fastboot" -s $serial update "$filename"
+"$fastboot" -s $serial update "$filename"

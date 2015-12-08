@@ -65,6 +65,14 @@ class LoaderView: NSImageView {
         layer?.removeAllAnimations()
     }
     
+    override func draggingUpdated(sender: NSDraggingInfo) -> NSDragOperation {
+        return NSDragOperation.Copy
+    }
+    
+    override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
+        return NSDragOperation.Copy
+    }
+    
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
 

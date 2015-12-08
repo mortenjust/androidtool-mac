@@ -28,6 +28,11 @@
 		C86C16011C13997100E22CEC /* Apk.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C16001C13997100E22CEC /* Apk.swift */; };
 		C86C16031C139B8F00E22CEC /* launchActivity.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C16021C139B8F00E22CEC /* launchActivity.sh */; };
 		C86C16051C13B4B900E22CEC /* uninstallPackageOnDevice.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C16041C13B4B900E22CEC /* uninstallPackageOnDevice.sh */; };
+		C86C16071C14BA5100E22CEC /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C16061C14BA5100E22CEC /* CameraButton.swift */; };
+		C86C16091C14F7F700E22CEC /* extractIconFromApk.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C16081C14F7F700E22CEC /* extractIconFromApk.sh */; };
+		C86C160B1C1511B800E22CEC /* DropPassThroughImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C160A1C1511B800E22CEC /* DropPassThroughImageView.swift */; };
+		C86C160D1C15241B00E22CEC /* MovableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C160C1C15241B00E22CEC /* MovableButton.swift */; };
+		C86C162C1C165B5E00E22CEC /* ZipHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C162B1C165B5E00E22CEC /* ZipHandler.swift */; };
 		C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */; };
 		C87E3AE71BFF7DBB00275AA2 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */; };
 		C87E3AF11C01128500275AA2 /* RawOutputWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */; };
@@ -119,6 +124,11 @@
 		C86C16001C13997100E22CEC /* Apk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apk.swift; sourceTree = "<group>"; };
 		C86C16021C139B8F00E22CEC /* launchActivity.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = launchActivity.sh; sourceTree = "<group>"; };
 		C86C16041C13B4B900E22CEC /* uninstallPackageOnDevice.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstallPackageOnDevice.sh; sourceTree = "<group>"; };
+		C86C16061C14BA5100E22CEC /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
+		C86C16081C14F7F700E22CEC /* extractIconFromApk.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = extractIconFromApk.sh; sourceTree = "<group>"; };
+		C86C160A1C1511B800E22CEC /* DropPassThroughImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropPassThroughImageView.swift; path = AndroidTool/DropPassThroughImageView.swift; sourceTree = "<group>"; };
+		C86C160C1C15241B00E22CEC /* MovableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovableButton.swift; sourceTree = "<group>"; };
+		C86C162B1C165B5E00E22CEC /* ZipHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipHandler.swift; sourceTree = "<group>"; };
 		C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = previewPopoverViewController.swift; sourceTree = "<group>"; };
 		C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		C87E3AEF1C01128500275AA2 /* RawOutputWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawOutputWindowController.swift; sourceTree = "<group>"; };
@@ -226,6 +236,7 @@
 		C8B514571AE85D600071C86A = {
 			isa = PBXGroup;
 			children = (
+				C86C160A1C1511B800E22CEC /* DropPassThroughImageView.swift */,
 				C8B514621AE85D610071C86A /* AndroidTool */,
 				C8B514731AE85D610071C86A /* AndroidToolTests */,
 				C8B514611AE85D610071C86A /* Products */,
@@ -275,6 +286,9 @@
 				C856FFDD1BFB91110098B1E2 /* C.swift */,
 				C8B514631AE85D610071C86A /* Supporting Files */,
 				C86C16001C13997100E22CEC /* Apk.swift */,
+				C86C16061C14BA5100E22CEC /* CameraButton.swift */,
+				C86C160C1C15241B00E22CEC /* MovableButton.swift */,
+				C86C162B1C165B5E00E22CEC /* ZipHandler.swift */,
 			);
 			path = AndroidTool;
 			sourceTree = "<group>";
@@ -307,6 +321,7 @@
 		C8B9D47B1AE9911C00927B96 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
+				C86C16081C14F7F700E22CEC /* extractIconFromApk.sh */,
 				C8D4F79F1BF84BF5001F8C6E /* adb */,
 				C86C15F61C13958100E22CEC /* aapt */,
 				C8BF506E1AFBE21A005C725D /* idevicescreenshot */,
@@ -439,6 +454,7 @@
 				C86C16031C139B8F00E22CEC /* launchActivity.sh in Resources */,
 				C86C15F71C13958100E22CEC /* aapt in Resources */,
 				C856FFE01BFDA61A0098B1E2 /* setDemoModeOptions.sh in Resources */,
+				C86C16091C14F7F700E22CEC /* extractIconFromApk.sh in Resources */,
 				C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */,
 				C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */,
 				C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */,
@@ -489,12 +505,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C86C160D1C15241B00E22CEC /* MovableButton.swift in Sources */,
 				C8B131961AEB3B5100BCD4F3 /* DevicePickerViewController.swift in Sources */,
 				C8595D221BF6A55700805042 /* Constants.swift in Sources */,
 				C87E3AF51C0113B100275AA2 /* TerminalOutputTextView.swift in Sources */,
 				C86DF2A61AFF2D7300AEBDF5 /* previewPopoverViewController.swift in Sources */,
 				C8B514851AE85D940071C86A /* Device.swift in Sources */,
 				C86C15FF1C13993400E22CEC /* ApkHandler.swift in Sources */,
+				C86C16071C14BA5100E22CEC /* CameraButton.swift in Sources */,
 				C84079D51C0559B7002EC6D4 /* StatusTextField.swift in Sources */,
 				C856FFDE1BFB91110098B1E2 /* C.swift in Sources */,
 				C8595D1E1BF5C95500805042 /* WindowMoverTableCellView.swift in Sources */,
@@ -507,6 +525,7 @@
 				C8595D1C1BF5C8B000805042 /* WindowMoverScrollview.swift in Sources */,
 				C8B514821AE85D8B0071C86A /* MasterViewController.swift in Sources */,
 				C8BF506B1AFB393C005C725D /* IOSDeviceHelper.swift in Sources */,
+				C86C162C1C165B5E00E22CEC /* ZipHandler.swift in Sources */,
 				C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */,
 				C8B9D47E1AE991D300927B96 /* ShellTasker.swift in Sources */,
 				C8B5148C1AE860EF0071C86A /* DeviceViewController.swift in Sources */,
@@ -516,6 +535,7 @@
 				C8B514871AE85DAE0071C86A /* DeviceDiscoverer.swift in Sources */,
 				C84079D31C054BCF002EC6D4 /* DropReceiverView.swift in Sources */,
 				C87E3AF11C01128500275AA2 /* RawOutputWindowController.swift in Sources */,
+				C86C160B1C1511B800E22CEC /* DropPassThroughImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

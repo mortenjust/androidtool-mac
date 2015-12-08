@@ -35,7 +35,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K2n-4W-O3f">
-                                            <rect key="frame" x="4" y="178" width="142" height="20"/>
+                                            <rect key="frame" x="4" y="147" width="142" height="20"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Screenshots:" id="Oop-61-0VG">
                                                 <font key="font" metaFont="system"/>
@@ -53,7 +53,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zPE-KE-WO7">
-                                            <rect key="frame" x="146" y="171" width="90" height="32"/>
+                                            <rect key="frame" x="146" y="140" width="90" height="32"/>
                                             <animations/>
                                             <buttonCell key="cell" type="push" title="Select..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fr2-hi-qus">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -64,7 +64,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PFu-rq-rnM">
-                                            <rect key="frame" x="151" y="158" width="285" height="17"/>
+                                            <rect key="frame" x="151" y="127" width="285" height="17"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/Users/mortenjust/Desktop/AndroidTool/kasse" id="f6t-VL-PRL">
                                                 <font key="font" metaFont="miniSystem"/>
@@ -76,7 +76,7 @@
                                             </connections>
                                         </textField>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u5i-jo-Tkm">
-                                            <rect key="frame" x="152" y="142" width="262" height="18"/>
+                                            <rect key="frame" x="152" y="111" width="262" height="18"/>
                                             <animations/>
                                             <buttonCell key="cell" type="check" title="Use current Android activity in filename" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="YSr-EY-vQ3">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -87,7 +87,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wwd-Ah-azE">
-                                            <rect key="frame" x="3" y="100" width="142" height="20"/>
+                                            <rect key="frame" x="3" y="69" width="142" height="20"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Screen recordings:" id="ebw-mg-LxG">
                                                 <font key="font" metaFont="system"/>
@@ -96,7 +96,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NY0-DN-3iT">
-                                            <rect key="frame" x="146" y="93" width="90" height="32"/>
+                                            <rect key="frame" x="146" y="62" width="90" height="32"/>
                                             <animations/>
                                             <buttonCell key="cell" type="push" title="Select..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wSK-Ze-K6i">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -107,7 +107,7 @@
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yiG-AH-Phl">
-                                            <rect key="frame" x="151" y="80" width="285" height="17"/>
+                                            <rect key="frame" x="151" y="49" width="285" height="17"/>
                                             <animations/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/Users/mortenjust/Desktop/AndroidTool/kasse" id="ahs-qP-Guo">
                                                 <font key="font" metaFont="miniSystem"/>
@@ -127,6 +127,17 @@
                                             </buttonCell>
                                             <connections>
                                                 <binding destination="gL2-7b-O6c" name="value" keyPath="values.launchInstalledApp" id="zcK-KU-GIe"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sXM-12-Aec">
+                                            <rect key="frame" x="150" y="202" width="242" height="18"/>
+                                            <animations/>
+                                            <buttonCell key="cell" type="check" title="Fastboot update dragged in Zip files" bezelStyle="regularSquare" imagePosition="left" inset="2" id="tUI-es-ssW">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="gL2-7b-O6c" name="value" keyPath="values.flashImagesInZipFiles" id="fFU-sL-6mS"/>
                                             </connections>
                                         </button>
                                     </subviews>

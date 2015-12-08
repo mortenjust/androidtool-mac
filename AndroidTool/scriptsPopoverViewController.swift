@@ -89,9 +89,6 @@ class scriptsPopoverViewController: NSViewController {
         Util().revealScriptsFolder()
     }
     
-    
-    
-    
     override func viewDidLoad() {
         if #available(OSX 10.10, *) {
             super.viewDidLoad()

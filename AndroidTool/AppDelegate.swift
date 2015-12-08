@@ -196,6 +196,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidBecomeActive(notification: NSNotification) {
 //        Util().restartRefreshingDeviceList()
+        
+        if masterViewController == nil {
+            applicationDidFinishLaunching(notification)
+        }
+        
         masterViewController.discoverer.updateInterval = 3
         updateScriptFilesInMenu()
         masterViewController.discoverer.pollDevices()
