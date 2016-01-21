@@ -54,6 +54,7 @@ class ApkHandler: NSObject {
         let s = ShellTasker(scriptFile: "installApkOnDevice")
         
         s.run(arguments: [device.adbIdentifier!, filepath]) { (output) -> Void in
+            self.delegate?.apkHandlerDidUpdate("Installed")
             completion()
         }
     }

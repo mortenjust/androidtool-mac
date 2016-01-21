@@ -77,6 +77,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let ud = NSUserDefaults.standardUserDefaults()
         ud.registerDefaults(Constants.defaultPrefValues)
         
+        if ud.stringForKey(C.PREF_SCREENSHOTFOLDER) == "" {
+            ud.setObject(NSString(string: "~/Desktop/AndroidTool").stringByExpandingTildeInPath, forKey: C.PREF_SCREENSHOTFOLDER)
+        }
+        if ud.stringForKey(C.PREF_SCREENRECORDINGSFOLDER) == "" {
+            ud.setObject(NSString(string: "~/Desktop/AndroidTool").stringByExpandingTildeInPath, forKey: C.PREF_SCREENRECORDINGSFOLDER)
+        }
+        
         
         
         let bitratePref = ud.doubleForKey("bitratePref")

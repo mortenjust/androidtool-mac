@@ -89,11 +89,14 @@ class StatusTextField: NSTextField {
     }
     
 
-    func setText(text:String){
+    func setText(text:String, shouldFadeOut:Bool = true){
         animateOut { () -> Void in
             self.stringValue = text
-            self.animateIn { () -> Void? in
-                self.slowlyDecay()
+            
+            if shouldFadeOut {
+                self.animateIn { () -> Void? in
+                    self.slowlyDecay()
+                }
             }
 
         }

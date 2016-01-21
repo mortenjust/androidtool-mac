@@ -9,7 +9,7 @@
 import Cocoa
 import AVFoundation
 
-class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate, IOSRecorderDelegate, DropDelegate, ApkHandlerDelegate, ZipHandlerDelegate {
+class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDelegate, IOSRecorderDelegate, DropDelegate, ApkHandlerDelegate, ZipHandlerDelegate, ObbHandlerDelegate {
     var device : Device!
     @IBOutlet weak var deviceNameField: NSTextField!
     @IBOutlet  var cameraButton: NSButton!
@@ -52,8 +52,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         return NSUserDefaults.standardUserDefaults().boolForKey("changeAndroidStatusBar")
     }
     
-    func setStatus(text:String){
-        statusLabel.setText(text)
+    func setStatus(text:String, shouldFadeOut:Bool = true){
+        statusLabel.setText(text, shouldFadeOut: shouldFadeOut)
     }
     
     
@@ -109,7 +109,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func getFolderForScreenRecordings() -> String {
-        return NSUserDefaults.standardUserDefaults().stringForKey(C.PREF_SRCEENRECORDINGSFOLDER)!
+        return NSUserDefaults.standardUserDefaults().stringForKey(C.PREF_SCREENRECORDINGSFOLDER)!
     }
     
     func cleanActivityName(a:String) -> String {
@@ -280,9 +280,13 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
                             "\(Int(res.width))",
                             "\(Int(res.height))",
                             "\(bitratePref)",
-                            getFolderForScreenRecordings()]
+                            getFolderForScreenRecordings(),
+                            "\(NSUserDefaults.standardUserDefaults().boolForKey(C.PREF_GENERATEGIF))"
+                            ]
         
         setStatus("Recording screen")
+        
+        
         shellTasker.run(arguments: args) { (output) -> Void in
             self.setStatus("Fetching screen recording")
             print("-----")
@@ -294,9 +298,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             self.moreButton.enabled = true
             self.videoButton.image = restingButton
             let postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
-//            let postArgs = ["\(self.device.adbIdentifier!)",
-//                            "\(Int(res.width))",
-//                            "\(Int(res.height))"]
+
             postProcessTask.run(arguments: args, complete: { (output) -> Void in
                 Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
                 self.exitDemoModeIfNeeded()
@@ -560,12 +562,12 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
                     } else {
                         setStatus("Enable flashing in Prefs first")
                 }
+                case "obb":
+                    setStatus("Drop to copy OBB")
             default:
                 setStatus("Whaaaaat, what is this file?")
             }
-            }
-
-        
+        }
     }
     
     func dropDragExited() {
@@ -595,6 +597,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
                         stopProgressIndication()
                         self.setStatus("Enable flashing in Prefs")
                 }
+                case "obb":
+                    installObb(filePath)
                 default:
                 stopProgressIndication()
                 setStatus("Wait, what?")
@@ -602,11 +606,31 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         }
     }
     
+
     
     func dropUpdated(mouseAt: NSPoint) {
         // print("vc:dropUpdated")
     }
     
+    func installObb(filePath:String){
+        print("installObb")
+        startProgressIndication()
+        let obbHandler = ObbHandler(filePath: filePath, device: self.device)
+        obbHandler.delegate = self
+        obbHandler.pushToDevice()
+    }
+    
+    func obbHandlerDidFinish() {
+        setStatus("Finished copying OBB file")
+        stopProgressIndication()
+    }
+
+    
+    func obbHandlerDidStart(bytes:String) {
+        setStatus("Copying \(bytes) OBB file", shouldFadeOut: false)
+        startProgressIndication()
+    }
+
     
     func flashZip(filePath:String){
         print("flashZip")
@@ -625,6 +649,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         setStatus("Flashing image")
         startProgressIndication()
     }
+    
     
     func installApk(apkPath:String){
         let apkHandler = ApkHandler(filepath: apkPath, device: self.device)

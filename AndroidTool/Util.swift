@@ -201,8 +201,23 @@ class Util {
             delay += getStaggerDelay()
         }
     }
-    
 
+    static func formatBytes(byteCount:UInt64) -> String {
+        let formatter = NSByteCountFormatter()
+        let formatted = formatter.stringFromByteCount(Int64(byteCount))
+        return formatted
+    }
+    
+    static func getFileSizeForFilePath(filePath:String) -> UInt64 {
+        
+        do {
+            let atts:NSDictionary = try NSFileManager.defaultManager().attributesOfItemAtPath(filePath)
+            return atts.fileSize()
+        } catch _ {
+        }
+        
+        return 1
+    }
 }
 
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DeviceViewController" customModule="AndroidTool" customModuleProvider="target">
@@ -37,7 +37,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="86" id="i1X-vf-0zt"/>
                     </constraints>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="loaderButton" id="oBM-3v-w8D"/>
                 </imageView>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="uj9-du-tFf" userLabel="Camera button" customClass="CameraButton" customModule="AndroidTool" customModuleProvider="target">
@@ -46,9 +45,8 @@
                         <constraint firstAttribute="width" constant="86" id="KSA-0p-eds"/>
                         <constraint firstAttribute="height" constant="86" id="ai9-tl-PUU"/>
                     </constraints>
-                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="cameraRoundGreen" imagePosition="only" alignment="center" state="on" imageScaling="proportionallyDown" inset="2" id="9vb-52-Xec">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
@@ -57,9 +55,8 @@
                 </button>
                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-9F-lp5" customClass="MovableButton" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="314" y="58" width="23" height="23"/>
-                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="moreButtonPlus" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="kW8-ju-SPq">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
@@ -68,9 +65,8 @@
                 </button>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="v4Z-CU-6yJ" customClass="MovableButton" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="251" y="53" width="43" height="32"/>
-                    <animations/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="recordButtonWhite" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="D4P-As-aix">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
@@ -82,12 +78,10 @@
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JHB-80-wMe" userLabel="deviceImage" customClass="DropPassThroughImageView" customModule="AndroidTool" customModuleProvider="target">
                             <rect key="frame" x="14" y="55" width="81" height="27"/>
-                            <animations/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageAlignment="left" imageScaling="proportionallyDown" image="logotagheuer" id="k5s-A8-Hjn"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZB-Zv-KU6">
                             <rect key="frame" x="12" y="-1" width="140" height="48"/>
-                            <animations/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Nexus 1" id="6Ie-fc-dYB">
                                 <font key="font" metaFont="system" size="15"/>
                                 <color key="textColor" red="1" green="0.9960784912109375" blue="0.9960784912109375" alpha="0.75" colorSpace="deviceRGB"/>
@@ -99,16 +93,13 @@
                         <constraint firstAttribute="width" constant="142" id="Ryk-w6-pMG"/>
                         <constraint firstAttribute="height" constant="82" id="mra-UG-eQW"/>
                     </constraints>
-                    <animations/>
                 </customView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2xC-CH-hsN" userLabel="shadow">
                     <rect key="frame" x="-4" y="-3" width="379" height="10"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="deviceShadow" id="qou-1o-qf0"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="h6A-EG-vNe" customClass="StatusTextField" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="114" y="13" width="144" height="17"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Starting demo mode..." id="gke-nu-kun">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" red="0.78445291519165039" green="0.78083860874176025" blue="0.79110872745513916" alpha="0.49163323479729731" colorSpace="calibratedRGB"/>
@@ -117,10 +108,9 @@
                 </textField>
                 <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfh-q2-aND" customClass="MovableButton" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="230" y="21" width="129" height="32"/>
-                    <animations/>
                     <buttonCell key="cell" type="push" title="Uninstall" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MHl-RW-Gb1">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system" size="9"/>
+                        <font key="font" metaFont="miniSystem"/>
                     </buttonCell>
                     <connections>
                         <action selector="uninstallPackageClicked:" target="-2" id="mVk-F7-lNR"/>
@@ -144,13 +134,11 @@
                 <constraint firstItem="h6A-EG-vNe" firstAttribute="top" secondItem="yMf-aI-rf0" secondAttribute="bottom" constant="-10" id="uVn-9q-Uis"/>
                 <constraint firstAttribute="centerX" secondItem="uj9-du-tFf" secondAttribute="centerX" constant="1.5" id="y9o-Rp-GJC"/>
             </constraints>
-            <animations/>
             <point key="canvasLocation" x="314.5" y="251.5"/>
         </customView>
         <customView id="YzF-fB-bRp" userLabel="MoreView">
             <rect key="frame" x="0.0" y="0.0" width="173" height="33"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <animations/>
             <point key="canvasLocation" x="214.5" y="541.5"/>
         </customView>
         <viewController id="ITz-6c-Xr2" customClass="scriptsPopoverViewController" customModule="AndroidTool" customModuleProvider="target">
@@ -182,7 +170,6 @@
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rXR-cF-mLs">
                     <rect key="frame" x="62" y="123" width="38" height="17"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="5Zh-LH-ICM">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -190,7 +177,6 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <animations/>
             <point key="canvasLocation" x="652.5" y="252"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="qZE-Q8-MVN"/>
@@ -200,17 +186,14 @@
             <subviews>
                 <imageView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6aq-6f-8XQ" customClass="DropPassThroughImageView" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="15" y="10" width="78" height="78"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="dragInvite" id="dRP-LF-d1f"/>
                 </imageView>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bq5-OK-XMk" customClass="DropPassThroughImageView" customModule="AndroidTool" customModuleProvider="target">
                     <rect key="frame" x="30" y="25" width="48" height="48"/>
-                    <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="epd-V5-cMe"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usm-tH-qis">
                     <rect key="frame" x="101" y="65" width="143" height="17"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Testagram" id="fEw-fa-8tC">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" white="0.80000000000000004" alpha="0.55859375" colorSpace="deviceWhite"/>
@@ -219,7 +202,6 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rzj-TG-ghH">
                     <rect key="frame" x="101" y="48" width="143" height="13"/>
-                    <animations/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="1.0 (1)" id="pPJ-LT-KYb">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" white="0.80000000000000004" alpha="0.55859375" colorSpace="deviceWhite"/>
@@ -228,7 +210,6 @@
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iJ8-8h-Zeb">
                     <rect key="frame" x="101" y="10" width="137" height="33"/>
-                    <animations/>
                     <textFieldCell key="cell" lineBreakMode="charWrapping" sendsActionOnEndEditing="YES" title="com.mortenjust.testagramsuperduperviewer" id="opa-Dw-tv2">
                         <font key="font" metaFont="system" size="10"/>
                         <color key="textColor" white="0.80000000000000004" alpha="0.55859375" colorSpace="deviceWhite"/>
@@ -236,7 +217,6 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <animations/>
             <point key="canvasLocation" x="249" y="422"/>
         </customView>
     </objects>

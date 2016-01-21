@@ -3,7 +3,27 @@
 import Cocoa
 import Foundation
 
-var string = "/kasse/rolle/master/kasse.hat"
+var string = "~/Desktop"
+var bol:Bool = true
 
-NSURL(fileURLWithPath: string).pathExtension
+"hej \(bol)"
 
+
+NSString(string: "~user/Desktop/AndroidTool").stringByExpandingTildeInPath
+
+
+
+func getFileSize(filePath:String) -> UInt64 {
+    
+    do {
+        let atts:NSDictionary = try NSFileManager.defaultManager().attributesOfItemAtPath(filePath)
+        return atts.fileSize()
+    } catch _ {
+    }
+    
+    return 1
+}
+
+let filepath="/Users/mortenjust/Downloads/obb/com.ea.game.nfs14_row-4317.obb"
+
+getFileSize(filepath)

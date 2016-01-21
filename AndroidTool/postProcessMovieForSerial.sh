@@ -13,8 +13,10 @@ thisdir=$1 # $1 is the bundle resources path directly from the calling script fi
 serial=$2
 width=$3
 height=$4
-bitrate=$5 #not sure if ever in use
+bitrate=$5 #carryover since this file shares arg structure with recordmovie
 screenRecFolder=$6
+generateGif=$7
+
 adb=$thisdir/adb
 
 deviceName=$("$adb" -s $serial shell getprop ro.product.name)
@@ -43,8 +45,10 @@ then # -- Watch ---
 
     #    $thisdir/ffmpeg -f rawvideo -vcodec rawvideo -pix_fmt rgb24 -r 10 -i screencapture.raw  -an -c:v libx264 -pix_fmt yuv420p $finalFileName.mp4
 
-
+    if [ "$generateGif" = true ] ; then
+    echo 'Generating gif...'
     $thisdir/ffmpeg -i $finalFileName.mp4 $finalFileName.gif
+    fi
 
     echo 'Cleaning up...'
     rm screencapture.raw
@@ -53,7 +57,11 @@ else # -- Phone ---
     echo 'copying from phone...'
     "$adb" -s $serial pull /sdcard/capture.mp4
     mv capture.mp4 $finalFileName.mp4
+
+    if [ "$generateGif" = true ] ; then
+    echo 'Generating gif...'
     $thisdir/ffmpeg -i $finalFileName.mp4 $finalFileName.gif
+    fi
 
     echo 'cleaning up'
     "$adb" -s $serial shell rm /sdcard/capture.mp4

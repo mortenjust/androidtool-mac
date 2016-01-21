@@ -76,6 +76,8 @@
 		C8B9D4861AE9C3A100927B96 /* getSerials.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8B9D4851AE9C3A100927B96 /* getSerials.sh */; };
 		C8BF506B1AFB393C005C725D /* IOSDeviceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */; };
 		C8BF506D1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */; };
+		C8C86BF01C50976D0087858B /* installObbForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8C86BEF1C50976D0087858B /* installObbForSerial.sh */; };
+		C8C86BF21C50AEEC0087858B /* ObbHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C86BF11C50AEEC0087858B /* ObbHandler.swift */; };
 		C8D4F7A01BF84BF5001F8C6E /* adb in Resources */ = {isa = PBXBuildFile; fileRef = C8D4F79F1BF84BF5001F8C6E /* adb */; };
 		C8E521B31C0ED06800777117 /* getCurrentActivityForIdentifier.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */; };
 /* End PBXBuildFile section */
@@ -179,6 +181,8 @@
 		C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSDeviceHelper.swift; sourceTree = "<group>"; };
 		C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = takeScreenshotOfDeviceWithUUID.sh; sourceTree = "<group>"; };
 		C8BF506E1AFBE21A005C725D /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
+		C8C86BEF1C50976D0087858B /* installObbForSerial.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = installObbForSerial.sh; sourceTree = "<group>"; };
+		C8C86BF11C50AEEC0087858B /* ObbHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObbHandler.swift; path = AndroidTool/ObbHandler.swift; sourceTree = "<group>"; };
 		C8D4F79F1BF84BF5001F8C6E /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
 		C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getCurrentActivityForIdentifier.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,6 +240,7 @@
 		C8B514571AE85D600071C86A = {
 			isa = PBXGroup;
 			children = (
+				C8C86BF11C50AEEC0087858B /* ObbHandler.swift */,
 				C86C160A1C1511B800E22CEC /* DropPassThroughImageView.swift */,
 				C8B514621AE85D610071C86A /* AndroidTool */,
 				C8B514731AE85D610071C86A /* AndroidToolTests */,
@@ -330,6 +335,7 @@
 				C86C16021C139B8F00E22CEC /* launchActivity.sh */,
 				C86C15FA1C1395F700E22CEC /* installZip.sh */,
 				C86C15F81C1395DC00E22CEC /* getApkInfo.sh */,
+				C8C86BEF1C50976D0087858B /* installObbForSerial.sh */,
 				C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */,
 				C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */,
 				C8B9D4851AE9C3A100927B96 /* getSerials.sh */,
@@ -473,6 +479,7 @@
 				C8B131991AEB641800BCD4F3 /* installApkOnDevice.sh in Resources */,
 				C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */,
 				C8B131971AEB3B5100BCD4F3 /* DevicePickerViewController.xib in Resources */,
+				C8C86BF01C50976D0087858B /* installObbForSerial.sh in Resources */,
 				C87E3AF21C01128500275AA2 /* RawOutputWindowController.xib in Resources */,
 				C86C15FD1C13961200E22CEC /* fastboot in Resources */,
 				C8B131891AEB10FA00BCD4F3 /* startRecordingForSerial.sh in Resources */,
@@ -533,6 +540,7 @@
 				C87E3AE71BFF7DBB00275AA2 /* LoaderView.swift in Sources */,
 				C8595D1A1BF5C1EE00805042 /* WindowMoverView.swift in Sources */,
 				C8B514871AE85DAE0071C86A /* DeviceDiscoverer.swift in Sources */,
+				C8C86BF21C50AEEC0087858B /* ObbHandler.swift in Sources */,
 				C84079D31C054BCF002EC6D4 /* DropReceiverView.swift in Sources */,
 				C87E3AF11C01128500275AA2 /* RawOutputWindowController.swift in Sources */,
 				C86C160B1C1511B800E22CEC /* DropPassThroughImageView.swift in Sources */,
