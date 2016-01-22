@@ -24,10 +24,9 @@ SCRIPT=`basename ${BASH_SOURCE[0]}`
 SVERSION='1.1b' #modified for AndroidTool
 
 #Set fonts for Help.
-NORM=`tput sgr0`
-BOLD=`tput bold`
-REV=`tput smso`
-
+#NORM=`tput sgr0`
+#BOLD=`tput bold`
+#REV=`tput smso`
 
 
 #NUMARGS=$#
@@ -48,13 +47,13 @@ function MAIN_PROCESS {
   if [[ ${file_name:0:5} = "main." ]]; then
     pkg_name=$(echo $file_name | perl -nle 'm/([^main\.\d+].+?(?=.obb))/; print $1')
     echo 'Copying' $file_name 'to obb/'$pkg_name'/'
-    adb shell mkdir -p sdcard/Android/obb/$pkg_name
-    adb push $file sdcard/Android/obb/$pkg_name/
+    $adb shell mkdir -p sdcard/Android/obb/$pkg_name
+    $adb push $file sdcard/Android/obb/$pkg_name/
   elif [[ ${file_name:0:6} = "patch." ]]; then
     pkg_name=$(echo $file_name | perl -nle 'm/([^patch\.\d+].+?(?=.obb))/; print $1')
     echo 'Copying' $file_name 'to obb/'$pkg_name'/'
-    adb shell mkdir -p sdcard/Android/obb/$pkg_name
-    adb push $file sdcard/Android/obb/$pkg_name/
+    $adb shell mkdir -p sdcard/Android/obb/$pkg_name
+    $adb push $file sdcard/Android/obb/$pkg_name/
   else 
     pkg_name=$(echo $file_name | perl -nle 'm/(^[^-]+)/; print $1')
     obb_build=$(echo $file_name | perl -nle 'm/(?<=\-)(.*?)(?=\.)/; print $1')
@@ -62,8 +61,8 @@ function MAIN_PROCESS {
     mkdir -p .tmp-obb/$pkg_name
     echo 'Copying' $new_name 'to obb/'$pkg_name'/'
     cp $file .tmp-obb/$pkg_name/$new_name
-    adb shell mkdir -p sdcard/Android/obb/$pkg_name
-    adb push .tmp-obb/$pkg_name/$new_name sdcard/Android/obb/$pkg_name/
+    $adb shell mkdir -p sdcard/Android/obb/$pkg_name
+    $adb push .tmp-obb/$pkg_name/$new_name sdcard/Android/obb/$pkg_name/
     rm -r .tmp-obb
   fi
   exit
