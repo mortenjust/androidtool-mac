@@ -42,27 +42,38 @@ SVERSION='1.1b' #modified for AndroidTool
 #fi
 
 function MAIN_PROCESS {
-  file_name=$(basename "$file")
+    file_name=$(basename "$file")
+    dir_name=$(dirname "$file")
+
+    echo "0.01m ready to do stuff with $file"
+    echo "0.m cd into $dir_name where we find $file_name"
+    cd "$dir_name"
+    echo "1.m file_name: $file_name"
 
   if [[ ${file_name:0:5} = "main." ]]; then
     pkg_name=$(echo $file_name | perl -nle 'm/([^main\.\d+].+?(?=.obb))/; print $1')
     echo 'Copying' $file_name 'to obb/'$pkg_name'/'
-    $adb shell mkdir -p sdcard/Android/obb/$pkg_name
-    $adb push $file sdcard/Android/obb/$pkg_name/
+    "$adb" shell mkdir -p sdcard/Android/obb/$pkg_name
+    "$adb" push $file sdcard/Android/obb/$pkg_name/
   elif [[ ${file_name:0:6} = "patch." ]]; then
     pkg_name=$(echo $file_name | perl -nle 'm/([^patch\.\d+].+?(?=.obb))/; print $1')
     echo 'Copying' $file_name 'to obb/'$pkg_name'/'
-    $adb shell mkdir -p sdcard/Android/obb/$pkg_name
-    $adb push $file sdcard/Android/obb/$pkg_name/
-  else 
-    pkg_name=$(echo $file_name | perl -nle 'm/(^[^-]+)/; print $1')
-    obb_build=$(echo $file_name | perl -nle 'm/(?<=\-)(.*?)(?=\.)/; print $1')
-    new_name=$obb_type.$obb_build.$pkg_name.obb
-    mkdir -p .tmp-obb/$pkg_name
-    echo 'Copying' $new_name 'to obb/'$pkg_name'/'
-    cp $file .tmp-obb/$pkg_name/$new_name
-    $adb shell mkdir -p sdcard/Android/obb/$pkg_name
-    $adb push .tmp-obb/$pkg_name/$new_name sdcard/Android/obb/$pkg_name/
+    "$adb" shell mkdir -p sdcard/Android/obb/$pkg_name
+    "$adb" push $file sdcard/Android/obb/$pkg_name/
+  else
+    echo "2.m no indication of patch/main, using main"
+    pkg_name=$(echo "$file_name" | perl -nle "m/(^[^-]+)/; print $1")
+    obb_build=$(echo "$file_name" | perl -nle "m/(?<=\-)(.*?)(?=\.)/; print $1")
+    new_name="$obb_type.$obb_build.$pkg_name.obb"
+    echo "3.m creating local temp folder with package name: .tmp-obb/$pkg_name"
+    mkdir -p ".tmp-obb/$pkg_name"
+    echo "4.m Copying $new_name to obb/$pkg_name/"
+    cp "$file" ".tmp-obb/$pkg_name/$new_name"
+    echo "5. creating directory on device: $adb shell mkdir -p sdcard/Android/obb/$pkg_name"
+    "$adb" shell mkdir -p "sdcard/Android/obb/$pkg_name"
+    echo "6. pushing file to device: $adb push .tmp-obb/$pkg_name/$new_name sdcard/Android/obb/$pkg_name/"
+    "$adb" push ".tmp-obb/$pkg_name/$new_name" "sdcard/Android/obb/$pkg_name/"
+    echo "7. removing local temp folder"
     rm -r .tmp-obb
   fi
   exit
