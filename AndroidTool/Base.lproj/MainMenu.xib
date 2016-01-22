@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment version="1090" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
@@ -301,8 +301,7 @@
                                     <action selector="refreshDeviceListClicked:" target="Voe-Tx-rLC" id="XNy-ci-Wkz"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Terminal output" id="kyM-1r-6aa">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Terminal output" keyEquivalent="O" id="kyM-1r-6aa">
                                 <connections>
                                     <action selector="rawWindowClicked:" target="Voe-Tx-rLC" id="SEy-2p-8z2"/>
                                 </connections>

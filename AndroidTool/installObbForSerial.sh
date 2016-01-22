@@ -62,9 +62,9 @@ function MAIN_PROCESS {
     "$adb" push $file sdcard/Android/obb/$pkg_name/
   else
     echo "2.m no indication of patch/main, using main"
-    pkg_name=$(echo "$file_name" | perl -nle "m/(^[^-]+)/; print $1")
-    obb_build=$(echo "$file_name" | perl -nle "m/(?<=\-)(.*?)(?=\.)/; print $1")
-    new_name="$obb_type.$obb_build.$pkg_name.obb"
+    pkg_name=$(echo "$file_name" | perl -nle 'm/(^[^-]+)/; print $1')
+    obb_build=$(echo "$file_name" | perl -nle 'm/(?<=\-)(.*?)(?=\.)/; print $1')
+    new_name=$obb_type.$obb_build.$pkg_name.obb
     echo "3.m creating local temp folder with package name: .tmp-obb/$pkg_name"
     mkdir -p ".tmp-obb/$pkg_name"
     echo "4.m Copying $new_name to obb/$pkg_name/"
