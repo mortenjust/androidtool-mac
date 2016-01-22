@@ -1,6 +1,4 @@
-[![Join the chat at https://gitter.im/mortenjust/androidtool-mac](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mortenjust/androidtool-mac?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-# Android tool for mac
+# Android tool for Mac
 
 ## Download
 **[Download the latest version here](https://github.com/mortenjust/androidtool-mac/releases/)**
@@ -51,3 +49,24 @@ Add your own perfect bash shell scripts to the scripts folder and execute them o
 ## Questions?
 * Check <a href="https://github.com/mortenjust/androidtool-mac/wiki/FAQ">the FAQ</a> or open an issue 
 * <a href="http://twitter.com/mortenjust">Follow me on Twitter</a> or check <a href="http://mortenjust.com">my blog</a> for updates
+
+## Thanks
+
+### Farhad Khairzad
+For the OBB installer script
+
+### FFmpeg
+This software uses code of <a href=http://ffmpeg.org>FFmpeg</a> licensed under the <a href=http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>LGPLv2.1</a> and its source can be downloaded <a href=https://github.com/FFmpeg/FFmpeg>here</a>
+
+### ImageMagick
+   Licensed under the ImageMagick License (the "License"); you may not use
+   this file except in compliance with the License.  You may obtain a copy
+   of the License at
+
+     http://www.imagemagick.org/script/license.php
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+   WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+   License for the specific language governing permissions and limitations
+   under the License.
