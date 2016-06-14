@@ -318,8 +318,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         cameraButton.enabled = true
         
         let movPath = outputFileURL.path!
-        let gifUrl = outputFileURL.URLByDeletingPathExtension
-        let gifPath = "\(gifUrl?.path!).gif"
+        let gifUrl = outputFileURL.URLByDeletingPathExtension!
+        let gifPath = "\(gifUrl.path!).gif"
         let ffmpegPath = NSBundle.mainBundle().pathForResource("ffmpeg", ofType: "")!
         let scalePref = NSUserDefaults.standardUserDefaults().doubleForKey("scalePref")
         let args = [ffmpegPath, movPath, gifPath, "\(scalePref)", getFolderForScreenRecordings()]
