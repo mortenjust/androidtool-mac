@@ -10,7 +10,7 @@ thisdir=$1
 inputFile=$3
 outputFile=$4
 scale=$5
-screenRecordingsFolder=$6
+screenRecFolder=$6
 
 ConvertFile(){
     $thisdir/ffmpeg -i $inputFile -vf scale=iw*$scale:ih*$scale $outputFile
