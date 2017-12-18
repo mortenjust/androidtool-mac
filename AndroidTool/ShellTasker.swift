@@ -15,19 +15,16 @@ protocol ShellTaskDelegate {
 }
 
 class ShellTasker: NSObject {
-    var scriptFile:String!
+    var scriptFile:String
     var task:NSTask!
     var outputIsVerbose = false;
     
-    
     init(scriptFile:String){
-        //        println("initiate with \(scriptFile)")
         self.scriptFile = scriptFile
         print("T:\(scriptFile)")
     }
     
     func stop(){
-        //        println("shelltask stop")
         task.terminate()
     }
     
@@ -40,21 +37,13 @@ class ShellTasker: NSObject {
         var output = NSString()
         var data = NSData()
         
-        if scriptFile == nil {
-            return
-        }
-        
-        //        println("running \(scriptFile)")
-        
-        var scriptPath:AnyObject!
+        var scriptPath:String
         
         if isUserScript {
-            scriptPath = scriptFile as AnyObject
+            scriptPath = scriptFile
         } else {
-            scriptPath = NSBundle.mainBundle().pathForResource(scriptFile, ofType: "sh") as! AnyObject
+            scriptPath = NSBundle.mainBundle().pathForResource(scriptFile, ofType: "sh")!
         }
-        
-        let sp = scriptPath as! String
         
         let resourcesUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("adb", ofType: "")!).URLByDeletingLastPathComponent
         
@@ -94,12 +83,10 @@ class ShellTasker: NSObject {
         task.standardError = pipe
         
         // post a notification with the command, for the rawoutput debugging window
-        let taskString = sp
-        
         if self.outputIsVerbose {
-            postNotification(taskString, channel: C.NOTIF_COMMANDVERBOSE)
+            postNotification(scriptPath, channel: C.NOTIF_COMMANDVERBOSE)
         } else {
-            postNotification(taskString, channel: C.NOTIF_COMMAND)
+            postNotification(scriptPath, channel: C.NOTIF_COMMAND)
         }
         
         self.task.launch()
