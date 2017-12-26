@@ -69,9 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func revealFolderClicked(sender: NSMenuItem) {
         Util().revealScriptsFolder()
-    
     }
-
     
     func checkForPreferences(){
         let ud = NSUserDefaults.standardUserDefaults()
@@ -119,10 +117,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func updateScriptFilesInMenu(){
         scriptsMenu.removeAllItems()
         
-        let screenshotItem = NSMenuItem(title: "Screenshots", action: "screenshotsOfAllTapped:", keyEquivalent: "S")
+        let screenshotItem = NSMenuItem(
+            title: "Screenshots",
+            action: #selector(screenshotsOfAllTapped),
+            keyEquivalent: "S")
         let sepItem = NSMenuItem.separatorItem()
         let sepItem2 = NSMenuItem.separatorItem()
-        let revealFolderItem = NSMenuItem(title: "Reveal Scripts Folder", action: "revealFolderClicked:", keyEquivalent: "F")
+        let revealFolderItem = NSMenuItem(
+            title: "Reveal Scripts Folder",
+            action: #selector(revealFolderClicked),
+            keyEquivalent: "F")
 
         scriptsMenu.addItem(screenshotItem)
         scriptsMenu.addItem(sepItem)
@@ -138,10 +142,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if i<10 {
                 keyEq = "\(i)"
                 }
-            let scriptItem = NSMenuItem(title: scriptFile.stringByReplacingOccurrencesOfString(".sh", withString: ""), action: "runScript:", keyEquivalent: keyEq)
+            let scriptItem = NSMenuItem(
+                title: scriptFile.stringByReplacingOccurrencesOfString(".sh", withString: ""),
+                action: #selector(runScript),
+                keyEquivalent: keyEq)
             scriptsMenu.addItem(scriptItem)
-            i++
-            }
+            i += 1
+        }
         
         scriptsMenu.addItem(sepItem2)
         scriptsMenu.addItem(revealFolderItem)

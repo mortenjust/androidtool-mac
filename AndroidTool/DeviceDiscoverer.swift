@@ -24,10 +24,23 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     var androidDevices = [Device]()
     
     func start(){
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "suspend", name: "suspendAdb", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "unSuspend", name: "unSuspendAdb", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(suspend),
+            name: "suspendAdb",
+            object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(unSuspend),
+            name: "unSuspendAdb",
+            object: nil)
         
-        mainTimer = NSTimer.scheduledTimerWithTimeInterval(updateInterval, target: self, selector: "pollDevices", userInfo: nil, repeats: false)
+        mainTimer = NSTimer.scheduledTimerWithTimeInterval(
+            updateInterval,
+            target: self,
+            selector: #selector(pollDevices),
+            userInfo: nil,
+            repeats: false)
         
         mainTimer.fire()
         
@@ -91,7 +104,12 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
             // not really doing anything here afterall
         })
     
-        mainTimer = NSTimer.scheduledTimerWithTimeInterval(updateInterval, target: self, selector: "pollDevices", userInfo: nil, repeats: false)
+        mainTimer = NSTimer.scheduledTimerWithTimeInterval(
+            updateInterval,
+            target: self,
+            selector: #selector(pollDevices),
+            userInfo: nil,
+            repeats: false)
     }
 
 

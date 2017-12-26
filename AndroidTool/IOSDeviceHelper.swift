@@ -40,7 +40,6 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         self.recorderDelegate = recorderDelegate
         setup()
 
-        var err : NSError? = nil
         input = (try! AVCaptureDeviceInput(device: device))
         session.addOutput(movieOutput)
         session.addInput(input)

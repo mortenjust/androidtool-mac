@@ -436,7 +436,12 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             videoButton.enabled = true
         } else {
             print("resolution is nil")
-            NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "enableVideoButtonWhenReady", userInfo: nil, repeats: false)
+            NSTimer.scheduledTimerWithTimeInterval(
+                1,
+                target: self,
+                selector: #selector(enableVideoButtonWhenReady),
+                userInfo: nil,
+                repeats: false)
         }
     }
         

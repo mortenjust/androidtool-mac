@@ -78,9 +78,9 @@ class Device: NSObject {
             } else {
                 type = DeviceType.Phone
             }
-            }
+        }
         
-        var task = ShellTasker(scriptFile: "getResolutionForSerial")
+        let task = ShellTasker(scriptFile: "getResolutionForSerial")
         task.outputIsVerbose = true
         task.run(arguments: ["\(self.adbIdentifier!)"], isUserScript: false) { (output) -> Void in
             let res = output as String

@@ -42,7 +42,7 @@ class scriptsPopoverViewController: NSViewController {
             height: buttonHeight))
         folderButton.image = NSImage(named: "revealFolder")
         folderButton.bordered = false
-        folderButton.action = "revealScriptFolderClicked:"
+        folderButton.action = #selector(revealScriptFolderClicked)
         folderButton.target = self
         view.addSubview(folderButton)
         
@@ -59,7 +59,7 @@ class scriptsPopoverViewController: NSViewController {
                 // Fallback on earlier versions
             }
             scriptButton.bezelStyle = NSBezelStyle.RoundedBezelStyle
-            scriptButton.action = "runScriptClicked:"
+            scriptButton.action = #selector(runScriptClicked)
             scriptButton.target = self
             
             view.addSubview(scriptButton)
@@ -99,9 +99,6 @@ class scriptsPopoverViewController: NSViewController {
     }
     
     override func awakeFromNib() {
-//        println("awake from nib-style")
         setup()
     }
-    
-    
 }

@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="17C88" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -17,7 +17,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,7 +31,6 @@
                                 <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" incrementalSearchingEnabled="YES" verticallyResizable="YES" id="0zd-HS-O6S" customClass="TerminalOutputTextView" customModule="AndroidTool" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="480" height="270"/>
                                     <size key="maxSize" width="480" height="10000000"/>
@@ -40,19 +39,15 @@
                                     <size key="maxSize" width="480" height="10000000"/>
                                 </textView>
                             </subviews>
-                            <animations/>
                             <color key="backgroundColor" red="0.17647058823529413" green="0.16078431372549021" blue="0.19215686274509805" alpha="1" colorSpace="calibratedRGB"/>
                         </clipView>
-                        <animations/>
                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="riY-GE-JKM">
                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Cfq-0a-awd">
                             <rect key="frame" x="464" y="0.0" width="16" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
-                            <animations/>
                         </scroller>
                     </scrollView>
                 </subviews>
@@ -62,7 +57,6 @@
                     <constraint firstItem="qIN-a1-0PP" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="dd6-cd-MY3"/>
                     <constraint firstAttribute="trailing" secondItem="qIN-a1-0PP" secondAttribute="trailing" id="ebr-TX-cl5"/>
                 </constraints>
-                <animations/>
             </view>
             <toolbar key="toolbar" implicitIdentifier="5FF9149A-AD60-4054-9E83-4BAA00340C9F" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="KzW-OH-K7y">
                 <allowedToolbarItems>
@@ -79,7 +73,6 @@
                                 <subviews>
                                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sZl-AR-Zhw">
                                         <rect key="frame" x="-2" y="30" width="72" height="18"/>
-                                        <animations/>
                                         <buttonCell key="cell" type="check" title="Verbose" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="iEG-h9-Ga1">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -89,9 +82,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <animations/>
                             </view>
-                            <animations/>
                             <color key="borderColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                             <color key="fillColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </box>
