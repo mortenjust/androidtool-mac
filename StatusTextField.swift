@@ -10,8 +10,8 @@ import Cocoa
 
 class StatusTextField: NSTextField {
 
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         // Drawing code here.
     }
@@ -27,21 +27,21 @@ class StatusTextField: NSTextField {
     
     
     
-    func animateIn(completion:()->Void?){
+    func animateIn(_ completion:@escaping ()->Void?){
 
         let moveTo = (layer?.frame.origin.y)! - 5
         let move = CABasicAnimation(keyPath: "position.y")
         move.toValue = moveTo
         move.duration = 0.2
         
-        move.removedOnCompletion = true
+        move.isRemovedOnCompletion = true
         move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.fromValue = 0
         fade.toValue = 1
         fade.duration = 0.2
-        fade.removedOnCompletion = true
+        fade.isRemovedOnCompletion = true
         fade.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 
         CATransaction.begin()
@@ -49,9 +49,9 @@ class StatusTextField: NSTextField {
             completion()
         }
         
-        layer?.addAnimation(fade, forKey: "basicOpacity")
+        layer?.add(fade, forKey: "basicOpacity")
         layer?.opacity = 1
-        layer?.addAnimation(move, forKey: "basicMove")
+        layer?.add(move, forKey: "basicMove")
         layer?.frame.origin.y = moveTo
         
         CATransaction.commit()
@@ -60,18 +60,18 @@ class StatusTextField: NSTextField {
     }
     
     
-    func animateOut(completion:()->Void){
+    func animateOut(_ completion:@escaping ()->Void){
         let moveTo = (layer?.frame.origin.y)! + 5
         let move = CABasicAnimation(keyPath: "position.y")
         move.toValue = moveTo
         move.duration = 0.2
-        move.removedOnCompletion = true
+        move.isRemovedOnCompletion = true
         move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.fromValue = 1
         fade.toValue = 0
-        fade.removedOnCompletion = true
+        fade.isRemovedOnCompletion = true
         fade.duration = 0.2
         fade.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
 
@@ -80,16 +80,16 @@ class StatusTextField: NSTextField {
             completion()
         }
         
-        layer?.addAnimation(fade, forKey: "basicOpacity")
+        layer?.add(fade, forKey: "basicOpacity")
         layer?.opacity = 0
-        layer?.addAnimation(move, forKey: "basicMove")
+        layer?.add(move, forKey: "basicMove")
         layer?.frame.origin.y = moveTo
         
         CATransaction.commit()
     }
     
 
-    func setText(text:String, shouldFadeOut:Bool = true){
+    func setText(_ text:String, shouldFadeOut:Bool = true){
         animateOut { () -> Void in
             self.stringValue = text
             
@@ -109,7 +109,7 @@ class StatusTextField: NSTextField {
         anim.fromValue = 1
         anim.toValue = 0
         anim.duration = 60 //* 5 // 5 mins
-        self.layer?.addAnimation(anim, forKey: "opacity")
+        self.layer?.add(anim, forKey: "opacity")
         alphaValue = 0
     }
     

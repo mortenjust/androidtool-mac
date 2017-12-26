@@ -23,28 +23,28 @@ class TerminalOutputTextView: NSTextView {
         startListening()
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
     }
     
     func startListening(){
-        NSNotificationCenter.defaultCenter().addObserverForName(Constants.NOTIF_NEWDATA, object: nil, queue: nil) { (notif) -> Void in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Constants.NOTIF_NEWDATA), object: nil, queue: nil) { (notif) -> Void in
             Swift.print("#mj.newData notif")
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 let s = notif.object as! String
                 self.append(s)
                 
             })
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(C.NOTIF_NEWDATAVERBOSE, object: nil, queue: nil) { (notif) -> Void in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: C.NOTIF_NEWDATAVERBOSE), object: nil, queue: nil) { (notif) -> Void in
             Swift.print("#mj.newData verbose notif")
             
-            let wantsVerbose = NSUserDefaults.standardUserDefaults().boolForKey(C.VERBOSEOUTPUT)
+            let wantsVerbose = UserDefaults.standard.bool(forKey: C.VERBOSEOUTPUT)
             
             if wantsVerbose {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     let s = notif.object as! String
                     
                     self.append(s)
@@ -54,29 +54,29 @@ class TerminalOutputTextView: NSTextView {
         }
         
         
-        NSNotificationCenter.defaultCenter().addObserverForName(Constants.NOTIF_COMMAND, object: nil, queue: nil) { (notif) -> Void in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Constants.NOTIF_COMMAND), object: nil, queue: nil) { (notif) -> Void in
             Swift.print("#mj.newData notif")
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 let s = notif.object as! String
                 self.append("\n\n\(s)", atts: Styles().commandAtts())
             })
         }
         
         
-        NSNotificationCenter.defaultCenter().addObserverForName(Constants.NOTIF_COMMANDVERBOSE, object: nil, queue: nil) { (notif) -> Void in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Constants.NOTIF_COMMANDVERBOSE), object: nil, queue: nil) { (notif) -> Void in
             Swift.print("#mj.newDataverbose notif")
-            let wantsVerbose = NSUserDefaults.standardUserDefaults().boolForKey(C.VERBOSEOUTPUT)
+            let wantsVerbose = UserDefaults.standard.bool(forKey: C.VERBOSEOUTPUT)
             if wantsVerbose {
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     let s = notif.object as! String
                     self.append("\n\n\(s)", atts: Styles().commandAtts())
                 })
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserverForName(Constants.NOTIF_NEWSESSION, object: nil, queue: nil) { (notif) -> Void in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Constants.NOTIF_NEWSESSION), object: nil, queue: nil) { (notif) -> Void in
             Swift.print("#mj.newSession notif")
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.newSession()
             })
         }
@@ -86,9 +86,9 @@ class TerminalOutputTextView: NSTextView {
         append("\n\n----\n\n")
     }
     
-    func append(appended: String, atts:[String:AnyObject] = Styles().terminalAtts()) {
+    func append(_ appended: String, atts:[String:AnyObject] = Styles().terminalAtts()) {
         let s = NSAttributedString(string: "\n"+appended, attributes: atts)
-        self.textStorage?.appendAttributedString(s)
+        self.textStorage?.append(s)
         self.scrollToEndOfDocument(nil)
     }
 }

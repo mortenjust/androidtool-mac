@@ -15,29 +15,29 @@ class WindowMoverScrollview: NSScrollView {
         return true
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
         
         // Drawing code here.
     }
     
-    override func mouseDragged(theEvent: NSEvent) {
+    override func mouseDragged(with theEvent: NSEvent) {
         Swift.print("mouse dragged in windowmoverscrollwview")
-        super.mouseDragged(theEvent)
+        super.mouseDragged(with: theEvent)
     }
     
-    override func mouseDown(theEvent: NSEvent) {
-        super.mouseDown(theEvent)
+    override func mouseDown(with theEvent: NSEvent) {
+        super.mouseDown(with: theEvent)
     }
     
-    override func mouseUp(theEvent: NSEvent) {
+    override func mouseUp(with theEvent: NSEvent) {
         Swift.print("mouse up")
-        super.mouseUp(theEvent)
+        super.mouseUp(with: theEvent)
     }
     
-    override func mouseEntered(theEvent: NSEvent) {
+    override func mouseEntered(with theEvent: NSEvent) {
         Swift.print("mouse entered")
-        super.mouseEntered(theEvent)
+        super.mouseEntered(with: theEvent)
     }
     
 }

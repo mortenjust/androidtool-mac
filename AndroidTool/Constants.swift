@@ -37,7 +37,7 @@ class Constants {
         ,"launchInstalledApp":true
         ,"flashImagesInZipFiles":false
         ,"generateGif":false
-    ]
+    ] as [String : Any]
     
     static let tweakProperties = ["bluetooth", "clock", "alarm", "sync", "wifi", "location", "volume", "mute", "notifications", "mobile", "mobileDatatype", "mobileLevel", "batteryLevel", "batteryCharging", "airplane", "nosim", "speakerphone"]
     

@@ -24,7 +24,7 @@ class Apk: NSObject {
         parseRawInfo(rawAaptBadgingData)
     }
     
-     func parseRawInfo(rawdata:String) {
+     func parseRawInfo(_ rawdata:String) {
             print(">>apkparskeapkinfo")
             let u = Util()
             let apk = self

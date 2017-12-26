@@ -10,33 +10,33 @@ import Cocoa
 import AVFoundation
 
 protocol DeviceDiscovererDelegate {
-    func devicesUpdated(deviceList:[Device])
+    func devicesUpdated(_ deviceList:[Device])
 }
 
 class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     var delegate : DeviceDiscovererDelegate!
     var previousDevices = [Device]()
     var updatingSuspended = false
-    var mainTimer : NSTimer!
-    var updateInterval:NSTimeInterval = 3
+    var mainTimer : Timer!
+    var updateInterval:TimeInterval = 3
     var iosDeviceHelper : IOSDeviceHelper!
     var iosDevices = [Device]()
     var androidDevices = [Device]()
     
     func start(){
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(suspend),
-            name: "suspendAdb",
+            name: NSNotification.Name(rawValue: "suspendAdb"),
             object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(unSuspend),
-            name: "unSuspendAdb",
+            name: NSNotification.Name(rawValue: "unSuspendAdb"),
             object: nil)
         
-        mainTimer = NSTimer.scheduledTimerWithTimeInterval(
-            updateInterval,
+        mainTimer = Timer.scheduledTimer(
+            timeInterval: updateInterval,
             target: self,
             selector: #selector(pollDevices),
             userInfo: nil,
@@ -51,31 +51,31 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     
     func stop(){}
     
-    func getSerials(thenDoThis:(serials:[String]?, gotResults:Bool)->Void, finished:()->Void){
+    func getSerials(_ thenDoThis:(_ serials:[String]?, _ gotResults:Bool)->Void, finished:()->Void){
         let task = ShellTasker(scriptFile: "getSerials")
         task.outputIsVerbose = true
         task.run() { (output) -> Void in
             let str = String(output)
             
             if str.utf16.count < 2 {
-                thenDoThis(serials: nil, gotResults: false)
+                thenDoThis(nil, false)
                 finished()
                 return
             }
 
             let serials = str.characters.split { $0 == ";" }.map { String($0) }
-            thenDoThis(serials: serials, gotResults:true)
+            thenDoThis(serials, true)
             finished()
         }
     }
 
-    func getDetailsForSerial(serial:String, complete:(details:[String:String])->Void){
+    func getDetailsForSerial(_ serial:String, complete:(_ details:[String:String])->Void){
         print("getDetailsForSerial: \(serial)")
         let task = ShellTasker(scriptFile: "getDetailsForSerial")
         task.outputIsVerbose = true
         task.run(arguments: ["\(serial)"], isUserScript: false) { (output) -> Void in
             let detailsDict = self.getPropsFromString(output as String)
-            complete(details:detailsDict)
+            complete(detailsDict)
         }
     }
     
@@ -93,19 +93,19 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
                         let device = Device(properties: details, adbIdentifier:serial)
                         newDevices.append(device)
                         if serials!.count == newDevices.count {
-                            self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.Android)
+                            self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
                         }
                     })
                 }
             } else {
-                self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.Android)
+                self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
             }
         }, finished: { () -> Void in
             // not really doing anything here afterall
         })
     
-        mainTimer = NSTimer.scheduledTimerWithTimeInterval(
-            updateInterval,
+        mainTimer = Timer.scheduledTimer(
+            timeInterval: updateInterval,
             target: self,
             selector: #selector(pollDevices),
             userInfo: nil,
@@ -124,21 +124,21 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     }
     
     
-    func getPropsFromString(string:String) -> [String:String] {
+    func getPropsFromString(_ string:String) -> [String:String] {
         let re = try! NSRegularExpression(pattern: "\\[(.+?)\\]: \\[(.+?)\\]", options: [])
-        let matches = re.matchesInString(string, options: [], range: NSRange(location: 0, length: string.utf16.count))
+        let matches = re.matches(in: string, options: [], range: NSRange(location: 0, length: string.utf16.count))
         
         var propDict = [String:String]()
         
         for match in matches {
-            let key = (string as NSString).substringWithRange(match.rangeAtIndex(1))
-            let value = (string as NSString).substringWithRange(match.rangeAtIndex(2))
+            let key = (string as NSString).substring(with: match.rangeAt(1))
+            let value = (string as NSString).substring(with: match.rangeAt(2))
             propDict[key] = value
         }
         return propDict
     }
     
-    func iosDeviceAttached(device:AVCaptureDevice){
+    func iosDeviceAttached(_ device:AVCaptureDevice){
         // instantiate new Device, check if we know it, add to iosDevices[], tell deviceCollector about it
         
         print("Found device \(device.localizedName)")
@@ -153,7 +153,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
 
         if !known {
             iosDevices.append(newDevice)
-            newDeviceCollector(updateWithList: iosDevices, forDeviceOS: .Ios)
+            newDeviceCollector(updateWithList: iosDevices, forDeviceOS: .ios)
             // tell deviceCollector to merge with Android device and fire an update
         }
     }
@@ -162,10 +162,10 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         var allDevices = [Device]()
         
         // merge lists
-        if forDeviceOS == .Android {
+        if forDeviceOS == .android {
             androidDevices = deviceList
         }
-        if forDeviceOS == .Ios {
+        if forDeviceOS == .ios {
             iosDevices = deviceList
         }
         
@@ -173,18 +173,18 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         delegate.devicesUpdated(allDevices)
     }
     
-    func iosDeviceDetached(device:AVCaptureDevice){
+    func iosDeviceDetached(_ device:AVCaptureDevice){
         // find the lost device in iosDevices[], remove it, and tell newDeviceCollector about it
         for index in 0...(iosDevices.count-1) {
             if iosDevices[index].uuid == device.uniqueID {
                 print("removing \(device.localizedName)")
-                iosDevices.removeAtIndex(index)
-                newDeviceCollector(updateWithList: iosDevices, forDeviceOS: .Ios)
+                iosDevices.remove(at: index)
+                newDeviceCollector(updateWithList: iosDevices, forDeviceOS: .ios)
             }
         }
     }
 
-    func iosDeviceDidStartPreparing(device:AVCaptureDevice){
+    func iosDeviceDidStartPreparing(_ device:AVCaptureDevice){
         // this happens when
     }
     func iosDeviceDidEndPreparing(){}

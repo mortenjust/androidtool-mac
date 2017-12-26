@@ -11,11 +11,11 @@ import Cocoa
 class PreferencesWindowController: NSWindowController {
 
     
-    @IBAction func screenshotFolderClicked(sender: AnyObject) {
+    @IBAction func screenshotFolderClicked(_ sender: AnyObject) {
         selectFolder("Screenshots", message: "Save screenshots in this folder", defaultsPath: "screenshotsFolder")
     }
 
-    @IBAction func screenRecordingFolderClicked(sender: AnyObject) {
+    @IBAction func screenRecordingFolderClicked(_ sender: AnyObject) {
         
         selectFolder("Screen recordings", message: "Save recordings in this folder", defaultsPath: "screenRecordingsFolder")
     }
@@ -28,7 +28,7 @@ class PreferencesWindowController: NSWindowController {
     
     
     
-    func selectFolder(title:String, message:String, defaultsPath:String){
+    func selectFolder(_ title:String, message:String, defaultsPath:String){
         let openPanel = NSOpenPanel();
         openPanel.title = title
         openPanel.message = message
@@ -37,11 +37,11 @@ class PreferencesWindowController: NSWindowController {
         openPanel.canChooseFiles = false;
         openPanel.allowsMultipleSelection = false;
         openPanel.canCreateDirectories = true;
-        openPanel.beginWithCompletionHandler { (result) -> Void in
+        openPanel.begin { (result) -> Void in
             if(result == NSFileHandlingPanelOKButton){
-                let path = openPanel.URL!.path!
+                let path = openPanel.url!.path
                 print("selected folder is \(path), saving to \(defaultsPath)");
-                let ud = NSUserDefaults.standardUserDefaults()
+                let ud = UserDefaults.standard
                 ud.setValue(path, forKey: defaultsPath)
             }
         }

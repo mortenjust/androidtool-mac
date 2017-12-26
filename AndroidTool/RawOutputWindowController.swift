@@ -11,7 +11,7 @@ import Cocoa
 class RawOutputWindowController: NSWindowController {
     
     
-    @IBAction func verboseClicked(sender: AnyObject) {
+    @IBAction func verboseClicked(_ sender: AnyObject) {
     }
     
 
