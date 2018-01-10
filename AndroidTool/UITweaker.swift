@@ -79,7 +79,7 @@ class UITweaker: NSObject {
                 case "clock":
                     if ud.bool(forKey: prop) {
                         let hhmm = formatTime(ud.string(forKey: "timeValue")!)
-                        let tweak = Tweak(command: "clock -e hhmm \(hhmm)", description: "Setting time to \(ud.string(forKey: "timeValue"))")
+                        let tweak = Tweak(command: "clock -e hhmm \(hhmm)", description: "Setting time to \(ud.string(forKey: "timeValue")!)")
                         tweaks.append(tweak)
                     }
                     break
@@ -98,7 +98,7 @@ class UITweaker: NSObject {
                     if ud.bool(forKey: prop){
                         let mobileDatatype = ud.string(forKey: "mobileDatatype")
                         let mobileLevel = ud.string(forKey: "mobileLevel")!.replacingOccurrences(of: " bars", with: "").replacingOccurrences(of: " bar", with: "")
-                        tweak = Tweak(command: "network -e mobile show -e datatype \(mobileDatatype) -e level \(mobileLevel)", description: "Turn cell icon on")
+                        tweak = Tweak(command: "network -e mobile show -e datatype \(mobileDatatype!) -e level \(mobileLevel)", description: "Turn cell icon on")
                     } else {
                         tweak = Tweak(command: "network -e mobile hide", description: "Turn cell icon off")
                     }

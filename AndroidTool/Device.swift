@@ -31,7 +31,7 @@ class Device: NSObject {
     var serial: String?
     var properties: [String:String]?
     var firstBoot : TimeInterval?
-    var firstBootString : NSString?
+    var firstBootString : String?
     var adbIdentifier : String?
     var isEmulator : Bool = false
     var displayHeight : Int?
@@ -62,9 +62,10 @@ class Device: NSObject {
         name = properties["ro.product.name"]
         manufacturer = properties["ro.product.manufacturer"]
         brand = properties["ro.product.brand"]
-        firstBootString = properties["ro.runtime.firstboot"] as! NSString
-        firstBoot = firstBootString?.doubleValue
-
+        firstBootString = properties["ro.runtime.firstboot"]
+        if let fbs = firstBootString {
+            firstBoot = TimeInterval(fbs)
+        }
         if let deviceSerial = properties["ro.serialno"]{
             serial = deviceSerial
         } else {

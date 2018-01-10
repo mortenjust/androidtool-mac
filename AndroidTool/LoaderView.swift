@@ -33,7 +33,7 @@ class LoaderView: NSImageView {
         let rotate = CABasicAnimation(keyPath: "transform.rotation")
         rotate.fillMode = kCAFillModeForwards
         rotate.fromValue = 0.0
-        rotate.toValue = CGFloat(M_PI * 2.0)
+        rotate.toValue = CGFloat(.pi * 2.0)
         rotate.duration = 1
         rotate.repeatCount = Float.infinity
         layer?.position = CGPoint(x: self.frame.midX, y: self.frame.midY)

@@ -84,12 +84,14 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         }
         else
         {
-            DispatchQueue.main.asyncAfter(deadline: 3, execute: { () -> Void in
-                print("stopRecording")
-                self.movieOutput.stopRecording()
-                self.recorderDelegate.iosRecorderDidFinish(self.file!)
-                self.file = nil
-            })
+            DispatchQueue.main.asyncAfter(
+                deadline: DispatchTime.now() + DispatchTimeInterval.seconds(3),
+                execute: { () -> Void in
+                    print("stopRecording")
+                    self.movieOutput.stopRecording()
+                    self.recorderDelegate.iosRecorderDidFinish(self.file!)
+                    self.file = nil
+                })
         }
     }
     
@@ -101,7 +103,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
                 let device = foundDevice as! AVCaptureDevice
                 let deviceName = device.localizedName
                 let uuid = device.uniqueID
-                print("hello \(deviceName) aka \(uuid)")
+                print("hello \(deviceName!) aka \(uuid!)")
                 deviceFound(foundDevice as AnyObject)
             }
         }
@@ -179,7 +181,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         if error != nil {
             print("Recording ended in error")
             print(error)
-            recorderDelegate.iosRecorderFailed(error.description, message: nil)
+            recorderDelegate.iosRecorderFailed(error.localizedDescription, message: nil)
         }
     }
     

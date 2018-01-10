@@ -387,9 +387,9 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     func startProgressIndication(){
         Util().stopRefreshingDeviceList()
-        DispatchQueue.main.asyncAfter(deadline: 1) { () -> Void in
-            self.loaderButton.startRotating()
-        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(1)) { () -> Void in
+                self.loaderButton.startRotating()
+            }
     }
     
     func stopProgressIndication(){
@@ -552,27 +552,27 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func dropDragEntered(_ filePath: String) {
         print("vc:dropDragEntered")
 
-        if let fileExt = URL(fileURLWithPath: filePath).pathExtension {
-            switch fileExt {
-                case "apk":
-                    hideButtons()
-                    let a = ApkHandler(filepath: filePath, device: self.device)
-                    a.getInfoFromApk { (apk) -> Void in
-                        self.setStatus("Drop to install")
-                        self.showInstallInvite(forApk: apk)
-                }
-                case "zip":
-                    if UserDefaults.standard.bool(forKey: C.PREF_FLASHIMAGESINZIPFILES){
-                        setStatus("Drop to flash image with Fastboot")
-                    } else {
-                        setStatus("Enable flashing in Prefs first")
-                }
-                case "obb":
-                    setStatus("Drop to copy OBB")
-            default:
-                setStatus("Whaaaaat, what is this file?")
+        let fileExt = URL(fileURLWithPath: filePath).pathExtension
+        switch fileExt {
+            case "apk":
+                hideButtons()
+                let a = ApkHandler(filepath: filePath, device: self.device)
+                a.getInfoFromApk { (apk) -> Void in
+                    self.setStatus("Drop to install")
+                    self.showInstallInvite(forApk: apk)
             }
+            case "zip":
+                if UserDefaults.standard.bool(forKey: C.PREF_FLASHIMAGESINZIPFILES){
+                    setStatus("Drop to flash image with Fastboot")
+                } else {
+                    setStatus("Enable flashing in Prefs first")
+            }
+            case "obb":
+                setStatus("Drop to copy OBB")
+        default:
+            setStatus("Whaaaaat, what is this file?")
         }
+        
     }
     
     func dropDragExited() {
@@ -586,29 +586,29 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func dropDragPerformed(_ filePath: String) {
         if device.deviceOS != .android {return}
         startProgressIndication()
-
+        
         print("vc:dropDragPerformed")
         
-        if let fileExt = URL(fileURLWithPath: filePath).pathExtension {
-            switch fileExt {
-                case "apk":
-                    installApk(filePath)
-                    hideInstallInviteView()
-                    showButtons()
-                case "zip":
-                    if UserDefaults.standard.bool(forKey: C.PREF_FLASHIMAGESINZIPFILES){
-                        flashZip(filePath)
-                    } else {
-                        stopProgressIndication()
-                        self.setStatus("Enable flashing in Prefs")
+        let fileExt = URL(fileURLWithPath: filePath).pathExtension
+        switch fileExt {
+            case "apk":
+                installApk(filePath)
+                hideInstallInviteView()
+                showButtons()
+            case "zip":
+                if UserDefaults.standard.bool(forKey: C.PREF_FLASHIMAGESINZIPFILES){
+                    flashZip(filePath)
+                } else {
+                    stopProgressIndication()
+                    self.setStatus("Enable flashing in Prefs")
                 }
-                case "obb":
-                    installObb(filePath)
-                default:
+            case "obb":
+                installObb(filePath)
+            default:
                 stopProgressIndication()
                 setStatus("Wait, what?")
-            }
         }
+        
     }
     
 

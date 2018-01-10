@@ -67,9 +67,7 @@ class DropReceiverView: NSView {
     }
     
     func getPathFromBoard(_ board:NSPasteboard) -> String {
-        let url = URL(from: board)
-        let path = url?.path!
-        return path!;
+        return (NSURL.init(from: board)?.path)!
     }
     
     override init(frame frameRect: NSRect) {

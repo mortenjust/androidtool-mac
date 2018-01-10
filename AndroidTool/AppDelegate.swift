@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
         if #available(OSX 10.10, *) {
             window.titlebarAppearsTransparent = true
-            window.styleMask = window.styleMask | NSFullSizeContentViewWindowMask;
+            window.styleMask.update(with: .fullSizeContentView);
         } else {
             // Fallback on earlier versions
         }
@@ -40,11 +40,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //masterViewController.view.frame = window.contentView.bounds
         
         let insertedView = masterViewController.view
-        let containerView = window.contentView as NSView!
+        let containerView = window.contentView!
         
         insertedView.translatesAutoresizingMaskIntoConstraints = false
 
-        let viewDict = ["inserted":insertedView, "container":containerView]
+        let viewDict: [String: Any] = ["inserted":insertedView, "container":containerView]
         let viewConstraintH = NSLayoutConstraint.constraints(
                 withVisualFormat: "H:|[inserted]|",
                 options: NSLayoutFormatOptions(rawValue: 0),
@@ -55,8 +55,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             options: NSLayoutFormatOptions(rawValue: 0),
             metrics: nil,
             views: viewDict)
-        containerView?.addConstraints(viewConstraintH)
-        containerView?.addConstraints(viewConstraintV)
+        containerView.addConstraints(viewConstraintH)
+        containerView.addConstraints(viewConstraintV)
         
         
     }
