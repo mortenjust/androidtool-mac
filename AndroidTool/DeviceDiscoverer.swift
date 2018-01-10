@@ -63,7 +63,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
                 return
             }
 
-            let serials = str.characters.split { $0 == ";" }.map { String($0) }
+            let serials = str.split(separator: ";").map {String($0)}
             thenDoThis(serials, true)
             finished()
         }
