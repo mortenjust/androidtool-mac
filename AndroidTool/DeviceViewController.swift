@@ -401,12 +401,17 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     override func awakeFromNib() {
         if let model = device.model {
             deviceNameField.stringValue = model
-            }
-        let brandName = device.brand!.lowercased()
-        let imageName = "logo\(brandName)"
-        print("imageName: \(imageName)")
-        var image = NSImage(named: imageName)
+        }
         
+        var image: NSImage? = nil
+        if let brand = device.brand {
+            let brandName = brand.lowercased()
+            let imageName = "logo\(brandName)"
+            print("imageName: \(imageName)")
+            image = NSImage(named: imageName)
+        } else {
+            print("imageName: use default, no brand")
+        }
         if image == nil {
             image = NSImage(named: "androidlogo")
         }
@@ -416,7 +421,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
 //            cameraButton.enabled = false
             videoButton.isEnabled = false
             deviceNameField.stringValue = "Emulator"
-            
         }
         
         // only enable video recording if we have resolution, which is a bit slow because it comes from a big call
