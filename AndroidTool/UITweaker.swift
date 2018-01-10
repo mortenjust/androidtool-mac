@@ -26,7 +26,7 @@ class UITweaker: NSObject {
         var description:String!
     }
     
-    func start(_ callback:()->Void){
+    func start(_ callback:@escaping ()->Void){
         var cmdString = ""
         for tweak in collectAllTweaks() {
             cmdString = "\(tweak.command)~\(cmdString)"

@@ -93,7 +93,7 @@ class Device: NSObject {
     }
     
     
-    func getCurrentActivity(_ completion:(_ activityName:String)->Void){
+    func getCurrentActivity(_ completion:@escaping (_ activityName:String)->Void){
         let task = ShellTasker(scriptFile: "getCurrentActivityForIdentifier")
         task.outputIsVerbose = true
         task.run(arguments: ["\(self.adbIdentifier!)"], isUserScript: false, isIOS: false) { (output) -> Void in

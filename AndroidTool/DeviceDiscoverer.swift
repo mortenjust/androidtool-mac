@@ -51,7 +51,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     
     func stop(){}
     
-    func getSerials(_ thenDoThis:(_ serials:[String]?, _ gotResults:Bool)->Void, finished:()->Void){
+    func getSerials(_ thenDoThis: @escaping (_ serials:[String]?, _ gotResults:Bool)->Void, finished:@escaping ()->Void){
         let task = ShellTasker(scriptFile: "getSerials")
         task.outputIsVerbose = true
         task.run() { (output) -> Void in
@@ -69,7 +69,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         }
     }
 
-    func getDetailsForSerial(_ serial:String, complete:(_ details:[String:String])->Void){
+    func getDetailsForSerial(_ serial:String, complete:@escaping (_ details:[String:String])->Void){
         print("getDetailsForSerial: \(serial)")
         let task = ShellTasker(scriptFile: "getDetailsForSerial")
         task.outputIsVerbose = true

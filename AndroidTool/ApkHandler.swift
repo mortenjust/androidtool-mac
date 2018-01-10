@@ -33,7 +33,7 @@ class ApkHandler: NSObject {
         self.device = device
     }
     
-    func installAndLaunch(_ complete:()->Void){
+    func installAndLaunch(_ complete:@escaping ()->Void){
         delegate?.apkHandlerDidStart()
         print(">>apkhandle")
         
@@ -46,7 +46,7 @@ class ApkHandler: NSObject {
         }
     }
     
-    func install(_ completion:()->Void){
+    func install(_ completion:@escaping ()->Void){
         print(">>apkinstall")
         delegate?.apkHandlerDidUpdate("Installing...")
         
@@ -59,7 +59,7 @@ class ApkHandler: NSObject {
         }
     }
     
-    func uninstallPackageWithName(_ packageName:String, completion:()->Void){
+    func uninstallPackageWithName(_ packageName:String, completion:@escaping ()->Void){
         print(">>Uninstall")
         delegate?.apkHandlerDidUpdate("Uninstalling app")
         let s = ShellTasker(scriptFile: "uninstallPackageOnDevice")
@@ -71,7 +71,7 @@ class ApkHandler: NSObject {
         
     }
     
-    func getInfoFromApk(_ complete:(Apk) -> Void){
+    func getInfoFromApk(_ complete:@escaping (Apk) -> Void){
         print(">>apkgetinfofromapk")
         delegate?.apkHandlerDidUpdate("Getting info...")
         
