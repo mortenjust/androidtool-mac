@@ -174,14 +174,12 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     
     func fileOutput(_ captureOutput: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         
-        if error == nil {
-            print("------------------------- recording did end")
-            }
-        
-        if error != nil {
+        if let error = error {
             print("Recording ended in error")
-            print(error)
-            recorderDelegate.iosRecorderFailed((error?.localizedDescription)!, message: nil)
+            print(error.localizedDescription)
+            recorderDelegate.iosRecorderFailed(error.localizedDescription, message: nil)
+        } else {
+            print("------------------------- recording did end")
         }
     }
     

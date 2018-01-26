@@ -42,21 +42,23 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     func installApk(_ apkPath:String){
         showDevicePicker(apkPath)
     }
-
+    
     
     func showDevicePicker(_ apkPath:String){
-        let devicePickerVC = DevicePickerViewController(nibName: "DevicePickerViewController", bundle: nil)
-        devicePickerVC?.devices = devices
-        devicePickerVC?.apkPath = apkPath
+        let devicePickerVC = DevicePickerViewController(
+            nibName: NSNib.Name(rawValue: "DevicePickerViewController"),
+            bundle: nil)
+        devicePickerVC.devices = devices
+        devicePickerVC.apkPath = apkPath
+        
         if #available(OSX 10.10, *) {
-            self.presentViewControllerAsSheet(devicePickerVC!)
+            self.presentViewControllerAsSheet(devicePickerVC)
         } else {
             // Fallback on earlier versions
         }
-        
     }
-
-
+    
+    
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return false
     }

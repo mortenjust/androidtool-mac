@@ -18,20 +18,19 @@ protocol DropDelegate {
 class DropReceiverView: NSView {
     
     var delegate:DropDelegate?
-    var testVar = "only you can see this";
     
     func removeBackgroundColor(){
         layer?.backgroundColor = NSColor.clear.cgColor
-        }
+    }
     
     func addBackgroundColor(){
         layer?.backgroundColor = NSColor(red:0.267, green:0.251, blue:0.290, alpha:1).cgColor
-        }
+    }
     
     func setup(){
         wantsLayer = true
         let fileTypes = [
-            "public.data"
+            NSPasteboard.PasteboardType.init(_: kUTTypeData as String)
         ]
         registerForDraggedTypes(fileTypes);
     }

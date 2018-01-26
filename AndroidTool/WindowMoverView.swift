@@ -10,31 +10,12 @@ import Cocoa
 
 class WindowMoverView: NSView {
     
-    override func registerForDraggedTypes(_ newTypes: [NSPasteboard.PasteboardType]) {
-        Swift.print("$$ registering")
-        let fileTypes = [
-            ".apk"
-        ]
-        registerForDraggedTypes(fileTypes);
-    }
-    
-    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        Swift.print("dragging entered")
-        return NSDragOperation.copy
-    }
-    
     override func acceptsFirstMouse(for theEvent: NSEvent?) -> Bool {
         return true
     }
     
     override var acceptsFirstResponder: Bool {
         return true
-    }
-
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
     }
     
     override var mouseDownCanMoveWindow:Bool {
