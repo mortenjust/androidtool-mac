@@ -213,13 +213,13 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         cameraButton.isEnabled = true
         videoButton.isEnabled = true
         isRecording = false
-        self.videoButton.image = NSImage(named: "recordButtonWhite")
+        self.videoButton.image = NSImage(named: NSImage.Name(rawValue: "recordButtonWhite"))
     }
     
     func iosRecorderDidEndPreparing() {
         videoButton.alphaValue = 1
         print("recorder did end preparing")
-        self.videoButton.image = NSImage(named: "stopButton")
+        self.videoButton.image = NSImage(named: NSImage.Name(rawValue: "stopButton"))
         self.videoButton.isEnabled = true
     }
     
@@ -232,7 +232,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         Util().stopRefreshingDeviceList()
         isRecording = true
         self.restingButton = self.videoButton.image // restingbutton is "recordButtonWhite"
-        videoButton.image = NSImage(named: "stopButton")
+        videoButton.image = NSImage(named: NSImage.Name(rawValue: "stopButton"))
         videoButton.isEnabled = false
         cameraButton.isEnabled = false
         moreButton.isEnabled = false
@@ -311,7 +311,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func iosRecorderDidFinish(_ outputFileURL: URL!) {
-        NSWorkspace.shared().openFile(outputFileURL.path)
+        NSWorkspace.shared.openFile(outputFileURL.path)
         self.videoButton.image = restingButton
         
         Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
@@ -360,11 +360,11 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     init?(device _device:Device){
         device = _device
-        super.init(nibName: "DeviceViewController", bundle: nil)
+        super.init(nibName: NSNib.Name(rawValue: "DeviceViewController"), bundle: nil)
         setup()
     }
     
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
@@ -408,12 +408,12 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             let brandName = brand.lowercased()
             let imageName = "logo\(brandName)"
             print("imageName: \(imageName)")
-            image = NSImage(named: imageName)
+            image = NSImage(named: NSImage.Name(rawValue: imageName))
         } else {
             print("imageName: use default, no brand")
         }
         if image == nil {
-            image = NSImage(named: "androidlogo")
+            image = NSImage(named: NSImage.Name(rawValue: "androidlogo"))
         }
         deviceImage.image = image
         
@@ -449,7 +449,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         }
     }
         
-    func enableVideoButtonWhenReady(){
+    @objc func enableVideoButtonWhenReady(){
         switch device.deviceOS! {
         case .android:
             startWaitingForAndroidVideoReady()

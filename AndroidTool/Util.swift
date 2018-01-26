@@ -79,7 +79,7 @@ class Util {
     
     func revealScriptsFolder(){
         let folder = getSupportFolderScriptPath()
-        NSWorkspace.shared().openFile(folder)
+        NSWorkspace.shared.openFile(folder)
         }
     
     func getFilesInScriptFolder(_ folder:String) -> [String]? {
@@ -125,7 +125,7 @@ class Util {
             if matches.count != 0 {
                 var results = [String]()
                 for match in matches {
-                    let result = (rawdata as NSString).substring(with: match.rangeAt(1))
+                    let result = (rawdata as NSString).substring(with: match.range(at: 1))
                     results.append(result)
                 }
                 return results

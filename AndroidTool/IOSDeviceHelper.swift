@@ -80,7 +80,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
             file = URL(fileURLWithPath: filePath)
             
             recorderDelegate.iosRecorderDidStartPreparing(device)
-            self.movieOutput.startRecording(toOutputFileURL: file, recordingDelegate: self)
+            self.movieOutput.startRecording(to: file, recordingDelegate: self)
         }
         else
         {
@@ -100,10 +100,10 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         for foundDevice in AVCaptureDevice.devices() {
             print(foundDevice)
             if (foundDevice as AnyObject).modelID! == "iOS Device" {
-                let device = foundDevice as! AVCaptureDevice
+                let device = foundDevice 
                 let deviceName = device.localizedName
                 let uuid = device.uniqueID
-                print("hello \(deviceName!) aka \(uuid!)")
+                print("hello \(deviceName) aka \(uuid)")
                 deviceFound(foundDevice as AnyObject)
             }
         }
@@ -166,13 +166,13 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     }
     
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
+    func fileOutput(_ captureOutput: AVCaptureFileOutput, didStartRecordingTo fileURL: URL, from connections: [AVCaptureConnection]) {
 
         recorderDelegate.iosRecorderDidEndPreparing()
         print("recording did start")
     }
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+    func fileOutput(_ captureOutput: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         
         if error == nil {
             print("------------------------- recording did end")
@@ -181,7 +181,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         if error != nil {
             print("Recording ended in error")
             print(error)
-            recorderDelegate.iosRecorderFailed(error.localizedDescription, message: nil)
+            recorderDelegate.iosRecorderFailed((error?.localizedDescription)!, message: nil)
         }
     }
     

@@ -79,7 +79,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         }
     }
     
-    func pollDevices(){
+    @objc func pollDevices(){
         var newDevices = [Device]()
         
         if updatingSuspended { return }
@@ -114,12 +114,12 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
 
 
 
-    func suspend(){
+    @objc func suspend(){
         // some activites will break an open connection, an example is screen recording.
         updatingSuspended = true
     }
     
-    func unSuspend(){
+    @objc func unSuspend(){
         updatingSuspended = false
     }
     
@@ -131,8 +131,8 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         var propDict = [String:String]()
         
         for match in matches {
-            let key = (string as NSString).substring(with: match.rangeAt(1))
-            let value = (string as NSString).substring(with: match.rangeAt(2))
+            let key = (string as NSString).substring(with: match.range(at: 1))
+            let value = (string as NSString).substring(with: match.range(at: 2))
             propDict[key] = value
         }
         return propDict

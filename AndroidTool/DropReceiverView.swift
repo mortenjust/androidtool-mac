@@ -33,7 +33,7 @@ class DropReceiverView: NSView {
         let fileTypes = [
             "public.data"
         ]
-        register(forDraggedTypes: fileTypes);
+        registerForDraggedTypes(fileTypes);
     }
     //https://developer.apple.com/library/mac/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html
     

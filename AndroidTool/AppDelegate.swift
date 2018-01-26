@@ -26,14 +26,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
         if #available(OSX 10.10, *) {
             window.titlebarAppearsTransparent = true
-            window.styleMask.update(with: .fullSizeContentView);
+            window.styleMask.update(with: NSWindow.StyleMask.fullSizeContentView);
         } else {
             // Fallback on earlier versions
         }
         window.isMovableByWindowBackground = true
         window.title = ""
         
-        masterViewController = MasterViewController(nibName: "MasterViewController", bundle: nil)
+        masterViewController = MasterViewController(nibName: NSNib.Name(rawValue: "MasterViewController"), bundle: nil)
         masterViewController.window = window
         
         window.contentView!.addSubview(masterViewController.view)
@@ -47,12 +47,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let viewDict: [String: Any] = ["inserted":insertedView, "container":containerView]
         let viewConstraintH = NSLayoutConstraint.constraints(
                 withVisualFormat: "H:|[inserted]|",
-                options: NSLayoutFormatOptions(rawValue: 0),
+                options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                 metrics: nil,
                 views: viewDict)
         let viewConstraintV = NSLayoutConstraint.constraints(
             withVisualFormat: "V:|[inserted]|",
-            options: NSLayoutFormatOptions(rawValue: 0),
+            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
             metrics: nil,
             views: viewDict)
         containerView.addConstraints(viewConstraintH)
@@ -154,7 +154,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         scriptsMenu.addItem(revealFolderItem)
     }
     
-    func runScript(_ sender:NSMenuItem){
+    @objc func runScript(_ sender:NSMenuItem){
         Util().stopRefreshingDeviceList()
         let scriptPath = "\(Util().getSupportFolderScriptPath())/\(sender.title).sh"
         print("ready to run \(scriptPath) on all Android devices")
@@ -187,7 +187,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func rawWindowClicked(_ sender: AnyObject) {
-        rawOutputWindowController = RawOutputWindowController(windowNibName: "RawOutputWindowController")
+        rawOutputWindowController = RawOutputWindowController(windowNibName: NSNib.Name(rawValue: "RawOutputWindowController"))
         rawOutputWindowController.showWindow(sender)
     }  
     
@@ -201,7 +201,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         print("pref")
-        preferencesWindowController = PreferencesWindowController(windowNibName: "PreferencesWindowController")
+        preferencesWindowController = PreferencesWindowController(windowNibName: NSNib.Name(rawValue: "PreferencesWindowController"))
         preferencesWindowController.showWindow(sender)
 
     }

@@ -18,7 +18,7 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
     
     @IBOutlet weak var spinner: NSProgressIndicator!
 
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
     }

@@ -64,7 +64,7 @@ class scriptsPopoverViewController: NSViewController {
         let folderButton = NSButton(frame: NSRect(x: 10.0, y: 3,
             width: view.bounds.width-15.0,
             height: buttonHeight))
-        folderButton.image = NSImage(named: "revealFolder")
+        folderButton.image = NSImage(named: NSImage.Name(rawValue: "revealFolder"))
         folderButton.isBordered = false
         folderButton.action = #selector(revealScriptFolderClicked)
         folderButton.target = self
@@ -78,11 +78,11 @@ class scriptsPopoverViewController: NSViewController {
             let friendlyScriptName = script.replacingOccurrences(of: ".sh", with: "")
             scriptButton.title = friendlyScriptName
             if #available(OSX 10.10.3, *) {
-                scriptButton.setButtonType(NSButtonType.accelerator)
+                scriptButton.setButtonType(NSButton.ButtonType.accelerator)
             } else {
                 // Fallback on earlier versions
             }
-            scriptButton.bezelStyle = NSBezelStyle.rounded
+            scriptButton.bezelStyle = NSButton.BezelStyle.rounded
             scriptButton.action = #selector(runScriptClicked)
             scriptButton.target = self
             
@@ -102,14 +102,14 @@ class scriptsPopoverViewController: NSViewController {
         }
     }
     
-    func runScriptClicked(_ sender:NSButton){
+    @objc func runScriptClicked(_ sender:NSButton){
         let scriptName = "\(sender.title).sh"
         let scriptPath = "\(Util().getSupportFolderScriptPath())/\(scriptName)"
         print("ready to run \(scriptPath)")
         runScript(scriptPath)
     }
     
-    func revealScriptFolderClicked(_ sender:NSButton) {
+    @objc func revealScriptFolderClicked(_ sender:NSButton) {
         Util().revealScriptsFolder()
     }
     

@@ -38,7 +38,7 @@ class PreferencesWindowController: NSWindowController {
         openPanel.allowsMultipleSelection = false;
         openPanel.canCreateDirectories = true;
         openPanel.begin { (result) -> Void in
-            if(result == NSFileHandlingPanelOKButton){
+            if(result.rawValue == NSFileHandlingPanelOKButton){
                 let path = openPanel.url!.path
                 print("selected folder is \(path), saving to \(defaultsPath)");
                 let ud = UserDefaults.standard

@@ -10,12 +10,12 @@ import Cocoa
 
 class WindowMoverView: NSView {
     
-    override func register(forDraggedTypes newTypes: [String]) {
+    override func registerForDraggedTypes(_ newTypes: [NSPasteboard.PasteboardType]) {
         Swift.print("$$ registering")
         let fileTypes = [
             ".apk"
         ]
-        register(forDraggedTypes: fileTypes);
+        registerForDraggedTypes(fileTypes);
     }
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
