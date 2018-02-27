@@ -175,7 +175,7 @@
 		C8B5148E1AE8703F0071C86A /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = getDetailsForSerial.sh; sourceTree = "<group>"; };
 		C8B9D47D1AE991D300927B96 /* ShellTasker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellTasker.swift; sourceTree = "<group>"; };
-		C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C8B9D4821AE9B34F00927B96 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
 		C8B9D4851AE9C3A100927B96 /* getSerials.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getSerials.sh; sourceTree = "<group>"; };
 		C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSDeviceHelper.swift; sourceTree = "<group>"; };
