@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var scriptsMenu: NSMenu!
     var preferencesWindowController: PreferencesWindowController!
-    var rawOutputWindowController: RawOutputWindowController!
+    var rawOutputWindowController: RawOutputWindowController?
     
     
     var masterViewController: MasterViewController!
@@ -186,10 +186,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         masterViewController.discoverer.updateInterval = 120
     }
     
-    @IBAction func rawWindowClicked(_ sender: AnyObject) {
-        rawOutputWindowController = RawOutputWindowController(windowNibName: NSNib.Name(rawValue: "RawOutputWindowController"))
-        rawOutputWindowController.showWindow(sender)
-    }  
+    @IBAction func shouldOpenTerminalOutputWindow(_ sender: AnyObject) {
+        var controller = rawOutputWindowController
+        if controller == nil {
+            controller = RawOutputWindowController(windowNibName:
+                NSNib.Name(rawValue: "RawOutputWindowController"))
+            rawOutputWindowController = controller
+        }
+        controller?.showWindow(sender)
+    }
     
     @IBAction func refreshDeviceListClicked(_ sender: NSMenuItem) {
         masterViewController.discoverer.pollDevices()
