@@ -45,26 +45,18 @@ class ShellTasker: NSObject {
             scriptPath = Bundle.main.path(forResource: scriptFile, ofType: "sh")!
         }
         
-        let resourcesUrl = NSURL(fileURLWithPath: Bundle.main.path(forResource: "adb", ofType: "")!).deletingLastPathComponent
-        
-        let resourcesPath = resourcesUrl?.path
-        
-        //let resourcesPath = NSBundle.mainBundle().pathForResource("adb", ofType: "")?.stringByDeletingLastPathComponent
-        
-        let bash = "/bin/bash"
+        let resourcesPath = Bundle.main.resourcePath!
         
         task = Process()
+        task.launchPath = "/bin/bash"
         let pipe = Pipe()
-        
-        task.launchPath = bash
         
         var allArguments = [String]()
         allArguments.append("\(scriptPath)") // $1
         
         if !isIOS {
-            allArguments.append(resourcesPath!) // $1
-        } else
-        {
+            allArguments.append(resourcesPath) // $1
+        } else {
             let imobileUrl = NSURL(fileURLWithPath: Bundle.main.path(forResource: "idevicescreenshot", ofType: "")!).deletingLastPathComponent
             let imobilePath = imobileUrl?.path
             //let imobilePath = NSBundle.mainBundle().pathForResource("idevicescreenshot", ofType: "")?.stringByDeletingLastPathComponent
@@ -76,40 +68,36 @@ class ShellTasker: NSObject {
         }
         
         task.arguments = allArguments
-        
-        //  was task.arguments = [scriptPath, resourcesPath!, args]
-        
         task.standardOutput = pipe
         task.standardError = pipe
+        task.environment = [
+            "ANDROID_SDK_ROOT": resourcesPath + "/android-sdk"
+        ]
         
         // post a notification with the command, for the rawoutput debugging window
-        if self.outputIsVerbose {
-            postNotification(scriptPath as NSString, channel: C.NOTIF_COMMANDVERBOSE)
-        } else {
-            postNotification(scriptPath as NSString, channel: C.NOTIF_COMMAND)
-        }
+        postNotification(scriptPath as NSString, channel: notificationChannel())
         
         self.task.launch()
         
         pipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: pipe.fileHandleForReading, queue: nil) { (notification) -> Void in
+        NotificationCenter.default.addObserver(
+            forName:NSNotification.Name.NSFileHandleDataAvailable,
+            object: pipe.fileHandleForReading,
+            queue: nil)
+        { (notification) -> Void in
             DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
                 data = pipe.fileHandleForReading.readDataToEndOfFile() // use .availabledata instead to stream from the console, pretty cool
                 output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)!
                 DispatchQueue.main.async(execute: { () -> Void in
-                    var channel = ""
-                    if self.outputIsVerbose {
-                        channel = C.NOTIF_NEWDATAVERBOSE
-                        } else {
-                        channel = C.NOTIF_NEWDATA
-                        }
-                    self.postNotification(output, channel: channel)
+                    self.postNotification(output, channel: self.notificationChannel())
                     complete(output)
                 })
             })
         }
-        
-        
+    }
+    
+    private func notificationChannel() -> String {
+        return self.outputIsVerbose ? C.NOTIF_NEWDATAVERBOSE : C.NOTIF_NEWDATA;
     }
 }

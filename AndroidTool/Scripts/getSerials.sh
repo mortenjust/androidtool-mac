@@ -6,9 +6,9 @@
 #  Created by Morten Just Petersen on 4/23/15.
 #  Copyright (c) 2015 Morten Just Petersen. All rights reserved.
 
+dir=$(dirname "$0")
+source $dir/androidtool_prefix.sh
 thisdir=$1 # $1 is the bundle resources path directly from the calling script file
-adb=$thisdir/adb #Xcode
-#adb="adb" #CL
 let deviceCount=0
 
 declare -a arr
@@ -29,7 +29,7 @@ GetSerials(){
             serials=$serials$serial
         fi
     done < <("$adb" devices)
-echo $serials
+    echo $serials
 }
 
 GetSerials

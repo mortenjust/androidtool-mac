@@ -24,6 +24,10 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     var androidDevices = [Device]()
     
     func start(){
+        let checkTask = ShellTasker(scriptFile: "checkEnvironment");
+        checkTask.outputIsVerbose = true;
+        checkTask.run { (output) -> Void in print(output) };
+        
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(suspend),

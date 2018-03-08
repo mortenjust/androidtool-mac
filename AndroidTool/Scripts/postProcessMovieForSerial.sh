@@ -9,6 +9,8 @@
 
 #adb="/usr/local/bin/adb"
 
+dir=$(dirname "$0")
+source $dir/androidtool_prefix.sh
 thisdir=$1 # $1 is the bundle resources path directly from the calling script file
 serial=$2
 width=$3
@@ -16,8 +18,6 @@ height=$4
 bitrate=$5 #carryover since this file shares arg structure with recordmovie
 screenRecFolder=$6
 generateGif=$7
-
-adb=$thisdir/adb
 
 deviceName=$("$adb" -s $serial shell getprop ro.product.name)
 buildId=$("$adb" -s $serial shell getprop ro.build.id)

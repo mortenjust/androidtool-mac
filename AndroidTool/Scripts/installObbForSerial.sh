@@ -10,10 +10,11 @@
 ######################################################################
 
 #Set up for AndroidTool
+dir=$(dirname "$0")
+source $dir/androidtool_prefix.sh
 thisdir=$1 # $1 is the bundle resources path directly from the calling script file
 serial=$2
 file=$3
-adb=$thisdir/adb
 
 #wiring up
 obb_type="main"

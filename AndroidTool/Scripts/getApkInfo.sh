@@ -8,9 +8,10 @@
 
 echo "get apk info"
 
+dir=$(dirname "$0")
+source $dir/androidtool_prefix.sh
 thisdir=$1
 filename=$2
-aapt=$thisdir/aapt
 
 echo "$aapt" dump badging "$filename"
 

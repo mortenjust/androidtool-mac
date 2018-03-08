@@ -20,7 +20,6 @@
 		C8595D1E1BF5C95500805042 /* WindowMoverTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */; };
 		C8595D201BF660E100805042 /* WIndowMoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */; };
 		C8595D221BF6A55700805042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D211BF6A55700805042 /* Constants.swift */; };
-		C86C15F71C13958100E22CEC /* aapt in Resources */ = {isa = PBXBuildFile; fileRef = C86C15F61C13958100E22CEC /* aapt */; };
 		C86C15F91C1395DC00E22CEC /* getApkInfo.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C15F81C1395DC00E22CEC /* getApkInfo.sh */; };
 		C86C15FB1C1395F700E22CEC /* installZip.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C15FA1C1395F700E22CEC /* installZip.sh */; };
 		C86C15FF1C13993400E22CEC /* ApkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C15FE1C13993400E22CEC /* ApkHandler.swift */; };
@@ -78,8 +77,10 @@
 		C8C86BF01C50976D0087858B /* installObbForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8C86BEF1C50976D0087858B /* installObbForSerial.sh */; };
 		C8C86BF21C50AEEC0087858B /* ObbHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C86BF11C50AEEC0087858B /* ObbHandler.swift */; };
 		C8E521B31C0ED06800777117 /* getCurrentActivityForIdentifier.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */; };
-		EA2B168D20505D8F00CFAB06 /* adb in Resources */ = {isa = PBXBuildFile; fileRef = EA2B168C20505D1500CFAB06 /* adb */; };
-		EA2B168E20505D9200CFAB06 /* fastboot in Resources */ = {isa = PBXBuildFile; fileRef = EA2B168B20505D1400CFAB06 /* fastboot */; };
+		EABEB5FF20508B9F00DA2FC1 /* androidtool_prefix.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */; };
+		EABEB6012050FD2500DA2FC1 /* android-sdk in Resources */ = {isa = PBXBuildFile; fileRef = EABEB6002050FD2500DA2FC1 /* android-sdk */; };
+		EABEB603205101AD00DA2FC1 /* checkEnvironment.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB602205101A300DA2FC1 /* checkEnvironment.sh */; };
+		EABEB60520510FCB00DA2FC1 /* aapt in Resources */ = {isa = PBXBuildFile; fileRef = EABEB60420510E5100DA2FC1 /* aapt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,7 +119,6 @@
 		C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowMoverTableCellView.swift; sourceTree = "<group>"; };
 		C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WIndowMoverImageView.swift; path = ../WIndowMoverImageView.swift; sourceTree = "<group>"; };
 		C8595D211BF6A55700805042 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C86C15F61C13958100E22CEC /* aapt */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aapt; sourceTree = "<group>"; };
 		C86C15F81C1395DC00E22CEC /* getApkInfo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getApkInfo.sh; sourceTree = "<group>"; };
 		C86C15FA1C1395F700E22CEC /* installZip.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = installZip.sh; sourceTree = "<group>"; };
 		C86C15FE1C13993400E22CEC /* ApkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApkHandler.swift; sourceTree = "<group>"; };
@@ -182,8 +182,10 @@
 		C8C86BEF1C50976D0087858B /* installObbForSerial.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = installObbForSerial.sh; sourceTree = "<group>"; };
 		C8C86BF11C50AEEC0087858B /* ObbHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObbHandler.swift; path = AndroidTool/ObbHandler.swift; sourceTree = "<group>"; };
 		C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getCurrentActivityForIdentifier.sh; sourceTree = "<group>"; };
-		EA2B168B20505D1400CFAB06 /* fastboot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = fastboot; sourceTree = "<group>"; };
-		EA2B168C20505D1500CFAB06 /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
+		EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = androidtool_prefix.sh; sourceTree = "<group>"; };
+		EABEB6002050FD2500DA2FC1 /* android-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "android-sdk"; sourceTree = "<group>"; };
+		EABEB602205101A300DA2FC1 /* checkEnvironment.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = checkEnvironment.sh; sourceTree = "<group>"; };
+		EABEB60420510E5100DA2FC1 /* aapt */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aapt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 		C8B514621AE85D610071C86A /* AndroidTool */ = {
 			isa = PBXGroup;
 			children = (
+				EABEB6002050FD2500DA2FC1 /* android-sdk */,
 				C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */,
 				C8B131571AE9CE9700BCD4F3 /* Images.xcassets */,
 				EAD1CE5C2047312100B8F557 /* Scripts */,
@@ -342,11 +345,11 @@
 		EAD1CE5C2047312100B8F557 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				EA2B168C20505D1500CFAB06 /* adb */,
-				EA2B168B20505D1400CFAB06 /* fastboot */,
-				C86C15F61C13958100E22CEC /* aapt */,
+				EABEB60420510E5100DA2FC1 /* aapt */,
 				C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */,
 				C8B9D4821AE9B34F00927B96 /* ffmpeg */,
+				EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */,
+				EABEB602205101A300DA2FC1 /* checkEnvironment.sh */,
 				C8B131591AE9D34F00BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh */,
 				C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */,
 				C8B131881AEB10C800BCD4F3 /* startRecordingForSerial.sh */,
@@ -458,18 +461,17 @@
 				C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */,
 				C856FFDF1BFDA61A0098B1E2 /* exitDemoMode.sh in Resources */,
 				C86C16031C139B8F00E22CEC /* launchActivity.sh in Resources */,
-				C86C15F71C13958100E22CEC /* aapt in Resources */,
 				C856FFE01BFDA61A0098B1E2 /* setDemoModeOptions.sh in Resources */,
 				C86C16091C14F7F700E22CEC /* extractIconFromApk.sh in Resources */,
-				EA2B168D20505D8F00CFAB06 /* adb in Resources */,
+				EABEB5FF20508B9F00DA2FC1 /* androidtool_prefix.sh in Resources */,
 				C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */,
 				C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */,
 				C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */,
-				EA2B168E20505D9200CFAB06 /* fastboot in Resources */,
 				C8A0F8B81AFC319A00B3A90C /* libusbmuxd.2.dylib in Resources */,
 				C86C15FB1C1395F700E22CEC /* installZip.sh in Resources */,
 				C8A0F8B91AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib in Resources */,
 				C86C16051C13B4B900E22CEC /* uninstallPackageOnDevice.sh in Resources */,
+				EABEB603205101AD00DA2FC1 /* checkEnvironment.sh in Resources */,
 				C8A0F8BA1AFC319A00B3A90C /* libplist.2.dylib in Resources */,
 				C8A0F8BB1AFC319A00B3A90C /* libplist.1.1.10.dylib in Resources */,
 				C86C15F91C1395DC00E22CEC /* getApkInfo.sh in Resources */,
@@ -481,6 +483,7 @@
 				C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */,
 				C8B131971AEB3B5100BCD4F3 /* DevicePickerViewController.xib in Resources */,
 				C8C86BF01C50976D0087858B /* installObbForSerial.sh in Resources */,
+				EABEB6012050FD2500DA2FC1 /* android-sdk in Resources */,
 				C87E3AF21C01128500275AA2 /* RawOutputWindowController.xib in Resources */,
 				C8B131891AEB10FA00BCD4F3 /* startRecordingForSerial.sh in Resources */,
 				C8B1315A1AE9D47700BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh in Resources */,
@@ -493,6 +496,7 @@
 				C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */,
 				C8B9D4841AE9B34F00927B96 /* ffmpeg in Resources */,
 				C8B5148D1AE860EF0071C86A /* DeviceViewController.xib in Resources */,
+				EABEB60520510FCB00DA2FC1 /* aapt in Resources */,
 				C8B514831AE85D8B0071C86A /* MasterViewController.xib in Resources */,
 				C8A8A7B11AF4506800E4B5D0 /* PreferencesWindowController.xib in Resources */,
 			);
