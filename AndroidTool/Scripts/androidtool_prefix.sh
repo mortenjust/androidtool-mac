@@ -8,7 +8,12 @@ fi
 
 dir=$(dirname "$0")
 
+function findLastModifiedAapt {
+    version=$(ls -t $ANDROID_SDK_ROOT/build-tools | head -1)
+    echo $ANDROID_SDK_ROOT/build-tools/$version/aapt
+}
+
 adb=$ANDROID_SDK_ROOT/platform-tools/adb
 fastboot=$ANDROID_SDK_ROOT/platform-tools/fastboot
 
-aapt=$dir/aapt
+aapt=$(findLastModifiedAapt)

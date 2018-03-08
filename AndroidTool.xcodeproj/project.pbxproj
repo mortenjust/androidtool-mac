@@ -80,7 +80,6 @@
 		EABEB5FF20508B9F00DA2FC1 /* androidtool_prefix.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */; };
 		EABEB6012050FD2500DA2FC1 /* android-sdk in Resources */ = {isa = PBXBuildFile; fileRef = EABEB6002050FD2500DA2FC1 /* android-sdk */; };
 		EABEB603205101AD00DA2FC1 /* checkEnvironment.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB602205101A300DA2FC1 /* checkEnvironment.sh */; };
-		EABEB60520510FCB00DA2FC1 /* aapt in Resources */ = {isa = PBXBuildFile; fileRef = EABEB60420510E5100DA2FC1 /* aapt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,7 +184,6 @@
 		EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = androidtool_prefix.sh; sourceTree = "<group>"; };
 		EABEB6002050FD2500DA2FC1 /* android-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "android-sdk"; sourceTree = "<group>"; };
 		EABEB602205101A300DA2FC1 /* checkEnvironment.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = checkEnvironment.sh; sourceTree = "<group>"; };
-		EABEB60420510E5100DA2FC1 /* aapt */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aapt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,7 +343,6 @@
 		EAD1CE5C2047312100B8F557 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				EABEB60420510E5100DA2FC1 /* aapt */,
 				C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */,
 				C8B9D4821AE9B34F00927B96 /* ffmpeg */,
 				EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */,
@@ -496,7 +493,6 @@
 				C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */,
 				C8B9D4841AE9B34F00927B96 /* ffmpeg in Resources */,
 				C8B5148D1AE860EF0071C86A /* DeviceViewController.xib in Resources */,
-				EABEB60520510FCB00DA2FC1 /* aapt in Resources */,
 				C8B514831AE85D8B0071C86A /* MasterViewController.xib in Resources */,
 				C8A8A7B11AF4506800E4B5D0 /* PreferencesWindowController.xib in Resources */,
 			);
