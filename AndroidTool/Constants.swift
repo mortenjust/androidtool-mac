@@ -16,9 +16,11 @@ class Constants {
     static let NOTIF_COMMAND = "mj.command"
     static let NOTIF_COMMANDVERBOSE = "mj.commandVerbose"
     static let DROP_INVITE = "Drop a ZIP or APK prototype"
+    static let PREF_ANDROID_SDK_ROOT = "androidSdkRoot"
     static let PREF_SCREENSHOTFOLDER = "screenshotsFolder"
     static let PREF_SCREENRECORDINGSFOLDER = "screenRecordingsFolder"
     static let PREF_USEACTIVITYINFILENAME = "useActivityInFilename"
+    static let PREF_USE_USER_ANDROID_SDK_ROOT = "useUserAndroidSdkRoot"
     static let PREF_LAUNCHINSTALLEDAPP = "launchInstalledApp"
     static let PREF_FLASHIMAGESINZIPFILES = "flashImagesInZipFiles"
     static let PREF_GENERATEGIF = "generateGif"
@@ -30,13 +32,15 @@ class Constants {
         ,"batteryLevel": "100%"
         ,"mobileLevel" : "4 bars"
         ,"verboseOutput" : false
-        ,"screenRecordingsFolder": ""
-        ,"screenshotsFolder": ""
+        ,PREF_ANDROID_SDK_ROOT: ""
+        ,PREF_SCREENRECORDINGSFOLDER: ""
+        ,PREF_SCREENSHOTFOLDER: ""
         ,"createGIF": true
-        ,"useActivityInFilename":true
-        ,"launchInstalledApp":true
-        ,"flashImagesInZipFiles":false
-        ,"generateGif":false
+        ,PREF_USEACTIVITYINFILENAME: true
+        ,PREF_USE_USER_ANDROID_SDK_ROOT: false
+        ,PREF_LAUNCHINSTALLEDAPP: true
+        ,PREF_FLASHIMAGESINZIPFILES: false
+        ,PREF_GENERATEGIF: false
     ] as [String : Any]
     
     static let tweakProperties = ["bluetooth", "clock", "alarm", "sync", "wifi", "location", "volume", "mute", "notifications", "mobile", "mobileDatatype", "mobileLevel", "batteryLevel", "batteryCharging", "airplane", "nosim", "speakerphone"]

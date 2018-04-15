@@ -32,8 +32,11 @@ class ShellTasker: NSObject {
         NotificationCenter.default.post(name: Notification.Name(rawValue: channel), object: message)
     }
     
-    func run(arguments args:[String]=[], isUserScript:Bool = false, isIOS:Bool = false, complete:@escaping (_ output:NSString)-> Void) {
-        
+    func run(
+            arguments args:[String]=[],
+            isUserScript:Bool = false,
+            isIOS:Bool = false,
+            complete:@escaping (_ output:NSString)-> Void) {
         var output = NSString()
         var data = Data()
         
@@ -67,11 +70,17 @@ class ShellTasker: NSObject {
             allArguments.append(arg)
         }
         
+        let defaultAndoridSdkRoot = resourcesPath + "/android-sdk"
+        let useUserAndoridSdkRoot = UserDefaults.standard.bool(forKey: C.PREF_USE_USER_ANDROID_SDK_ROOT)
+        let androidSdkRoot = useUserAndoridSdkRoot
+            ? UserDefaults.standard.string(forKey: C.PREF_ANDROID_SDK_ROOT) ?? defaultAndoridSdkRoot
+            : defaultAndoridSdkRoot
+        
         task.arguments = allArguments
         task.standardOutput = pipe
         task.standardError = pipe
         task.environment = [
-            "ANDROID_SDK_ROOT": resourcesPath + "/android-sdk"
+            "ANDROID_SDK_ROOT": androidSdkRoot
         ]
         
         // post a notification with the command, for the rawoutput debugging window
@@ -98,6 +107,6 @@ class ShellTasker: NSObject {
     }
     
     private func notificationChannel() -> String {
-        return self.outputIsVerbose ? C.NOTIF_NEWDATAVERBOSE : C.NOTIF_NEWDATA;
+        return self.outputIsVerbose ? C.NOTIF_NEWDATAVERBOSE : C.NOTIF_NEWDATA
     }
 }

@@ -10,28 +10,42 @@ import Cocoa
 
 class PreferencesWindowController: NSWindowController {
 
-    
     @IBAction func screenshotFolderClicked(_ sender: AnyObject) {
-        selectFolder("Screenshots", message: "Save screenshots in this folder", defaultsPath: "screenshotsFolder")
+        selectFolder(
+            title: "Screenshots",
+            message: "Save screenshots in this folder",
+            defaultsPath: C.PREF_SCREENSHOTFOLDER)
     }
 
     @IBAction func screenRecordingFolderClicked(_ sender: AnyObject) {
-        
-        selectFolder("Screen recordings", message: "Save recordings in this folder", defaultsPath: "screenRecordingsFolder")
+        selectFolder(
+            title: "Screen recordings",
+            message: "Save recordings in this folder",
+            defaultsPath: C.PREF_SCREENRECORDINGSFOLDER)
     }
     
+    @IBAction func androidSdkRootFolderClicked(_ sender: AnyObject) {
+        selectFolder(
+            title: "Android SDK Root",
+            message: "Use this path for Android SDK Root",
+            defaultsPath: C.PREF_ANDROID_SDK_ROOT,
+            showHiddenFiles: true)
+    }
     
     override func windowDidLoad() {
         super.windowDidLoad()
         // all bindings are belong to IB
     }
     
-    
-    
-    func selectFolder(_ title:String, message:String, defaultsPath:String){
+    func selectFolder(
+            title:String,
+            message:String,
+            defaultsPath:String,
+            showHiddenFiles: Bool = false){
         let openPanel = NSOpenPanel();
         openPanel.title = title
         openPanel.message = message
+        openPanel.showsHiddenFiles = showHiddenFiles
         openPanel.showsResizeIndicator=true;
         openPanel.canChooseDirectories = true;
         openPanel.canChooseFiles = false;
@@ -46,5 +60,4 @@ class PreferencesWindowController: NSWindowController {
             }
         }
     }
-    
 }
