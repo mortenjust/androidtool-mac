@@ -75,40 +75,25 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         return deviceVC?.view
     }
     
-    func removeDevice(_ device:Device){
-        
-    }
-
-    func fingerPrintForDeviceList(_ deviceList:[Device]) -> Double {
-        var total:Double = 0
-        for d in deviceList {
-            total += d.firstBoot!
-        }
-        
-        total = total/Double(deviceList.count)
-        return total
-    }
-    
     func deviceListSignature(_ deviceList:[Device]) -> Double {
-        var total:Double = 0
+        var signature = Double(deviceList.count)
         for device in deviceList {
             if let firstboot = device.firstBoot {
-                total += firstboot
-                }
+                signature += firstboot
+            }
         }
-        let signa = total/Double(deviceList.count)
-        return signa
+        return signature
     }
     
     func showEmptyState(){
-        // resize window 
+        // resize window
         
         if !emptyStateView.isDescendant(of: view) {
             emptyStateView.frame.origin.y = -15
             emptyStateView.frame.origin.x = 45
             view.addSubview(emptyStateView)
             
-            }
+        }
     }
     
     func removeEmptyState(){
@@ -118,17 +103,16 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     
     func devicesUpdated(_ deviceList: [Device]) {
         let newSig = deviceListSignature(deviceList)
+        devices = deviceList
         
-        if deviceList.count == 0 {
-            previousSig=0
+        if devices.count == 0 {
+            previousSig = 0
             devicesTable.reloadData()
             showEmptyState()
         } else {
             removeEmptyState()
         }
         
-        
-        devices = deviceList
         devices.sort(by: {$0.model < $1.model})
         // refresh each device with updated data like current activity
         
@@ -143,20 +127,19 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         
         // make sure we don't refresh the tableview when it's not necessary
         if newSig != previousSig  {
-
-            devicesTable.reloadData()
-
-            var newHeight=Util().deviceHeight
-
+            
             // adjust window height accordingly
+            var newHeight = Util().deviceHeight
             if devices.count != 0 {
-                newHeight = CGFloat(devices.count) * (Util().deviceHeight) + 20
+                newHeight = CGFloat(devices.count) * newHeight + 20
             } else {
                 newHeight = 171 // emptystate height
             }
             Util().changeWindowHeight(window, view: self.view, newHeight: newHeight)
+            
             previousSig = newSig
-            }
+            devicesTable.reloadData()
+        }
         
     }
 
