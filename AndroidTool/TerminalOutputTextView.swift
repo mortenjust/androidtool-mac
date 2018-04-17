@@ -41,7 +41,7 @@ class TerminalOutputTextView: NSTextView {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: C.NOTIF_NEWDATAVERBOSE), object: nil, queue: nil) { (notif) -> Void in
             Swift.print("#mj.newData verbose notif")
             
-            let wantsVerbose = UserDefaults.standard.bool(forKey: C.VERBOSEOUTPUT)
+            let wantsVerbose = UserDefaults.standard.bool(forKey: C.PREF_VERBOSEOUTPUT)
             
             if wantsVerbose {
                 DispatchQueue.main.async(execute: { () -> Void in
@@ -65,7 +65,7 @@ class TerminalOutputTextView: NSTextView {
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Constants.NOTIF_COMMANDVERBOSE), object: nil, queue: nil) { (notif) -> Void in
             Swift.print("#mj.newDataverbose notif")
-            let wantsVerbose = UserDefaults.standard.bool(forKey: C.VERBOSEOUTPUT)
+            let wantsVerbose = UserDefaults.standard.bool(forKey: C.PREF_VERBOSEOUTPUT)
             if wantsVerbose {
                 DispatchQueue.main.async(execute: { () -> Void in
                     let s = notif.object as! String

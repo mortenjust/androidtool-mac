@@ -78,27 +78,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             ud.set(NSString(string: "~/Desktop/AndroidTool").expandingTildeInPath, forKey: C.PREF_SCREENRECORDINGSFOLDER)
         }
         
-        let bitratePref = ud.double(forKey: "bitratePref")
-        let scalePref = ud.double(forKey: "scalePref")
-        let timeValuePref = ud.string(forKey: "timeValue")
-        let dataTypePref = ud.string(forKey: "dataType")
+        let bitratePref = ud.double(forKey: C.PREF_BIT_RATE)
+        let scalePref = ud.double(forKey: C.PREF_SCALE)
+        let timeValuePref = ud.string(forKey: C.PREF_TIME_VALUE)
+        let dataTypePref = ud.string(forKey: C.PREF_DATA_TYPE)
 
         print("bit: \(bitratePref)")
         
         if timeValuePref == "" {
-            ud.set(Constants.defaultPrefValues["timeValue"], forKey: "timeValue")
+            ud.set(Constants.defaultPrefValues[C.PREF_TIME_VALUE], forKey: C.PREF_TIME_VALUE)
         }
         
         if dataTypePref == "" {
-            ud.set(Constants.defaultPrefValues["dataType"], forKey: "dataType")
+            ud.set(Constants.defaultPrefValues[C.PREF_DATA_TYPE], forKey: C.PREF_DATA_TYPE)
         }
         
         if bitratePref == 0.0 {
-            ud.set(Double(3025000), forKey: "bitratePref")
+            ud.set(Double(3025000), forKey: C.PREF_BIT_RATE)
         }
         
         if scalePref == 0.0 {
-            ud.set(1, forKey: "scalePref")
+            ud.set(1, forKey: C.PREF_SCALE)
         }
     }
     

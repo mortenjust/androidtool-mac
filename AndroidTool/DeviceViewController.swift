@@ -266,14 +266,14 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func startRecordingOnAndroidDevice(_ restingButton:NSImage){
         shellTasker = ShellTasker(scriptFile: "startRecordingForSerial")
         
-        let scalePref = UserDefaults.standard.double(forKey: "scalePref")
-        let bitratePref = Int(UserDefaults.standard.double(forKey: "bitratePref"))
+        let scalePref = UserDefaults.standard.double(forKey: C.PREF_SCALE)
+        let bitratePref = Int(UserDefaults.standard.double(forKey: C.PREF_BIT_RATE))
         
         // get phone's resolution, multiply with user preference for screencap size (either 1 or lower)
         var res = device.resolution!
         
         if device.type == DeviceType.Phone {
-            res = (device.resolution!.width*scalePref, device.resolution!.height*scalePref)
+            res = (device.resolution!.width * scalePref, device.resolution!.height * scalePref)
         }
         
         let args:[String] = [device.adbIdentifier!,
@@ -318,7 +318,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         let gifUrl = outputFileURL.deletingPathExtension()
         let gifPath = "\(gifUrl.path).gif"
         let ffmpegPath = Bundle.main.path(forResource: "ffmpeg", ofType: "")!
-        let scalePref = UserDefaults.standard.double(forKey: "scalePref")
+        let scalePref = UserDefaults.standard.double(forKey: C.PREF_SCALE)
         let args = [ffmpegPath, movPath, gifPath, "\(scalePref)", getFolderForScreenRecordings()]
         
         ShellTasker(scriptFile: "convertMovieFiletoGif").run(arguments: args, isUserScript: false, isIOS: false) { (output) -> Void in
@@ -370,9 +370,9 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func setup(){
         if device.deviceOS == .android {
             uiTweaker = UITweaker(adbIdentifier: device.adbIdentifier!)
-            }
-      dropView = self.view as! DropReceiverView
-      dropView.delegate = self
+        }
+        dropView = self.view as! DropReceiverView
+        dropView.delegate = self
         
 //        let apk = Apk(rawAaptBadgingData: "hej")
 //        showUninstallButton(apk)
@@ -707,7 +707,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
                 self.stopProgressIndication()
                 self.setStatus("\(self.apkToUninstall.appName) removed")
             }
-            }
+        }
     }
     
     func apkHandlerDidFinish() {
