@@ -49,6 +49,4 @@ class Apk: NSObject {
                 apk.versionName = versionName[0]
             }
         }
-
-    
 }

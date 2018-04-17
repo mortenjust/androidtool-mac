@@ -286,7 +286,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         
         setStatus("Recording screen")
         
-        
         shellTasker.run(arguments: args) { (output) -> Void in
             self.setStatus("Fetching screen recording")
             print("-----")
@@ -304,10 +303,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
                 self.exitDemoModeIfNeeded()
                 self.setStatus("Recording finished")
                 self.stopProgressIndication()
-
             })
         }
-    
     }
     
     func iosRecorderDidFinish(_ outputFileURL: URL!) {
@@ -323,8 +320,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         let ffmpegPath = Bundle.main.path(forResource: "ffmpeg", ofType: "")!
         let scalePref = UserDefaults.standard.double(forKey: "scalePref")
         let args = [ffmpegPath, movPath, gifPath, "\(scalePref)", getFolderForScreenRecordings()]
-        
-        
         
         ShellTasker(scriptFile: "convertMovieFiletoGif").run(arguments: args, isUserScript: false, isIOS: false) { (output) -> Void in
             print("done converting to gif")
@@ -379,10 +374,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
       dropView = self.view as! DropReceiverView
       dropView.delegate = self
         
-    
 //        let apk = Apk(rawAaptBadgingData: "hej")
 //        showUninstallButton(apk)
-        
     }
     
     func startProgressIndication(){
@@ -518,7 +511,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         CATransaction.commit()
     }
     
-    
     func showInstallInvite(forApk apk:Apk){
         installInviteView.frame.origin = NSMakePoint(120, 30)
         view.addSubview(installInviteView)
@@ -615,8 +607,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         
     }
     
-
-    
     func dropUpdated(_ mouseAt: NSPoint) {
         // print("vc:dropUpdated")
     }
@@ -658,7 +648,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         setStatus("Flashing image")
         startProgressIndication()
     }
-    
     
     func installApk(_ apkPath:String){
         let apkHandler = ApkHandler(filepath: apkPath, device: self.device)
@@ -721,7 +710,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             }
     }
     
-    
     func apkHandlerDidFinish() {
         print("apkHandlerDidFinish")
     }
@@ -738,8 +726,4 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         setStatus(update)
         print("apkHandlerDidUpdate: \(update)")
     }
-    
-    
-    
-    
 }

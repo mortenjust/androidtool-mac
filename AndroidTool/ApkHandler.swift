@@ -95,7 +95,6 @@ class ApkHandler: NSObject {
         }
     }
     
-    
     func launch(_ apk:Apk){
         print(">>apklaunch")
         delegate?.apkHandlerDidUpdate("Launching...")

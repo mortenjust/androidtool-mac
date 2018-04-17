@@ -39,7 +39,6 @@ class UITweaker: NSObject {
         }
     }
     
-    
     func collectAllTweaks() -> [Tweak] {
         let ud = UserDefaults.standard
         var tweaks = [Tweak]()
@@ -120,9 +119,7 @@ class UITweaker: NSObject {
             }
         }
         return tweaks
-
     }
-    
     
     func formatTime(_ t:String) -> String { // remove : in hh:mm
         return t.replacingOccurrences(of: ":", with: "")

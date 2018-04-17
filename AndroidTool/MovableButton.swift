@@ -89,8 +89,4 @@ class MovableButton: NSButton {
 
         // Drawing code here.
     }
-    
-    
-    
-    
 }

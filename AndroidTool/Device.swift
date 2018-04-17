@@ -132,6 +132,4 @@ class Device: NSObject {
         let res = (width:width.doubleValue, height:height.doubleValue)
         return res
     }
-
-
 }

@@ -28,5 +28,4 @@ class CameraButton: NSButton {
 
         // Drawing code here.
     }
-    
 }

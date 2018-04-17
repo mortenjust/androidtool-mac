@@ -199,8 +199,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         preferencesWindowController = PreferencesWindowController(windowNibName: NSNib.Name(rawValue: "PreferencesWindowController"))
         preferencesWindowController.showWindow(sender)
     }
-
-    
     
     func applicationDidBecomeActive(_ notification: Notification) {
 //        Util().restartRefreshingDeviceList()

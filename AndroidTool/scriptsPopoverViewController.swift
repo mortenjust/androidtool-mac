@@ -55,7 +55,6 @@ class scriptsPopoverViewController: NSViewController {
             }
     }
     
-    
     func addScriptsToView(_ scripts:[String], view:NSView){
         var i:CGFloat = 1
         
