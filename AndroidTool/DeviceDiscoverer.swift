@@ -24,7 +24,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     var androidDevices = [Device]()
     
     func start(){
-        let checkTask = ShellTasker(scriptFile: "checkEnvironment");
+        let checkTask = ShellTasker(scriptFile: "checkEnvironment")
         checkTask.outputIsVerbose = true;
         checkTask.run { (output) -> Void in print(output) };
         
@@ -116,8 +116,6 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
             repeats: false)
     }
 
-
-
     @objc func suspend(){
         // some activites will break an open connection, an example is screen recording.
         updatingSuspended = true
@@ -126,7 +124,6 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     @objc func unSuspend(){
         updatingSuspended = false
     }
-    
     
     func getPropsFromString(_ string:String) -> [String:String] {
         let re = try! NSRegularExpression(pattern: "\\[(.+?)\\]: \\[(.+?)\\]", options: [])
@@ -142,7 +139,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         return propDict
     }
     
-    func iosDeviceAttached(_ device:AVCaptureDevice){
+    func iosDeviceAttached(_ device:AVCaptureDevice) {
         // instantiate new Device, check if we know it, add to iosDevices[], tell deviceCollector about it
         
         print("Found device \(device.localizedName)")
@@ -162,7 +159,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         }
     }
     
-    func newDeviceCollector(updateWithList deviceList: [Device], forDeviceOS:DeviceOS){
+    func newDeviceCollector(updateWithList deviceList: [Device], forDeviceOS:DeviceOS) {
         var allDevices = [Device]()
         
         // merge lists
@@ -177,7 +174,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         delegate.devicesUpdated(allDevices)
     }
     
-    func iosDeviceDetached(_ device:AVCaptureDevice){
+    func iosDeviceDetached(_ device:AVCaptureDevice) {
         // find the lost device in iosDevices[], remove it, and tell newDeviceCollector about it
         for index in 0...(iosDevices.count-1) {
             if iosDevices[index].uuid == device.uniqueID {
@@ -188,9 +185,9 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         }
     }
 
-    func iosDeviceDidStartPreparing(_ device:AVCaptureDevice){
+    func iosDeviceDidStartPreparing(_ device:AVCaptureDevice) {
         // this happens when
     }
-    func iosDeviceDidEndPreparing(){}
-
+    
+    func iosDeviceDidEndPreparing() { }
 }

@@ -16,14 +16,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var preferencesWindowController: PreferencesWindowController!
     var rawOutputWindowController: RawOutputWindowController?
     
-    
     var masterViewController: MasterViewController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         updateScriptFilesInMenu()
         checkForPreferences()
 
-    
         if #available(OSX 10.10, *) {
             window.titlebarAppearsTransparent = true
             window.styleMask.update(with: NSWindow.StyleMask.fullSizeContentView);
@@ -57,8 +55,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             views: viewDict)
         containerView.addConstraints(viewConstraintH)
         containerView.addConstraints(viewConstraintV)
-        
-        
     }
 
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
@@ -82,14 +78,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             ud.set(NSString(string: "~/Desktop/AndroidTool").expandingTildeInPath, forKey: C.PREF_SCREENRECORDINGSFOLDER)
         }
         
-        
-        
         let bitratePref = ud.double(forKey: "bitratePref")
         let scalePref = ud.double(forKey: "scalePref")
         let timeValuePref = ud.string(forKey: "timeValue")
         let dataTypePref = ud.string(forKey: "dataType")
 
-        
         print("bit: \(bitratePref)")
         
         if timeValuePref == "" {
@@ -107,13 +100,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if scalePref == 0.0 {
             ud.set(1, forKey: "scalePref")
         }
-    
     }
-    
     
     // populate nsmenu with all scripts
     // run this script on all devices
-    
     func updateScriptFilesInMenu(){
         scriptsMenu.removeAllItems()
         
@@ -208,7 +198,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("pref")
         preferencesWindowController = PreferencesWindowController(windowNibName: NSNib.Name(rawValue: "PreferencesWindowController"))
         preferencesWindowController.showWindow(sender)
-
     }
 
     
@@ -223,7 +212,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         masterViewController.discoverer.updateInterval = 3
         updateScriptFilesInMenu()
         masterViewController.discoverer.pollDevices()
-        
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

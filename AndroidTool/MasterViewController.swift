@@ -38,11 +38,9 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         discoverer.start()
     }
     
-    
     func installApk(_ apkPath:String){
         showDevicePicker(apkPath)
     }
-    
     
     func showDevicePicker(_ apkPath:String){
         let devicePickerVC = DevicePickerViewController(
@@ -58,13 +56,11 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         }
     }
     
-    
     func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return false
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-//        println("asked number of rows")
         if devices == nil { return 0 }
         return devices.count
     }
@@ -87,17 +83,14 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     
     func showEmptyState(){
         // resize window
-        
         if !emptyStateView.isDescendant(of: view) {
             emptyStateView.frame.origin.y = -15
             emptyStateView.frame.origin.x = 45
             view.addSubview(emptyStateView)
-            
         }
     }
     
     func removeEmptyState(){
-
         emptyStateView.removeFromSuperview()
     }
     
@@ -115,7 +108,6 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         
         devices.sort(by: {$0.model < $1.model})
         // refresh each device with updated data like current activity
-        
 //        for deviceVC in deviceVCs {
 //            for device in devices {
 //                if deviceVC.device.adbIdentifier == device.adbIdentifier {
@@ -140,7 +132,6 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
             previousSig = newSig
             devicesTable.reloadData()
         }
-        
     }
 
     override func viewDidLoad() {
@@ -150,5 +141,4 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
             // Fallback on earlier versions
         }
     }
-    
 }
