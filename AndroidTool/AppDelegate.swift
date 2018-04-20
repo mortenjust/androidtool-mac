@@ -13,12 +13,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var scriptsMenu: NSMenu!
+    var discoverer: DeviceDiscoverer!
     var preferencesWindowController: PreferencesWindowController!
     var rawOutputWindowController: RawOutputWindowController?
     
     var masterViewController: MasterViewController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        discoverer = DeviceDiscoverer()
         updateScriptFilesInMenu()
         checkForPreferences()
 
@@ -31,7 +33,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.isMovableByWindowBackground = true
         window.title = ""
         
-        masterViewController = MasterViewController(nibName: NSNib.Name(rawValue: "MasterViewController"), bundle: nil)
+        masterViewController = MasterViewController(
+            nibName: NSNib.Name(rawValue: "MasterViewController"),
+            bundle: nil)
         masterViewController.window = window
         
         window.contentView!.addSubview(masterViewController.view)
@@ -55,6 +59,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             views: viewDict)
         containerView.addConstraints(viewConstraintH)
         containerView.addConstraints(viewConstraintV)
+        
+        discoverer.delegate = masterViewController
+        discoverer.start()
     }
 
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
@@ -173,7 +180,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationWillResignActive(_ notification: Notification) {
-        masterViewController.discoverer.updateInterval = 120
+        discoverer.updateInterval = 120
     }
     
     @IBAction func shouldOpenTerminalOutputWindow(_ sender: AnyObject) {
@@ -187,7 +194,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func refreshDeviceListClicked(_ sender: NSMenuItem) {
-        masterViewController.discoverer.pollDevices()
+        discoverer.pollDevices()
     }
 
     @IBAction func showLogFileClicked(_ sender: NSMenuItem) {
@@ -201,15 +208,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func applicationDidBecomeActive(_ notification: Notification) {
-//        Util().restartRefreshingDeviceList()
-        
-        if masterViewController == nil {
-            applicationDidFinishLaunching(notification)
-        }
-        
-        masterViewController.discoverer.updateInterval = 3
         updateScriptFilesInMenu()
-        masterViewController.discoverer.pollDevices()
+        discoverer.updateInterval = 3
+        discoverer.pollDevices()
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

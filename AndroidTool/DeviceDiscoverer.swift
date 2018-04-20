@@ -10,18 +10,20 @@ import Cocoa
 import AVFoundation
 
 protocol DeviceDiscovererDelegate {
+    
     func devicesUpdated(_ deviceList:[Device])
 }
 
 class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
-    var delegate : DeviceDiscovererDelegate!
+    var delegate: DeviceDiscovererDelegate?
     var previousDevices = [Device]()
     var updatingSuspended = false
-    var mainTimer : Timer!
-    var updateInterval:TimeInterval = 3
-    var iosDeviceHelper : IOSDeviceHelper!
+    var mainTimer: Timer?
+    var updateInterval: TimeInterval = 3
+    var iosDeviceHelper: IOSDeviceHelper!
     var iosDevices = [Device]()
     var androidDevices = [Device]()
+    let pollLock = ""
     
     func start(){
         let checkTask = ShellTasker(scriptFile: "checkEnvironment")
@@ -30,23 +32,14 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(suspend),
+            selector: #selector(stopPollingDevices),
             name: NSNotification.Name(rawValue: "suspendAdb"),
             object: nil)
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(unSuspend),
+            selector: #selector(startPollingDevices),
             name: NSNotification.Name(rawValue: "unSuspendAdb"),
             object: nil)
-        
-        mainTimer = Timer.scheduledTimer(
-            timeInterval: updateInterval,
-            target: self,
-            selector: #selector(pollDevices),
-            userInfo: nil,
-            repeats: false)
-        
-        mainTimer.fire()
         
         /// start IOSDeviceHelper by instantiating
         iosDeviceHelper = IOSDeviceHelper(delegate: self)
@@ -84,45 +77,50 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     }
     
     @objc func pollDevices(){
-        var newDevices = [Device]()
-        
-        if updatingSuspended { return }
-
-        print("+", terminator: "")
-        
-        getSerials({ (serials, gotResults) -> Void in
-            if gotResults {
-                for serial in serials! {
-                    self.getDetailsForSerial(serial, complete: { (details) -> Void in
-                        let device = Device(properties: details, adbIdentifier:serial)
-                        newDevices.append(device)
-                        if serials!.count == newDevices.count {
-                            self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
-                        }
-                    })
+        Util.synced(pollLock) {
+            var newDevices = [Device]()
+            print("+", terminator: "")
+            
+            getSerials({ (serials, gotResults) -> Void in
+                if gotResults {
+                    for serial in serials! {
+                        self.getDetailsForSerial(serial, complete: { (details) -> Void in
+                            let device = Device(properties: details, adbIdentifier:serial)
+                            newDevices.append(device)
+                            if serials!.count == newDevices.count {
+                                self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
+                            }
+                        })
+                    }
+                } else {
+                    self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
                 }
-            } else {
-                self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
+            }, finished: { () -> Void in
+                // not really doing anything here afterall
+            })
+            startPollingDevices()
+        }
+    }
+    
+    @objc func startPollingDevices() {
+        Util.synced(pollLock) {
+            stopPollingDevices()
+            mainTimer = Timer.scheduledTimer(
+                timeInterval: updateInterval,
+                target: self,
+                selector: #selector(pollDevices),
+                userInfo: nil,
+                repeats: false)
+        }
+    }
+    
+    @objc func stopPollingDevices() {
+        Util.synced(pollLock) {
+            if let timer = mainTimer {
+                timer.invalidate()
+                mainTimer = nil
             }
-        }, finished: { () -> Void in
-            // not really doing anything here afterall
-        })
-    
-        mainTimer = Timer.scheduledTimer(
-            timeInterval: updateInterval,
-            target: self,
-            selector: #selector(pollDevices),
-            userInfo: nil,
-            repeats: false)
-    }
-
-    @objc func suspend(){
-        // some activites will break an open connection, an example is screen recording.
-        updatingSuspended = true
-    }
-    
-    @objc func unSuspend(){
-        updatingSuspended = false
+        }
     }
     
     func getPropsFromString(_ string:String) -> [String:String] {
@@ -171,7 +169,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         }
         
         allDevices = androidDevices + iosDevices
-        delegate.devicesUpdated(allDevices)
+        delegate?.devicesUpdated(allDevices)
     }
     
     func iosDeviceDetached(_ device:AVCaptureDevice) {

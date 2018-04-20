@@ -21,22 +21,19 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 
-class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableViewDelegate, NSTableViewDataSource  {
+class MasterViewController:
+        NSViewController,
+        DeviceDiscovererDelegate,
+        NSTableViewDelegate,
+        NSTableViewDataSource  {
     
-    var discoverer = DeviceDiscoverer()
-    var devices : [Device]!
+    var devices = [Device]()
     var deviceVCs = [DeviceViewController]()
     var window : NSWindow!
     var previousSig:Double = 0
     
     @IBOutlet var emptyStateView: NSImageView!
     @IBOutlet weak var devicesTable: NSTableView!
-    
-    override func awakeFromNib() {
-        discoverer.delegate = self
-        devices = [Device]()
-        discoverer.start()
-    }
     
     func installApk(_ apkPath:String){
         showDevicePicker(apkPath)
@@ -61,7 +58,6 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        if devices == nil { return 0 }
         return devices.count
     }
 
