@@ -77,3 +77,18 @@ This software uses code of <a href=http://ffmpeg.org>FFmpeg</a> licensed under t
    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
    License for the specific language governing permissions and limitations
    under the License.
+
+### libimobiledevice
+
+https://www.libimobiledevice.org/
+
+Compiled on Mac OSX 10.13.4 with OpenSSL 1.0.2o\
+libimobiledevice f37b592788bffcb9a70d211aef8b1f84751114ca
+[LGPL-2.1](https://github.com/libimobiledevice/libimobiledevice/blob/master/COPYING.LESSER)\
+libusbmuxd 724e70fb52ba45291dc73a2e369c0c5bae0ec2e
+[LGPL-2.1](https://github.com/libimobiledevice/libusbmuxd/blob/master/COPYING)\
+libplist ec9ba8bff6a4469aa75f6d570ab5109c061c6a9e
+[LGPL-2.1](https://github.com/libimobiledevice/libplist/blob/master/COPYING.LESSER)
+
+Tested on Mac OSX 10.13.3 with 11.3 6s plus and 10.3.3 5s
+

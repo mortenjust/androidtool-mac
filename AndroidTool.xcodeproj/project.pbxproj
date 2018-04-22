@@ -37,16 +37,6 @@
 		C87E3AF21C01128500275AA2 /* RawOutputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87E3AF01C01128500275AA2 /* RawOutputWindowController.xib */; };
 		C87E3AF51C0113B100275AA2 /* TerminalOutputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AF41C0113B100275AA2 /* TerminalOutputTextView.swift */; };
 		C87E3AF71C0113DA00275AA2 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AF61C0113DA00275AA2 /* Styles.swift */; };
-		C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */; };
-		C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */; };
-		C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */; };
-		C8A0F8B81AFC319A00B3A90C /* libusbmuxd.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AF1AFC319A00B3A90C /* libusbmuxd.2.dylib */; };
-		C8A0F8B91AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B01AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib */; };
-		C8A0F8BA1AFC319A00B3A90C /* libplist.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B11AFC319A00B3A90C /* libplist.2.dylib */; };
-		C8A0F8BB1AFC319A00B3A90C /* libplist.1.1.10.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B21AFC319A00B3A90C /* libplist.1.1.10.dylib */; };
-		C8A0F8BC1AFC319A00B3A90C /* libosxfuse_i64.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B31AFC319A00B3A90C /* libosxfuse_i64.2.dylib */; };
-		C8A0F8BD1AFC319A00B3A90C /* libosxfuse_i32.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B41AFC319A00B3A90C /* libosxfuse_i32.2.dylib */; };
-		C8A0F8BE1AFC319A00B3A90C /* libimobiledevice.4.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B51AFC319A00B3A90C /* libimobiledevice.4.dylib */; };
 		C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8BF1AFC4BDF00B3A90C /* convertMovieFiletoGif.sh */; };
 		C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */; };
 		C8A8A7B11AF4506800E4B5D0 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */; };
@@ -77,6 +67,13 @@
 		C8C86BF01C50976D0087858B /* installObbForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8C86BEF1C50976D0087858B /* installObbForSerial.sh */; };
 		C8C86BF21C50AEEC0087858B /* ObbHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C86BF11C50AEEC0087858B /* ObbHandler.swift */; };
 		C8E521B31C0ED06800777117 /* getCurrentActivityForIdentifier.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */; };
+		EA845C03208C5AEE006346F9 /* idevicescreenshot in Resources */ = {isa = PBXBuildFile; fileRef = EA845C02208C5AEE006346F9 /* idevicescreenshot */; };
+		EA845C1E208C647B006346F9 /* libplist.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C12208C647A006346F9 /* libplist.dylib */; };
+		EA845C1F208C647B006346F9 /* libusbmuxd.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C13208C647A006346F9 /* libusbmuxd.dylib */; };
+		EA845C20208C647B006346F9 /* libplist.3.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C14208C647A006346F9 /* libplist.3.dylib */; };
+		EA845C22208C647B006346F9 /* libimobiledevice.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C16208C647A006346F9 /* libimobiledevice.dylib */; };
+		EA845C26208C647B006346F9 /* libimobiledevice.6.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C1A208C647A006346F9 /* libimobiledevice.6.dylib */; };
+		EA845C27208C647B006346F9 /* libusbmuxd.4.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C1B208C647A006346F9 /* libusbmuxd.4.dylib */; };
 		EABEB5FF20508B9F00DA2FC1 /* androidtool_prefix.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */; };
 		EABEB6012050FD2500DA2FC1 /* android-sdk in Resources */ = {isa = PBXBuildFile; fileRef = EABEB6002050FD2500DA2FC1 /* android-sdk */; };
 		EABEB603205101AD00DA2FC1 /* checkEnvironment.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB602205101A300DA2FC1 /* checkEnvironment.sh */; };
@@ -135,16 +132,6 @@
 		C87E3AF01C01128500275AA2 /* RawOutputWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawOutputWindowController.xib; sourceTree = "<group>"; };
 		C87E3AF41C0113B100275AA2 /* TerminalOutputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalOutputTextView.swift; sourceTree = "<group>"; };
 		C87E3AF61C0113DA00275AA2 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
-		C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libzip.2.dylib; sourceTree = "<group>"; };
-		C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libxml2.2.dylib; sourceTree = "<group>"; };
-		C8A0F8AF1AFC319A00B3A90C /* libusbmuxd.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libusbmuxd.2.dylib; sourceTree = "<group>"; };
-		C8A0F8B01AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libusbmuxd.1.0.8.dylib; sourceTree = "<group>"; };
-		C8A0F8B11AFC319A00B3A90C /* libplist.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libplist.2.dylib; sourceTree = "<group>"; };
-		C8A0F8B21AFC319A00B3A90C /* libplist.1.1.10.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libplist.1.1.10.dylib; sourceTree = "<group>"; };
-		C8A0F8B31AFC319A00B3A90C /* libosxfuse_i64.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libosxfuse_i64.2.dylib; sourceTree = "<group>"; };
-		C8A0F8B41AFC319A00B3A90C /* libosxfuse_i32.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libosxfuse_i32.2.dylib; sourceTree = "<group>"; };
-		C8A0F8B51AFC319A00B3A90C /* libimobiledevice.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libimobiledevice.4.dylib; sourceTree = "<group>"; };
 		C8A0F8BF1AFC4BDF00B3A90C /* convertMovieFiletoGif.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = convertMovieFiletoGif.sh; sourceTree = "<group>"; };
 		C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
@@ -181,6 +168,13 @@
 		C8C86BEF1C50976D0087858B /* installObbForSerial.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = installObbForSerial.sh; sourceTree = "<group>"; };
 		C8C86BF11C50AEEC0087858B /* ObbHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObbHandler.swift; sourceTree = "<group>"; };
 		C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getCurrentActivityForIdentifier.sh; sourceTree = "<group>"; };
+		EA845C02208C5AEE006346F9 /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
+		EA845C12208C647A006346F9 /* libplist.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libplist.dylib; sourceTree = "<group>"; };
+		EA845C13208C647A006346F9 /* libusbmuxd.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libusbmuxd.dylib; sourceTree = "<group>"; };
+		EA845C14208C647A006346F9 /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libplist.3.dylib; sourceTree = "<group>"; };
+		EA845C16208C647A006346F9 /* libimobiledevice.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libimobiledevice.dylib; sourceTree = "<group>"; };
+		EA845C1A208C647A006346F9 /* libimobiledevice.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libimobiledevice.6.dylib; sourceTree = "<group>"; };
+		EA845C1B208C647A006346F9 /* libusbmuxd.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libusbmuxd.4.dylib; sourceTree = "<group>"; };
 		EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = androidtool_prefix.sh; sourceTree = "<group>"; };
 		EABEB6002050FD2500DA2FC1 /* android-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "android-sdk"; sourceTree = "<group>"; };
 		EABEB602205101A300DA2FC1 /* checkEnvironment.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = checkEnvironment.sh; sourceTree = "<group>"; };
@@ -331,15 +325,13 @@
 		EA17FA8820863F7600CF8033 /* libmobile */ = {
 			isa = PBXGroup;
 			children = (
-				C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */,
-				C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */,
-				C8A0F8AF1AFC319A00B3A90C /* libusbmuxd.2.dylib */,
-				C8A0F8B01AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib */,
-				C8A0F8B11AFC319A00B3A90C /* libplist.2.dylib */,
-				C8A0F8B21AFC319A00B3A90C /* libplist.1.1.10.dylib */,
-				C8A0F8B31AFC319A00B3A90C /* libosxfuse_i64.2.dylib */,
-				C8A0F8B41AFC319A00B3A90C /* libosxfuse_i32.2.dylib */,
-				C8A0F8B51AFC319A00B3A90C /* libimobiledevice.4.dylib */,
+				EA845C02208C5AEE006346F9 /* idevicescreenshot */,
+				EA845C1A208C647A006346F9 /* libimobiledevice.6.dylib */,
+				EA845C16208C647A006346F9 /* libimobiledevice.dylib */,
+				EA845C14208C647A006346F9 /* libplist.3.dylib */,
+				EA845C12208C647A006346F9 /* libplist.dylib */,
+				EA845C1B208C647A006346F9 /* libusbmuxd.4.dylib */,
+				EA845C13208C647A006346F9 /* libusbmuxd.dylib */,
 			);
 			path = libmobile;
 			sourceTree = "<group>";
@@ -367,7 +359,6 @@
 		EAD1CE5C2047312100B8F557 /* Scripts */ = {
 			isa = PBXGroup;
 			children = (
-				C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */,
 				C8B9D4821AE9B34F00927B96 /* ffmpeg */,
 				EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */,
 				EABEB602205101A300DA2FC1 /* checkEnvironment.sh */,
@@ -479,26 +470,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */,
+				EA845C22208C647B006346F9 /* libimobiledevice.dylib in Resources */,
+				EA845C1E208C647B006346F9 /* libplist.dylib in Resources */,
+				EA845C1F208C647B006346F9 /* libusbmuxd.dylib in Resources */,
+				EA845C27208C647B006346F9 /* libusbmuxd.4.dylib in Resources */,
+				EA845C26208C647B006346F9 /* libimobiledevice.6.dylib in Resources */,
+				EA845C20208C647B006346F9 /* libplist.3.dylib in Resources */,
 				C856FFDF1BFDA61A0098B1E2 /* exitDemoMode.sh in Resources */,
 				C86C16031C139B8F00E22CEC /* launchActivity.sh in Resources */,
 				C856FFE01BFDA61A0098B1E2 /* setDemoModeOptions.sh in Resources */,
 				C86C16091C14F7F700E22CEC /* extractIconFromApk.sh in Resources */,
 				EABEB5FF20508B9F00DA2FC1 /* androidtool_prefix.sh in Resources */,
 				C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */,
-				C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */,
-				C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */,
-				C8A0F8B81AFC319A00B3A90C /* libusbmuxd.2.dylib in Resources */,
+				EA845C03208C5AEE006346F9 /* idevicescreenshot in Resources */,
 				C86C15FB1C1395F700E22CEC /* installZip.sh in Resources */,
-				C8A0F8B91AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib in Resources */,
 				C86C16051C13B4B900E22CEC /* uninstallPackageOnDevice.sh in Resources */,
 				EABEB603205101AD00DA2FC1 /* checkEnvironment.sh in Resources */,
-				C8A0F8BA1AFC319A00B3A90C /* libplist.2.dylib in Resources */,
-				C8A0F8BB1AFC319A00B3A90C /* libplist.1.1.10.dylib in Resources */,
 				C86C15F91C1395DC00E22CEC /* getApkInfo.sh in Resources */,
-				C8A0F8BC1AFC319A00B3A90C /* libosxfuse_i64.2.dylib in Resources */,
-				C8A0F8BD1AFC319A00B3A90C /* libosxfuse_i32.2.dylib in Resources */,
-				C8A0F8BE1AFC319A00B3A90C /* libimobiledevice.4.dylib in Resources */,
 				C8A8A7B31AF4A0E200E4B5D0 /* getResolutionForSerial.sh in Resources */,
 				C8B131991AEB641800BCD4F3 /* installApkOnDevice.sh in Resources */,
 				C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */,
@@ -710,6 +698,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AndroidTool",
+					"$(PROJECT_DIR)/AndroidTool/libmobile",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
@@ -731,6 +720,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AndroidTool",
+					"$(PROJECT_DIR)/AndroidTool/libmobile",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
