@@ -58,9 +58,9 @@ For the OBB installer script
 
 ### adb, fastboot, aapt
 The follow binaries are covered under the Apache License, Version 2.0.
-* [adb NOTICE](https://android.googlesource.com/platform/system/core.git/+/master/adb/NOTICE)
-* fastboot's notice is under the general [android NOTICE](https://android.googlesource.com/platform/system/core.git/+/master/NOTICE)
-* [aapt NOTICE](https://android.googlesource.com/platform/frameworks/base.git/+/master/tools/aapt/NOTICE)
+* adb: Android Debug Bridge version 1.0.39; Version 0.0.1-4500957; [NOTICE](https://android.googlesource.com/platform/system/core.git/+/master/adb/NOTICE)
+* fastboot: 0.0.1-4500957; [Android NOTICE](https://android.googlesource.com/platform/system/core.git/+/master/NOTICE)
+* aapt: Android Asset Packaging Tool, v0.2-4507799; build-tools 27.0.3, [NOTICE](https://android.googlesource.com/platform/frameworks/base.git/+/master/tools/aapt/NOTICE)
 
 ### FFmpeg
 This software uses code of <a href=http://ffmpeg.org>FFmpeg</a> licensed under the <a href=http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html>LGPLv2.1</a> and its source can be downloaded <a href=https://github.com/FFmpeg/FFmpeg>here</a>
