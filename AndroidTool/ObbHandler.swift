@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol ObbHandlerDelegate {
-    func obbHandlerDidStart(bytes:String)
+    func obbHandlerDidStart(_ bytes:String)
     func obbHandlerDidFinish()
 }
 

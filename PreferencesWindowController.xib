@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="17C88" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesWindowController" customModule="AndroidTool" customModuleProvider="target">
@@ -16,7 +17,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="832" y="148" width="444" height="316"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
             <value key="minSize" type="size" width="444" height="316"/>
             <value key="maxSize" type="size" width="444" height="316"/>
             <view key="contentView" id="se5-gp-TjO">
@@ -391,7 +392,7 @@
                                             <rect key="frame" x="29" y="27" width="383" height="237"/>
                                             <subviews>
                                                 <slider identifier="scalePref" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Lu-4c-luS">
-                                                    <rect key="frame" x="75" y="110" width="255" height="25"/>
+                                                    <rect key="frame" x="75" y="110" width="255" height="24"/>
                                                     <sliderCell key="cell" state="on" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="DE7-Fj-hqK"/>
                                                     <connections>
                                                         <binding destination="gL2-7b-O6c" name="value" keyPath="values.scalePref" id="YaF-za-zUb">
@@ -441,7 +442,7 @@
                                                     </connections>
                                                 </textField>
                                                 <slider identifier="bitratePref" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xhf-MR-yab">
-                                                    <rect key="frame" x="75" y="176" width="255" height="25"/>
+                                                    <rect key="frame" x="75" y="176" width="255" height="24"/>
                                                     <sliderCell key="cell" alignment="left" minValue="100000" maxValue="10000000" doubleValue="7800000" tickMarkPosition="above" numberOfTickMarks="10" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Jdn-8O-CdO"/>
                                                     <connections>
                                                         <binding destination="gL2-7b-O6c" name="value" keyPath="values.bitratePref" id="QK3-mV-pUL">

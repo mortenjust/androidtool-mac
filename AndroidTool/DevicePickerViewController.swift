@@ -18,27 +18,27 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
     
     @IBOutlet weak var spinner: NSProgressIndicator!
 
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
     }
 
-    @IBAction func cancelPressed(sender: AnyObject) {
+    @IBAction func cancelPressed(_ sender: AnyObject) {
         if #available(OSX 10.10, *) {
-            self.dismissController(nil)
+            self.dismiss(nil)
         } else {
             // Fallback on earlier versions
         }
     }
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
         return devices.count
     }
 
-    func installApkOnDevice(device:Device){
+    func installApkOnDevice(_ device:Device){
         let adbIdentifier = device.adbIdentifier!
         
-        spinner.hidden = false
+        spinner.isHidden = false
         spinner.startAnimation(nil)
         
         let args = ["\(adbIdentifier)",
@@ -48,19 +48,19 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
 
             Util().showNotification("App installed on \(device.readableIdentifier())", moreInfo: "\(output)", sound: true)
             if #available(OSX 10.10, *) {
-                self.dismissController(nil)
+                self.dismiss(nil)
             } else {
                 // Fallback on earlier versions
             }
         }
     }
     
-    func tableView(tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         installApkOnDevice(devices[row])
         return true
     }
     
-    func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+    func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
         return devices[row].model
     }
     

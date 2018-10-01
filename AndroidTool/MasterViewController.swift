@@ -7,6 +7,19 @@
 //
 
 import Cocoa
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
 
 class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableViewDelegate, NSTableViewDataSource  {
     
@@ -26,12 +39,12 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     }
     
     
-    func installApk(apkPath:String){
+    func installApk(_ apkPath:String){
         showDevicePicker(apkPath)
     }
 
     
-    func showDevicePicker(apkPath:String){
+    func showDevicePicker(_ apkPath:String){
         let devicePickerVC = DevicePickerViewController(nibName: "DevicePickerViewController", bundle: nil)
         devicePickerVC?.devices = devices
         devicePickerVC?.apkPath = apkPath
@@ -44,27 +57,27 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     }
 
 
-    func tableView(tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
         return false
     }
     
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRows(in tableView: NSTableView) -> Int {
 //        println("asked number of rows")
         if devices == nil { return 0 }
         return devices.count
     }
 
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let deviceVC = DeviceViewController(device: devices[row])
         deviceVCs.append(deviceVC!) // save it from deallocation
         return deviceVC?.view
     }
     
-    func removeDevice(device:Device){
+    func removeDevice(_ device:Device){
         
     }
 
-    func fingerPrintForDeviceList(deviceList:[Device]) -> Double {
+    func fingerPrintForDeviceList(_ deviceList:[Device]) -> Double {
         var total:Double = 0
         for d in deviceList {
             total += d.firstBoot!
@@ -74,7 +87,7 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         return total
     }
     
-    func deviceListSignature(deviceList:[Device]) -> Double {
+    func deviceListSignature(_ deviceList:[Device]) -> Double {
         var total:Double = 0
         for device in deviceList {
             if let firstboot = device.firstBoot {
@@ -88,7 +101,7 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
     func showEmptyState(){
         // resize window 
         
-        if !emptyStateView.isDescendantOf(view) {
+        if !emptyStateView.isDescendant(of: view) {
             emptyStateView.frame.origin.y = -15
             emptyStateView.frame.origin.x = 45
             view.addSubview(emptyStateView)
@@ -101,7 +114,7 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         emptyStateView.removeFromSuperview()
     }
     
-    func devicesUpdated(deviceList: [Device]) {
+    func devicesUpdated(_ deviceList: [Device]) {
         let newSig = deviceListSignature(deviceList)
         
         if deviceList.count == 0 {
@@ -114,7 +127,7 @@ class MasterViewController: NSViewController, DeviceDiscovererDelegate, NSTableV
         
         
         devices = deviceList
-        devices.sortInPlace({$0.model < $1.model})
+        devices.sort(by: {$0.model < $1.model})
         // refresh each device with updated data like current activity
         
 //        for deviceVC in deviceVCs {

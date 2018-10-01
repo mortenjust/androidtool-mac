@@ -10,25 +10,25 @@ import Cocoa
 
 class WindowMoverTableCellView: NSTableCellView {
 
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         // Drawing code here.
     }
     
-    override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
-        return NSDragOperation.Copy
+    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        return NSDragOperation.copy
     }
     
     override var mouseDownCanMoveWindow:Bool {
         return true
     }
     
-    override func mouseUp(theEvent: NSEvent) {
+    override func mouseUp(with theEvent: NSEvent) {
         Swift.print("mouse up")
     }
     
-    override func mouseEntered(theEvent: NSEvent) {
+    override func mouseEntered(with theEvent: NSEvent) {
         Swift.print("mouse entered")
     }
     

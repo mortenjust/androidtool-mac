@@ -10,8 +10,8 @@ import Cocoa
 
 protocol ApkHandlerDelegate {
     func apkHandlerDidStart()
-    func apkHandlerDidGetInfo(apk:Apk)
-    func apkHandlerDidUpdate(update:String)
+    func apkHandlerDidGetInfo(_ apk:Apk)
+    func apkHandlerDidUpdate(_ update:String)
     func apkHandlerDidFinish()
 }
 
@@ -33,7 +33,7 @@ class ApkHandler: NSObject {
         self.device = device
     }
     
-    func installAndLaunch(complete:()->Void){
+    func installAndLaunch(_ complete:@escaping ()->Void){
         delegate?.apkHandlerDidStart()
         print(">>apkhandle")
         
@@ -46,7 +46,7 @@ class ApkHandler: NSObject {
         }
     }
     
-    func install(completion:()->Void){
+    func install(_ completion:@escaping ()->Void){
         print(">>apkinstall")
         delegate?.apkHandlerDidUpdate("Installing...")
         
@@ -59,7 +59,7 @@ class ApkHandler: NSObject {
         }
     }
     
-    func uninstallPackageWithName(packageName:String, completion:()->Void){
+    func uninstallPackageWithName(_ packageName:String, completion:@escaping ()->Void){
         print(">>Uninstall")
         delegate?.apkHandlerDidUpdate("Uninstalling app")
         let s = ShellTasker(scriptFile: "uninstallPackageOnDevice")
@@ -71,7 +71,7 @@ class ApkHandler: NSObject {
         
     }
     
-    func getInfoFromApk(complete:(Apk) -> Void){
+    func getInfoFromApk(_ complete:@escaping (Apk) -> Void){
         print(">>apkgetinfofromapk")
         delegate?.apkHandlerDidUpdate("Getting info...")
         
@@ -86,7 +86,7 @@ class ApkHandler: NSObject {
             iconShell.run(arguments: [self.filepath]) { (output) -> Void in
                 print("Ready to add nsurl path to apk object: \(output)")
                 
-                apk.localIconPath = (output as String).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                apk.localIconPath = (output as String).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
  
                 
                 complete(apk)
@@ -96,11 +96,11 @@ class ApkHandler: NSObject {
     }
     
     
-    func launch(apk:Apk){
+    func launch(_ apk:Apk){
         print(">>apklaunch")
         delegate?.apkHandlerDidUpdate("Launching...")
         
-        if let packageName = apk.packageName, launcherActivity = apk.launcherActivity {
+        if let packageName = apk.packageName, let launcherActivity = apk.launcherActivity {
             
             let ac = "\(packageName)/\(launcherActivity)"
             

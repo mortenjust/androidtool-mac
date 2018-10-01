@@ -15,48 +15,37 @@ protocol ShellTaskDelegate {
 }
 
 class ShellTasker: NSObject {
-    var scriptFile:String!
-    var task:NSTask!
+    var scriptFile:String
+    var task:Process!
     var outputIsVerbose = false;
     
-    
     init(scriptFile:String){
-        //        println("initiate with \(scriptFile)")
         self.scriptFile = scriptFile
         print("T:\(scriptFile)")
     }
     
     func stop(){
-        //        println("shelltask stop")
         task.terminate()
     }
     
-    func postNotification(message:NSString, channel:String){
-        NSNotificationCenter.defaultCenter().postNotificationName(channel, object: message)
+    func postNotification(_ message:NSString, channel:String){
+        NotificationCenter.default.post(name: Notification.Name(rawValue: channel), object: message)
     }
     
-    func run(arguments args:[String]=[], isUserScript:Bool = false, isIOS:Bool = false, complete:(output:NSString)-> Void) {
+    func run(arguments args:[String]=[], isUserScript:Bool = false, isIOS:Bool = false, complete:@escaping (_ output:NSString)-> Void) {
         
         var output = NSString()
-        var data = NSData()
+        var data = Data()
         
-        if scriptFile == nil {
-            return
-        }
-        
-        //        println("running \(scriptFile)")
-        
-        var scriptPath:AnyObject!
+        var scriptPath:String
         
         if isUserScript {
-            scriptPath = scriptFile as AnyObject
+            scriptPath = scriptFile
         } else {
-            scriptPath = NSBundle.mainBundle().pathForResource(scriptFile, ofType: "sh") as! AnyObject
+            scriptPath = Bundle.main.path(forResource: scriptFile, ofType: "sh")!
         }
         
-        let sp = scriptPath as! String
-        
-        let resourcesUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("adb", ofType: "")!).URLByDeletingLastPathComponent
+        let resourcesUrl = NSURL(fileURLWithPath: Bundle.main.path(forResource: "adb", ofType: "")!).deletingLastPathComponent
         
         let resourcesPath = resourcesUrl?.path
         
@@ -64,8 +53,8 @@ class ShellTasker: NSObject {
         
         let bash = "/bin/bash"
         
-        task = NSTask()
-        let pipe = NSPipe()
+        task = Process()
+        let pipe = Pipe()
         
         task.launchPath = bash
         
@@ -76,7 +65,7 @@ class ShellTasker: NSObject {
             allArguments.append(resourcesPath!) // $1
         } else
         {
-            let imobileUrl = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("idevicescreenshot", ofType: "")!).URLByDeletingLastPathComponent
+            let imobileUrl = NSURL(fileURLWithPath: Bundle.main.path(forResource: "idevicescreenshot", ofType: "")!).deletingLastPathComponent
             let imobilePath = imobileUrl?.path
             //let imobilePath = NSBundle.mainBundle().pathForResource("idevicescreenshot", ofType: "")?.stringByDeletingLastPathComponent
             allArguments.append(imobilePath!) // $1
@@ -94,23 +83,21 @@ class ShellTasker: NSObject {
         task.standardError = pipe
         
         // post a notification with the command, for the rawoutput debugging window
-        let taskString = sp
-        
         if self.outputIsVerbose {
-            postNotification(taskString, channel: C.NOTIF_COMMANDVERBOSE)
+            postNotification(scriptPath as NSString, channel: C.NOTIF_COMMANDVERBOSE)
         } else {
-            postNotification(taskString, channel: C.NOTIF_COMMAND)
+            postNotification(scriptPath as NSString, channel: C.NOTIF_COMMAND)
         }
         
         self.task.launch()
         
         pipe.fileHandleForReading.waitForDataInBackgroundAndNotify()
         
-        NSNotificationCenter.defaultCenter().addObserverForName(NSFileHandleDataAvailableNotification, object: pipe.fileHandleForReading, queue: nil) { (notification) -> Void in
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: pipe.fileHandleForReading, queue: nil) { (notification) -> Void in
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
                 data = pipe.fileHandleForReading.readDataToEndOfFile() // use .availabledata instead to stream from the console, pretty cool
-                output = NSString(data: data, encoding: NSUTF8StringEncoding)!
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)!
+                DispatchQueue.main.async(execute: { () -> Void in
                     var channel = ""
                     if self.outputIsVerbose {
                         channel = C.NOTIF_NEWDATAVERBOSE
@@ -118,7 +105,7 @@ class ShellTasker: NSObject {
                         channel = C.NOTIF_NEWDATA
                         }
                     self.postNotification(output, channel: channel)
-                    complete(output: output)
+                    complete(output)
                 })
             })
         }

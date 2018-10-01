@@ -10,7 +10,7 @@ import Cocoa
 
 class MovableButton: NSButton {
     
-    func moveUpBy(y:CGFloat, delaySeconds:CFTimeInterval=0){
+    func moveUpBy(_ y:CGFloat, delaySeconds:CFTimeInterval=0){
         self.layer?.removeAllAnimations()
         let moveTo:CGFloat = (layer?.position.y)! + y
         let move = CABasicAnimation(keyPath: "position.y")
@@ -24,11 +24,11 @@ class MovableButton: NSButton {
             self.frame.origin.y = (self.layer?.position.y)! + y
         }
         
-        layer?.addAnimation(move, forKey: "moveUp")
+        layer?.add(move, forKey: "moveUp")
         CATransaction.commit()
     }
     
-    func moveDownBy(y:CGFloat, delaySeconds:CFTimeInterval=0){
+    func moveDownBy(_ y:CGFloat, delaySeconds:CFTimeInterval=0){
         self.layer?.removeAllAnimations()
         let moveTo:CGFloat = (layer?.position.y)! - y
         let move = CABasicAnimation(keyPath: "position.y")
@@ -42,7 +42,7 @@ class MovableButton: NSButton {
             self.frame.origin.y = (self.layer?.position.y)! - y
         }
         
-        layer?.addAnimation(move, forKey: "moveDown")
+        layer?.add(move, forKey: "moveDown")
         CATransaction.commit()
     }
     
@@ -52,12 +52,12 @@ class MovableButton: NSButton {
         fade.fromValue = 0
         fade.toValue = 1
         CATransaction.begin()
-        layer?.addAnimation(fade, forKey: "fadeIn")
+        layer?.add(fade, forKey: "fadeIn")
         CATransaction.commit()
         layer?.opacity = 1
     }
     
-    func fadeOut(completion:()->Void){
+    func fadeOut(_ completion:@escaping ()->Void){
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.duration = 1
         fade.toValue = 0
@@ -66,16 +66,16 @@ class MovableButton: NSButton {
         CATransaction.setCompletionBlock { () -> Void in
             completion()
         }
-        layer?.addAnimation(fade, forKey: "fadeIn")
+        layer?.add(fade, forKey: "fadeIn")
         CATransaction.commit()
         layer?.opacity = 0
     }
     
-    func moveUpForUninstallButton(delaySeconds:CFTimeInterval=0){
+    func moveUpForUninstallButton(_ delaySeconds:CFTimeInterval=0){
         moveUpBy(20, delaySeconds: delaySeconds)
     }
     
-    func moveDownForUninstallButton(delaySeconds:CFTimeInterval=0){
+    func moveDownForUninstallButton(_ delaySeconds:CFTimeInterval=0){
         moveDownBy(20, delaySeconds: delaySeconds)
     }
 
@@ -84,8 +84,8 @@ class MovableButton: NSButton {
         wantsLayer = true
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         // Drawing code here.
     }

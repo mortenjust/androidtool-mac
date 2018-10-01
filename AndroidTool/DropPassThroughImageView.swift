@@ -19,18 +19,18 @@ class DropPassThroughImageView: NSImageView {
         unregisterDraggedTypes()
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         // Drawing code here.
     }
     
-    override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
-        return NSDragOperation.Copy
+    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        return NSDragOperation.copy
     }
     
-    override func draggingUpdated(sender: NSDraggingInfo) -> NSDragOperation {
-        return NSDragOperation.Copy
+    override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
+        return NSDragOperation.copy
     }
     
 }

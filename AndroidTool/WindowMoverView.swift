@@ -10,20 +10,20 @@ import Cocoa
 
 class WindowMoverView: NSView {
     
-    override func registerForDraggedTypes(newTypes: [String]) {
+    override func register(forDraggedTypes newTypes: [String]) {
         Swift.print("$$ registering")
         let fileTypes = [
             ".apk"
         ]
-        registerForDraggedTypes(fileTypes);
+        register(forDraggedTypes: fileTypes);
     }
     
-    override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
+    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         Swift.print("dragging entered")
-        return NSDragOperation.Copy
+        return NSDragOperation.copy
     }
     
-    override func acceptsFirstMouse(theEvent: NSEvent?) -> Bool {
+    override func acceptsFirstMouse(for theEvent: NSEvent?) -> Bool {
         return true
     }
     
@@ -31,8 +31,8 @@ class WindowMoverView: NSView {
         return true
     }
 
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         // Drawing code here.
     }
@@ -41,14 +41,14 @@ class WindowMoverView: NSView {
         return true
     }
     
-    override func mouseUp(theEvent: NSEvent) {
+    override func mouseUp(with theEvent: NSEvent) {
         Swift.print("mouse up windowmoverview")
-        super.mouseUp(theEvent)
+        super.mouseUp(with: theEvent)
     }
     
-    override func mouseEntered(theEvent: NSEvent) {
+    override func mouseEntered(with theEvent: NSEvent) {
         Swift.print("mouse entered windowmoverivew")
-        super.mouseEntered(theEvent)
+        super.mouseEntered(with: theEvent)
     }
     
 }

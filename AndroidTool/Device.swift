@@ -18,7 +18,7 @@ enum DeviceType:String {
 }
 
 enum DeviceOS {
-    case Ios, Android
+    case ios, android
 }
 
 class Device: NSObject {
@@ -30,8 +30,8 @@ class Device: NSObject {
     var brand: String?              //  google
     var serial: String?
     var properties: [String:String]?
-    var firstBoot : NSTimeInterval?
-    var firstBootString : NSString?
+    var firstBoot : TimeInterval?
+    var firstBootString : String?
     var adbIdentifier : String?
     var isEmulator : Bool = false
     var displayHeight : Int?
@@ -43,7 +43,7 @@ class Device: NSObject {
     
     convenience init(avDevice:AVCaptureDevice) {
         self.init()
-        deviceOS = DeviceOS.Ios
+        deviceOS = DeviceOS.ios
         firstBoot = hashFromString(avDevice.uniqueID)
         brand = "Apple"
         name = avDevice.localizedName
@@ -55,16 +55,17 @@ class Device: NSObject {
     convenience init(properties:[String:String], adbIdentifier:String) {
         self.init()
         
-        deviceOS = .Android
-        self.adbIdentifier = adbIdentifier.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        deviceOS = .android
+        self.adbIdentifier = adbIdentifier.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         model = properties["ro.product.model"]
         name = properties["ro.product.name"]
         manufacturer = properties["ro.product.manufacturer"]
         brand = properties["ro.product.brand"]
         firstBootString = properties["ro.runtime.firstboot"]
-        firstBoot = firstBootString?.doubleValue
-
+        if let fbs = firstBootString {
+            firstBoot = TimeInterval(fbs)
+        }
         if let deviceSerial = properties["ro.serialno"]{
             serial = deviceSerial
         } else {
@@ -73,18 +74,18 @@ class Device: NSObject {
         }
         
         if let characteristics = properties["ro.build.characteristics"] {
-            if characteristics.rangeOfString("watch") != nil {
+            if characteristics.range(of: "watch") != nil {
                 type = DeviceType.Watch
             } else {
                 type = DeviceType.Phone
             }
-            }
+        }
         
-        var task = ShellTasker(scriptFile: "getResolutionForSerial")
+        let task = ShellTasker(scriptFile: "getResolutionForSerial")
         task.outputIsVerbose = true
         task.run(arguments: ["\(self.adbIdentifier!)"], isUserScript: false) { (output) -> Void in
             let res = output as String
-            if res.rangeOfString("Physical size:") != nil {
+            if res.range(of: "Physical size:") != nil {
                 self.resolution = self.getResolutionFromString(output as String)
             } else {
                 print("Awkward. No size found. What I did find was \(res)")
@@ -93,18 +94,18 @@ class Device: NSObject {
     }
     
     
-    func getCurrentActivity(completion:(activityName:String)->Void){
+    func getCurrentActivity(_ completion:@escaping (_ activityName:String)->Void){
         let task = ShellTasker(scriptFile: "getCurrentActivityForIdentifier")
         task.outputIsVerbose = true
         task.run(arguments: ["\(self.adbIdentifier!)"], isUserScript: false, isIOS: false) { (output) -> Void in
             let res = output as String
             self.currentActivity = res
-            completion(activityName: res)
+            completion(res)
         }
 
     }
     
-    func hashFromString(s:String) -> Double {
+    func hashFromString(_ s:String) -> Double {
         return Double(abs((s as NSString).hash))
     }
     
@@ -122,12 +123,12 @@ class Device: NSObject {
         }
     }
     
-    func getResolutionFromString(string:String) -> (width:Double, height:Double) {
+    func getResolutionFromString(_ string:String) -> (width:Double, height:Double) {
         let re = try! NSRegularExpression(pattern: "Physical size: (.*)x(.*)", options: [])
-        let matches = re.matchesInString(string, options: [], range: NSRange(location: 0, length: string.utf16.count))
+        let matches = re.matches(in: string, options: [], range: NSRange(location: 0, length: string.utf16.count))
         let result = matches[0] 
-        let width:NSString = (string as NSString).substringWithRange(result.rangeAtIndex(1))
-        let height:NSString = (string as NSString).substringWithRange(result.rangeAtIndex(2))        
+        let width:NSString = (string as NSString).substring(with: result.rangeAt(1)) as NSString
+        let height:NSString = (string as NSString).substring(with: result.rangeAt(2)) as NSString        
         let res = (width:width.doubleValue, height:height.doubleValue)
         return res
     }

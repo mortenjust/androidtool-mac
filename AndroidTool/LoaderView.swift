@@ -24,28 +24,28 @@ class LoaderView: NSImageView {
     
     func setup(){
         self.wantsLayer = true
-        hidden = true
+        isHidden = true
     }
     
     
     func startRotating(){
-        hidden = false
+        isHidden = false
         let rotate = CABasicAnimation(keyPath: "transform.rotation")
         rotate.fillMode = kCAFillModeForwards
         rotate.fromValue = 0.0
-        rotate.toValue = CGFloat(M_PI * 2.0)
+        rotate.toValue = CGFloat(.pi * 2.0)
         rotate.duration = 1
         rotate.repeatCount = Float.infinity
-        layer?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        layer?.anchorPoint = CGPointMake(0.5, 0.5)
-        layer?.addAnimation(rotate, forKey: nil)
+        layer?.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        layer?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        layer?.add(rotate, forKey: nil)
     }
     func stopRotatingAndReset(){
         stopRotating()
         
         CATransaction.begin()
         CATransaction.setCompletionBlock { () -> Void in
-            self.hidden = true
+            self.isHidden = true
         }
         
         let rotate = CABasicAnimation(keyPath: "transform.rotation")
@@ -53,10 +53,10 @@ class LoaderView: NSImageView {
         rotate.toValue = 0.0
         rotate.duration = 0.3
 
-        layer?.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
-        layer?.anchorPoint = CGPointMake(0.5, 0.5)
+        layer?.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
+        layer?.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        layer?.addAnimation(rotate, forKey: nil)
+        layer?.add(rotate, forKey: nil)
         CATransaction.commit()
         
     }
@@ -65,16 +65,16 @@ class LoaderView: NSImageView {
         layer?.removeAllAnimations()
     }
     
-    override func draggingUpdated(sender: NSDraggingInfo) -> NSDragOperation {
-        return NSDragOperation.Copy
+    override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
+        return NSDragOperation.copy
     }
     
-    override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
-        return NSDragOperation.Copy
+    override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+        return NSDragOperation.copy
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         // Drawing code here.
     }

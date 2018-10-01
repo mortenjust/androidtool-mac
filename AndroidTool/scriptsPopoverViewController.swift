@@ -7,6 +7,30 @@
 //
 
 import Cocoa
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 @objc protocol UserScriptDelegate : class {
     func userScriptStarted()
@@ -20,7 +44,7 @@ class scriptsPopoverViewController: NSViewController {
     // accepted answer here http://stackoverflow.com/questions/26180268/interface-builder-iboutlet-and-protocols-for-delegate-and-datasource-in-swift
     @IBOutlet var delegate : UserScriptDelegate!
     
-    let fileM = NSFileManager.defaultManager()
+    let fileM = FileManager.default
 
     func setup(){
         let folder = Util().getSupportFolderScriptPath()
@@ -32,7 +56,7 @@ class scriptsPopoverViewController: NSViewController {
     }
     
     
-    func addScriptsToView(scripts:[String], view:NSView){
+    func addScriptsToView(_ scripts:[String], view:NSView){
         var i:CGFloat = 1
         
         view.frame.size.height = CGFloat(scripts.count) * (buttonHeight+3) + buttonHeight
@@ -41,8 +65,8 @@ class scriptsPopoverViewController: NSViewController {
             width: view.bounds.width-15.0,
             height: buttonHeight))
         folderButton.image = NSImage(named: "revealFolder")
-        folderButton.bordered = false
-        folderButton.action = "revealScriptFolderClicked:"
+        folderButton.isBordered = false
+        folderButton.action = #selector(revealScriptFolderClicked)
         folderButton.target = self
         view.addSubview(folderButton)
         
@@ -51,23 +75,23 @@ class scriptsPopoverViewController: NSViewController {
                                         width: view.bounds.width-15.0,
                                         height: buttonHeight))
 
-            let friendlyScriptName = script.stringByReplacingOccurrencesOfString(".sh", withString: "")
+            let friendlyScriptName = script.replacingOccurrences(of: ".sh", with: "")
             scriptButton.title = friendlyScriptName
             if #available(OSX 10.10.3, *) {
-                scriptButton.setButtonType(NSButtonType.AcceleratorButton)
+                scriptButton.setButtonType(NSButtonType.accelerator)
             } else {
                 // Fallback on earlier versions
             }
-            scriptButton.bezelStyle = NSBezelStyle.RoundedBezelStyle
-            scriptButton.action = "runScriptClicked:"
+            scriptButton.bezelStyle = NSBezelStyle.rounded
+            scriptButton.action = #selector(runScriptClicked)
             scriptButton.target = self
             
             view.addSubview(scriptButton)
-            i++
+            i += 1
         }
     }
     
-    func runScript(scriptPath:String){
+    func runScript(_ scriptPath:String){
         delegate.userScriptStarted()
         let serial:String = delegate.userScriptWantsSerial()
         
@@ -78,14 +102,14 @@ class scriptsPopoverViewController: NSViewController {
         }
     }
     
-    func runScriptClicked(sender:NSButton){
+    func runScriptClicked(_ sender:NSButton){
         let scriptName = "\(sender.title).sh"
         let scriptPath = "\(Util().getSupportFolderScriptPath())/\(scriptName)"
         print("ready to run \(scriptPath)")
         runScript(scriptPath)
     }
     
-    func revealScriptFolderClicked(sender:NSButton) {
+    func revealScriptFolderClicked(_ sender:NSButton) {
         Util().revealScriptsFolder()
     }
     
@@ -99,9 +123,6 @@ class scriptsPopoverViewController: NSViewController {
     }
     
     override func awakeFromNib() {
-//        println("awake from nib-style")
         setup()
     }
-    
-    
 }
