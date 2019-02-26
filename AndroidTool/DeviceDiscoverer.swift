@@ -20,7 +20,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     var updatingSuspended = false
     var mainTimer: Timer?
     var updateInterval: TimeInterval = 3
-    var iosDeviceHelper: IOSDeviceHelper!
+    var iosDeviceHelper: IOSDeviceHelper?
     var iosDevices = [Device]()
     var androidDevices = [Device]()
     let pollLock = ""
@@ -41,12 +41,38 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
             name: NSNotification.Name(rawValue: "unSuspendAdb"),
             object: nil)
         
-        /// start IOSDeviceHelper by instantiating
-        iosDeviceHelper = IOSDeviceHelper(delegate: self)
-        iosDeviceHelper.startObservingIOSDevices()        
+        setUpIOSPolling()
     }
     
     func stop(){}
+    
+    func setUpIOSPolling() {
+        if #available(OSX 10.14, *) {
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .authorized:
+                startIOSDeviceHelper()
+                return
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    if granted {
+                        self.startIOSDeviceHelper()
+                    }
+                }
+                return
+            case .denied, .restricted:
+                return
+            }
+        } else {
+            startIOSDeviceHelper()
+        }
+    }
+    
+    func startIOSDeviceHelper() {
+        /// start IOSDeviceHelper by instantiating
+        let deviceHelper = IOSDeviceHelper(delegate: self)
+        deviceHelper.startObservingIOSDevices()
+        self.iosDeviceHelper = deviceHelper
+    }
     
     func getSerials(_ thenDoThis: @escaping (_ serials:[String]?, _ gotResults:Bool)->Void, finished:@escaping ()->Void){
         let task = ShellTasker(scriptFile: "getSerials")
