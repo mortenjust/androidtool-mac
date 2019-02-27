@@ -9,6 +9,7 @@
 import Foundation
 import AppKit
 
+private let deleteToResetName = "delete_to_reset"
 
 class Util {
     var deviceWidth:CGFloat = 373
@@ -47,34 +48,62 @@ class Util {
         unc.deliver(notification)
     }
     
-    
     func getSupportFolderScriptPath() -> String {
-        
-        let fileM = FileManager.default
-        
-        let supportFolder:String = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.applicationSupportDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0] 
-        
+        let supportFolder:String = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.applicationSupportDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
         let folder = "\(supportFolder)/AndroidTool"
         let scriptFolder = "\(folder)/UserScripts"
+        return scriptFolder
+    }
+ 
+    func setUpSupportFolderScriptPath() {
+        let fileM = FileManager.default
+        let scriptFolder = getSupportFolderScriptPath()
         
-        if !fileM.fileExists(atPath: folder) {
-            do {
-                try fileM.createDirectory(atPath: folder, withIntermediateDirectories: false, attributes: nil)
-            } catch _ {
+        let scriptUrl = URL.init(fileURLWithPath: scriptFolder)
+        do {
+            try fileM.createDirectory(at: scriptUrl, withIntermediateDirectories: true, attributes: nil)
+            let deleteToReset = scriptUrl.appendingPathComponent(deleteToResetName)
+            if let appVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String {
+                if fileM.fileExists(atPath: deleteToReset.path) {
+                    if (Util.checkVersionMatch(appVersion: appVersion, pathToVersionFile: deleteToReset)) {
+                        // it a match, do nothing
+                        return
+                    } else {
+                        try fileM.removeItem(at: deleteToReset)
+                    }
+                }
+                Util.copyInceptionScripts(userScriptFolder: scriptFolder)
+                try appVersion.write(to: deleteToReset, atomically: false, encoding: .utf8)
             }
+        } catch _ {}
+    }
+    
+    private static func checkVersionMatch(appVersion: String, pathToVersionFile: URL) -> Bool {
+        do {
+            let savedVersion = try String(contentsOf: pathToVersionFile, encoding: .utf8)
+            return appVersion == savedVersion
+        } catch _ { }
+        return false
+    }
+    
+    private static func copyInceptionScripts(userScriptFolder: String) {
+        let fileM = FileManager.default
+        // copy files from UserScriptsInception to this new folder
+        if let resourceDir = Bundle.main.resourcePath {
+            let inceptionScriptDir = "\(resourceDir)/UserScriptsInception"
             do {
-                try fileM.createDirectory(atPath: scriptFolder, withIntermediateDirectories: false, attributes: nil)
-            } catch _ {
-            }
-            
-            // copy files from UserScriptsInception to this new folder - TODO: Take all, not just bugreport
-            let inceptionScript = Bundle.main.path(forResource: "Take Bugreport", ofType: "sh")
-            do {
-                try fileM.copyItem(atPath: inceptionScript!, toPath: "\(scriptFolder)/Take Bugreport.sh")
+                for fileName in try fileM.contentsOfDirectory(atPath: inceptionScriptDir) {
+                    let destFile = "\(userScriptFolder)/\(fileName)"
+                    if fileM.fileExists(atPath: destFile) {
+                        try fileM.removeItem(atPath: destFile)
+                    }
+                    try fileM.copyItem(
+                        atPath: "\(inceptionScriptDir)/\(fileName)",
+                        toPath: destFile)
+                }
             } catch _ {
             }
         }
-        return scriptFolder
     }
     
     func revealScriptsFolder(){
@@ -82,12 +111,12 @@ class Util {
         NSWorkspace.shared.openFile(folder)
         }
     
-    func getFilesInScriptFolder(_ folder:String) -> [String]? {
+    func getScriptsInScriptFolder(_ folder:String) -> [String]? {
         let fileM = FileManager.default
         var files = [String]()
         let someFiles = fileM.enumerator(atPath: folder)
         while let file = someFiles?.nextObject() as? String  {
-            if file != ".DS_Store" {
+            if file != ".DS_Store" && file != deleteToResetName {
                 files.append(file)
             }
         }

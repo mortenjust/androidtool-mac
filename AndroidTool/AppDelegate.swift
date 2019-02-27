@@ -128,8 +128,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         scriptsMenu.addItem(screenshotItem)
         scriptsMenu.addItem(sepItem)
         
+        Util().setUpSupportFolderScriptPath()
         let supportDir = Util().getSupportFolderScriptPath()
-        let scriptFiles = Util().getFilesInScriptFolder(supportDir)!
+        let scriptFiles = Util().getScriptsInScriptFolder(supportDir)!
 
         var i = 0
         for scriptFile in scriptFiles {

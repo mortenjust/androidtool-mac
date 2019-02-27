@@ -6,8 +6,6 @@ then
     exit 1
 fi
 
-dir=$(dirname "$0")
-
 function findLastModifiedAapt {
     version=$(ls -t $ANDROID_SDK_ROOT/build-tools | head -1)
     echo $ANDROID_SDK_ROOT/build-tools/$version/aapt

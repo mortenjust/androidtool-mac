@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */; };
-		C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */ = {isa = PBXBuildFile; fileRef = C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */; };
 		C84079D31C054BCF002EC6D4 /* DropReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84079D21C054BCF002EC6D4 /* DropReceiverView.swift */; };
 		C84079D51C0559B7002EC6D4 /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84079D41C0559B7002EC6D4 /* StatusTextField.swift */; };
 		C856FFD91BFB05CD0098B1E2 /* UITweaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */; };
@@ -77,6 +76,7 @@
 		EABEB5FF20508B9F00DA2FC1 /* androidtool_prefix.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */; };
 		EABEB6012050FD2500DA2FC1 /* android-sdk in Resources */ = {isa = PBXBuildFile; fileRef = EABEB6002050FD2500DA2FC1 /* android-sdk */; };
 		EABEB603205101AD00DA2FC1 /* checkEnvironment.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB602205101A300DA2FC1 /* checkEnvironment.sh */; };
+		EAD3437A222635DB000A6564 /* UserScriptsInception in Resources */ = {isa = PBXBuildFile; fileRef = EAD343762226349E000A6564 /* UserScriptsInception */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +103,6 @@
 
 /* Begin PBXFileReference section */
 		C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scriptsPopoverViewController.swift; sourceTree = "<group>"; };
-		C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Take Bugreport.sh"; sourceTree = "<group>"; };
 		C84079D21C054BCF002EC6D4 /* DropReceiverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropReceiverView.swift; sourceTree = "<group>"; };
 		C84079D41C0559B7002EC6D4 /* StatusTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusTextField.swift; sourceTree = "<group>"; };
 		C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITweaker.swift; sourceTree = "<group>"; };
@@ -178,6 +177,7 @@
 		EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = androidtool_prefix.sh; sourceTree = "<group>"; };
 		EABEB6002050FD2500DA2FC1 /* android-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "android-sdk"; sourceTree = "<group>"; };
 		EABEB602205101A300DA2FC1 /* checkEnvironment.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = checkEnvironment.sh; sourceTree = "<group>"; };
+		EAD343762226349E000A6564 /* UserScriptsInception */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UserScriptsInception; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,14 +198,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C83D2E0C1AEF02C400CD066D /* UserScriptsInception */ = {
-			isa = PBXGroup;
-			children = (
-				C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */,
-			);
-			name = UserScriptsInception;
-			sourceTree = "<group>";
-		};
 		C87E3AE51BFF779100275AA2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,11 +276,11 @@
 		C8B514631AE85D610071C86A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C83D2E0C1AEF02C400CD066D /* UserScriptsInception */,
 				C8B514881AE85E9B0071C86A /* getprop-example.txt */,
 				EAD1CE5C2047312100B8F557 /* Scripts */,
 				EA17FA8820863F7600CF8033 /* libmobile */,
 				EABEB6002050FD2500DA2FC1 /* android-sdk */,
+				EAD343762226349E000A6564 /* UserScriptsInception */,
 				C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */,
 				C8B131571AE9CE9700BCD4F3 /* Images.xcassets */,
 				C8B514641AE85D610071C86A /* Info.plist */,
@@ -493,6 +485,7 @@
 				C8B131971AEB3B5100BCD4F3 /* DevicePickerViewController.xib in Resources */,
 				C8C86BF01C50976D0087858B /* installObbForSerial.sh in Resources */,
 				EABEB6012050FD2500DA2FC1 /* android-sdk in Resources */,
+				EAD3437A222635DB000A6564 /* UserScriptsInception in Resources */,
 				C87E3AF21C01128500275AA2 /* RawOutputWindowController.xib in Resources */,
 				C8B131891AEB10FA00BCD4F3 /* startRecordingForSerial.sh in Resources */,
 				C8B1315A1AE9D47700BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh in Resources */,
@@ -502,7 +495,6 @@
 				C8B5146B1AE85D610071C86A /* MainMenu.xib in Resources */,
 				C8E521B31C0ED06800777117 /* getCurrentActivityForIdentifier.sh in Resources */,
 				C8BF506D1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh in Resources */,
-				C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */,
 				C8B9D4841AE9B34F00927B96 /* ffmpeg in Resources */,
 				C8B5148D1AE860EF0071C86A /* DeviceViewController.xib in Resources */,
 				C8B514831AE85D8B0071C86A /* MasterViewController.xib in Resources */,

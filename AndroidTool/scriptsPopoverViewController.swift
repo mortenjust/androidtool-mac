@@ -48,7 +48,7 @@ class scriptsPopoverViewController: NSViewController {
 
     func setup(){
         let folder = Util().getSupportFolderScriptPath()
-        let allScripts = Util().getFilesInScriptFolder(folder)
+        let allScripts = Util().getScriptsInScriptFolder(folder)
 
         if allScripts?.count > 0 {
             addScriptsToView(allScripts!, view: self.view)

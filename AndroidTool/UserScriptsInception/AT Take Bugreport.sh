@@ -1,15 +1,18 @@
-#!/bin/bash
-declare -a arr
-thisdir=$1 # $1 is the bundle resources path directly from the calling script file
-serial=$2 # 
-adb=$thisdir/adb
-
-
 # --------------------
 #
-# Add your script below. When sending adb commands to the user-selected device, use "$adb -s $serial"
-# 
+# This file will be reset upon every update of the app.
+# Please copy and backup any of your personal changes.
+#
 # --------------------
+
+#!/bin/bash
+# see `AT Template.sh` for usage instructions
+declare -a arr
+thisdir=$1
+serial=$2
+
+source $thisdir/androidtool_prefix.sh
+
 
 TakeBugReport(){
 	ldap=$(whoami)
