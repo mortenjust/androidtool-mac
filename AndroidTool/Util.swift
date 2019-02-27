@@ -123,16 +123,6 @@ class Util {
         return files
     }
     
-    func isMavericks() -> Bool {
-        if #available(OSX 10.10, *) {
-            return ProcessInfo.processInfo.operatingSystemVersion.minorVersion != 10 ? true : false
-        } else {
-            // Fallback on earlier versions
-            return false
-        }
-    }
-    
-    
     func restartRefreshingDeviceList(){
         NotificationCenter.default.post(name: Notification.Name(rawValue: "unSuspendAdb"), object: self, userInfo:nil)
     }
