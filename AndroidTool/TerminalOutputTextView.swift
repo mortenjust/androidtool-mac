@@ -58,7 +58,7 @@ class TerminalOutputTextView: NSTextView {
             Swift.print("#mj.newData notif")
             DispatchQueue.main.async(execute: { () -> Void in
                 let s = notif.object as! String
-                self.append("\n\n\(s)", atts: Styles().commandAtts())
+                self.append("\n\n\(s)", atts: .commandAtts())
             })
         }
         
@@ -69,7 +69,7 @@ class TerminalOutputTextView: NSTextView {
             if wantsVerbose {
                 DispatchQueue.main.async(execute: { () -> Void in
                     let s = notif.object as! String
-                    self.append("\n\n\(s)", atts: Styles().commandAtts())
+                    self.append("\n\n\(s)", atts: .commandAtts())
                 })
             }
         }
@@ -86,7 +86,7 @@ class TerminalOutputTextView: NSTextView {
         append("\n\n----\n\n")
     }
     
-    func append(_ appended: String, atts:[NSAttributedString.Key:Any] = Styles().terminalAtts()) {
+    func append(_ appended: String, atts:[NSAttributedString.Key:Any] = .terminalAtts()) {
         let s = NSAttributedString(string: "\n"+appended, attributes: atts)
         self.textStorage?.append(s)
         self.scrollToEndOfDocument(nil)

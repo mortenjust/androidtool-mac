@@ -26,26 +26,25 @@ class Apk: NSObject {
     
      func parseRawInfo(_ rawdata:String) {
             print(">>apkparskeapkinfo")
-            let u = Util()
             let apk = self
             
-            if let l = u.findMatchesInString(rawdata, regex: "launchable-activity: name='(.*?)'") {
+            if let l = rawdata.matches("launchable-activity: name='(.*?)'") {
                 apk.launcherActivity = l[0]
             }
             
-            if let n = u.findMatchesInString(rawdata, regex: "application-label:'(.*?)'") {
+            if let n = rawdata.matches("application-label:'(.*?)'") {
                 apk.appName = n[0]
             }
             
-            if let p = u.findMatchesInString(rawdata, regex: "package: name='(.*?)'") {
+            if let p = rawdata.matches("package: name='(.*?)'") {
                 apk.packageName = p[0]
             }
             
-            if let versionCode = u.findMatchesInString(rawdata, regex: "versionCode='(.*?)'") {
+            if let versionCode = rawdata.matches("versionCode='(.*?)'") {
                 apk.versionCode = versionCode[0]
             }
 
-            if let versionName = u.findMatchesInString(rawdata, regex: "versionName='(.*?)'") {
+            if let versionName = rawdata.matches("versionName='(.*?)'") {
                 apk.versionName = versionName[0]
             }
         }

@@ -99,7 +99,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             ShellTasker(scriptFile: "takeScreenshotOfDeviceWithUUID").run(arguments: args, isUserScript: false, isIOS: true, complete: { (output) -> Void in
                 self.setStatus("Screenshot ready")
                 self.stopProgressIndication()
-                Util.showNotification("Screenshot ready", moreInfo: "", sound: true)
+                NSUserNotification.deliver("Screenshot ready", moreInfo: "", sound: true)
                 self.setStatus("Screenshot ready")
             })
             
@@ -148,7 +148,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         ]
         
         ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: args) { (output) -> Void in
-            Util.showNotification("Screenshot ready", moreInfo: "", sound: true)
+            NSUserNotification.deliver("Screenshot ready", moreInfo: "", sound: true)
             self.exitDemoModeIfNeeded()
             self.stopProgressIndication()
             self.setStatus("Screenshot ready")
@@ -172,13 +172,13 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     func userScriptEnded() {
         setStatus("Script finished")
         stopProgressIndication()
-        Util().restartRefreshingDeviceList()
+        DeviceList.restartRefreshing()
     }
     
     func userScriptStarted() {
         setStatus("Script running")
         startProgressIndication()
-        Util().stopRefreshingDeviceList()
+        DeviceList.stopRefreshing()
     }
     
     func userScriptWantsSerial() -> String {
@@ -186,12 +186,12 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func popoverDidClose(_ notification: Notification) {
-        Util().restartRefreshingDeviceList()
+        DeviceList.restartRefreshing()
         moreOpen = false
     }
 
     @IBAction func moreClicked(_ sender: NSButton) {
-        Util().stopRefreshingDeviceList()
+        DeviceList.stopRefreshing()
         if !moreOpen{
             moreOpen = true
             scriptsPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: NSRectEdge(rawValue: 2)!)
@@ -231,7 +231,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     func startRecording(){
         setStatus("Starting screen recording")
-        Util().stopRefreshingDeviceList()
+        DeviceList.stopRefreshing()
         isRecording = true
         self.restingButton = self.videoButton.image // restingbutton is "recordButtonWhite"
         videoButton.image = NSImage(named: "stopButton")
@@ -301,7 +301,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             let postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
 
             postProcessTask.run(arguments: args, complete: { (output) -> Void in
-                Util.showNotification("Your recording is ready", moreInfo: "", sound: true)
+                NSUserNotification.deliver("Your recording is ready", moreInfo: "", sound: true)
                 self.exitDemoModeIfNeeded()
                 self.setStatus("Recording finished")
                 self.stopProgressIndication()
@@ -313,7 +313,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         NSWorkspace.shared.openFile(outputFileURL.path)
         self.videoButton.image = restingButton
         
-        Util.showNotification("Your recording is ready", moreInfo: "", sound: true)
+        NSUserNotification.deliver("Your recording is ready", moreInfo: "", sound: true)
         cameraButton.isEnabled = true
         
         let movPath = outputFileURL.path
@@ -335,7 +335,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func stopRecording(){
-        Util().restartRefreshingDeviceList()
+        DeviceList.restartRefreshing()
         isRecording = false
         videoButton.alphaValue = 1
 
@@ -355,8 +355,8 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         }
     }
     
-    init?(device _device:Device){
-        device = _device
+    init?(device:Device){
+        self.device = device
         super.init(nibName: "DeviceViewController", bundle: nil)
         setup()
     }
@@ -380,14 +380,14 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     }
     
     func startProgressIndication(){
-        Util().stopRefreshingDeviceList()
+        DeviceList.stopRefreshing()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(1)) { () -> Void in
                 self.loaderButton.startRotating()
             }
     }
     
     func stopProgressIndication(){
-        Util().restartRefreshingDeviceList()
+        DeviceList.restartRefreshing()
 //        progressBar.stopAnimation(nil)
         loaderButton.stopRotatingAndReset()
     }
@@ -465,13 +465,13 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     
     func hideButtons(){
-        Util().fadeViewsOutStaggered([moreButton, cameraButton, videoButton])
+        fadeViewsOutStaggered([moreButton, cameraButton, videoButton])
         uninstallButton.alphaValue = 0
     }
     
     
     func showButtons(){
-        Util().fadeViewsInStaggered([moreButton, cameraButton, videoButton])
+        fadeViewsInStaggered([moreButton, cameraButton, videoButton])
         uninstallButton.alphaValue = 1
     }
     

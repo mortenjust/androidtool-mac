@@ -42,9 +42,9 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
         spinner.startAnimation(nil)
         
         guard let apkPath = apkPath else {
-            Util
-                .showNotification("APK Path wasn't set yet.",
-                                    moreInfo: "")
+            NSUserNotification
+                .deliver("APK Path wasn't set yet.",
+                         moreInfo: "")
             return
         }
         let args = ["\(adbIdentifier)",
@@ -52,7 +52,7 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
         
         ShellTasker(scriptFile: "installApkOnDevice").run(arguments: args) { (output) -> Void in
 
-            Util.showNotification("App installed on \(device.readableIdentifier())", moreInfo: "\(output)", sound: true)
+            NSUserNotification.deliver("App installed on \(device.readableIdentifier())", moreInfo: "\(output)", sound: true)
             if #available(OSX 10.10, *) {
                 self.dismiss(nil)
             } else {

@@ -44,15 +44,13 @@ class scriptsPopoverViewController: NSViewController {
     // accepted answer here http://stackoverflow.com/questions/26180268/interface-builder-iboutlet-and-protocols-for-delegate-and-datasource-in-swift
     @IBOutlet var delegate : UserScriptDelegate!
     
-    let fileM = FileManager.default
-
     func setup(){
-        let folder = Util().getSupportFolderScriptPath()
-        let allScripts = Util().getScriptsInScriptFolder(folder)
+        let folder = filesystem.supportFolderScriptPath()
+        let allScripts = filesystem.scriptsInScriptFolder(folder)
 
-        if allScripts?.count > 0 {
-            addScriptsToView(allScripts!, view: self.view)
-            }
+        if allScripts.count > 0 {
+            addScriptsToView(allScripts, view: view)
+        }
     }
     
     func addScriptsToView(_ scripts:[String], view:NSView){
@@ -103,13 +101,13 @@ class scriptsPopoverViewController: NSViewController {
     
     @objc func runScriptClicked(_ sender:NSButton){
         let scriptName = "\(sender.title).sh"
-        let scriptPath = "\(Util().getSupportFolderScriptPath())/\(scriptName)"
+        let scriptPath = "\(filesystem.supportFolderScriptPath())/\(scriptName)"
         print("ready to run \(scriptPath)")
         runScript(scriptPath)
     }
     
     @objc func revealScriptFolderClicked(_ sender:NSButton) {
-        Util().revealScriptsFolder()
+        filesystem.revealScriptsFolder()
     }
     
     override func viewDidLoad() {

@@ -117,13 +117,14 @@ class MasterViewController:
         if newSig != previousSig  {
             
             // adjust window height accordingly
-            var newHeight = Util().deviceHeight
+            let deviceHeight:CGFloat = 127
+            var newHeight = deviceHeight
             if devices.count != 0 {
                 newHeight = CGFloat(devices.count) * newHeight + 20
             } else {
                 newHeight = 171 // emptystate height
             }
-            Util().changeWindowHeight(window, view: self.view, newHeight: newHeight)
+            changeWindowHeight(window, view: view, newHeight: newHeight)
             
             previousSig = newSig
             devicesTable.reloadData()

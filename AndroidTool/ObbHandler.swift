@@ -8,35 +8,35 @@
 
 import Cocoa
 
-protocol ObbHandlerDelegate {
-    func obbHandlerDidStart(_ bytes:String)
+protocol ObbHandlerDelegate: AnyObject {
+    func obbHandlerDidStart(_ bytes: String)
     func obbHandlerDidFinish()
 }
 
-class ObbHandler: NSObject {
-    var filePath:String!
-    var delegate:ObbHandlerDelegate?
-    var device:Device!
-    var fileSize:UInt64?
+class ObbHandler {
+    var filePath: String
+    var delegate: ObbHandlerDelegate?
+    var device: Device
+    var fileSize: UInt64
     
-    init(filePath:String, device:Device){
+    init(filePath: String,
+         device:Device){
         print(">>obb init obbhandler")
-        super.init()
+        fileSize = filesystem.sizeOfFileAtPath(filePath)
         self.filePath = filePath
         self.device = device
-        self.fileSize = Util.getFileSizeForFilePath(filePath)
     }
     
     func pushToDevice(){
         print(">>zip flash")
 
         let shell = ShellTasker(scriptFile: "installObbForSerial")
-        let bytes = (fileSize != nil) ? Util.formatBytes(fileSize!) : "? bytes"
+        let bytes = String(byteCount: fileSize)
         
         delegate?.obbHandlerDidStart(bytes)
         
         print("startin obb copying the \(bytes) file")
-        shell.run(arguments: [self.device.adbIdentifier!, self.filePath]) { (output) -> Void in
+        shell.run(arguments: [device.adbIdentifier!, filePath]) { (output) -> Void in
             print("done copying OBB to device")
             self.delegate?.obbHandlerDidFinish()
         }

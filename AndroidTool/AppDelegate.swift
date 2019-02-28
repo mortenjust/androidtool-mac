@@ -71,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func revealFolderClicked(_ sender: NSMenuItem) {
-        Util().revealScriptsFolder()
+        filesystem.revealScriptsFolder()
     }
     
     func checkForPreferences(){
@@ -128,24 +128,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         scriptsMenu.addItem(screenshotItem)
         scriptsMenu.addItem(sepItem)
         
-        Util().setUpSupportFolderScriptPath()
-        let supportDir = Util().getSupportFolderScriptPath()
-        let scriptFiles = Util().getScriptsInScriptFolder(supportDir)!
+        try? filesystem.setUpSupportFolderScriptPath()
+        let supportDir = filesystem.supportFolderScriptPath()
+        let scriptFiles = filesystem.scriptsInScriptFolder(supportDir)
 
-        var i = 0
-        for scriptFile in scriptFiles {
-
+        for (i, scriptFile) in scriptFiles.enumerated() {
             // for scripts 0..9, add a keyboard shortcut
             var keyEq = ""
             if i<10 {
                 keyEq = "\(i)"
-                }
+            }
             let scriptItem = NSMenuItem(
                 title: scriptFile.replacingOccurrences(of: ".sh", with: ""),
                 action: #selector(runScript),
                 keyEquivalent: keyEq)
             scriptsMenu.addItem(scriptItem)
-            i += 1
         }
         
         scriptsMenu.addItem(sepItem2)
@@ -153,8 +150,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func runScript(_ sender:NSMenuItem){
-        Util().stopRefreshingDeviceList()
-        let scriptPath = "\(Util().getSupportFolderScriptPath())/\(sender.title).sh"
+        DeviceList.stopRefreshing()
+        let scriptPath = "\(filesystem.supportFolderScriptPath())/\(sender.title).sh"
         print("ready to run \(scriptPath) on all Android devices")
         
         let deviceVCs = masterViewController.deviceVCs
@@ -167,17 +164,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
-        
-        Util().restartRefreshingDeviceList()
+        DeviceList.restartRefreshing()
     }
     
     @IBAction func screenshotsOfAllTapped(_ sender: NSMenuItem) { // TODO:clicked, not tapped
-        Util().stopRefreshingDeviceList()
+        DeviceList.stopRefreshing()
         let deviceVCs = masterViewController.deviceVCs
         for deviceVC in deviceVCs {
             deviceVC.takeScreenshot()
         }
-        Util().restartRefreshingDeviceList()
+        DeviceList.restartRefreshing()
     }
     
     func applicationWillResignActive(_ notification: Notification) {

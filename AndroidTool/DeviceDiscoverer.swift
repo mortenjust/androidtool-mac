@@ -23,7 +23,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     var iosDeviceHelper: IOSDeviceHelper?
     var iosDevices = [Device]()
     var androidDevices = [Device]()
-    let pollLock = ""
+    let pollLock = Lock()
     
     func start(){
         let checkTask = ShellTasker(scriptFile: "checkEnvironment")
@@ -103,7 +103,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     }
     
     @objc func pollDevices(){
-        Util.synced(pollLock) {
+        pollLock.synced {
             var newDevices = [Device]()
             print("+", terminator: "")
             
@@ -129,7 +129,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     }
     
     @objc func startPollingDevices() {
-        Util.synced(pollLock) {
+        pollLock.synced {
             stopPollingDevices()
             mainTimer = Timer.scheduledTimer(
                 timeInterval: updateInterval,
@@ -141,7 +141,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
     }
     
     @objc func stopPollingDevices() {
-        Util.synced(pollLock) {
+        pollLock.synced {
             if let timer = mainTimer {
                 timer.invalidate()
                 mainTimer = nil
