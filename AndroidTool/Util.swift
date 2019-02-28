@@ -36,7 +36,7 @@ class Util {
     }
 
     
-    func showNotification(_ title:String, moreInfo:String, sound:Bool=true) -> Void {
+    static func showNotification(_ title:String, moreInfo:String, sound:Bool=true) -> Void {
         let unc = NSUserNotificationCenter.default
         
         let notification = NSUserNotification()

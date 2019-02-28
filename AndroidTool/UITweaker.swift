@@ -13,7 +13,7 @@ protocol UITweakerDelegate {
 }
 
 class UITweaker: NSObject {
-    var adbIdentifier:String!
+    var adbIdentifier:String
     var delegate:UITweakerDelegate?
 
     
@@ -22,7 +22,7 @@ class UITweaker: NSObject {
     }
     
     struct Tweak {
-        var command:String!
+        var command:String
         var description:String!
     }
     

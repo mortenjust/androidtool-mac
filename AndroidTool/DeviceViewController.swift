@@ -41,7 +41,9 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     var moreOpen = false
     var moreShouldClose = false
     var uiTweaker : UITweaker!
-    var dropView : DropReceiverView!
+    var dropView : DropReceiverView {
+        return view as! DropReceiverView
+    }
     var apkToUninstall : Apk!
     
     func shouldChangeStatusBar() -> Bool {
@@ -97,7 +99,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             ShellTasker(scriptFile: "takeScreenshotOfDeviceWithUUID").run(arguments: args, isUserScript: false, isIOS: true, complete: { (output) -> Void in
                 self.setStatus("Screenshot ready")
                 self.stopProgressIndication()
-                Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
+                Util.showNotification("Screenshot ready", moreInfo: "", sound: true)
                 self.setStatus("Screenshot ready")
             })
             
@@ -146,7 +148,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         ]
         
         ShellTasker(scriptFile: "takeScreenshotOfDeviceWithSerial").run(arguments: args) { (output) -> Void in
-            Util().showNotification("Screenshot ready", moreInfo: "", sound: true)
+            Util.showNotification("Screenshot ready", moreInfo: "", sound: true)
             self.exitDemoModeIfNeeded()
             self.stopProgressIndication()
             self.setStatus("Screenshot ready")
@@ -299,7 +301,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             let postProcessTask = ShellTasker(scriptFile: "postProcessMovieForSerial")
 
             postProcessTask.run(arguments: args, complete: { (output) -> Void in
-                Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
+                Util.showNotification("Your recording is ready", moreInfo: "", sound: true)
                 self.exitDemoModeIfNeeded()
                 self.setStatus("Recording finished")
                 self.stopProgressIndication()
@@ -311,7 +313,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         NSWorkspace.shared.openFile(outputFileURL.path)
         self.videoButton.image = restingButton
         
-        Util().showNotification("Your recording is ready", moreInfo: "", sound: true)
+        Util.showNotification("Your recording is ready", moreInfo: "", sound: true)
         cameraButton.isEnabled = true
         
         let movPath = outputFileURL.path
@@ -371,7 +373,6 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         if device.deviceOS == .android {
             uiTweaker = UITweaker(adbIdentifier: device.adbIdentifier!)
         }
-        dropView = self.view as! DropReceiverView
         dropView.delegate = self
         
 //        let apk = Apk(rawAaptBadgingData: "hej")
