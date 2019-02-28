@@ -44,17 +44,14 @@ class scriptsPopoverViewController: NSViewController {
     // accepted answer here http://stackoverflow.com/questions/26180268/interface-builder-iboutlet-and-protocols-for-delegate-and-datasource-in-swift
     @IBOutlet var delegate : UserScriptDelegate!
     
-    let fileM = FileManager.default
-
     func setup(){
-        let folder = Util().getSupportFolderScriptPath()
-        let allScripts = Util().getFilesInScriptFolder(folder)
+        let folder = filesystem.supportFolderScriptPath()
+        let allScripts = filesystem.scriptsInScriptFolder(folder)
 
-        if allScripts?.count > 0 {
-            addScriptsToView(allScripts!, view: self.view)
-            }
+        if allScripts.count > 0 {
+            addScriptsToView(allScripts, view: view)
+        }
     }
-    
     
     func addScriptsToView(_ scripts:[String], view:NSView){
         var i:CGFloat = 1
@@ -78,11 +75,11 @@ class scriptsPopoverViewController: NSViewController {
             let friendlyScriptName = script.replacingOccurrences(of: ".sh", with: "")
             scriptButton.title = friendlyScriptName
             if #available(OSX 10.10.3, *) {
-                scriptButton.setButtonType(NSButtonType.accelerator)
+                scriptButton.setButtonType(NSButton.ButtonType.accelerator)
             } else {
                 // Fallback on earlier versions
             }
-            scriptButton.bezelStyle = NSBezelStyle.rounded
+            scriptButton.bezelStyle = NSButton.BezelStyle.rounded
             scriptButton.action = #selector(runScriptClicked)
             scriptButton.target = self
             
@@ -102,15 +99,15 @@ class scriptsPopoverViewController: NSViewController {
         }
     }
     
-    func runScriptClicked(_ sender:NSButton){
+    @objc func runScriptClicked(_ sender:NSButton){
         let scriptName = "\(sender.title).sh"
-        let scriptPath = "\(Util().getSupportFolderScriptPath())/\(scriptName)"
+        let scriptPath = "\(filesystem.supportFolderScriptPath())/\(scriptName)"
         print("ready to run \(scriptPath)")
         runScript(scriptPath)
     }
     
-    func revealScriptFolderClicked(_ sender:NSButton) {
-        Util().revealScriptsFolder()
+    @objc func revealScriptFolderClicked(_ sender:NSButton) {
+        filesystem.revealScriptsFolder()
     }
     
     override func viewDidLoad() {

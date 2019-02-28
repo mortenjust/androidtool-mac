@@ -41,7 +41,7 @@ class TerminalOutputTextView: NSTextView {
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: C.NOTIF_NEWDATAVERBOSE), object: nil, queue: nil) { (notif) -> Void in
             Swift.print("#mj.newData verbose notif")
             
-            let wantsVerbose = UserDefaults.standard.bool(forKey: C.VERBOSEOUTPUT)
+            let wantsVerbose = UserDefaults.standard.bool(forKey: C.PREF_VERBOSEOUTPUT)
             
             if wantsVerbose {
                 DispatchQueue.main.async(execute: { () -> Void in
@@ -58,18 +58,18 @@ class TerminalOutputTextView: NSTextView {
             Swift.print("#mj.newData notif")
             DispatchQueue.main.async(execute: { () -> Void in
                 let s = notif.object as! String
-                self.append("\n\n\(s)", atts: Styles().commandAtts())
+                self.append("\n\n\(s)", atts: .commandAtts())
             })
         }
         
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: Constants.NOTIF_COMMANDVERBOSE), object: nil, queue: nil) { (notif) -> Void in
             Swift.print("#mj.newDataverbose notif")
-            let wantsVerbose = UserDefaults.standard.bool(forKey: C.VERBOSEOUTPUT)
+            let wantsVerbose = UserDefaults.standard.bool(forKey: C.PREF_VERBOSEOUTPUT)
             if wantsVerbose {
                 DispatchQueue.main.async(execute: { () -> Void in
                     let s = notif.object as! String
-                    self.append("\n\n\(s)", atts: Styles().commandAtts())
+                    self.append("\n\n\(s)", atts: .commandAtts())
                 })
             }
         }
@@ -86,7 +86,7 @@ class TerminalOutputTextView: NSTextView {
         append("\n\n----\n\n")
     }
     
-    func append(_ appended: String, atts:[String:AnyObject] = Styles().terminalAtts()) {
+    func append(_ appended: String, atts:[NSAttributedString.Key:Any] = .terminalAtts()) {
         let s = NSAttributedString(string: "\n"+appended, attributes: atts)
         self.textStorage?.append(s)
         self.scrollToEndOfDocument(nil)

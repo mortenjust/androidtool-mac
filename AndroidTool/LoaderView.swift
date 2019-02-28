@@ -31,7 +31,7 @@ class LoaderView: NSImageView {
     func startRotating(){
         isHidden = false
         let rotate = CABasicAnimation(keyPath: "transform.rotation")
-        rotate.fillMode = kCAFillModeForwards
+        rotate.fillMode = .forwards
         rotate.fromValue = 0.0
         rotate.toValue = CGFloat(.pi * 2.0)
         rotate.duration = 1
@@ -49,7 +49,7 @@ class LoaderView: NSImageView {
         }
         
         let rotate = CABasicAnimation(keyPath: "transform.rotation")
-        rotate.fillMode = kCAFillModeForwards
+        rotate.fillMode = .forwards
         rotate.toValue = 0.0
         rotate.duration = 0.3
 

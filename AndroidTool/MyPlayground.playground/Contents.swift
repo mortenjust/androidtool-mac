@@ -9,21 +9,20 @@ var bol:Bool = true
 "hej \(bol)"
 
 
-NSString(string: "~user/Desktop/AndroidTool").stringByExpandingTildeInPath
+NSString(string: "~user/Desktop/AndroidTool").expandingTildeInPath
 
 
 
 func getFileSize(filePath:String) -> UInt64 {
     
     do {
-        let atts:NSDictionary = try NSFileManager.defaultManager().attributesOfItemAtPath(filePath)
+        let atts:NSDictionary = try FileManager.default.attributesOfItem(atPath: filePath) as NSDictionary
         return atts.fileSize()
     } catch _ {
+        return 0
     }
-    
-    return 1
 }
 
-let filepath="/Users/mortenjust/Downloads/obb/com.ea.game.nfs14_row-4317.obb"
+let filepath=NSString(string:"~/Desktop/test.txt").expandingTildeInPath
 
-getFileSize(filepath)
+getFileSize(filePath: filepath)

@@ -31,7 +31,7 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     var recorderDelegate : IOSRecorderDelegate!
     var input : AVCaptureDeviceInput!
     var saveFilesInPath : String!
-    var file : URL!
+    var file : URL?
     
     // this class has two modes. One is a per-device instantiated recorder. The other is a discoverer of all iOS devices that are plugged in and out. The class should probably be split into two at one point.
     
@@ -73,24 +73,26 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
                 let layer = AVCaptureVideoPreviewLayer(session: session) as AVCaptureVideoPreviewLayer
                 layer.frame = previewView!.bounds
                 previewView!.layer?.addSublayer(layer)
-                }
+            }
             
             print("$$$ start recording of device \(device.localizedName)")
             let filePath = generateFilePath("iOS-recording-", type: "mov")
-            file = URL(fileURLWithPath: filePath)
-            
+            let file = URL(fileURLWithPath: filePath)
+            self.file = file
             recorderDelegate.iosRecorderDidStartPreparing(device)
-            self.movieOutput.startRecording(toOutputFileURL: file, recordingDelegate: self)
-        }
-        else
-        {
+            self.movieOutput.startRecording(to: file, recordingDelegate: self)
+        } else {
             DispatchQueue.main.asyncAfter(
                 deadline: DispatchTime.now() + DispatchTimeInterval.seconds(3),
                 execute: { () -> Void in
                     print("stopRecording")
-                    self.movieOutput.stopRecording()
-                    self.recorderDelegate.iosRecorderDidFinish(self.file!)
-                    self.file = nil
+                    if let file = self.file {
+                        self.movieOutput.stopRecording()
+                        self.recorderDelegate.iosRecorderDidFinish(file)
+                        self.file = nil
+                    } else {
+                        print("stopRecording already called")
+                    }
                 })
         }
     }
@@ -100,10 +102,10 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
         for foundDevice in AVCaptureDevice.devices() {
             print(foundDevice)
             if (foundDevice as AnyObject).modelID! == "iOS Device" {
-                let device = foundDevice as! AVCaptureDevice
+                let device = foundDevice 
                 let deviceName = device.localizedName
                 let uuid = device.uniqueID
-                print("hello \(deviceName!) aka \(uuid!)")
+                print("hello \(deviceName) aka \(uuid)")
                 deviceFound(foundDevice as AnyObject)
             }
         }
@@ -166,22 +168,20 @@ class IOSDeviceHelper: NSObject, AVCaptureFileOutputRecordingDelegate {
     }
     
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAt fileURL: URL!, fromConnections connections: [Any]!) {
+    func fileOutput(_ captureOutput: AVCaptureFileOutput, didStartRecordingTo fileURL: URL, from connections: [AVCaptureConnection]) {
 
         recorderDelegate.iosRecorderDidEndPreparing()
         print("recording did start")
     }
     
-    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [Any]!, error: Error!) {
+    func fileOutput(_ captureOutput: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         
-        if error == nil {
-            print("------------------------- recording did end")
-            }
-        
-        if error != nil {
+        if let error = error {
             print("Recording ended in error")
-            print(error)
+            print(error.localizedDescription)
             recorderDelegate.iosRecorderFailed(error.localizedDescription, message: nil)
+        } else {
+            print("------------------------- recording did end")
         }
     }
     

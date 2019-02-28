@@ -303,7 +303,7 @@
                             </menuItem>
                             <menuItem title="Terminal output" keyEquivalent="O" id="kyM-1r-6aa">
                                 <connections>
-                                    <action selector="rawWindowClicked:" target="Voe-Tx-rLC" id="SEy-2p-8z2"/>
+                                    <action selector="shouldOpenTerminalOutputWindow:" target="Voe-Tx-rLC" id="SEy-2p-8z2"/>
                                 </connections>
                             </menuItem>
                         </items>

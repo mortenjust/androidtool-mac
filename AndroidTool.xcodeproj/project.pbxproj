@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C83D2E091AEDD7A300CD066D /* scriptsPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */; };
-		C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */ = {isa = PBXBuildFile; fileRef = C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */; };
 		C84079D31C054BCF002EC6D4 /* DropReceiverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84079D21C054BCF002EC6D4 /* DropReceiverView.swift */; };
 		C84079D51C0559B7002EC6D4 /* StatusTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84079D41C0559B7002EC6D4 /* StatusTextField.swift */; };
 		C856FFD91BFB05CD0098B1E2 /* UITweaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */; };
@@ -20,10 +19,8 @@
 		C8595D1E1BF5C95500805042 /* WindowMoverTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */; };
 		C8595D201BF660E100805042 /* WIndowMoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */; };
 		C8595D221BF6A55700805042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8595D211BF6A55700805042 /* Constants.swift */; };
-		C86C15F71C13958100E22CEC /* aapt in Resources */ = {isa = PBXBuildFile; fileRef = C86C15F61C13958100E22CEC /* aapt */; };
 		C86C15F91C1395DC00E22CEC /* getApkInfo.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C15F81C1395DC00E22CEC /* getApkInfo.sh */; };
 		C86C15FB1C1395F700E22CEC /* installZip.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C15FA1C1395F700E22CEC /* installZip.sh */; };
-		C86C15FD1C13961200E22CEC /* fastboot in Resources */ = {isa = PBXBuildFile; fileRef = C86C15FC1C13961200E22CEC /* fastboot */; };
 		C86C15FF1C13993400E22CEC /* ApkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C15FE1C13993400E22CEC /* ApkHandler.swift */; };
 		C86C16011C13997100E22CEC /* Apk.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86C16001C13997100E22CEC /* Apk.swift */; };
 		C86C16031C139B8F00E22CEC /* launchActivity.sh in Resources */ = {isa = PBXBuildFile; fileRef = C86C16021C139B8F00E22CEC /* launchActivity.sh */; };
@@ -39,16 +36,6 @@
 		C87E3AF21C01128500275AA2 /* RawOutputWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C87E3AF01C01128500275AA2 /* RawOutputWindowController.xib */; };
 		C87E3AF51C0113B100275AA2 /* TerminalOutputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AF41C0113B100275AA2 /* TerminalOutputTextView.swift */; };
 		C87E3AF71C0113DA00275AA2 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87E3AF61C0113DA00275AA2 /* Styles.swift */; };
-		C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */; };
-		C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */; };
-		C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */; };
-		C8A0F8B81AFC319A00B3A90C /* libusbmuxd.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8AF1AFC319A00B3A90C /* libusbmuxd.2.dylib */; };
-		C8A0F8B91AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B01AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib */; };
-		C8A0F8BA1AFC319A00B3A90C /* libplist.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B11AFC319A00B3A90C /* libplist.2.dylib */; };
-		C8A0F8BB1AFC319A00B3A90C /* libplist.1.1.10.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B21AFC319A00B3A90C /* libplist.1.1.10.dylib */; };
-		C8A0F8BC1AFC319A00B3A90C /* libosxfuse_i64.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B31AFC319A00B3A90C /* libosxfuse_i64.2.dylib */; };
-		C8A0F8BD1AFC319A00B3A90C /* libosxfuse_i32.2.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B41AFC319A00B3A90C /* libosxfuse_i32.2.dylib */; };
-		C8A0F8BE1AFC319A00B3A90C /* libimobiledevice.4.dylib in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8B51AFC319A00B3A90C /* libimobiledevice.4.dylib */; };
 		C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8A0F8BF1AFC4BDF00B3A90C /* convertMovieFiletoGif.sh */; };
 		C8A8A7B01AF4506800E4B5D0 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */; };
 		C8A8A7B11AF4506800E4B5D0 /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */; };
@@ -78,8 +65,18 @@
 		C8BF506D1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */; };
 		C8C86BF01C50976D0087858B /* installObbForSerial.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8C86BEF1C50976D0087858B /* installObbForSerial.sh */; };
 		C8C86BF21C50AEEC0087858B /* ObbHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C86BF11C50AEEC0087858B /* ObbHandler.swift */; };
-		C8D4F7A01BF84BF5001F8C6E /* adb in Resources */ = {isa = PBXBuildFile; fileRef = C8D4F79F1BF84BF5001F8C6E /* adb */; };
 		C8E521B31C0ED06800777117 /* getCurrentActivityForIdentifier.sh in Resources */ = {isa = PBXBuildFile; fileRef = C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */; };
+		EA845C03208C5AEE006346F9 /* idevicescreenshot in Resources */ = {isa = PBXBuildFile; fileRef = EA845C02208C5AEE006346F9 /* idevicescreenshot */; };
+		EA845C1E208C647B006346F9 /* libplist.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C12208C647A006346F9 /* libplist.dylib */; };
+		EA845C1F208C647B006346F9 /* libusbmuxd.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C13208C647A006346F9 /* libusbmuxd.dylib */; };
+		EA845C20208C647B006346F9 /* libplist.3.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C14208C647A006346F9 /* libplist.3.dylib */; };
+		EA845C22208C647B006346F9 /* libimobiledevice.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C16208C647A006346F9 /* libimobiledevice.dylib */; };
+		EA845C26208C647B006346F9 /* libimobiledevice.6.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C1A208C647A006346F9 /* libimobiledevice.6.dylib */; };
+		EA845C27208C647B006346F9 /* libusbmuxd.4.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EA845C1B208C647A006346F9 /* libusbmuxd.4.dylib */; };
+		EABEB5FF20508B9F00DA2FC1 /* androidtool_prefix.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */; };
+		EABEB6012050FD2500DA2FC1 /* android-sdk in Resources */ = {isa = PBXBuildFile; fileRef = EABEB6002050FD2500DA2FC1 /* android-sdk */; };
+		EABEB603205101AD00DA2FC1 /* checkEnvironment.sh in Resources */ = {isa = PBXBuildFile; fileRef = EABEB602205101A300DA2FC1 /* checkEnvironment.sh */; };
+		EAD3437A222635DB000A6564 /* UserScriptsInception in Resources */ = {isa = PBXBuildFile; fileRef = EAD343762226349E000A6564 /* UserScriptsInception */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,9 +103,8 @@
 
 /* Begin PBXFileReference section */
 		C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = scriptsPopoverViewController.swift; sourceTree = "<group>"; };
-		C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Take Bugreport.sh"; sourceTree = "<group>"; };
 		C84079D21C054BCF002EC6D4 /* DropReceiverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropReceiverView.swift; sourceTree = "<group>"; };
-		C84079D41C0559B7002EC6D4 /* StatusTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatusTextField.swift; path = ../StatusTextField.swift; sourceTree = "<group>"; };
+		C84079D41C0559B7002EC6D4 /* StatusTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusTextField.swift; sourceTree = "<group>"; };
 		C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITweaker.swift; sourceTree = "<group>"; };
 		C856FFDB1BFB095E0098B1E2 /* exitDemoMode.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = exitDemoMode.sh; sourceTree = "<group>"; };
 		C856FFDC1BFB0A520098B1E2 /* setDemoModeOptions.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = setDemoModeOptions.sh; sourceTree = "<group>"; };
@@ -116,19 +112,17 @@
 		C8595D191BF5C1EE00805042 /* WindowMoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowMoverView.swift; sourceTree = "<group>"; };
 		C8595D1B1BF5C8B000805042 /* WindowMoverScrollview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowMoverScrollview.swift; sourceTree = "<group>"; };
 		C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowMoverTableCellView.swift; sourceTree = "<group>"; };
-		C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WIndowMoverImageView.swift; path = ../WIndowMoverImageView.swift; sourceTree = "<group>"; };
+		C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WIndowMoverImageView.swift; sourceTree = "<group>"; };
 		C8595D211BF6A55700805042 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		C86C15F61C13958100E22CEC /* aapt */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aapt; sourceTree = "<group>"; };
 		C86C15F81C1395DC00E22CEC /* getApkInfo.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getApkInfo.sh; sourceTree = "<group>"; };
 		C86C15FA1C1395F700E22CEC /* installZip.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = installZip.sh; sourceTree = "<group>"; };
-		C86C15FC1C13961200E22CEC /* fastboot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = fastboot; sourceTree = "<group>"; };
 		C86C15FE1C13993400E22CEC /* ApkHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApkHandler.swift; sourceTree = "<group>"; };
 		C86C16001C13997100E22CEC /* Apk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apk.swift; sourceTree = "<group>"; };
 		C86C16021C139B8F00E22CEC /* launchActivity.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = launchActivity.sh; sourceTree = "<group>"; };
 		C86C16041C13B4B900E22CEC /* uninstallPackageOnDevice.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = uninstallPackageOnDevice.sh; sourceTree = "<group>"; };
 		C86C16061C14BA5100E22CEC /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		C86C16081C14F7F700E22CEC /* extractIconFromApk.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = extractIconFromApk.sh; sourceTree = "<group>"; };
-		C86C160A1C1511B800E22CEC /* DropPassThroughImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DropPassThroughImageView.swift; path = AndroidTool/DropPassThroughImageView.swift; sourceTree = "<group>"; };
+		C86C160A1C1511B800E22CEC /* DropPassThroughImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropPassThroughImageView.swift; sourceTree = "<group>"; };
 		C86C160C1C15241B00E22CEC /* MovableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovableButton.swift; sourceTree = "<group>"; };
 		C86C162B1C165B5E00E22CEC /* ZipHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipHandler.swift; sourceTree = "<group>"; };
 		C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = previewPopoverViewController.swift; sourceTree = "<group>"; };
@@ -137,19 +131,9 @@
 		C87E3AF01C01128500275AA2 /* RawOutputWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RawOutputWindowController.xib; sourceTree = "<group>"; };
 		C87E3AF41C0113B100275AA2 /* TerminalOutputTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TerminalOutputTextView.swift; sourceTree = "<group>"; };
 		C87E3AF61C0113DA00275AA2 /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
-		C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libzip.2.dylib; path = ../libzip.2.dylib; sourceTree = "<group>"; };
-		C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = ../libxml2.2.dylib; sourceTree = "<group>"; };
-		C8A0F8AF1AFC319A00B3A90C /* libusbmuxd.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libusbmuxd.2.dylib; path = ../libusbmuxd.2.dylib; sourceTree = "<group>"; };
-		C8A0F8B01AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libusbmuxd.1.0.8.dylib; path = ../libusbmuxd.1.0.8.dylib; sourceTree = "<group>"; };
-		C8A0F8B11AFC319A00B3A90C /* libplist.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.2.dylib; path = ../libplist.2.dylib; sourceTree = "<group>"; };
-		C8A0F8B21AFC319A00B3A90C /* libplist.1.1.10.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplist.1.1.10.dylib; path = ../libplist.1.1.10.dylib; sourceTree = "<group>"; };
-		C8A0F8B31AFC319A00B3A90C /* libosxfuse_i64.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosxfuse_i64.2.dylib; path = ../libosxfuse_i64.2.dylib; sourceTree = "<group>"; };
-		C8A0F8B41AFC319A00B3A90C /* libosxfuse_i32.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libosxfuse_i32.2.dylib; path = ../libosxfuse_i32.2.dylib; sourceTree = "<group>"; };
-		C8A0F8B51AFC319A00B3A90C /* libimobiledevice.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libimobiledevice.4.dylib; path = ../libimobiledevice.4.dylib; sourceTree = "<group>"; };
 		C8A0F8BF1AFC4BDF00B3A90C /* convertMovieFiletoGif.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = convertMovieFiletoGif.sh; sourceTree = "<group>"; };
-		C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PreferencesWindowController.swift; path = ../PreferencesWindowController.swift; sourceTree = "<group>"; };
-		C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindowController.xib; path = ../PreferencesWindowController.xib; sourceTree = "<group>"; };
+		C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = getResolutionForSerial.sh; sourceTree = "<group>"; };
 		C8B131571AE9CE9700BCD4F3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C8B131591AE9D34F00BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = takeScreenshotOfDeviceWithSerial.sh; sourceTree = "<group>"; };
@@ -175,16 +159,25 @@
 		C8B5148E1AE8703F0071C86A /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = getDetailsForSerial.sh; sourceTree = "<group>"; };
 		C8B9D47D1AE991D300927B96 /* ShellTasker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellTasker.swift; sourceTree = "<group>"; };
-		C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C8B9D4821AE9B34F00927B96 /* ffmpeg */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffmpeg; sourceTree = "<group>"; };
 		C8B9D4851AE9C3A100927B96 /* getSerials.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getSerials.sh; sourceTree = "<group>"; };
 		C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOSDeviceHelper.swift; sourceTree = "<group>"; };
 		C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = takeScreenshotOfDeviceWithUUID.sh; sourceTree = "<group>"; };
-		C8BF506E1AFBE21A005C725D /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
 		C8C86BEF1C50976D0087858B /* installObbForSerial.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = installObbForSerial.sh; sourceTree = "<group>"; };
-		C8C86BF11C50AEEC0087858B /* ObbHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObbHandler.swift; path = AndroidTool/ObbHandler.swift; sourceTree = "<group>"; };
-		C8D4F79F1BF84BF5001F8C6E /* adb */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = adb; sourceTree = "<group>"; };
+		C8C86BF11C50AEEC0087858B /* ObbHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObbHandler.swift; sourceTree = "<group>"; };
 		C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = getCurrentActivityForIdentifier.sh; sourceTree = "<group>"; };
+		EA845C02208C5AEE006346F9 /* idevicescreenshot */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = idevicescreenshot; sourceTree = "<group>"; };
+		EA845C12208C647A006346F9 /* libplist.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libplist.dylib; sourceTree = "<group>"; };
+		EA845C13208C647A006346F9 /* libusbmuxd.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libusbmuxd.dylib; sourceTree = "<group>"; };
+		EA845C14208C647A006346F9 /* libplist.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libplist.3.dylib; sourceTree = "<group>"; };
+		EA845C16208C647A006346F9 /* libimobiledevice.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libimobiledevice.dylib; sourceTree = "<group>"; };
+		EA845C1A208C647A006346F9 /* libimobiledevice.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libimobiledevice.6.dylib; sourceTree = "<group>"; };
+		EA845C1B208C647A006346F9 /* libusbmuxd.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libusbmuxd.4.dylib; sourceTree = "<group>"; };
+		EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = androidtool_prefix.sh; sourceTree = "<group>"; };
+		EABEB6002050FD2500DA2FC1 /* android-sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "android-sdk"; sourceTree = "<group>"; };
+		EABEB602205101A300DA2FC1 /* checkEnvironment.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = checkEnvironment.sh; sourceTree = "<group>"; };
+		EAD343762226349E000A6564 /* UserScriptsInception */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UserScriptsInception; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,18 +198,9 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C83D2E0C1AEF02C400CD066D /* UserScriptsInception */ = {
-			isa = PBXGroup;
-			children = (
-				C83D2E0D1AEF02E700CD066D /* Take Bugreport.sh */,
-			);
-			name = UserScriptsInception;
-			sourceTree = "<group>";
-		};
 		C87E3AE51BFF779100275AA2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */,
 				C8B5148B1AE860EF0071C86A /* DeviceViewController.xib */,
 				C84079D21C054BCF002EC6D4 /* DropReceiverView.swift */,
 				C87E3AE61BFF7DBB00275AA2 /* LoaderView.swift */,
@@ -240,8 +224,6 @@
 		C8B514571AE85D600071C86A = {
 			isa = PBXGroup;
 			children = (
-				C8C86BF11C50AEEC0087858B /* ObbHandler.swift */,
-				C86C160A1C1511B800E22CEC /* DropPassThroughImageView.swift */,
 				C8B514621AE85D610071C86A /* AndroidTool */,
 				C8B514731AE85D610071C86A /* AndroidToolTests */,
 				C8B514611AE85D610071C86A /* Products */,
@@ -260,36 +242,29 @@
 		C8B514621AE85D610071C86A /* AndroidTool */ = {
 			isa = PBXGroup;
 			children = (
-				C8BF50741AFC2D75005C725D /* libimobile */,
-				C83D2E0C1AEF02C400CD066D /* UserScriptsInception */,
-				C8B131571AE9CE9700BCD4F3 /* Images.xcassets */,
-				C8B9D47B1AE9911C00927B96 /* Scripts */,
+				C8B514631AE85D610071C86A /* Supporting Files */,
+				C87E3AEE1C01120900275AA2 /* Terminal output window */,
+				C87E3AE51BFF779100275AA2 /* UI */,
+				EA17FA8720863F2800CF8033 /* preferences */,
+				EA17FA8B2086425600CF8033 /* view */,
+				EA17FA892086413A00CF8033 /* window_mover */,
 				C8B514651AE85D610071C86A /* AppDelegate.swift */,
 				C87E3AF61C0113DA00275AA2 /* Styles.swift */,
 				C8B9D47D1AE991D300927B96 /* ShellTasker.swift */,
-				C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */,
-				C87E3AEE1C01120900275AA2 /* Terminal output window */,
-				C87E3AE51BFF779100275AA2 /* UI */,
 				C8B514801AE85D8B0071C86A /* MasterViewController.swift */,
-				C8595D1B1BF5C8B000805042 /* WindowMoverScrollview.swift */,
-				C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */,
+				C8C86BF11C50AEEC0087858B /* ObbHandler.swift */,
 				C856FFD81BFB05CD0098B1E2 /* UITweaker.swift */,
 				C8B5148E1AE8703F0071C86A /* Util.swift */,
-				C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */,
-				C84079D41C0559B7002EC6D4 /* StatusTextField.swift */,
 				C8BF506A1AFB393C005C725D /* IOSDeviceHelper.swift */,
 				C8B131941AEB3B5100BCD4F3 /* DevicePickerViewController.swift */,
 				C8B5148A1AE860EF0071C86A /* DeviceViewController.swift */,
 				C86C15FE1C13993400E22CEC /* ApkHandler.swift */,
-				C8595D191BF5C1EE00805042 /* WindowMoverView.swift */,
 				C83D2E081AEDD7A300CD066D /* scriptsPopoverViewController.swift */,
 				C86DF2A51AFF2D7300AEBDF5 /* previewPopoverViewController.swift */,
 				C8B514841AE85D940071C86A /* Device.swift */,
-				C8B514881AE85E9B0071C86A /* getprop-example.txt */,
 				C8B514861AE85DAE0071C86A /* DeviceDiscoverer.swift */,
 				C8595D211BF6A55700805042 /* Constants.swift */,
 				C856FFDD1BFB91110098B1E2 /* C.swift */,
-				C8B514631AE85D610071C86A /* Supporting Files */,
 				C86C16001C13997100E22CEC /* Apk.swift */,
 				C86C16061C14BA5100E22CEC /* CameraButton.swift */,
 				C86C160C1C15241B00E22CEC /* MovableButton.swift */,
@@ -301,6 +276,13 @@
 		C8B514631AE85D610071C86A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C8B514881AE85E9B0071C86A /* getprop-example.txt */,
+				EAD1CE5C2047312100B8F557 /* Scripts */,
+				EA17FA8820863F7600CF8033 /* libmobile */,
+				EABEB6002050FD2500DA2FC1 /* android-sdk */,
+				EAD343762226349E000A6564 /* UserScriptsInception */,
+				C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */,
+				C8B131571AE9CE9700BCD4F3 /* Images.xcassets */,
 				C8B514641AE85D610071C86A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -323,23 +305,55 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C8B9D47B1AE9911C00927B96 /* Scripts */ = {
+		EA17FA8720863F2800CF8033 /* preferences */ = {
 			isa = PBXGroup;
 			children = (
-				C86C16081C14F7F700E22CEC /* extractIconFromApk.sh */,
-				C8D4F79F1BF84BF5001F8C6E /* adb */,
-				C86C15F61C13958100E22CEC /* aapt */,
-				C8BF506E1AFBE21A005C725D /* idevicescreenshot */,
+				C8A8A7AE1AF4506800E4B5D0 /* PreferencesWindowController.swift */,
+				C8A8A7AF1AF4506800E4B5D0 /* PreferencesWindowController.xib */,
+			);
+			path = preferences;
+			sourceTree = "<group>";
+		};
+		EA17FA8820863F7600CF8033 /* libmobile */ = {
+			isa = PBXGroup;
+			children = (
+				EA845C02208C5AEE006346F9 /* idevicescreenshot */,
+				EA845C1A208C647A006346F9 /* libimobiledevice.6.dylib */,
+				EA845C16208C647A006346F9 /* libimobiledevice.dylib */,
+				EA845C14208C647A006346F9 /* libplist.3.dylib */,
+				EA845C12208C647A006346F9 /* libplist.dylib */,
+				EA845C1B208C647A006346F9 /* libusbmuxd.4.dylib */,
+				EA845C13208C647A006346F9 /* libusbmuxd.dylib */,
+			);
+			path = libmobile;
+			sourceTree = "<group>";
+		};
+		EA17FA892086413A00CF8033 /* window_mover */ = {
+			isa = PBXGroup;
+			children = (
+				C8595D1B1BF5C8B000805042 /* WindowMoverScrollview.swift */,
+				C8595D1D1BF5C95500805042 /* WindowMoverTableCellView.swift */,
+				C8595D1F1BF660E100805042 /* WIndowMoverImageView.swift */,
+				C8595D191BF5C1EE00805042 /* WindowMoverView.swift */,
+			);
+			path = window_mover;
+			sourceTree = "<group>";
+		};
+		EA17FA8B2086425600CF8033 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				C86C160A1C1511B800E22CEC /* DropPassThroughImageView.swift */,
+				C84079D41C0559B7002EC6D4 /* StatusTextField.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		EAD1CE5C2047312100B8F557 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
 				C8B9D4821AE9B34F00927B96 /* ffmpeg */,
-				C86C15FC1C13961200E22CEC /* fastboot */,
-				C86C16021C139B8F00E22CEC /* launchActivity.sh */,
-				C86C15FA1C1395F700E22CEC /* installZip.sh */,
-				C86C15F81C1395DC00E22CEC /* getApkInfo.sh */,
-				C8C86BEF1C50976D0087858B /* installObbForSerial.sh */,
-				C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */,
-				C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */,
-				C8B9D4851AE9C3A100927B96 /* getSerials.sh */,
-				C8B9D47F1AE9AEA800927B96 /* MyPlayground.playground */,
+				EABEB5FE20508B9E00DA2FC1 /* androidtool_prefix.sh */,
+				EABEB602205101A300DA2FC1 /* checkEnvironment.sh */,
 				C8B131591AE9D34F00BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh */,
 				C8BF506C1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh */,
 				C8B131881AEB10C800BCD4F3 /* startRecordingForSerial.sh */,
@@ -350,25 +364,16 @@
 				C856FFDC1BFB0A520098B1E2 /* setDemoModeOptions.sh */,
 				C8E521B21C0ED06800777117 /* getCurrentActivityForIdentifier.sh */,
 				C86C16041C13B4B900E22CEC /* uninstallPackageOnDevice.sh */,
+				C86C16081C14F7F700E22CEC /* extractIconFromApk.sh */,
+				C86C16021C139B8F00E22CEC /* launchActivity.sh */,
+				C86C15FA1C1395F700E22CEC /* installZip.sh */,
+				C86C15F81C1395DC00E22CEC /* getApkInfo.sh */,
+				C8C86BEF1C50976D0087858B /* installObbForSerial.sh */,
+				C8B9D47C1AE9914200927B96 /* getDetailsForSerial.sh */,
+				C8A8A7B21AF4A0A400E4B5D0 /* getResolutionForSerial.sh */,
+				C8B9D4851AE9C3A100927B96 /* getSerials.sh */,
 			);
-			name = Scripts;
-			sourceTree = "<group>";
-		};
-		C8BF50741AFC2D75005C725D /* libimobile */ = {
-			isa = PBXGroup;
-			children = (
-				C8A0F8621AFC2F4E00B3A90C /* idevicescreenshot */,
-				C8A0F8AD1AFC319A00B3A90C /* libzip.2.dylib */,
-				C8A0F8AE1AFC319A00B3A90C /* libxml2.2.dylib */,
-				C8A0F8AF1AFC319A00B3A90C /* libusbmuxd.2.dylib */,
-				C8A0F8B01AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib */,
-				C8A0F8B11AFC319A00B3A90C /* libplist.2.dylib */,
-				C8A0F8B21AFC319A00B3A90C /* libplist.1.1.10.dylib */,
-				C8A0F8B31AFC319A00B3A90C /* libosxfuse_i64.2.dylib */,
-				C8A0F8B41AFC319A00B3A90C /* libosxfuse_i32.2.dylib */,
-				C8A0F8B51AFC319A00B3A90C /* libimobiledevice.4.dylib */,
-			);
-			name = libimobile;
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -418,17 +423,17 @@
 			attributes = {
 				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Morten Just Petersen";
 				TargetAttributes = {
 					C8B5145F1AE85D610071C86A = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = UDGLB23X37;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0920;
 					};
 					C8B5146F1AE85D610071C86A = {
 						CreatedOnToolsVersion = 6.3;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0920;
 						TestTargetID = C8B5145F1AE85D610071C86A;
 					};
 				};
@@ -457,33 +462,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8A0F8761AFC2F6E00B3A90C /* idevicescreenshot in Resources */,
+				EA845C22208C647B006346F9 /* libimobiledevice.dylib in Resources */,
+				EA845C1E208C647B006346F9 /* libplist.dylib in Resources */,
+				EA845C1F208C647B006346F9 /* libusbmuxd.dylib in Resources */,
+				EA845C27208C647B006346F9 /* libusbmuxd.4.dylib in Resources */,
+				EA845C26208C647B006346F9 /* libimobiledevice.6.dylib in Resources */,
+				EA845C20208C647B006346F9 /* libplist.3.dylib in Resources */,
 				C856FFDF1BFDA61A0098B1E2 /* exitDemoMode.sh in Resources */,
 				C86C16031C139B8F00E22CEC /* launchActivity.sh in Resources */,
-				C86C15F71C13958100E22CEC /* aapt in Resources */,
 				C856FFE01BFDA61A0098B1E2 /* setDemoModeOptions.sh in Resources */,
 				C86C16091C14F7F700E22CEC /* extractIconFromApk.sh in Resources */,
+				EABEB5FF20508B9F00DA2FC1 /* androidtool_prefix.sh in Resources */,
 				C8A0F8C01AFC524400B3A90C /* convertMovieFiletoGif.sh in Resources */,
-				C8A0F8B61AFC319A00B3A90C /* libzip.2.dylib in Resources */,
-				C8A0F8B71AFC319A00B3A90C /* libxml2.2.dylib in Resources */,
-				C8A0F8B81AFC319A00B3A90C /* libusbmuxd.2.dylib in Resources */,
+				EA845C03208C5AEE006346F9 /* idevicescreenshot in Resources */,
 				C86C15FB1C1395F700E22CEC /* installZip.sh in Resources */,
-				C8A0F8B91AFC319A00B3A90C /* libusbmuxd.1.0.8.dylib in Resources */,
 				C86C16051C13B4B900E22CEC /* uninstallPackageOnDevice.sh in Resources */,
-				C8A0F8BA1AFC319A00B3A90C /* libplist.2.dylib in Resources */,
-				C8D4F7A01BF84BF5001F8C6E /* adb in Resources */,
-				C8A0F8BB1AFC319A00B3A90C /* libplist.1.1.10.dylib in Resources */,
+				EABEB603205101AD00DA2FC1 /* checkEnvironment.sh in Resources */,
 				C86C15F91C1395DC00E22CEC /* getApkInfo.sh in Resources */,
-				C8A0F8BC1AFC319A00B3A90C /* libosxfuse_i64.2.dylib in Resources */,
-				C8A0F8BD1AFC319A00B3A90C /* libosxfuse_i32.2.dylib in Resources */,
-				C8A0F8BE1AFC319A00B3A90C /* libimobiledevice.4.dylib in Resources */,
 				C8A8A7B31AF4A0E200E4B5D0 /* getResolutionForSerial.sh in Resources */,
 				C8B131991AEB641800BCD4F3 /* installApkOnDevice.sh in Resources */,
 				C8B1318B1AEB14E400BCD4F3 /* postProcessMovieForSerial.sh in Resources */,
 				C8B131971AEB3B5100BCD4F3 /* DevicePickerViewController.xib in Resources */,
 				C8C86BF01C50976D0087858B /* installObbForSerial.sh in Resources */,
+				EABEB6012050FD2500DA2FC1 /* android-sdk in Resources */,
+				EAD3437A222635DB000A6564 /* UserScriptsInception in Resources */,
 				C87E3AF21C01128500275AA2 /* RawOutputWindowController.xib in Resources */,
-				C86C15FD1C13961200E22CEC /* fastboot in Resources */,
 				C8B131891AEB10FA00BCD4F3 /* startRecordingForSerial.sh in Resources */,
 				C8B1315A1AE9D47700BCD4F3 /* takeScreenshotOfDeviceWithSerial.sh in Resources */,
 				C8B131581AE9CE9700BCD4F3 /* Images.xcassets in Resources */,
@@ -492,7 +495,6 @@
 				C8B5146B1AE85D610071C86A /* MainMenu.xib in Resources */,
 				C8E521B31C0ED06800777117 /* getCurrentActivityForIdentifier.sh in Resources */,
 				C8BF506D1AFBE1E9005C725D /* takeScreenshotOfDeviceWithUUID.sh in Resources */,
-				C83D2E0E1AEF02E700CD066D /* Take Bugreport.sh in Resources */,
 				C8B9D4841AE9B34F00927B96 /* ffmpeg in Resources */,
 				C8B5148D1AE860EF0071C86A /* DeviceViewController.xib in Resources */,
 				C8B514831AE85D8B0071C86A /* MasterViewController.xib in Resources */,
@@ -591,12 +593,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -644,12 +648,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -688,12 +694,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AndroidTool",
+					"$(PROJECT_DIR)/AndroidTool/libmobile",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -708,12 +716,14 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AndroidTool",
+					"$(PROJECT_DIR)/AndroidTool/libmobile",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -734,7 +744,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AndroidTool.app/Contents/MacOS/AndroidTool";
 			};
 			name = Debug;
@@ -752,7 +763,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mortenjust.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AndroidTool.app/Contents/MacOS/AndroidTool";
 			};
 			name = Release;

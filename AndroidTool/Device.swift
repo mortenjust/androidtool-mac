@@ -9,10 +9,6 @@
 import Cocoa
 import AVFoundation
 
-protocol DeviceDelegate{
-    //
-}
-
 enum DeviceType:String {
     case Phone="Phone", Watch="Watch", Tv="Tv", Auto="Auto"
 }
@@ -42,8 +38,7 @@ class Device: NSObject {
     var currentActivity : String = ""
     
     convenience init(avDevice:AVCaptureDevice) {
-        self.init()
-        deviceOS = DeviceOS.ios
+        self.init(deviceOS: .ios)
         firstBoot = hashFromString(avDevice.uniqueID)
         brand = "Apple"
         name = avDevice.localizedName
@@ -53,10 +48,9 @@ class Device: NSObject {
     }
     
     convenience init(properties:[String:String], adbIdentifier:String) {
-        self.init()
+        self.init(deviceOS: .android)
         
-        deviceOS = .android
-        self.adbIdentifier = adbIdentifier.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        self.adbIdentifier = adbIdentifier.trimmingCharacters(in: .whitespacesAndNewlines)
         
         model = properties["ro.product.model"]
         name = properties["ro.product.name"]
@@ -93,6 +87,10 @@ class Device: NSObject {
         }
     }
     
+    init(deviceOS: DeviceOS) {
+        self.deviceOS = deviceOS
+    }
+    
     
     func getCurrentActivity(_ completion:@escaping (_ activityName:String)->Void){
         let task = ShellTasker(scriptFile: "getCurrentActivityForIdentifier")
@@ -127,11 +125,9 @@ class Device: NSObject {
         let re = try! NSRegularExpression(pattern: "Physical size: (.*)x(.*)", options: [])
         let matches = re.matches(in: string, options: [], range: NSRange(location: 0, length: string.utf16.count))
         let result = matches[0] 
-        let width:NSString = (string as NSString).substring(with: result.rangeAt(1)) as NSString
-        let height:NSString = (string as NSString).substring(with: result.rangeAt(2)) as NSString        
+        let width:NSString = (string as NSString).substring(with: result.range(at: 1)) as NSString
+        let height:NSString = (string as NSString).substring(with: result.range(at: 2)) as NSString        
         let res = (width:width.doubleValue, height:height.doubleValue)
         return res
     }
-
-
 }

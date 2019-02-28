@@ -18,29 +18,28 @@ protocol DropDelegate {
 class DropReceiverView: NSView {
     
     var delegate:DropDelegate?
-    var testVar = "only you can see this";
     
     func removeBackgroundColor(){
         layer?.backgroundColor = NSColor.clear.cgColor
-        }
+    }
     
     func addBackgroundColor(){
         layer?.backgroundColor = NSColor(red:0.267, green:0.251, blue:0.290, alpha:1).cgColor
-        }
+    }
     
     func setup(){
         wantsLayer = true
         let fileTypes = [
-            "public.data"
+            NSPasteboard.PasteboardType.init(_: kUTTypeData as String)
         ]
-        register(forDraggedTypes: fileTypes);
+        registerForDraggedTypes(fileTypes);
     }
     //https://developer.apple.com/library/mac/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         
         //        Swift.print("HELLO \(getPathFromBoard(sender.draggingPasteboard()))")
-        let path = getPathFromBoard(sender.draggingPasteboard())
+        let path = getPathFromBoard(sender.draggingPasteboard)
         delegate?.dropDragEntered(path)
         addBackgroundColor()
         return NSDragOperation.copy
@@ -51,7 +50,7 @@ class DropReceiverView: NSView {
     }
     
     override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
-        delegate?.dropUpdated(sender.draggingLocation())
+        delegate?.dropUpdated(sender.draggingLocation)
         return NSDragOperation.copy
     }
     override func draggingExited(_ sender: NSDraggingInfo?) {
@@ -60,7 +59,7 @@ class DropReceiverView: NSView {
     }
     
     override func concludeDragOperation(_ sender: NSDraggingInfo?) {
-        let path = getPathFromBoard((sender?.draggingPasteboard())!)
+        let path = getPathFromBoard((sender?.draggingPasteboard)!)
         Swift.print("path is \(path)")
         removeBackgroundColor()
         delegate?.dropDragPerformed(path)

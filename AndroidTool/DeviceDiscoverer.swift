@@ -10,46 +10,69 @@ import Cocoa
 import AVFoundation
 
 protocol DeviceDiscovererDelegate {
+    
     func devicesUpdated(_ deviceList:[Device])
 }
 
 class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
-    var delegate : DeviceDiscovererDelegate!
+    var delegate: DeviceDiscovererDelegate?
     var previousDevices = [Device]()
     var updatingSuspended = false
-    var mainTimer : Timer!
-    var updateInterval:TimeInterval = 3
-    var iosDeviceHelper : IOSDeviceHelper!
+    var mainTimer: Timer?
+    var updateInterval: TimeInterval = 3
+    var iosDeviceHelper: IOSDeviceHelper?
     var iosDevices = [Device]()
     var androidDevices = [Device]()
+    let pollLock = Lock()
     
     func start(){
+        let checkTask = ShellTasker(scriptFile: "checkEnvironment")
+        checkTask.outputIsVerbose = true;
+        checkTask.run { (output) -> Void in print(output) };
+        
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(suspend),
+            selector: #selector(stopPollingDevices),
             name: NSNotification.Name(rawValue: "suspendAdb"),
             object: nil)
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(unSuspend),
+            selector: #selector(startPollingDevices),
             name: NSNotification.Name(rawValue: "unSuspendAdb"),
             object: nil)
         
-        mainTimer = Timer.scheduledTimer(
-            timeInterval: updateInterval,
-            target: self,
-            selector: #selector(pollDevices),
-            userInfo: nil,
-            repeats: false)
-        
-        mainTimer.fire()
-        
-        /// start IOSDeviceHelper by instantiating
-        iosDeviceHelper = IOSDeviceHelper(delegate: self)
-        iosDeviceHelper.startObservingIOSDevices()        
+        setUpIOSPolling()
     }
     
     func stop(){}
+    
+    func setUpIOSPolling() {
+        if #available(OSX 10.14, *) {
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .authorized:
+                startIOSDeviceHelper()
+                return
+            case .notDetermined:
+                AVCaptureDevice.requestAccess(for: .video) { granted in
+                    if granted {
+                        self.startIOSDeviceHelper()
+                    }
+                }
+                return
+            case .denied, .restricted:
+                return
+            }
+        } else {
+            startIOSDeviceHelper()
+        }
+    }
+    
+    func startIOSDeviceHelper() {
+        /// start IOSDeviceHelper by instantiating
+        let deviceHelper = IOSDeviceHelper(delegate: self)
+        deviceHelper.startObservingIOSDevices()
+        self.iosDeviceHelper = deviceHelper
+    }
     
     func getSerials(_ thenDoThis: @escaping (_ serials:[String]?, _ gotResults:Bool)->Void, finished:@escaping ()->Void){
         let task = ShellTasker(scriptFile: "getSerials")
@@ -79,50 +102,52 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         }
     }
     
-    func pollDevices(){
-        var newDevices = [Device]()
-        
-        if updatingSuspended { return }
-
-        print("+", terminator: "")
-        
-        getSerials({ (serials, gotResults) -> Void in
-            if gotResults {
-                for serial in serials! {
-                    self.getDetailsForSerial(serial, complete: { (details) -> Void in
-                        let device = Device(properties: details, adbIdentifier:serial)
-                        newDevices.append(device)
-                        if serials!.count == newDevices.count {
-                            self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
-                        }
-                    })
+    @objc func pollDevices(){
+        pollLock.synced {
+            var newDevices = [Device]()
+            print("+", terminator: "")
+            
+            getSerials({ (serials, gotResults) -> Void in
+                if gotResults {
+                    for serial in serials! {
+                        self.getDetailsForSerial(serial, complete: { (details) -> Void in
+                            let device = Device(properties: details, adbIdentifier:serial)
+                            newDevices.append(device)
+                            if serials!.count == newDevices.count {
+                                self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
+                            }
+                        })
+                    }
+                } else {
+                    self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
                 }
-            } else {
-                self.newDeviceCollector(updateWithList: newDevices, forDeviceOS:.android)
+            }, finished: { () -> Void in
+                // not really doing anything here afterall
+            })
+            startPollingDevices()
+        }
+    }
+    
+    @objc func startPollingDevices() {
+        pollLock.synced {
+            stopPollingDevices()
+            mainTimer = Timer.scheduledTimer(
+                timeInterval: updateInterval,
+                target: self,
+                selector: #selector(pollDevices),
+                userInfo: nil,
+                repeats: false)
+        }
+    }
+    
+    @objc func stopPollingDevices() {
+        pollLock.synced {
+            if let timer = mainTimer {
+                timer.invalidate()
+                mainTimer = nil
             }
-        }, finished: { () -> Void in
-            // not really doing anything here afterall
-        })
-    
-        mainTimer = Timer.scheduledTimer(
-            timeInterval: updateInterval,
-            target: self,
-            selector: #selector(pollDevices),
-            userInfo: nil,
-            repeats: false)
+        }
     }
-
-
-
-    func suspend(){
-        // some activites will break an open connection, an example is screen recording.
-        updatingSuspended = true
-    }
-    
-    func unSuspend(){
-        updatingSuspended = false
-    }
-    
     
     func getPropsFromString(_ string:String) -> [String:String] {
         let re = try! NSRegularExpression(pattern: "\\[(.+?)\\]: \\[(.+?)\\]", options: [])
@@ -131,14 +156,14 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         var propDict = [String:String]()
         
         for match in matches {
-            let key = (string as NSString).substring(with: match.rangeAt(1))
-            let value = (string as NSString).substring(with: match.rangeAt(2))
+            let key = (string as NSString).substring(with: match.range(at: 1))
+            let value = (string as NSString).substring(with: match.range(at: 2))
             propDict[key] = value
         }
         return propDict
     }
     
-    func iosDeviceAttached(_ device:AVCaptureDevice){
+    func iosDeviceAttached(_ device:AVCaptureDevice) {
         // instantiate new Device, check if we know it, add to iosDevices[], tell deviceCollector about it
         
         print("Found device \(device.localizedName)")
@@ -158,7 +183,7 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         }
     }
     
-    func newDeviceCollector(updateWithList deviceList: [Device], forDeviceOS:DeviceOS){
+    func newDeviceCollector(updateWithList deviceList: [Device], forDeviceOS:DeviceOS) {
         var allDevices = [Device]()
         
         // merge lists
@@ -170,10 +195,10 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         }
         
         allDevices = androidDevices + iosDevices
-        delegate.devicesUpdated(allDevices)
+        delegate?.devicesUpdated(allDevices)
     }
     
-    func iosDeviceDetached(_ device:AVCaptureDevice){
+    func iosDeviceDetached(_ device:AVCaptureDevice) {
         // find the lost device in iosDevices[], remove it, and tell newDeviceCollector about it
         for index in 0...(iosDevices.count-1) {
             if iosDevices[index].uuid == device.uniqueID {
@@ -184,9 +209,9 @@ class DeviceDiscoverer:NSObject, IOSDeviceDelegate {
         }
     }
 
-    func iosDeviceDidStartPreparing(_ device:AVCaptureDevice){
+    func iosDeviceDidStartPreparing(_ device:AVCaptureDevice) {
         // this happens when
     }
-    func iosDeviceDidEndPreparing(){}
-
+    
+    func iosDeviceDidEndPreparing() { }
 }

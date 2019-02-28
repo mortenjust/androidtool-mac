@@ -13,7 +13,7 @@ protocol UITweakerDelegate {
 }
 
 class UITweaker: NSObject {
-    var adbIdentifier:String!
+    var adbIdentifier:String
     var delegate:UITweakerDelegate?
 
     
@@ -22,7 +22,7 @@ class UITweaker: NSObject {
     }
     
     struct Tweak {
-        var command:String!
+        var command:String
         var description:String!
     }
     
@@ -39,7 +39,6 @@ class UITweaker: NSObject {
         }
     }
     
-    
     func collectAllTweaks() -> [Tweak] {
         let ud = UserDefaults.standard
         var tweaks = [Tweak]()
@@ -52,14 +51,12 @@ class UITweaker: NSObject {
                     if ud.bool(forKey: prop) { show = "show" }
                     let tweak = Tweak(command: "\(cmd) -e \(prop) \(show)", description: "\(show) \(prop)")
                     tweaks.append(tweak)
-                    break
                 case "location", "alarm", "sync", "tty", "eri", "mute", "speakerphone": // status showhide
                     let cmd = "status"
                     var show = "hide"
                     if ud.bool(forKey: prop) { show = "show" }
                     let tweak = Tweak(command: "\(cmd) -e \(prop) \(show)", description: "\(show) \(prop)")
                     tweaks.append(tweak)
-                    break
                 case "bluetooth":
                     var show = "hide"
                     if ud.bool(forKey: "bluetooth") {
@@ -67,7 +64,6 @@ class UITweaker: NSObject {
                     }
                     let tweak = Tweak(command: "status -e bluetooth \(show)", description: "Tweaking Bluetooth")
                     tweaks.append(tweak)
-                    break
                 case "notifications":
                     var visible = "false"
                     if ud.bool(forKey: prop) {
@@ -75,14 +71,12 @@ class UITweaker: NSObject {
                     }
                     let tweak = Tweak(command: "\(prop) -e visible \(visible)", description: "Tweaking notfications")
                     tweaks.append(tweak)
-                    break
                 case "clock":
                     if ud.bool(forKey: prop) {
-                        let hhmm = formatTime(ud.string(forKey: "timeValue")!)
-                        let tweak = Tweak(command: "clock -e hhmm \(hhmm)", description: "Setting time to \(ud.string(forKey: "timeValue")!)")
+                        let hhmm = formatTime(ud.string(forKey: C.PREF_TIME_VALUE)!)
+                        let tweak = Tweak(command: "clock -e hhmm \(hhmm)", description: "Setting time to \(ud.string(forKey: C.PREF_TIME_VALUE)!)")
                         tweaks.append(tweak)
                     }
-                    break
                 case "wifi":
                     var show = "hide"
                     var level = ""
@@ -92,37 +86,32 @@ class UITweaker: NSObject {
                     }
                     let tweak = Tweak(command: "network -e \(prop) \(show) \(level)", description: "\(show) \(prop)")
                     tweaks.append(tweak)
-                    break
                 case "mobile":
                     var tweak:Tweak!
                     if ud.bool(forKey: prop){
-                        let mobileDatatype = ud.string(forKey: "mobileDatatype")
-                        let mobileLevel = ud.string(forKey: "mobileLevel")!.replacingOccurrences(of: " bars", with: "").replacingOccurrences(of: " bar", with: "")
+                        let mobileDatatype = ud.string(forKey: C.PREF_MOBILE_DATATYPE)
+                        let mobileLevel = ud.string(forKey: C.PREF_MOBILE_LEVEL)!.replacingOccurrences(of: " bars", with: "").replacingOccurrences(of: " bar", with: "")
                         tweak = Tweak(command: "network -e mobile show -e datatype \(mobileDatatype!) -e level \(mobileLevel)", description: "Turn cell icon on")
                     } else {
                         tweak = Tweak(command: "network -e mobile hide", description: "Turn cell icon off")
                     }
                     tweaks.append(tweak)
-                    break
                 case "batteryCharging":
                     var showCharging = "false"
                     var description = "Set battery not charging"
-                    let batLevel = ud.string(forKey: "batteryLevel")?.replacingOccurrences(of: "%", with: "")
+                    let batLevel = ud.string(forKey: C.PREF_BATTERY_LEVEL)?.replacingOccurrences(of: "%", with: "")
                     if ud.bool(forKey: "batteryCharging") {
                         showCharging = "true"
                         description = "Set battery charging"
                     }
                     let tweak = Tweak(command: "battery -e plugged \(showCharging) -e level \(batLevel!)", description: description)
                     tweaks.append(tweak)
-                break
                 default:
                     break
             }
         }
         return tweaks
-
     }
-    
     
     func formatTime(_ t:String) -> String { // remove : in hh:mm
         return t.replacingOccurrences(of: ":", with: "")

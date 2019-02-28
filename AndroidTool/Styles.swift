@@ -8,23 +8,19 @@
 
 import Cocoa
 
-class Styles: NSObject {
+extension Dictionary where Key == NSAttributedString.Key, Value == Any {
     
-    override init() {
-        super.init()
-    }
-    
-    func terminalAtts() -> [String:AnyObject]{
-        var atts = [String:AnyObject]()
-        atts[NSForegroundColorAttributeName] = NSColor(red:0.671, green:0.671, blue:0.671, alpha:1)
-        atts[NSFontAttributeName] = NSFont(name: "Monaco", size: 8.0)
+    static func terminalAtts() -> [NSAttributedString.Key:Any]{
+        var atts = [NSAttributedString.Key:Any]()
+        atts[.foregroundColor] = NSColor(red:0.671, green:0.671, blue:0.671, alpha:1)
+        atts[.font] = NSFont(name: "Monaco", size: 8.0)
         return atts
     }
     
-    func commandAtts() -> [String:AnyObject]{
-        var atts = [String:AnyObject]()
-        atts[NSForegroundColorAttributeName] = NSColor(red:1, green:1, blue:1, alpha:1)
-        atts[NSFontAttributeName] = NSFont(name: "Monaco", size: 8.0);
+    static func commandAtts() -> [NSAttributedString.Key:Any]{
+        var atts = [NSAttributedString.Key:Any]()
+        atts[.foregroundColor] = NSColor(red:1, green:1, blue:1, alpha:1)
+        atts[.font] = NSFont(name: "Monaco", size: 8.0);
         return atts
     }
 }

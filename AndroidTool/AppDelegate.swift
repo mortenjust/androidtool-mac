@@ -13,27 +13,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var scriptsMenu: NSMenu!
+    var discoverer: DeviceDiscoverer!
     var preferencesWindowController: PreferencesWindowController!
-    var rawOutputWindowController: RawOutputWindowController!
-    
+    var rawOutputWindowController: RawOutputWindowController?
     
     var masterViewController: MasterViewController!
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        discoverer = DeviceDiscoverer()
         updateScriptFilesInMenu()
         checkForPreferences()
 
-    
         if #available(OSX 10.10, *) {
             window.titlebarAppearsTransparent = true
-            window.styleMask.update(with: .fullSizeContentView);
+            window.styleMask.update(with: NSWindow.StyleMask.fullSizeContentView);
         } else {
             // Fallback on earlier versions
         }
         window.isMovableByWindowBackground = true
         window.title = ""
         
-        masterViewController = MasterViewController(nibName: "MasterViewController", bundle: nil)
+        masterViewController = MasterViewController(
+            nibName: "MasterViewController",
+            bundle: nil)
         masterViewController.window = window
         
         window.contentView!.addSubview(masterViewController.view)
@@ -47,18 +49,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let viewDict: [String: Any] = ["inserted":insertedView, "container":containerView]
         let viewConstraintH = NSLayoutConstraint.constraints(
                 withVisualFormat: "H:|[inserted]|",
-                options: NSLayoutFormatOptions(rawValue: 0),
+                options: NSLayoutConstraint.FormatOptions(rawValue: 0),
                 metrics: nil,
                 views: viewDict)
         let viewConstraintV = NSLayoutConstraint.constraints(
             withVisualFormat: "V:|[inserted]|",
-            options: NSLayoutFormatOptions(rawValue: 0),
+            options: NSLayoutConstraint.FormatOptions(rawValue: 0),
             metrics: nil,
             views: viewDict)
         containerView.addConstraints(viewConstraintH)
         containerView.addConstraints(viewConstraintV)
         
-        
+        discoverer.delegate = masterViewController
+        discoverer.start()
     }
 
     func application(_ sender: NSApplication, openFile filename: String) -> Bool {
@@ -68,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func revealFolderClicked(_ sender: NSMenuItem) {
-        Util().revealScriptsFolder()
+        filesystem.revealScriptsFolder()
     }
     
     func checkForPreferences(){
@@ -82,38 +85,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             ud.set(NSString(string: "~/Desktop/AndroidTool").expandingTildeInPath, forKey: C.PREF_SCREENRECORDINGSFOLDER)
         }
         
-        
-        
-        let bitratePref = ud.double(forKey: "bitratePref")
-        let scalePref = ud.double(forKey: "scalePref")
-        let timeValuePref = ud.string(forKey: "timeValue")
-        let dataTypePref = ud.string(forKey: "dataType")
+        let bitratePref = ud.double(forKey: C.PREF_BIT_RATE)
+        let scalePref = ud.double(forKey: C.PREF_SCALE)
+        let timeValuePref = ud.string(forKey: C.PREF_TIME_VALUE)
+        let dataTypePref = ud.string(forKey: C.PREF_DATA_TYPE)
 
-        
         print("bit: \(bitratePref)")
         
         if timeValuePref == "" {
-            ud.set(Constants.defaultPrefValues["timeValue"], forKey: "timeValue")
+            ud.set(Constants.defaultPrefValues[C.PREF_TIME_VALUE], forKey: C.PREF_TIME_VALUE)
         }
         
         if dataTypePref == "" {
-            ud.set(Constants.defaultPrefValues["dataType"], forKey: "dataType")
+            ud.set(Constants.defaultPrefValues[C.PREF_DATA_TYPE], forKey: C.PREF_DATA_TYPE)
         }
         
         if bitratePref == 0.0 {
-            ud.set(Double(3025000), forKey: "bitratePref")
+            ud.set(Double(3025000), forKey: C.PREF_BIT_RATE)
         }
         
         if scalePref == 0.0 {
-            ud.set(1, forKey: "scalePref")
+            ud.set(1, forKey: C.PREF_SCALE)
         }
-    
     }
-    
     
     // populate nsmenu with all scripts
     // run this script on all devices
-    
     func updateScriptFilesInMenu(){
         scriptsMenu.removeAllItems()
         
@@ -131,32 +128,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         scriptsMenu.addItem(screenshotItem)
         scriptsMenu.addItem(sepItem)
         
-        let supportDir = Util().getSupportFolderScriptPath()
-        let scriptFiles = Util().getFilesInScriptFolder(supportDir)!
+        try? filesystem.setUpSupportFolderScriptPath()
+        let supportDir = filesystem.supportFolderScriptPath()
+        let scriptFiles = filesystem.scriptsInScriptFolder(supportDir)
 
-        var i = 0
-        for scriptFile in scriptFiles {
-
+        for (i, scriptFile) in scriptFiles.enumerated() {
             // for scripts 0..9, add a keyboard shortcut
             var keyEq = ""
             if i<10 {
                 keyEq = "\(i)"
-                }
+            }
             let scriptItem = NSMenuItem(
                 title: scriptFile.replacingOccurrences(of: ".sh", with: ""),
                 action: #selector(runScript),
                 keyEquivalent: keyEq)
             scriptsMenu.addItem(scriptItem)
-            i += 1
         }
         
         scriptsMenu.addItem(sepItem2)
         scriptsMenu.addItem(revealFolderItem)
     }
     
-    func runScript(_ sender:NSMenuItem){
-        Util().stopRefreshingDeviceList()
-        let scriptPath = "\(Util().getSupportFolderScriptPath())/\(sender.title).sh"
+    @objc func runScript(_ sender:NSMenuItem){
+        DeviceList.stopRefreshing()
+        let scriptPath = "\(filesystem.supportFolderScriptPath())/\(sender.title).sh"
         print("ready to run \(scriptPath) on all Android devices")
         
         let deviceVCs = masterViewController.deviceVCs
@@ -169,30 +164,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
-        
-        Util().restartRefreshingDeviceList()
+        DeviceList.restartRefreshing()
     }
     
     @IBAction func screenshotsOfAllTapped(_ sender: NSMenuItem) { // TODO:clicked, not tapped
-        Util().stopRefreshingDeviceList()
+        DeviceList.stopRefreshing()
         let deviceVCs = masterViewController.deviceVCs
         for deviceVC in deviceVCs {
             deviceVC.takeScreenshot()
         }
-        Util().restartRefreshingDeviceList()
+        DeviceList.restartRefreshing()
     }
     
     func applicationWillResignActive(_ notification: Notification) {
-        masterViewController.discoverer.updateInterval = 120
+        discoverer.updateInterval = 120
     }
     
-    @IBAction func rawWindowClicked(_ sender: AnyObject) {
-        rawOutputWindowController = RawOutputWindowController(windowNibName: "RawOutputWindowController")
-        rawOutputWindowController.showWindow(sender)
-    }  
+    @IBAction func shouldOpenTerminalOutputWindow(_ sender: AnyObject) {
+        var controller = rawOutputWindowController
+        if controller == nil {
+            controller = RawOutputWindowController(windowNibName:
+                "RawOutputWindowController")
+            rawOutputWindowController = controller
+        }
+        controller?.showWindow(sender)
+    }
     
     @IBAction func refreshDeviceListClicked(_ sender: NSMenuItem) {
-        masterViewController.discoverer.pollDevices()
+        discoverer.pollDevices()
     }
 
     @IBAction func showLogFileClicked(_ sender: NSMenuItem) {
@@ -203,28 +202,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("pref")
         preferencesWindowController = PreferencesWindowController(windowNibName: "PreferencesWindowController")
         preferencesWindowController.showWindow(sender)
-
     }
-
-    
     
     func applicationDidBecomeActive(_ notification: Notification) {
-//        Util().restartRefreshingDeviceList()
-        
-        if masterViewController == nil {
-            applicationDidFinishLaunching(notification)
-        }
-        
-        masterViewController.discoverer.updateInterval = 3
         updateScriptFilesInMenu()
-        masterViewController.discoverer.pollDevices()
-        
+        discoverer.updateInterval = 3
+        discoverer.pollDevices()
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
-
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if (!window.isVisible) {
+            window.setIsVisible(true)
+            return true
+        }
+        return false
+    }
 }
 

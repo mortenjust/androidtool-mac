@@ -14,11 +14,11 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
     @IBOutlet weak var deviceTable: NSTableView!
 
     var devices : [Device]!
-    var apkPath: String!
+    var apkPath: String?
     
     @IBOutlet weak var spinner: NSProgressIndicator!
 
-    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
     }
@@ -41,12 +41,18 @@ class DevicePickerViewController: NSViewController, NSTableViewDelegate, NSTable
         spinner.isHidden = false
         spinner.startAnimation(nil)
         
+        guard let apkPath = apkPath else {
+            NSUserNotification
+                .deliver("APK Path wasn't set yet.",
+                         moreInfo: "")
+            return
+        }
         let args = ["\(adbIdentifier)",
                     "\(apkPath)"]
         
         ShellTasker(scriptFile: "installApkOnDevice").run(arguments: args) { (output) -> Void in
 
-            Util().showNotification("App installed on \(device.readableIdentifier())", moreInfo: "\(output)", sound: true)
+            NSUserNotification.deliver("App installed on \(device.readableIdentifier())", moreInfo: "\(output)", sound: true)
             if #available(OSX 10.10, *) {
                 self.dismiss(nil)
             } else {
