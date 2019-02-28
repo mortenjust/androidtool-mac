@@ -37,17 +37,10 @@ class ShellTasker: NSObject {
             isUserScript:Bool = false,
             isIOS:Bool = false,
             complete:@escaping (_ output:NSString)-> Void) {
-        var output = NSString()
-        var data = Data()
         
-        var scriptPath:String
-        
-        if isUserScript {
-            scriptPath = scriptFile
-        } else {
-            scriptPath = Bundle.main.path(forResource: scriptFile, ofType: "sh")!
-        }
-        
+        let scriptPath = isUserScript
+            ? scriptFile
+            : Bundle.main.path(forResource: scriptFile, ofType: "sh")!
         let resourcesPath = Bundle.main.resourcePath!
         
         task = Process()
@@ -96,8 +89,8 @@ class ShellTasker: NSObject {
             queue: nil)
         { (notification) -> Void in
             DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { () -> Void in
-                data = pipe.fileHandleForReading.readDataToEndOfFile() // use .availabledata instead to stream from the console, pretty cool
-                output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)!
+                let data = pipe.fileHandleForReading.availableData
+                let output = NSString(data: data, encoding: String.Encoding.utf8.rawValue)!
                 DispatchQueue.main.async(execute: { () -> Void in
                     self.postNotification(output, channel: self.notificationChannel())
                     complete(output)
