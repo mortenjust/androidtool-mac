@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol ApkHandlerDelegate {
+protocol ApkHandlerDelegate: AnyObject {
     func apkHandlerDidStart()
     func apkHandlerDidGetInfo(_ apk:Apk)
     func apkHandlerDidUpdate(_ update:String)
@@ -16,21 +16,21 @@ protocol ApkHandlerDelegate {
 }
 
 class ApkHandler: NSObject {
-    var filepath:String!
-    var delegate:ApkHandlerDelegate?
-    var device:Device!
+    var filepath:String?
+    weak var delegate:ApkHandlerDelegate?
+    var device:Device
     
     init(filepath:String, device:Device){
-        print(">>apk init apkhandler")
-        super.init()
         self.filepath = filepath
         self.device = device
+        print(">>apk init apkhandler")
+        super.init()
     }
     
     init(device:Device){
+        self.device = device
         print(">>apk init apkhandler with no apk")
         super.init()
-        self.device = device
     }
     
     func installAndLaunch(_ complete:@escaping ()->Void){
@@ -53,7 +53,7 @@ class ApkHandler: NSObject {
         if device.adbIdentifier == nil { print("no adbIdentifier, aborting"); return }
         let s = ShellTasker(scriptFile: "installApkOnDevice")
         
-        s.run(arguments: [device.adbIdentifier!, filepath]) { (output) -> Void in
+        s.run(arguments: [device.adbIdentifier!, filepath!]) { (output) -> Void in
             self.delegate?.apkHandlerDidUpdate("Installed")
             completion()
         }
@@ -76,14 +76,14 @@ class ApkHandler: NSObject {
         delegate?.apkHandlerDidUpdate("Getting info...")
         
         let shell = ShellTasker(scriptFile: "getApkInfo")
-        shell.run(arguments: [self.filepath]) { (output) -> Void in
+        shell.run(arguments: [self.filepath!]) { (output) -> Void in
             let apk = Apk(rawAaptBadgingData: output as String)
             self.delegate?.apkHandlerDidGetInfo(apk)
             
             // try getting the icon out
             
             let iconShell = ShellTasker(scriptFile: "extractIconFromApk")
-            iconShell.run(arguments: [self.filepath]) { (output) -> Void in
+            iconShell.run(arguments: [self.filepath!]) { (output) -> Void in
                 print("Ready to add nsurl path to apk object: \(output)")
                 
                 apk.localIconPath = (output as String).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)

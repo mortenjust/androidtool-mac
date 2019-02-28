@@ -9,10 +9,6 @@
 import Cocoa
 import AVFoundation
 
-protocol DeviceDelegate{
-    //
-}
-
 enum DeviceType:String {
     case Phone="Phone", Watch="Watch", Tv="Tv", Auto="Auto"
 }
@@ -42,8 +38,7 @@ class Device: NSObject {
     var currentActivity : String = ""
     
     convenience init(avDevice:AVCaptureDevice) {
-        self.init()
-        deviceOS = DeviceOS.ios
+        self.init(deviceOS: .ios)
         firstBoot = hashFromString(avDevice.uniqueID)
         brand = "Apple"
         name = avDevice.localizedName
@@ -53,10 +48,9 @@ class Device: NSObject {
     }
     
     convenience init(properties:[String:String], adbIdentifier:String) {
-        self.init()
+        self.init(deviceOS: .android)
         
-        deviceOS = .android
-        self.adbIdentifier = adbIdentifier.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        self.adbIdentifier = adbIdentifier.trimmingCharacters(in: .whitespacesAndNewlines)
         
         model = properties["ro.product.model"]
         name = properties["ro.product.name"]
@@ -91,6 +85,10 @@ class Device: NSObject {
                 print("Awkward. No size found. What I did find was \(res)")
             }
         }
+    }
+    
+    init(deviceOS: DeviceOS) {
+        self.deviceOS = deviceOS
     }
     
     
