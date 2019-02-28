@@ -14,17 +14,17 @@ class Styles: NSObject {
         super.init()
     }
     
-    func terminalAtts() -> [NSAttributedStringKey:Any]{
-        var atts = [NSAttributedStringKey:Any]()
-        atts[NSAttributedStringKey.foregroundColor] = NSColor(red:0.671, green:0.671, blue:0.671, alpha:1)
-        atts[NSAttributedStringKey.font] = NSFont(name: "Monaco", size: 8.0)
+    func terminalAtts() -> [NSAttributedString.Key:Any]{
+        var atts = [NSAttributedString.Key:Any]()
+        atts[.foregroundColor] = NSColor(red:0.671, green:0.671, blue:0.671, alpha:1)
+        atts[.font] = NSFont(name: "Monaco", size: 8.0)
         return atts
     }
     
-    func commandAtts() -> [NSAttributedStringKey:Any]{
-        var atts = [NSAttributedStringKey:Any]()
-        atts[NSAttributedStringKey.foregroundColor] = NSColor(red:1, green:1, blue:1, alpha:1)
-        atts[NSAttributedStringKey.font] = NSFont(name: "Monaco", size: 8.0);
+    func commandAtts() -> [NSAttributedString.Key:Any]{
+        var atts = [NSAttributedString.Key:Any]()
+        atts[.foregroundColor] = NSColor(red:1, green:1, blue:1, alpha:1)
+        atts[.font] = NSFont(name: "Monaco", size: 8.0);
         return atts
     }
 }

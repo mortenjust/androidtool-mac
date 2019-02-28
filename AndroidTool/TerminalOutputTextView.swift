@@ -86,7 +86,7 @@ class TerminalOutputTextView: NSTextView {
         append("\n\n----\n\n")
     }
     
-    func append(_ appended: String, atts:[NSAttributedStringKey:Any] = Styles().terminalAtts()) {
+    func append(_ appended: String, atts:[NSAttributedString.Key:Any] = Styles().terminalAtts()) {
         let s = NSAttributedString(string: "\n"+appended, attributes: atts)
         self.textStorage?.append(s)
         self.scrollToEndOfDocument(nil)

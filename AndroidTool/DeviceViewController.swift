@@ -215,13 +215,13 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         cameraButton.isEnabled = true
         videoButton.isEnabled = true
         isRecording = false
-        self.videoButton.image = NSImage(named: NSImage.Name(rawValue: "recordButtonWhite"))
+        self.videoButton.image = NSImage(named: "recordButtonWhite")
     }
     
     func iosRecorderDidEndPreparing() {
         videoButton.alphaValue = 1
         print("recorder did end preparing")
-        self.videoButton.image = NSImage(named: NSImage.Name(rawValue: "stopButton"))
+        self.videoButton.image = NSImage(named: "stopButton")
         self.videoButton.isEnabled = true
     }
     
@@ -234,7 +234,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
         Util().stopRefreshingDeviceList()
         isRecording = true
         self.restingButton = self.videoButton.image // restingbutton is "recordButtonWhite"
-        videoButton.image = NSImage(named: NSImage.Name(rawValue: "stopButton"))
+        videoButton.image = NSImage(named: "stopButton")
         videoButton.isEnabled = false
         cameraButton.isEnabled = false
         moreButton.isEnabled = false
@@ -357,7 +357,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
     
     init?(device _device:Device){
         device = _device
-        super.init(nibName: NSNib.Name(rawValue: "DeviceViewController"), bundle: nil)
+        super.init(nibName: "DeviceViewController", bundle: nil)
         setup()
     }
     
@@ -402,12 +402,12 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             let brandName = brand.lowercased()
             let imageName = "logo\(brandName)"
             print("imageName: \(imageName)")
-            image = NSImage(named: NSImage.Name(rawValue: imageName))
+            image = NSImage(named: imageName)
         } else {
             print("imageName: use default, no brand")
         }
         if image == nil {
-            image = NSImage(named: NSImage.Name(rawValue: "androidlogo"))
+            image = NSImage(named: "androidlogo")
         }
         deviceImage.image = image
         
@@ -488,7 +488,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             move.fromValue = 30
         }
             
-        move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        move.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         installInviteView.wantsLayer = true
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.duration = 0.3
@@ -501,7 +501,7 @@ class DeviceViewController: NSViewController, NSPopoverDelegate, UserScriptDeleg
             fade.fromValue = 1
         }
         
-        fade.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        fade.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         
         CATransaction.begin()
         CATransaction.setCompletionBlock { () -> Void in

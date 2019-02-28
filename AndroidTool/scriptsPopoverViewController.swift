@@ -63,7 +63,7 @@ class scriptsPopoverViewController: NSViewController {
         let folderButton = NSButton(frame: NSRect(x: 10.0, y: 3,
             width: view.bounds.width-15.0,
             height: buttonHeight))
-        folderButton.image = NSImage(named: NSImage.Name(rawValue: "revealFolder"))
+        folderButton.image = NSImage(named: "revealFolder")
         folderButton.isBordered = false
         folderButton.action = #selector(revealScriptFolderClicked)
         folderButton.target = self

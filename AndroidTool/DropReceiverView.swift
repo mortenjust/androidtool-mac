@@ -39,7 +39,7 @@ class DropReceiverView: NSView {
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
         
         //        Swift.print("HELLO \(getPathFromBoard(sender.draggingPasteboard()))")
-        let path = getPathFromBoard(sender.draggingPasteboard())
+        let path = getPathFromBoard(sender.draggingPasteboard)
         delegate?.dropDragEntered(path)
         addBackgroundColor()
         return NSDragOperation.copy
@@ -50,7 +50,7 @@ class DropReceiverView: NSView {
     }
     
     override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
-        delegate?.dropUpdated(sender.draggingLocation())
+        delegate?.dropUpdated(sender.draggingLocation)
         return NSDragOperation.copy
     }
     override func draggingExited(_ sender: NSDraggingInfo?) {
@@ -59,7 +59,7 @@ class DropReceiverView: NSView {
     }
     
     override func concludeDragOperation(_ sender: NSDraggingInfo?) {
-        let path = getPathFromBoard((sender?.draggingPasteboard())!)
+        let path = getPathFromBoard((sender?.draggingPasteboard)!)
         Swift.print("path is \(path)")
         removeBackgroundColor()
         delegate?.dropDragPerformed(path)

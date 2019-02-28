@@ -35,14 +35,14 @@ class StatusTextField: NSTextField {
         move.duration = 0.2
         
         move.isRemovedOnCompletion = true
-        move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        move.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.fromValue = 0
         fade.toValue = 1
         fade.duration = 0.2
         fade.isRemovedOnCompletion = true
-        fade.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        fade.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock { () -> Void in
@@ -66,14 +66,14 @@ class StatusTextField: NSTextField {
         move.toValue = moveTo
         move.duration = 0.2
         move.isRemovedOnCompletion = true
-        move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        move.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         let fade = CABasicAnimation(keyPath: "opacity")
         fade.fromValue = 1
         fade.toValue = 0
         fade.isRemovedOnCompletion = true
         fade.duration = 0.2
-        fade.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        fade.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         CATransaction.begin()
         CATransaction.setCompletionBlock { () -> Void in

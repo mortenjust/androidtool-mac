@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.title = ""
         
         masterViewController = MasterViewController(
-            nibName: NSNib.Name(rawValue: "MasterViewController"),
+            nibName: "MasterViewController",
             bundle: nil)
         masterViewController.window = window
         
@@ -188,7 +188,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var controller = rawOutputWindowController
         if controller == nil {
             controller = RawOutputWindowController(windowNibName:
-                NSNib.Name(rawValue: "RawOutputWindowController"))
+                "RawOutputWindowController")
             rawOutputWindowController = controller
         }
         controller?.showWindow(sender)
@@ -204,7 +204,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func preferencesClicked(_ sender: NSMenuItem) {
         print("pref")
-        preferencesWindowController = PreferencesWindowController(windowNibName: NSNib.Name(rawValue: "PreferencesWindowController"))
+        preferencesWindowController = PreferencesWindowController(windowNibName: "PreferencesWindowController")
         preferencesWindowController.showWindow(sender)
     }
     

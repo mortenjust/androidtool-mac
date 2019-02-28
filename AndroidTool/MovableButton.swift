@@ -17,7 +17,7 @@ class MovableButton: NSButton {
         move.duration = 1
         move.beginTime = CACurrentMediaTime() + delaySeconds
         move.toValue = moveTo
-        move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        move.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         CATransaction.begin()
         CATransaction.setCompletionBlock { () -> Void in
@@ -35,7 +35,7 @@ class MovableButton: NSButton {
         move.duration = 1
         move.beginTime = CACurrentMediaTime() + delaySeconds
         move.toValue = moveTo
-        move.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        move.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         CATransaction.begin()
         CATransaction.setCompletionBlock { () -> Void in

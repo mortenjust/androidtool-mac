@@ -168,7 +168,7 @@ class Util {
         fade.duration = 0.3
         fade.beginTime = CACurrentMediaTime() + delay
         fade.toValue = alphaValue
-        fade.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        fade.timingFunction = CAMediaTimingFunction(name: .easeOut)
 
         
         let move = CABasicAnimation(keyPath: "position.y")
